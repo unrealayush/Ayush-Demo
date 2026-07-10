@@ -1,0 +1,3 @@
+# Phase 0 scaffold dependencies. Pinned loosely; tighten before real-docking/deploy.
+PyYAML>=6.0
+pytest>=8.0

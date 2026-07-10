@@ -1,0 +1,17 @@
+[Unit]
+Description=Unified Docking and Folding Validation Dashboard
+After=network.target
+
+[Service]
+User=sudarshan_mevreon_ai
+Group=sudarshan_mevreon_ai
+WorkingDirectory=/opt/services
+ExecStart=/opt/services/uc4_env/bin/uvicorn api.app:app --host 0.0.0.0 --port 7860 --workers 1
+Restart=always
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=docking-dashboard
+
+[Install]
+WantedBy=multi-user.target

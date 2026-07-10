@@ -1,0 +1,46 @@
+# Model run config. Env-first: ${VAR} references are expanded at load time from the environment
+# (see docs/13_ENV_VAR_CONFIG_CONTRACT.md). No GCP project/region/zone/bucket/SA literals here.
+run_id: ${RUN_ID:-AYUSH-MVP-001}
+
+# Scenario routing. Candidate/organism/target/comparator are NO LONGER hardcoded here; they are
+# resolved by `scenario_id` from the scenario registry. Selection precedence: SCENARIO_ID env var ->
+# registry `default_scenario`. See docs/16 and contracts/scenario_schema.md.
+scenario_id: ${SCENARIO_ID:-primary_kuth_pseudomonas}
+scenario_registry: configs/scenarios/scenario_registry.yaml
+
+run:
+  # local-planning | mock | real-data-fetch | real-docking | gcp-deployment | demo
+  run_mode: ${RUN_MODE}
+  mock_mode: ${MOCK_MODE:-false}   # allowed only when run_mode=mock
+
+models:
+  ligand_prep: "RDKit/Open Babel"
+  structure_resolver_priority:
+    - "RCSB PDB"
+    - "AlphaFold DB"
+    - "ESMFold2 fallback"
+  # Canonical execution order: Vina baseline first, DiffDock-L second (docs/03, docs/04).
+  baseline_docking: "AutoDock Vina"
+  ai_docking: "DiffDock-L"
+  evidence_generation: "Gemini on Vertex AI"
+
+vertex:
+  location: ${VERTEX_LOCATION}
+  model_id: ${VERTEX_MODEL_ID}
+  enabled: ${USE_VERTEX:-true}
+  fallback: local_mock   # labeled local-mock passport if Vertex unavailable (docs/04)
+
+gcp:
+  project_id: ${PROJECT_ID}
+  region: ${REGION}
+  zone: ${ZONE}
+  service_account: ${SERVICE_ACCOUNT}
+  inputs_bucket: ${INPUTS_BUCKET}
+  outputs_bucket: ${OUTPUTS_BUCKET}
+  model_cache_bucket: ${MODEL_CACHE_BUCKET}
+
+quality:
+  prohibit_hardcoded_scores: true
+  require_source_traceability: true
+  require_research_use_disclaimer: true
+  prohibit_patient_data: true

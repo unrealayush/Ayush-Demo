@@ -1,0 +1,56 @@
+# Scenario registry — SINGLE SOURCE OF TRUTH for scenario routing.
+#
+# Replaces the former single `demo_case` default. Every agent, fetcher, schema, and UI binding
+# resolves the active scenario by `scenario_id` from this file instead of assuming a hardcoded
+# Trikatu/Piperine/NorA case. Schema for these fields: contracts/scenario_schema.md.
+#
+# Rules (enforced by review; see contracts/scenario_schema.md):
+#   - Rows are MANUALLY CURATED. Do not auto-compute compound x target cross-products.
+#   - Exactly ONE active scenario may carry `default: true`.
+#   - `status: archived` scenarios may never be `default: true`; they live under
+#     configs/archived_reference_scenarios/ and are listed here only as references.
+#   - `comparator_control` is nullable for active scenarios (no comparator logic is implied).
+#   - Identity values are still never invented (memory/NO_HALLUCINATION_RULES.md applies per scenario).
+
+schema_version: "1.0.0"
+
+# The shipped default. Selection precedence: env SCENARIO_ID (configs/model_run_config.yaml) ->
+# this default_scenario. Must be the scenario_id of an active scenario with default: true.
+default_scenario: primary_kuth_pseudomonas
+
+active_scenarios:
+  - scenario_id: primary_kuth_pseudomonas
+    status: active
+    default: true
+    display_name: "Primary MVP"
+    reference_label: "Kuth variant A"
+    config_components:
+      - "Costunolide"
+      - "Dehydrocostus lactone"
+    organism_key: "Pseudomonas aeruginosa"
+    target_a: "LasR"
+    target_b: "PqsR / MvfR"
+    investigation_focus: "Quorum sensing, virulence, biofilm maturation"
+    comparator_control: null
+
+  - scenario_id: secondary_kuth_staphylococcus
+    status: active
+    default: false
+    display_name: "Secondary MVP"
+    reference_label: "Kuth variant B"
+    config_components:
+      - "Costunolide"
+      - "Dehydrocostus lactone"
+    organism_key: "Staphylococcus aureus"
+    target_a: "AgrA"
+    target_b: "Sortase A / SrtA"
+    investigation_focus: "Quorum sensing, adhesion, biofilm initiation"
+    comparator_control: null
+
+# Archived scenarios are preserved for reference only and are NOT selectable as default.
+# Full record: configs/archived_reference_scenarios/scenario_prior.yaml.
+archived_scenarios:
+  - scenario_id: archived_trikatu_prior
+    status: archived
+    default: false
+    source_file: configs/archived_reference_scenarios/scenario_prior.yaml

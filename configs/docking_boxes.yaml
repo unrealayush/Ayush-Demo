@@ -1,0 +1,35 @@
+lasr:
+  center_x: 39.15
+  center_y: 17.70
+  center_z: 57.15
+  size_x: 20.0
+  size_y: 20.0
+  size_z: 20.0
+  box_source: co_crystal_centroid_2UV0
+
+pqsr:
+  center_x: 24.81
+  center_y: -20.60
+  center_z: 12.14
+  size_x: 20.0
+  size_y: 20.0
+  size_z: 20.0
+  box_source: co_crystal_centroid_6B8A
+
+agra:
+  center_x: 0.0
+  center_y: 0.0
+  center_z: 0.0
+  size_x: 20.0
+  size_y: 20.0
+  size_z: 20.0
+  box_source: technical_smoke_only
+
+srta:
+  center_x: -4.55
+  center_y: 7.46
+  center_z: 25.68
+  size_x: 20.0
+  size_y: 20.0
+  size_z: 20.0
+  box_source: co_crystal_centroid_6R1V

@@ -1,0 +1,28 @@
+{
+  "project": "Bioinformatics Model Hub",
+  "category": "AutoDock Vina Tutorial Assets",
+  "location": "/opt/services/assets/vina/",
+  "manifest": [
+    {
+      "filename": "receptor.pdbqt",
+      "description": "Rigid receptor file for docking validation",
+      "format": "PDBQT",
+      "size_bytes": 203280,
+      "source_url": "https://raw.githubusercontent.com/OSGConnect/tutorial-AutoDockVina/master/data/receptor.pdbqt"
+    },
+    {
+      "filename": "ligand.pdbqt",
+      "description": "Flexible ligand file for docking validation",
+      "format": "PDBQT",
+      "size_bytes": 3321,
+      "source_url": "https://raw.githubusercontent.com/OSGConnect/tutorial-AutoDockVina/master/data/ligand.pdbqt"
+    },
+    {
+      "filename": "config.txt",
+      "description": "Vina configuration parameters defining the search grid box",
+      "format": "TXT / Configuration",
+      "size_bytes": 323,
+      "source_url": "https://raw.githubusercontent.com/OSGConnect/tutorial-AutoDockVina/master/data/receptor_config.txt"
+    }
+  ]
+}

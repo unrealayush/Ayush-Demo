@@ -1,0 +1,71 @@
+{
+  "status": "COMPLETE",
+  "packaging_date": "2026-06-10",
+  "archive_name": "evidence_pack.zip",
+  "total_files_packaged": 9,
+  "files": [
+    {
+      "filename": "ligand_library.csv",
+      "original_path": "data/inputs/ligand_library.csv",
+      "size_bytes": 306,
+      "sha256_hash": "b4e8a326cd281909ebecc96400aef41fb9ad3ac67b1ba41ef86a6ad4d31b3356",
+      "description": "Curated library of active components (Costunolide, Dehydrocostus lactone) with smiles and database cross-references."
+    },
+    {
+      "filename": "pathogen_target_registry.csv",
+      "original_path": "data/inputs/pathogen_target_registry.csv",
+      "size_bytes": 1136,
+      "sha256_hash": "4c0aa589135f97a7619dbe41b2992d9a273ee363827ab6c78d749b2a9b0ac9b1",
+      "description": "Curated target database containing resolved experimental structures and sequences for MVP proteins (LasR, PqsR, AgrA, SrtA)."
+    },
+    {
+      "filename": "source_traceability.csv",
+      "original_path": "outputs/source_traceability.csv",
+      "size_bytes": 1217,
+      "sha256_hash": "94f6da38500d192c7202de4df1c63477530b7d5a7fbb34af34f75f7e43aa992a",
+      "description": "Comprehensive audit trail documenting database source, version, date-stamp, and URL accessed for every asset."
+    },
+    {
+      "filename": "structure_resolution_report.json",
+      "original_path": "outputs/structure_resolution_report.json",
+      "size_bytes": 937,
+      "sha256_hash": "35bb5b792894448d62cb028ba43ab3ec9cc7f049906cf3f43b92a8034fa76d0a",
+      "description": "Verification report capturing experimental PDB structure details resolved from RCSB."
+    },
+    {
+      "filename": "ligand_prep_report.json",
+      "original_path": "outputs/ligand_prep_report.json",
+      "size_bytes": 497,
+      "sha256_hash": "24bc85dfd18bf17d308fc6670739673167c7e9f936e2aeab37660fd569f5c35c",
+      "description": "Validation report capturing RDKit 3D conformer optimization and OpenBabel PDBQT generation success."
+    },
+    {
+      "filename": "receptor_prep_report.json",
+      "original_path": "outputs/receptor_prep_report.json",
+      "size_bytes": 1108,
+      "sha256_hash": "e656f678438cc8fafd18cdfd2abd62d53d60d8f643900a604da3a58a5fc9c9eb",
+      "description": "Validation report capturing macromolecule filtering and rigid PDBQT receptor generation success."
+    },
+    {
+      "filename": "docking_boxes.yaml",
+      "original_path": "configs/docking_boxes.yaml",
+      "size_bytes": 604,
+      "sha256_hash": "0bf8a1722121c282e48e718f6b9d364f5b3a01d8cb431407008526a2761e9fab",
+      "description": "Molecular docking grid parameters centered at computed centroids of co-crystallized structural ligands."
+    },
+    {
+      "filename": "diffdock_input.csv",
+      "original_path": "data/prepared/diffdock/diffdock_input.csv",
+      "size_bytes": 1526,
+      "sha256_hash": "da0520c7dae295e918bee002e218725c663b75276e698394a89559e01ef0d085",
+      "description": "Batch input mapping file for DiffDock-L containing clean receptors, optimized ligands, and raw target sequences."
+    },
+    {
+      "filename": "validate_contracts_report.json",
+      "original_path": "outputs/validate_contracts_report.json",
+      "size_bytes": 1487,
+      "sha256_hash": "8221407d6ca8d2c4533776199f4376fddae5f0b658471207220a68b1ddc46bf7",
+      "description": "Master data-contract validation report showing 100% presence and integrity audit across 24 files."
+    }
+  ]
+}

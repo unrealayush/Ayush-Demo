@@ -1,0 +1,31 @@
+# Cloud Run Job TEMPLATE for AutoDock Vina (CPU baseline docking).
+# Cloud Run YAML does NOT substitute shell env at apply time, so this is a template:
+#   set -a; source .env; set +a
+#   envsubst < infra/cloudrun/job-vina.yaml > /tmp/job-vina.yaml
+#   gcloud run jobs replace /tmp/job-vina.yaml --region "$REGION"
+# All values come from env vars per docs/13_ENV_VAR_CONFIG_CONTRACT.md. No literals.
+apiVersion: run.googleapis.com/v1
+kind: Job
+metadata:
+  name: ayush-run-vina
+spec:
+  template:
+    spec:
+      template:
+        spec:
+          serviceAccountName: ${SERVICE_ACCOUNT}
+          containers:
+          - image: ${REGION}-docker.pkg.dev/${PROJECT_ID}/${ARTIFACT_REPO}/jobs:${IMAGE_TAG}
+            command: ["python"]
+            args: ["jobs/run_vina.py"]
+            env:
+            - name: RUN_MODE
+              value: "${RUN_MODE}"
+            - name: INPUTS_BUCKET
+              value: "${INPUTS_BUCKET}"
+            - name: OUTPUTS_BUCKET
+              value: "${OUTPUTS_BUCKET}"
+            - name: MODEL_CACHE_BUCKET
+              value: "${MODEL_CACHE_BUCKET}"
+          maxRetries: 1
+          timeoutSeconds: 3600

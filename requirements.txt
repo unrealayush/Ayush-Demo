@@ -1,0 +1,14 @@
+# AYUSH Bio-AI Docking Pipeline — Python Dependencies
+# For Cloud Run deployment
+
+fastapi==0.115.12
+uvicorn[standard]==0.34.3
+pydantic==2.11.3
+python-multipart==0.0.20
+pyyaml==6.0.2
+aiofiles==24.1.0
+gradio>=6.0.0
+openpyxl>=3.1.0
+plotly>=5.20.0
+networkx>=3.0
+py3Dmol>=2.0.0

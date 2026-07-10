@@ -1,0 +1,42 @@
+# Ignore node_modules and git files
+node_modules
+.git
+.gitignore
+
+# Ignore build artifacts that will be recreated
+frontend/node_modules
+frontend/dist
+
+# Ignore docs and development files
+docs/
+*.md
+!README.md
+*.zip
+*.docx
+*.xlsx
+*.pptx
+
+# Ignore IDE and OS files
+.vscode
+.idea
+__pycache__
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Ignore test files
+*.test.*
+*.spec.*
+tests/
+
+# Ignore CI/CD files
+.github
+.claude
+.gemini
+.pytest_cache
+
+# Ignore evidence pack (not needed at runtime)
+evidence_pack.zip
+evidence_pack_manifest.json
+generate_context.py
+MIGRATION_CONTEXT.md

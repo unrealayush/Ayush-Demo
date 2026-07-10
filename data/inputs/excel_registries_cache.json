@@ -1,0 +1,342 @@
+{
+    "ligands": {
+        "costunolide": {
+            "compound_id": "costunolide",
+            "compound_name": "Costunolide",
+            "plant_name": "Saussurea costus (Kuth)",
+            "chemical_class": "Sesquiterpene lactone",
+            "pubchem_cid": "5281437",
+            "priority": "High"
+        },
+        "dehydrocostus_lactone": {
+            "compound_id": "dehydrocostus_lactone",
+            "compound_name": "Dehydrocostus lactone",
+            "plant_name": "Saussurea costus (Kuth)",
+            "chemical_class": "Sesquiterpene lactone",
+            "pubchem_cid": "73174",
+            "priority": "High"
+        },
+        "cynaropicrin": {
+            "compound_id": "cynaropicrin",
+            "compound_name": "Cynaropicrin",
+            "plant_name": "Saussurea costus (Kuth)",
+            "chemical_class": "Sesquiterpene lactone",
+            "pubchem_cid": "5281773",
+            "priority": "High"
+        },
+        "santamarine": {
+            "compound_id": "santamarine",
+            "compound_name": "Santamarine",
+            "plant_name": "Saussurea costus (Kuth)",
+            "chemical_class": "Sesquiterpene lactone",
+            "pubchem_cid": "91457",
+            "priority": "Medium"
+        },
+        "conessine": {
+            "compound_id": "conessine",
+            "compound_name": "Conessine",
+            "plant_name": "Holarrhena antidysenterica (Kutaja)",
+            "chemical_class": "Steroidal alkaloid",
+            "pubchem_cid": "441072",
+            "priority": "High"
+        },
+        "baicalein": {
+            "compound_id": "baicalein",
+            "compound_name": "Baicalein",
+            "plant_name": "Oroxylum indicum (Shyonaka)",
+            "chemical_class": "Flavonoid",
+            "pubchem_cid": "5281605",
+            "priority": "High"
+        },
+        "oroxylin_a": {
+            "compound_id": "oroxylin_a",
+            "compound_name": "Oroxylin A",
+            "plant_name": "Oroxylum indicum (Shyonaka)",
+            "chemical_class": "Flavonoid",
+            "pubchem_cid": "5320315",
+            "priority": "High"
+        },
+        "chrysin": {
+            "compound_id": "chrysin",
+            "compound_name": "Chrysin",
+            "plant_name": "Oroxylum indicum (Shyonaka)",
+            "chemical_class": "Flavonoid",
+            "pubchem_cid": "5281607",
+            "priority": "High"
+        },
+        "baicalin": {
+            "compound_id": "baicalin",
+            "compound_name": "Baicalin",
+            "plant_name": "Oroxylum indicum (Shyonaka)",
+            "chemical_class": "Flavone glycoside",
+            "pubchem_cid": "64982",
+            "priority": "High"
+        },
+        "magnoflorine": {
+            "compound_id": "magnoflorine",
+            "compound_name": "Magnoflorine",
+            "plant_name": "Tinospora cordifolia (Guduchi)",
+            "chemical_class": "Alkaloid",
+            "pubchem_cid": "73337",
+            "priority": "Medium"
+        },
+        "aegeline": {
+            "compound_id": "aegeline",
+            "compound_name": "Aegeline",
+            "plant_name": "Aegle marmelos (Bael)",
+            "chemical_class": "Alkaloid",
+            "pubchem_cid": "15558450",
+            "priority": "High"
+        },
+        "imperatorin": {
+            "compound_id": "imperatorin",
+            "compound_name": "Imperatorin",
+            "plant_name": "Aegle marmelos (Bael)",
+            "chemical_class": "Furanocoumarin",
+            "pubchem_cid": "10212",
+            "priority": "High"
+        },
+        "skimmianine": {
+            "compound_id": "skimmianine",
+            "compound_name": "Skimmianine",
+            "plant_name": "Aegle marmelos (Bael)",
+            "chemical_class": "Alkaloid",
+            "pubchem_cid": "23475",
+            "priority": "Medium"
+        },
+        "boeravinone_b": {
+            "compound_id": "boeravinone_b",
+            "compound_name": "Boeravinone B",
+            "plant_name": "Boerhavia diffusa (Punarnava)",
+            "chemical_class": "Rotenoid",
+            "pubchem_cid": "5318767",
+            "priority": "High"
+        },
+        "liriodendrin": {
+            "compound_id": "liriodendrin",
+            "compound_name": "Liriodendrin",
+            "plant_name": "Boerhavia diffusa (Punarnava)",
+            "chemical_class": "Lignan",
+            "pubchem_cid": "3084137",
+            "priority": "Medium"
+        },
+        "nimbolide": {
+            "compound_id": "nimbolide",
+            "compound_name": "Nimbolide",
+            "plant_name": "Azadirachta indica (Neem)",
+            "chemical_class": "Limonoid",
+            "pubchem_cid": "100017",
+            "priority": "High"
+        },
+        "nimbin": {
+            "compound_id": "nimbin",
+            "compound_name": "Nimbin",
+            "plant_name": "Azadirachta indica (Neem)",
+            "chemical_class": "Limonoid",
+            "pubchem_cid": "102095200",
+            "priority": "Medium"
+        },
+        "azadirachtin": {
+            "compound_id": "azadirachtin",
+            "compound_name": "Azadirachtin",
+            "plant_name": "Azadirachta indica (Neem)",
+            "chemical_class": "Limonoid",
+            "pubchem_cid": "5281303",
+            "priority": "High"
+        },
+        "eugenol": {
+            "compound_id": "eugenol",
+            "compound_name": "Eugenol",
+            "plant_name": "Ocimum tenuiflorum (Tulsi)",
+            "chemical_class": "Phenylpropanoid",
+            "pubchem_cid": "3314",
+            "priority": "High"
+        },
+        "ursolic_acid": {
+            "compound_id": "ursolic_acid",
+            "compound_name": "Ursolic acid",
+            "plant_name": "Ocimum tenuiflorum (Tulsi)",
+            "chemical_class": "Triterpenoid",
+            "pubchem_cid": "64945",
+            "priority": "High"
+        },
+        "rosmarinic_acid": {
+            "compound_id": "rosmarinic_acid",
+            "compound_name": "Rosmarinic acid",
+            "plant_name": "Ocimum tenuiflorum (Tulsi)",
+            "chemical_class": "Polyphenol",
+            "pubchem_cid": "5281792",
+            "priority": "High"
+        },
+        "curcumin": {
+            "compound_id": "curcumin",
+            "compound_name": "Curcumin",
+            "plant_name": "Curcuma longa (Turmeric)",
+            "chemical_class": "Polyphenol",
+            "pubchem_cid": "969516",
+            "priority": "High"
+        },
+        "demethoxycurcumin": {
+            "compound_id": "demethoxycurcumin",
+            "compound_name": "Demethoxycurcumin",
+            "plant_name": "Curcuma longa (Turmeric)",
+            "chemical_class": "Curcuminoid",
+            "pubchem_cid": "5469424",
+            "priority": "High"
+        },
+        "bisdemethoxycurcumin": {
+            "compound_id": "bisdemethoxycurcumin",
+            "compound_name": "Bisdemethoxycurcumin",
+            "plant_name": "Curcuma longa (Turmeric)",
+            "chemical_class": "Curcuminoid",
+            "pubchem_cid": "5315472",
+            "priority": "High"
+        }
+    },
+    "targets": {
+        "agra": {
+            "target_id": "agra",
+            "target_name": "AgrA",
+            "gene": "agrA",
+            "organism": "Staphylococcus aureus",
+            "target_class": "Quorum sensing",
+            "primary_function": "Response regulator of Agr system",
+            "role_in_amr": "Controls toxins, virulence and biofilm dispersal",
+            "uniprot": "P0A0I7",
+            "structure_availability": "PDB: 4G4K",
+            "pdb_id": "4G4K"
+        },
+        "srta": {
+            "target_id": "srta",
+            "target_name": "Sortase A",
+            "gene": "srtA",
+            "organism": "Staphylococcus aureus",
+            "target_class": "Adhesion",
+            "primary_function": "Anchors surface proteins to peptidoglycan",
+            "role_in_amr": "Essential for colonization and biofilm formation",
+            "uniprot": "Q2FV99",
+            "structure_availability": "PDB: 1T2P",
+            "pdb_id": "1T2P"
+        },
+        "meca": {
+            "target_id": "meca",
+            "target_name": "PBP2a",
+            "gene": "mecA",
+            "organism": "Staphylococcus aureus",
+            "target_class": "AMR",
+            "primary_function": "Alternative penicillin-binding protein",
+            "role_in_amr": "Confers methicillin resistance",
+            "uniprot": "Q9KX75",
+            "structure_availability": "PDB: 1VQQ, 5M18",
+            "pdb_id": "1VQQ"
+        },
+        "murj": {
+            "target_id": "murj",
+            "target_name": "MurJ",
+            "gene": "murJ",
+            "organism": "Staphylococcus aureus",
+            "target_class": "Cell wall biosynthesis",
+            "primary_function": "Lipid II flippase",
+            "role_in_amr": "Essential peptidoglycan synthesis target",
+            "uniprot": "Q2FZF4",
+            "structure_availability": "AlphaFold",
+            "pdb_id": "structure_pending"
+        },
+        "lasr": {
+            "target_id": "lasr",
+            "target_name": "LasR",
+            "gene": "lasR",
+            "organism": "Pseudomonas aeruginosa",
+            "target_class": "Quorum sensing",
+            "primary_function": "Master QS transcription regulator",
+            "role_in_amr": "Controls virulence and biofilm maturation",
+            "uniprot": "P25084",
+            "structure_availability": "PDB: 2UV0",
+            "pdb_id": "2UV0"
+        },
+        "pqsr": {
+            "target_id": "pqsr",
+            "target_name": "PqsR (MvfR)",
+            "gene": "pqsR",
+            "organism": "Pseudomonas aeruginosa",
+            "target_class": "Quorum sensing",
+            "primary_function": "PQS signaling regulator",
+            "role_in_amr": "Controls virulence, persistence and mature biofilms",
+            "uniprot": "Q9I147",
+            "structure_availability": "PDB: 4JVC",
+            "pdb_id": "4JVC"
+        },
+        "peld": {
+            "target_id": "peld",
+            "target_name": "PelD",
+            "gene": "pelD",
+            "organism": "Pseudomonas aeruginosa",
+            "target_class": "Biofilm matrix",
+            "primary_function": "c-di-GMP receptor controlling Pel polysaccharide synthesis",
+            "role_in_amr": "EPS production and biofilm architecture",
+            "uniprot": "Q9I4I8",
+            "structure_availability": "PDB: 4Q35",
+            "pdb_id": "4Q35"
+        },
+        "mexb": {
+            "target_id": "mexb",
+            "target_name": "MexB",
+            "gene": "mexB",
+            "organism": "Pseudomonas aeruginosa",
+            "target_class": "AMR",
+            "primary_function": "RND family multidrug efflux transporter",
+            "role_in_amr": "Major multidrug resistance mechanism",
+            "uniprot": "Q51547",
+            "structure_availability": "PDB: 2V50",
+            "pdb_id": "2V50"
+        },
+        "mrkh": {
+            "target_id": "mrkh",
+            "target_name": "MrkH",
+            "gene": "mrkH",
+            "organism": "Klebsiella pneumoniae",
+            "target_class": "Adhesion",
+            "primary_function": "Regulates type III fimbriae",
+            "role_in_amr": "Surface attachment and biofilm formation",
+            "uniprot": "A0A0H3JXK0",
+            "structure_availability": "AlphaFold",
+            "pdb_id": "structure_pending"
+        },
+        "wzc": {
+            "target_id": "wzc",
+            "target_name": "Wzc",
+            "gene": "wzc",
+            "organism": "Klebsiella pneumoniae",
+            "target_class": "Capsule biosynthesis",
+            "primary_function": "Tyrosine autokinase",
+            "role_in_amr": "Capsule formation and biofilm protection",
+            "uniprot": "Q8ZIN0",
+            "structure_availability": "AlphaFold",
+            "pdb_id": "structure_pending"
+        },
+        "acrb": {
+            "target_id": "acrb",
+            "target_name": "AcrB",
+            "gene": "acrB",
+            "organism": "Klebsiella pneumoniae",
+            "target_class": "AMR",
+            "primary_function": "RND multidrug efflux pump",
+            "role_in_amr": "Major antibiotic resistance determinant",
+            "uniprot": "Q8ZKQ2",
+            "structure_availability": "PDB: 5YIL",
+            "pdb_id": "5YIL"
+        },
+        "ompk36": {
+            "target_id": "ompk36",
+            "target_name": "OmpK36",
+            "gene": "ompK36",
+            "organism": "Klebsiella pneumoniae",
+            "target_class": "AMR",
+            "primary_function": "Outer membrane porin",
+            "role_in_amr": "Carbapenem uptake and resistance regulation",
+            "uniprot": "A6T5Y8",
+            "structure_availability": "PDB: 5NXA",
+            "pdb_id": "5NXA"
+        }
+    }
+}

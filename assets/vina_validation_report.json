@@ -1,0 +1,30 @@
+{
+  "validation_date": "2026-06-20",
+  "engine": "AutoDock Vina v1.2.5",
+  "status": "PASSED",
+  "environment": {
+    "vm_name": "uc4-model-vm",
+    "cpu_cores": 1,
+    "gpu": "NVIDIA L4 (24GB VRAM)"
+  },
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.311,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.13,
+      "rmsd_lower_bound": 1.485,
+      "rmsd_upper_bound": 4.391
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.494,
+      "rmsd_lower_bound": 2.08,
+      "rmsd_upper_bound": 4.901
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+apiVersion: run.googleapis.com/v1
+kind: Job
+metadata:
+  name: ayush-run-vina
+spec:
+  template:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: REGION-docker.pkg.dev/PROJECT_ID/ayush-bioai/jobs:latest
+            command: ["python"]
+            args: ["jobs/run_vina.py"]
+            env:
+            - name: GCS_OUTPUT_BUCKET
+              value: "gs://PROJECT_ID-ayush-bioai-outputs"
+          maxRetries: 1
+          timeoutSeconds: 3600

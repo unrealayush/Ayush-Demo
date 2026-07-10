@@ -1,0 +1,25 @@
+# Archived reference scenario — prior exploration concept. PRESERVED, NOT ACTIVE.
+#
+# This is the former single-demo default (Trikatu / Piperine -> MRSA/NorA -> Ciprofloxacin).
+# It is retained verbatim for traceability and is referenced from
+# configs/scenarios/scenario_registry.yaml under `archived_scenarios`.
+#
+# status=archived: this scenario is NOT selectable as the shipped default and is not part of
+# active MVP routing. Do not delete; do not promote to default. Schema: contracts/scenario_schema.md.
+
+schema_version: "1.0.0"
+archived_at_version: v0.3
+
+scenario:
+  scenario_id: archived_trikatu_prior
+  status: archived
+  default: false
+  display_name: "Archived prior concept"
+  reference_label: "Prior exploration / Trikatu lineage"
+  config_components:
+    - "Piperine"
+  organism_key: "MRSA / Staphylococcus aureus"
+  target_a: "NorA"
+  target_b: "Biofilm/efflux context"
+  investigation_focus: "Archived reference only"
+  comparator_control: "Ciprofloxacin archived reference only"

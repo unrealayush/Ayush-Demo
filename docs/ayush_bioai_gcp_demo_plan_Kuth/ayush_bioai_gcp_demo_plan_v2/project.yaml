@@ -1,0 +1,23 @@
+name: ayush-bioai-evidence-demo
+version: v0.3
+owner: Mevreon.ai
+# Scenario-based routing (replaces the former single demo_case). See docs/16 and
+# contracts/scenario_schema.md. The former piperine_mrsa_nora_ciprofloxacin case is now the
+# archived scenario `archived_trikatu_prior`.
+scenario_registry: configs/scenarios/scenario_registry.yaml
+default_scenario: primary_kuth_pseudomonas
+status: planning_ready
+
+principles:
+  - real_public_data_first
+  - synthetic_fallback_only_when_labelled
+  - no_patient_data_in_mvp
+  - no_clinical_claims
+  - output_traceability_required
+
+visible_models:
+  - RDKit/Open Babel
+  - PDB/AlphaFold/ESMFold2 fallback
+  - DiffDock-L
+  - AutoDock Vina
+  - Gemini Evidence Passport

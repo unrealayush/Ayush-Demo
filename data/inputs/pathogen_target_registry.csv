@@ -1,0 +1,5 @@
+scenario_id,organism_key,target_label,gene_symbol,target_aliases,uniprot_accession,ncbi_protein_accession,protein_sequence_fasta_path,preferred_structure_source,structure_source_id,structure_source_url,evidence_level,source_traceability_id
+primary_kuth_pseudomonas,Pseudomonas aeruginosa,LasR,lasR,LASR,P25084,AAA25874.1,data/prepared/targets/lasr/sequence.fasta,RCSB_PDB,2UV0,https://files.rcsb.org/download/2UV0.pdb,curated_literature,UNIPROT_ACC_P25084
+primary_kuth_pseudomonas,Pseudomonas aeruginosa,PqsR / MvfR,pqsR,PQSR,Q9I4X0,AAG04392.1,data/prepared/targets/pqsr/sequence.fasta,RCSB_PDB,6B8A,https://files.rcsb.org/download/6B8A.pdb,curated_literature,UNIPROT_ACC_Q9I4X0
+secondary_kuth_staphylococcus,Staphylococcus aureus,AgrA,agrA,AGRA,P0A0I7,AAA26597.1,data/prepared/targets/agra/sequence.fasta,RCSB_PDB,3BS1,https://files.rcsb.org/download/3BS1.pdb,curated_literature,UNIPROT_ACC_P0A0I7
+secondary_kuth_staphylococcus,Staphylococcus aureus,Sortase A / SrtA,srtA,SRTA,Q2FV99,ABD31836.1,data/prepared/targets/srta/sequence.fasta,RCSB_PDB,6R1V,https://files.rcsb.org/download/6R1V.pdb,curated_literature,UNIPROT_ACC_Q2FV99

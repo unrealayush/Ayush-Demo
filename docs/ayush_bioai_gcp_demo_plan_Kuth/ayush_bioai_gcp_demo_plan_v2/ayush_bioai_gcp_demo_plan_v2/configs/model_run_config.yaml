@@ -1,0 +1,31 @@
+run_id: AYUSH-MVP-001
+demo_case: piperine_mrsa_nora_ciprofloxacin
+mock_mode_allowed: true
+
+candidate:
+  formulation_name: "Trikatu / Pippali / Maricha"
+  active_marker: "Piperine"
+
+pathogen:
+  organism: "Staphylococcus aureus"
+  context: "MRSA / efflux-associated / biofilm-high"
+  primary_target: "NorA efflux pump"
+
+antibiotic:
+  comparator: "Ciprofloxacin"
+
+models:
+  ligand_prep: "RDKit/Open Babel"
+  structure_resolver_priority:
+    - "RCSB PDB"
+    - "AlphaFold DB"
+    - "ESMFold2 fallback"
+  ai_docking: "DiffDock-L"
+  baseline_docking: "AutoDock Vina"
+  evidence_generation: "Gemini on Vertex AI"
+
+quality:
+  prohibit_hardcoded_scores: true
+  require_source_traceability: true
+  require_research_use_disclaimer: true
+  prohibit_patient_data: true

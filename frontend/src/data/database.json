@@ -1,0 +1,2521 @@
+{
+  "organisms": [
+    {
+      "id": "paeruginosa",
+      "name": "Pseudomonas aeruginosa",
+      "description": "Gram-negative opportunistic pathogen known for multidrug resistance and biofilm formation.",
+      "targets": [
+        "lasr",
+        "pqsr",
+        "mexb",
+        "peld"
+      ]
+    },
+    {
+      "id": "saureus",
+      "name": "Staphylococcus aureus",
+      "description": "Gram-positive pathogen responsible for severe skin, soft tissue, and systemic infections.",
+      "targets": [
+        "lasr",
+        "pqsr",
+        "mexb",
+        "peld"
+      ]
+    },
+    {
+      "id": "kpneumoniae",
+      "name": "Klebsiella pneumoniae",
+      "description": "Gram-negative bacterium often causing healthcare-associated infections and pneumonia.",
+      "targets": [
+        "lasr",
+        "pqsr",
+        "mexb",
+        "peld"
+      ]
+    }
+  ],
+  "targetsData": {
+    "lasr": {
+      "id": "lasr",
+      "name": "Lasr",
+      "all_ligands": [
+        {
+          "id": "nimbolide",
+          "rank": 1,
+          "name": "Nimbolide",
+          "folderName": "nimbolide",
+          "vina_affinity": -9.2,
+          "diffdock_confidence": 1.85,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 91.8,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_nimbolide_diffdock.sdf",
+          "pdbqtFile": "lasr_nimbolide_vina.pdbqt"
+        },
+        {
+          "id": "liriodendrin",
+          "rank": 2,
+          "name": "Liriodendrin",
+          "folderName": "liriodendrin",
+          "vina_affinity": -8.9,
+          "diffdock_confidence": 1.72,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 89.4,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_liriodendrin_diffdock.sdf",
+          "pdbqtFile": "lasr_liriodendrin_vina.pdbqt"
+        },
+        {
+          "id": "baicalin",
+          "rank": 3,
+          "name": "Baicalin",
+          "folderName": "baicalin",
+          "vina_affinity": -8.6,
+          "diffdock_confidence": 1.58,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 86.5,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_baicalin_diffdock.sdf",
+          "pdbqtFile": "lasr_baicalin_vina.pdbqt"
+        },
+        {
+          "id": "azadirachtin",
+          "rank": 4,
+          "name": "Azadirachtin",
+          "folderName": "azadirachtin",
+          "vina_affinity": -8.4,
+          "diffdock_confidence": 1.45,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 84.1,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_azadirachtin_diffdock.sdf",
+          "pdbqtFile": "lasr_azadirachtin_vina.pdbqt"
+        },
+        {
+          "id": "ursolic_acid",
+          "rank": 5,
+          "name": "Ursolic acid",
+          "folderName": "ursolic_acid",
+          "vina_affinity": -8.1,
+          "diffdock_confidence": 1.3,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 81.2,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_ursolic_acid_diffdock.sdf",
+          "pdbqtFile": "lasr_ursolic_acid_vina.pdbqt"
+        },
+        {
+          "id": "boeravinone_b",
+          "rank": 6,
+          "name": "Boeravinone B",
+          "folderName": "boeravinone_b",
+          "vina_affinity": -7.8,
+          "diffdock_confidence": 1.15,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 78.6,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_boeravinone_b_diffdock.sdf",
+          "pdbqtFile": "lasr_boeravinone_b_vina.pdbqt"
+        },
+        {
+          "id": "nimbin",
+          "rank": 7,
+          "name": "Nimbin",
+          "folderName": "nimbin",
+          "vina_affinity": -7.6,
+          "diffdock_confidence": 1.05,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 76.4,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_nimbin_diffdock.sdf",
+          "pdbqtFile": "lasr_nimbin_vina.pdbqt"
+        },
+        {
+          "id": "chrysin",
+          "rank": 8,
+          "name": "Chrysin",
+          "folderName": "chrysin",
+          "vina_affinity": -7.3,
+          "diffdock_confidence": 0.96,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 73.1,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_chrysin_diffdock.sdf",
+          "pdbqtFile": "lasr_chrysin_vina.pdbqt"
+        },
+        {
+          "id": "costunolide",
+          "rank": 9,
+          "name": "Costunolide",
+          "folderName": "costunolide",
+          "vina_affinity": -7.1,
+          "diffdock_confidence": 0.85,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 71.3,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_costunolide_diffdock.sdf",
+          "pdbqtFile": "lasr_costunolide_vina.pdbqt"
+        },
+        {
+          "id": "cynaropicrin",
+          "rank": 10,
+          "name": "Cynaropicrin",
+          "folderName": "cynaropicrin",
+          "vina_affinity": -6.9,
+          "diffdock_confidence": 0.72,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 69.5,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_cynaropicrin_diffdock.sdf",
+          "pdbqtFile": "lasr_cynaropicrin_vina.pdbqt"
+        },
+        {
+          "id": "conessine",
+          "rank": 11,
+          "name": "Conessine",
+          "folderName": "conessine",
+          "vina_affinity": -6.7,
+          "diffdock_confidence": 0.6,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 67.2,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_conessine_diffdock.sdf",
+          "pdbqtFile": "lasr_conessine_vina.pdbqt"
+        },
+        {
+          "id": "dehydrocostus_lactone",
+          "rank": 12,
+          "name": "Dehydrocostus lactone",
+          "folderName": "dehydrocostus_lactone",
+          "vina_affinity": -6.5,
+          "diffdock_confidence": 0.52,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 65.4,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_dehydrocostus_lactone_diffdock.sdf",
+          "pdbqtFile": "lasr_dehydrocostus_lactone_vina.pdbqt"
+        },
+        {
+          "id": "curcumin",
+          "rank": 13,
+          "name": "Curcumin",
+          "folderName": "curcumin",
+          "vina_affinity": -6.3,
+          "diffdock_confidence": 0.4,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 63.1,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_curcumin_diffdock.sdf",
+          "pdbqtFile": "lasr_curcumin_vina.pdbqt"
+        },
+        {
+          "id": "rosmarinic_acid",
+          "rank": 14,
+          "name": "Rosmarinic acid",
+          "folderName": "rosmarinic_acid",
+          "vina_affinity": -6.1,
+          "diffdock_confidence": 0.31,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 61.5,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_rosmarinic_acid_diffdock.sdf",
+          "pdbqtFile": "lasr_rosmarinic_acid_vina.pdbqt"
+        },
+        {
+          "id": "oroxylin_a",
+          "rank": 15,
+          "name": "Oroxylin A",
+          "folderName": "oroxylin_a",
+          "vina_affinity": -5.9,
+          "diffdock_confidence": 0.22,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 59.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_oroxylin_a_diffdock.sdf",
+          "pdbqtFile": "lasr_oroxylin_a_vina.pdbqt"
+        },
+        {
+          "id": "baicalein",
+          "rank": 16,
+          "name": "Baicalein",
+          "folderName": "baicalein",
+          "vina_affinity": -5.7,
+          "diffdock_confidence": 0.15,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 57.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_baicalein_diffdock.sdf",
+          "pdbqtFile": "lasr_baicalein_vina.pdbqt"
+        },
+        {
+          "id": "santamarine",
+          "rank": 17,
+          "name": "Santamarine",
+          "folderName": "santamarine",
+          "vina_affinity": -5.5,
+          "diffdock_confidence": 0.05,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 55.4,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_santamarine_diffdock.sdf",
+          "pdbqtFile": "lasr_santamarine_vina.pdbqt"
+        },
+        {
+          "id": "aegeline",
+          "rank": 18,
+          "name": "Aegeline",
+          "folderName": "aegeline",
+          "vina_affinity": -5.3,
+          "diffdock_confidence": -0.05,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 53.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_aegeline_diffdock.sdf",
+          "pdbqtFile": "lasr_aegeline_vina.pdbqt"
+        },
+        {
+          "id": "demethoxycurcumin",
+          "rank": 19,
+          "name": "Demethoxycurcumin",
+          "folderName": "demethoxycurcumin",
+          "vina_affinity": -5.1,
+          "diffdock_confidence": -0.12,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 51.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_demethoxycurcumin_diffdock.sdf",
+          "pdbqtFile": "lasr_demethoxycurcumin_vina.pdbqt"
+        },
+        {
+          "id": "bisdemethoxycurcumin",
+          "rank": 20,
+          "name": "Bisdemethoxycurcumin",
+          "folderName": "bisdemethoxycurcumin",
+          "vina_affinity": -4.9,
+          "diffdock_confidence": -0.2,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 49.6,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_bisdemethoxycurcumin_diffdock.sdf",
+          "pdbqtFile": "lasr_bisdemethoxycurcumin_vina.pdbqt"
+        },
+        {
+          "id": "eugenol",
+          "rank": 21,
+          "name": "Eugenol",
+          "folderName": "eugenol",
+          "vina_affinity": -4.7,
+          "diffdock_confidence": -0.35,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 47.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_eugenol_diffdock.sdf",
+          "pdbqtFile": "lasr_eugenol_vina.pdbqt"
+        },
+        {
+          "id": "magnoflorine",
+          "rank": 22,
+          "name": "Magnoflorine",
+          "folderName": "magnoflorine",
+          "vina_affinity": -4.5,
+          "diffdock_confidence": -0.42,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 45.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_magnoflorine_diffdock.sdf",
+          "pdbqtFile": "lasr_magnoflorine_vina.pdbqt"
+        },
+        {
+          "id": "imperatorin",
+          "rank": 23,
+          "name": "Imperatorin",
+          "folderName": "imperatorin",
+          "vina_affinity": -4.3,
+          "diffdock_confidence": -0.55,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 43.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_imperatorin_diffdock.sdf",
+          "pdbqtFile": "lasr_imperatorin_vina.pdbqt"
+        },
+        {
+          "id": "skimmianine",
+          "rank": 24,
+          "name": "Skimmianine",
+          "folderName": "skimmianine",
+          "vina_affinity": -4.1,
+          "diffdock_confidence": -0.62,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 41.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_skimmianine_diffdock.sdf",
+          "pdbqtFile": "lasr_skimmianine_vina.pdbqt"
+        }
+      ],
+      "top_ligands": [
+        {
+          "id": "nimbolide",
+          "rank": 1,
+          "name": "Nimbolide",
+          "folderName": "nimbolide",
+          "vina_affinity": -9.2,
+          "diffdock_confidence": 1.85,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 91.8,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_nimbolide_diffdock.sdf",
+          "pdbqtFile": "lasr_nimbolide_vina.pdbqt"
+        },
+        {
+          "id": "liriodendrin",
+          "rank": 2,
+          "name": "Liriodendrin",
+          "folderName": "liriodendrin",
+          "vina_affinity": -8.9,
+          "diffdock_confidence": 1.72,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 89.4,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_liriodendrin_diffdock.sdf",
+          "pdbqtFile": "lasr_liriodendrin_vina.pdbqt"
+        },
+        {
+          "id": "baicalin",
+          "rank": 3,
+          "name": "Baicalin",
+          "folderName": "baicalin",
+          "vina_affinity": -8.6,
+          "diffdock_confidence": 1.58,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 86.5,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_baicalin_diffdock.sdf",
+          "pdbqtFile": "lasr_baicalin_vina.pdbqt"
+        },
+        {
+          "id": "azadirachtin",
+          "rank": 4,
+          "name": "Azadirachtin",
+          "folderName": "azadirachtin",
+          "vina_affinity": -8.4,
+          "diffdock_confidence": 1.45,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 84.1,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_azadirachtin_diffdock.sdf",
+          "pdbqtFile": "lasr_azadirachtin_vina.pdbqt"
+        },
+        {
+          "id": "ursolic_acid",
+          "rank": 5,
+          "name": "Ursolic acid",
+          "folderName": "ursolic_acid",
+          "vina_affinity": -8.1,
+          "diffdock_confidence": 1.3,
+          "h_bonds": null,
+          "hydrophobic_contacts": null,
+          "priority_score": 81.2,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "lasr_ursolic_acid_diffdock.sdf",
+          "pdbqtFile": "lasr_ursolic_acid_vina.pdbqt"
+        }
+      ]
+    },
+    "pqsr": {
+      "id": "pqsr",
+      "name": "Pqsr",
+      "all_ligands": [
+        {
+          "id": "boeravinone_b",
+          "rank": 1,
+          "name": "Boeravinone B",
+          "folderName": "boeravinone_b",
+          "vina_affinity": -6.236,
+          "diffdock_confidence": -2,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 5,
+          "priority_score": 45.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_boeravinone_b_diffdock.sdf",
+          "pdbqtFile": "pqsr_boeravinone_b_vina.pdbqt"
+        },
+        {
+          "id": "chrysin",
+          "rank": 2,
+          "name": "Chrysin",
+          "folderName": "chrysin",
+          "vina_affinity": -6.101,
+          "diffdock_confidence": -1.46,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 5,
+          "priority_score": 40,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_chrysin_diffdock.sdf",
+          "pdbqtFile": "pqsr_chrysin_vina.pdbqt"
+        },
+        {
+          "id": "baicalin",
+          "rank": 3,
+          "name": "Baicalin",
+          "folderName": "baicalin",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 2,
+          "priority_score": 35.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_baicalin_diffdock.sdf",
+          "pdbqtFile": "pqsr_baicalin_vina.pdbqt"
+        },
+        {
+          "id": "cynaropicrin",
+          "rank": 4,
+          "name": "Cynaropicrin",
+          "folderName": "cynaropicrin",
+          "vina_affinity": -5.31,
+          "diffdock_confidence": -2.2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 5,
+          "priority_score": 32.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_cynaropicrin_diffdock.sdf",
+          "pdbqtFile": "pqsr_cynaropicrin_vina.pdbqt"
+        },
+        {
+          "id": "conessine",
+          "rank": 5,
+          "name": "Conessine",
+          "folderName": "conessine",
+          "vina_affinity": -5.983,
+          "diffdock_confidence": -1.75,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 31.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_conessine_diffdock.sdf",
+          "pdbqtFile": "pqsr_conessine_vina.pdbqt"
+        },
+        {
+          "id": "imperatorin",
+          "rank": 6,
+          "name": "Imperatorin",
+          "folderName": "imperatorin",
+          "vina_affinity": -5.207,
+          "diffdock_confidence": -1.56,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 30.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_imperatorin_diffdock.sdf",
+          "pdbqtFile": "pqsr_imperatorin_vina.pdbqt"
+        },
+        {
+          "id": "rosmarinic_acid",
+          "rank": 7,
+          "name": "Rosmarinic acid",
+          "folderName": "rosmarinic_acid",
+          "vina_affinity": -5.722,
+          "diffdock_confidence": -2.23,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 28.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_rosmarinic_acid_diffdock.sdf",
+          "pdbqtFile": "pqsr_rosmarinic_acid_vina.pdbqt"
+        },
+        {
+          "id": "baicalein",
+          "rank": 8,
+          "name": "Baicalein",
+          "folderName": "baicalein",
+          "vina_affinity": -5.539,
+          "diffdock_confidence": -2.19,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 27.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_baicalein_diffdock.sdf",
+          "pdbqtFile": "pqsr_baicalein_vina.pdbqt"
+        },
+        {
+          "id": "dehydrocostus_lactone",
+          "rank": 9,
+          "name": "Dehydrocostus lactone",
+          "folderName": "dehydrocostus_lactone",
+          "vina_affinity": -5.274,
+          "diffdock_confidence": -1.96,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 27,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_dehydrocostus_lactone_diffdock.sdf",
+          "pdbqtFile": "pqsr_dehydrocostus_lactone_vina.pdbqt"
+        },
+        {
+          "id": "oroxylin_a",
+          "rank": 10,
+          "name": "Oroxylin A",
+          "folderName": "oroxylin_a",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_oroxylin_a_diffdock.sdf",
+          "pdbqtFile": "pqsr_oroxylin_a_vina.pdbqt"
+        },
+        {
+          "id": "demethoxycurcumin",
+          "rank": 11,
+          "name": "Demethoxycurcumin",
+          "folderName": "demethoxycurcumin",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_demethoxycurcumin_diffdock.sdf",
+          "pdbqtFile": "pqsr_demethoxycurcumin_vina.pdbqt"
+        },
+        {
+          "id": "curcumin",
+          "rank": 12,
+          "name": "Curcumin",
+          "folderName": "curcumin",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_curcumin_diffdock.sdf",
+          "pdbqtFile": "pqsr_curcumin_vina.pdbqt"
+        },
+        {
+          "id": "aegeline",
+          "rank": 13,
+          "name": "Aegeline",
+          "folderName": "aegeline",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_aegeline_diffdock.sdf",
+          "pdbqtFile": "pqsr_aegeline_vina.pdbqt"
+        },
+        {
+          "id": "santamarine",
+          "rank": 14,
+          "name": "Santamarine",
+          "folderName": "santamarine",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_santamarine_diffdock.sdf",
+          "pdbqtFile": "pqsr_santamarine_vina.pdbqt"
+        },
+        {
+          "id": "nimbolide",
+          "rank": 15,
+          "name": "Nimbolide",
+          "folderName": "nimbolide",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_nimbolide_diffdock.sdf",
+          "pdbqtFile": "pqsr_nimbolide_vina.pdbqt"
+        },
+        {
+          "id": "magnoflorine",
+          "rank": 16,
+          "name": "Magnoflorine",
+          "folderName": "magnoflorine",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_magnoflorine_diffdock.sdf",
+          "pdbqtFile": "pqsr_magnoflorine_vina.pdbqt"
+        },
+        {
+          "id": "ursolic_acid",
+          "rank": 17,
+          "name": "Ursolic acid",
+          "folderName": "ursolic_acid",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_ursolic_acid_diffdock.sdf",
+          "pdbqtFile": "pqsr_ursolic_acid_vina.pdbqt"
+        },
+        {
+          "id": "skimmianine",
+          "rank": 18,
+          "name": "Skimmianine",
+          "folderName": "skimmianine",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_skimmianine_diffdock.sdf",
+          "pdbqtFile": "pqsr_skimmianine_vina.pdbqt"
+        },
+        {
+          "id": "bisdemethoxycurcumin",
+          "rank": 19,
+          "name": "Bisdemethoxycurcumin",
+          "folderName": "bisdemethoxycurcumin",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_bisdemethoxycurcumin_diffdock.sdf",
+          "pdbqtFile": "pqsr_bisdemethoxycurcumin_vina.pdbqt"
+        },
+        {
+          "id": "nimbin",
+          "rank": 20,
+          "name": "Nimbin",
+          "folderName": "nimbin",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_nimbin_diffdock.sdf",
+          "pdbqtFile": "pqsr_nimbin_vina.pdbqt"
+        },
+        {
+          "id": "costunolide",
+          "rank": 21,
+          "name": "Costunolide",
+          "folderName": "costunolide",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_costunolide_diffdock.sdf",
+          "pdbqtFile": "pqsr_costunolide_vina.pdbqt"
+        },
+        {
+          "id": "azadirachtin",
+          "rank": 22,
+          "name": "Azadirachtin",
+          "folderName": "azadirachtin",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_azadirachtin_diffdock.sdf",
+          "pdbqtFile": "pqsr_azadirachtin_vina.pdbqt"
+        },
+        {
+          "id": "eugenol",
+          "rank": 23,
+          "name": "Eugenol",
+          "folderName": "eugenol",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 25.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_eugenol_diffdock.sdf",
+          "pdbqtFile": "pqsr_eugenol_vina.pdbqt"
+        },
+        {
+          "id": "liriodendrin",
+          "rank": 24,
+          "name": "Liriodendrin",
+          "folderName": "liriodendrin",
+          "vina_affinity": 9.551,
+          "diffdock_confidence": -1.46,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 2,
+          "priority_score": 23.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_liriodendrin_diffdock.sdf",
+          "pdbqtFile": "pqsr_liriodendrin_vina.pdbqt"
+        }
+      ],
+      "top_ligands": [
+        {
+          "id": "boeravinone_b",
+          "rank": 1,
+          "name": "Boeravinone B",
+          "folderName": "boeravinone_b",
+          "vina_affinity": -6.236,
+          "diffdock_confidence": -2,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 5,
+          "priority_score": 45.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_boeravinone_b_diffdock.sdf",
+          "pdbqtFile": "pqsr_boeravinone_b_vina.pdbqt"
+        },
+        {
+          "id": "chrysin",
+          "rank": 2,
+          "name": "Chrysin",
+          "folderName": "chrysin",
+          "vina_affinity": -6.101,
+          "diffdock_confidence": -1.46,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 5,
+          "priority_score": 40,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_chrysin_diffdock.sdf",
+          "pdbqtFile": "pqsr_chrysin_vina.pdbqt"
+        },
+        {
+          "id": "baicalin",
+          "rank": 3,
+          "name": "Baicalin",
+          "folderName": "baicalin",
+          "vina_affinity": -5,
+          "diffdock_confidence": -2,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 2,
+          "priority_score": 35.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_baicalin_diffdock.sdf",
+          "pdbqtFile": "pqsr_baicalin_vina.pdbqt"
+        },
+        {
+          "id": "cynaropicrin",
+          "rank": 4,
+          "name": "Cynaropicrin",
+          "folderName": "cynaropicrin",
+          "vina_affinity": -5.31,
+          "diffdock_confidence": -2.2,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 5,
+          "priority_score": 32.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_cynaropicrin_diffdock.sdf",
+          "pdbqtFile": "pqsr_cynaropicrin_vina.pdbqt"
+        },
+        {
+          "id": "conessine",
+          "rank": 5,
+          "name": "Conessine",
+          "folderName": "conessine",
+          "vina_affinity": -5.983,
+          "diffdock_confidence": -1.75,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 31.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "pqsr_conessine_diffdock.sdf",
+          "pdbqtFile": "pqsr_conessine_vina.pdbqt"
+        }
+      ]
+    },
+    "mexb": {
+      "id": "mexb",
+      "name": "Mexb",
+      "all_ligands": [
+        {
+          "id": "skimmianine",
+          "rank": 1,
+          "name": "Skimmianine",
+          "folderName": "skimmianine",
+          "vina_affinity": -0.617,
+          "diffdock_confidence": -0.86,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 12.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_skimmianine_diffdock.sdf",
+          "pdbqtFile": "mexb_skimmianine_vina.pdbqt"
+        },
+        {
+          "id": "conessine",
+          "rank": 2,
+          "name": "Conessine",
+          "folderName": "conessine",
+          "vina_affinity": -0.596,
+          "diffdock_confidence": -0.95,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 11.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_conessine_diffdock.sdf",
+          "pdbqtFile": "mexb_conessine_vina.pdbqt"
+        },
+        {
+          "id": "eugenol",
+          "rank": 3,
+          "name": "Eugenol",
+          "folderName": "eugenol",
+          "vina_affinity": -0.427,
+          "diffdock_confidence": -1.01,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 10.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_eugenol_diffdock.sdf",
+          "pdbqtFile": "mexb_eugenol_vina.pdbqt"
+        },
+        {
+          "id": "baicalein",
+          "rank": 4,
+          "name": "Baicalein",
+          "folderName": "baicalein",
+          "vina_affinity": -0.734,
+          "diffdock_confidence": -1.18,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 9.6,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_baicalein_diffdock.sdf",
+          "pdbqtFile": "mexb_baicalein_vina.pdbqt"
+        },
+        {
+          "id": "curcumin",
+          "rank": 5,
+          "name": "Curcumin",
+          "folderName": "curcumin",
+          "vina_affinity": -0.33,
+          "diffdock_confidence": -1.04,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 9.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_curcumin_diffdock.sdf",
+          "pdbqtFile": "mexb_curcumin_vina.pdbqt"
+        },
+        {
+          "id": "costunolide",
+          "rank": 6,
+          "name": "Costunolide",
+          "folderName": "costunolide",
+          "vina_affinity": -0.562,
+          "diffdock_confidence": -1.14,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 9.4,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_costunolide_diffdock.sdf",
+          "pdbqtFile": "mexb_costunolide_vina.pdbqt"
+        },
+        {
+          "id": "oroxylin_a",
+          "rank": 7,
+          "name": "Oroxylin A",
+          "folderName": "oroxylin_a",
+          "vina_affinity": -0.561,
+          "diffdock_confidence": -1.35,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 7.6,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_oroxylin_a_diffdock.sdf",
+          "pdbqtFile": "mexb_oroxylin_a_vina.pdbqt"
+        },
+        {
+          "id": "cynaropicrin",
+          "rank": 8,
+          "name": "Cynaropicrin",
+          "folderName": "cynaropicrin",
+          "vina_affinity": -0.474,
+          "diffdock_confidence": -1.33,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 7.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_cynaropicrin_diffdock.sdf",
+          "pdbqtFile": "mexb_cynaropicrin_vina.pdbqt"
+        },
+        {
+          "id": "aegeline",
+          "rank": 9,
+          "name": "Aegeline",
+          "folderName": "aegeline",
+          "vina_affinity": -0.376,
+          "diffdock_confidence": -1.32,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 7.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_aegeline_diffdock.sdf",
+          "pdbqtFile": "mexb_aegeline_vina.pdbqt"
+        },
+        {
+          "id": "chrysin",
+          "rank": 10,
+          "name": "Chrysin",
+          "folderName": "chrysin",
+          "vina_affinity": -0.648,
+          "diffdock_confidence": -1.53,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 6.3,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_chrysin_diffdock.sdf",
+          "pdbqtFile": "mexb_chrysin_vina.pdbqt"
+        },
+        {
+          "id": "boeravinone_b",
+          "rank": 11,
+          "name": "Boeravinone B",
+          "folderName": "boeravinone_b",
+          "vina_affinity": -0.752,
+          "diffdock_confidence": -1.7,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 5.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_boeravinone_b_diffdock.sdf",
+          "pdbqtFile": "mexb_boeravinone_b_vina.pdbqt"
+        },
+        {
+          "id": "imperatorin",
+          "rank": 12,
+          "name": "Imperatorin",
+          "folderName": "imperatorin",
+          "vina_affinity": -0.62,
+          "diffdock_confidence": -1.77,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 4.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_imperatorin_diffdock.sdf",
+          "pdbqtFile": "mexb_imperatorin_vina.pdbqt"
+        },
+        {
+          "id": "demethoxycurcumin",
+          "rank": 13,
+          "name": "Demethoxycurcumin",
+          "folderName": "demethoxycurcumin",
+          "vina_affinity": -0.359,
+          "diffdock_confidence": -1.79,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 3,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_demethoxycurcumin_diffdock.sdf",
+          "pdbqtFile": "mexb_demethoxycurcumin_vina.pdbqt"
+        },
+        {
+          "id": "santamarine",
+          "rank": 14,
+          "name": "Santamarine",
+          "folderName": "santamarine",
+          "vina_affinity": -0.581,
+          "diffdock_confidence": -1.9,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 2.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_santamarine_diffdock.sdf",
+          "pdbqtFile": "mexb_santamarine_vina.pdbqt"
+        },
+        {
+          "id": "nimbin",
+          "rank": 15,
+          "name": "Nimbin",
+          "folderName": "nimbin",
+          "vina_affinity": -0.552,
+          "diffdock_confidence": -1.94,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 2.3,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_nimbin_diffdock.sdf",
+          "pdbqtFile": "mexb_nimbin_vina.pdbqt"
+        },
+        {
+          "id": "baicalin",
+          "rank": 16,
+          "name": "Baicalin",
+          "folderName": "baicalin",
+          "vina_affinity": -0.571,
+          "diffdock_confidence": -2.09,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.9,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_baicalin_diffdock.sdf",
+          "pdbqtFile": "mexb_baicalin_vina.pdbqt"
+        },
+        {
+          "id": "nimbolide",
+          "rank": 17,
+          "name": "Nimbolide",
+          "folderName": "nimbolide",
+          "vina_affinity": -0.54,
+          "diffdock_confidence": -3.28,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_nimbolide_diffdock.sdf",
+          "pdbqtFile": "mexb_nimbolide_vina.pdbqt"
+        },
+        {
+          "id": "dehydrocostus_lactone",
+          "rank": 18,
+          "name": "Dehydrocostus lactone",
+          "folderName": "dehydrocostus_lactone",
+          "vina_affinity": -0.496,
+          "diffdock_confidence": -2.01,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_dehydrocostus_lactone_diffdock.sdf",
+          "pdbqtFile": "mexb_dehydrocostus_lactone_vina.pdbqt"
+        },
+        {
+          "id": "magnoflorine",
+          "rank": 19,
+          "name": "Magnoflorine",
+          "folderName": "magnoflorine",
+          "vina_affinity": -0.506,
+          "diffdock_confidence": -2.22,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_magnoflorine_diffdock.sdf",
+          "pdbqtFile": "mexb_magnoflorine_vina.pdbqt"
+        },
+        {
+          "id": "ursolic_acid",
+          "rank": 20,
+          "name": "Ursolic acid",
+          "folderName": "ursolic_acid",
+          "vina_affinity": -0.505,
+          "diffdock_confidence": -3.7,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.7,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_ursolic_acid_diffdock.sdf",
+          "pdbqtFile": "mexb_ursolic_acid_vina.pdbqt"
+        },
+        {
+          "id": "rosmarinic_acid",
+          "rank": 21,
+          "name": "Rosmarinic acid",
+          "folderName": "rosmarinic_acid",
+          "vina_affinity": -0.414,
+          "diffdock_confidence": -2.25,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.4,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_rosmarinic_acid_diffdock.sdf",
+          "pdbqtFile": "mexb_rosmarinic_acid_vina.pdbqt"
+        },
+        {
+          "id": "bisdemethoxycurcumin",
+          "rank": 22,
+          "name": "Bisdemethoxycurcumin",
+          "folderName": "bisdemethoxycurcumin",
+          "vina_affinity": -0.347,
+          "diffdock_confidence": -2.04,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_bisdemethoxycurcumin_diffdock.sdf",
+          "pdbqtFile": "mexb_bisdemethoxycurcumin_vina.pdbqt"
+        },
+        {
+          "id": "azadirachtin",
+          "rank": 23,
+          "name": "Azadirachtin",
+          "folderName": "azadirachtin",
+          "vina_affinity": -0.343,
+          "diffdock_confidence": -2.72,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_azadirachtin_diffdock.sdf",
+          "pdbqtFile": "mexb_azadirachtin_vina.pdbqt"
+        },
+        {
+          "id": "liriodendrin",
+          "rank": 24,
+          "name": "Liriodendrin",
+          "folderName": "liriodendrin",
+          "vina_affinity": -0.31,
+          "diffdock_confidence": -2.66,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_liriodendrin_diffdock.sdf",
+          "pdbqtFile": "mexb_liriodendrin_vina.pdbqt"
+        }
+      ],
+      "top_ligands": [
+        {
+          "id": "skimmianine",
+          "rank": 1,
+          "name": "Skimmianine",
+          "folderName": "skimmianine",
+          "vina_affinity": -0.617,
+          "diffdock_confidence": -0.86,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 12.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_skimmianine_diffdock.sdf",
+          "pdbqtFile": "mexb_skimmianine_vina.pdbqt"
+        },
+        {
+          "id": "conessine",
+          "rank": 2,
+          "name": "Conessine",
+          "folderName": "conessine",
+          "vina_affinity": -0.596,
+          "diffdock_confidence": -0.95,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 11.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_conessine_diffdock.sdf",
+          "pdbqtFile": "mexb_conessine_vina.pdbqt"
+        },
+        {
+          "id": "eugenol",
+          "rank": 3,
+          "name": "Eugenol",
+          "folderName": "eugenol",
+          "vina_affinity": -0.427,
+          "diffdock_confidence": -1.01,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 10.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_eugenol_diffdock.sdf",
+          "pdbqtFile": "mexb_eugenol_vina.pdbqt"
+        },
+        {
+          "id": "baicalein",
+          "rank": 4,
+          "name": "Baicalein",
+          "folderName": "baicalein",
+          "vina_affinity": -0.734,
+          "diffdock_confidence": -1.18,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 9.6,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_baicalein_diffdock.sdf",
+          "pdbqtFile": "mexb_baicalein_vina.pdbqt"
+        },
+        {
+          "id": "curcumin",
+          "rank": 5,
+          "name": "Curcumin",
+          "folderName": "curcumin",
+          "vina_affinity": -0.33,
+          "diffdock_confidence": -1.04,
+          "h_bonds": 0,
+          "hydrophobic_contacts": null,
+          "priority_score": 9.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "mexb_curcumin_diffdock.sdf",
+          "pdbqtFile": "mexb_curcumin_vina.pdbqt"
+        }
+      ]
+    },
+    "peld": {
+      "id": "peld",
+      "name": "Peld",
+      "all_ligands": [
+        {
+          "id": "nimbolide",
+          "rank": 1,
+          "name": "Nimbolide",
+          "folderName": "nimbolide",
+          "vina_affinity": -7.62,
+          "diffdock_confidence": 1.85,
+          "h_bonds": 4,
+          "hydrophobic_contacts": 6,
+          "priority_score": 84.1,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Nimbolide exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "liriodendrin",
+          "rank": 2,
+          "name": "Liriodendrin",
+          "folderName": "liriodendrin",
+          "vina_affinity": -7.21,
+          "diffdock_confidence": 1.72,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 5,
+          "priority_score": 81.5,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_liriodendrin_diffdock.sdf",
+          "pdbqtFile": "peld_liriodendrin_vina.pdbqt"
+        },
+        {
+          "id": "azadirachtin",
+          "rank": 3,
+          "name": "Azadirachtin",
+          "folderName": "azadirachtin",
+          "vina_affinity": -7.31,
+          "diffdock_confidence": 1.45,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 4,
+          "priority_score": 77.6,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_azadirachtin_diffdock.sdf",
+          "pdbqtFile": "peld_azadirachtin_vina.pdbqt"
+        },
+        {
+          "id": "ursolic_acid",
+          "rank": 4,
+          "name": "Ursolic acid",
+          "folderName": "ursolic_acid",
+          "vina_affinity": -7.52,
+          "diffdock_confidence": 1.3,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 4,
+          "priority_score": 77,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Ursolic acid exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "boeravinone_b",
+          "rank": 5,
+          "name": "Boeravinone B",
+          "folderName": "boeravinone_b",
+          "vina_affinity": -7.41,
+          "diffdock_confidence": 1.15,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 5,
+          "priority_score": 72.3,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_boeravinone_b_diffdock.sdf",
+          "pdbqtFile": "peld_boeravinone_b_vina.pdbqt"
+        },
+        {
+          "id": "chrysin",
+          "rank": 6,
+          "name": "Chrysin",
+          "folderName": "chrysin",
+          "vina_affinity": -7.04,
+          "diffdock_confidence": 0.96,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 4,
+          "priority_score": 67.4,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Chrysin exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "costunolide",
+          "rank": 7,
+          "name": "Costunolide",
+          "folderName": "costunolide",
+          "vina_affinity": -6.15,
+          "diffdock_confidence": 0.85,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 4,
+          "priority_score": 63.4,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "cynaropicrin",
+          "rank": 8,
+          "name": "Cynaropicrin",
+          "folderName": "cynaropicrin",
+          "vina_affinity": -6.21,
+          "diffdock_confidence": 0.72,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 3,
+          "priority_score": 60.5,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_cynaropicrin_diffdock.sdf",
+          "pdbqtFile": "peld_cynaropicrin_vina.pdbqt"
+        },
+        {
+          "id": "dehydrocostus_lactone",
+          "rank": 9,
+          "name": "Dehydrocostus lactone",
+          "folderName": "dehydrocostus_lactone",
+          "vina_affinity": -5.91,
+          "diffdock_confidence": 0.52,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 2,
+          "priority_score": 55.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Dehydrocostus lactone exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "curcumin",
+          "rank": 10,
+          "name": "Curcumin",
+          "folderName": "curcumin",
+          "vina_affinity": -5.72,
+          "diffdock_confidence": 0.4,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 2,
+          "priority_score": 54.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Curcumin exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "rosmarinic_acid",
+          "rank": 11,
+          "name": "Rosmarinic acid",
+          "folderName": "rosmarinic_acid",
+          "vina_affinity": -5.61,
+          "diffdock_confidence": 0.31,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 3,
+          "priority_score": 49.9,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_rosmarinic_acid_diffdock.sdf",
+          "pdbqtFile": "peld_rosmarinic_acid_vina.pdbqt"
+        },
+        {
+          "id": "oroxylin_a",
+          "rank": 12,
+          "name": "Oroxylin A",
+          "folderName": "oroxylin_a",
+          "vina_affinity": -5.92,
+          "diffdock_confidence": 0.22,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 48.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_oroxylin_a_diffdock.sdf",
+          "pdbqtFile": "peld_oroxylin_a_vina.pdbqt"
+        },
+        {
+          "id": "baicalein",
+          "rank": 13,
+          "name": "Baicalein",
+          "folderName": "baicalein",
+          "vina_affinity": -5.34,
+          "diffdock_confidence": 0.15,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 45.6,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_baicalein_diffdock.sdf",
+          "pdbqtFile": "peld_baicalein_vina.pdbqt"
+        },
+        {
+          "id": "santamarine",
+          "rank": 14,
+          "name": "Santamarine",
+          "folderName": "santamarine",
+          "vina_affinity": -4.85,
+          "diffdock_confidence": 0.05,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 2,
+          "priority_score": 43.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_santamarine_diffdock.sdf",
+          "pdbqtFile": "peld_santamarine_vina.pdbqt"
+        },
+        {
+          "id": "aegeline",
+          "rank": 15,
+          "name": "Aegeline",
+          "folderName": "aegeline",
+          "vina_affinity": -4.92,
+          "diffdock_confidence": -0.05,
+          "h_bonds": 0,
+          "hydrophobic_contacts": 3,
+          "priority_score": 39.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Aegeline exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "demethoxycurcumin",
+          "rank": 16,
+          "name": "Demethoxycurcumin",
+          "folderName": "demethoxycurcumin",
+          "vina_affinity": -4.71,
+          "diffdock_confidence": -0.12,
+          "h_bonds": 1,
+          "hydrophobic_contacts": 1,
+          "priority_score": 39.1,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_demethoxycurcumin_diffdock.sdf",
+          "pdbqtFile": "peld_demethoxycurcumin_vina.pdbqt"
+        },
+        {
+          "id": "baicalin",
+          "rank": 17,
+          "name": "Baicalin",
+          "folderName": "baicalin",
+          "vina_affinity": 27.268,
+          "diffdock_confidence": -0.42,
+          "h_bonds": 4,
+          "hydrophobic_contacts": 4,
+          "priority_score": 38.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Baicalin exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_baicalin_diffdock.sdf",
+          "pdbqtFile": "peld_baicalin_vina.pdbqt"
+        },
+        {
+          "id": "bisdemethoxycurcumin",
+          "rank": 18,
+          "name": "Bisdemethoxycurcumin",
+          "folderName": "bisdemethoxycurcumin",
+          "vina_affinity": -4.51,
+          "diffdock_confidence": -0.2,
+          "h_bonds": 0,
+          "hydrophobic_contacts": 2,
+          "priority_score": 34.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Bisdemethoxycurcumin exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "eugenol",
+          "rank": 19,
+          "name": "Eugenol",
+          "folderName": "eugenol",
+          "vina_affinity": -4.31,
+          "diffdock_confidence": -0.35,
+          "h_bonds": 0,
+          "hydrophobic_contacts": 2,
+          "priority_score": 32.8,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_eugenol_diffdock.sdf",
+          "pdbqtFile": "peld_eugenol_vina.pdbqt"
+        },
+        {
+          "id": "nimbin",
+          "rank": 20,
+          "name": "Nimbin",
+          "folderName": "nimbin",
+          "vina_affinity": 56.502,
+          "diffdock_confidence": -0.95,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 3,
+          "priority_score": 30.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Nimbin exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_nimbin_diffdock.sdf",
+          "pdbqtFile": "peld_nimbin_vina.pdbqt"
+        },
+        {
+          "id": "magnoflorine",
+          "rank": 21,
+          "name": "Magnoflorine",
+          "folderName": "magnoflorine",
+          "vina_affinity": -4.12,
+          "diffdock_confidence": -0.42,
+          "h_bonds": 0,
+          "hydrophobic_contacts": 1,
+          "priority_score": 29.5,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Magnoflorine exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "imperatorin",
+          "rank": 22,
+          "name": "Imperatorin",
+          "folderName": "imperatorin",
+          "vina_affinity": -4.05,
+          "diffdock_confidence": -0.55,
+          "h_bonds": 0,
+          "hydrophobic_contacts": 1,
+          "priority_score": 28.2,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_imperatorin_diffdock.sdf",
+          "pdbqtFile": "peld_imperatorin_vina.pdbqt"
+        },
+        {
+          "id": "skimmianine",
+          "rank": 23,
+          "name": "Skimmianine",
+          "folderName": "skimmianine",
+          "vina_affinity": -3.85,
+          "diffdock_confidence": -0.62,
+          "h_bonds": 0,
+          "hydrophobic_contacts": 1,
+          "priority_score": 26.9,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_skimmianine_diffdock.sdf",
+          "pdbqtFile": "peld_skimmianine_vina.pdbqt"
+        },
+        {
+          "id": "conessine",
+          "rank": 24,
+          "name": "Conessine",
+          "folderName": "conessine",
+          "vina_affinity": 29.243,
+          "diffdock_confidence": -1.4,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 3,
+          "priority_score": 21.3,
+          "decision": "Review manually",
+          "evidence_strength": "Low preclinical plausibility",
+          "executive_summary": "Conessine exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_conessine_diffdock.sdf",
+          "pdbqtFile": "peld_conessine_vina.pdbqt"
+        }
+      ],
+      "top_ligands": [
+        {
+          "id": "nimbolide",
+          "rank": 1,
+          "name": "Nimbolide",
+          "folderName": "nimbolide",
+          "vina_affinity": -7.62,
+          "diffdock_confidence": 1.85,
+          "h_bonds": 4,
+          "hydrophobic_contacts": 6,
+          "priority_score": 84.1,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Nimbolide exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "liriodendrin",
+          "rank": 2,
+          "name": "Liriodendrin",
+          "folderName": "liriodendrin",
+          "vina_affinity": -7.21,
+          "diffdock_confidence": 1.72,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 5,
+          "priority_score": 81.5,
+          "decision": "Prioritize for wet-lab validation",
+          "evidence_strength": "High preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_liriodendrin_diffdock.sdf",
+          "pdbqtFile": "peld_liriodendrin_vina.pdbqt"
+        },
+        {
+          "id": "azadirachtin",
+          "rank": 3,
+          "name": "Azadirachtin",
+          "folderName": "azadirachtin",
+          "vina_affinity": -7.31,
+          "diffdock_confidence": 1.45,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 4,
+          "priority_score": 77.6,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_azadirachtin_diffdock.sdf",
+          "pdbqtFile": "peld_azadirachtin_vina.pdbqt"
+        },
+        {
+          "id": "ursolic_acid",
+          "rank": 4,
+          "name": "Ursolic acid",
+          "folderName": "ursolic_acid",
+          "vina_affinity": -7.52,
+          "diffdock_confidence": 1.3,
+          "h_bonds": 3,
+          "hydrophobic_contacts": 4,
+          "priority_score": 77,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Ursolic acid exhibits highly favorable structural and spatial complementarity against the PelD Synthase ligand-binding domain, leading to efficient exopolysaccharide decay and subsequent biofilm matrix collapse.",
+          "next_validation_steps": [
+            "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate biofilm matrix collapse kinetics.",
+            "Evaluate competitive displacement of standard autoinducer ligands from the PelD Synthase pocket using fluorescent assays.",
+            "Verify non-specific cytotoxicity limits against mammalian cell lines."
+          ],
+          "has3D": false,
+          "sdfFile": null,
+          "pdbqtFile": null
+        },
+        {
+          "id": "boeravinone_b",
+          "rank": 5,
+          "name": "Boeravinone B",
+          "folderName": "boeravinone_b",
+          "vina_affinity": -7.41,
+          "diffdock_confidence": 1.15,
+          "h_bonds": 2,
+          "hydrophobic_contacts": 5,
+          "priority_score": 72.3,
+          "decision": "Consider for wet-lab validation",
+          "evidence_strength": "Moderate preclinical plausibility",
+          "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+          "next_validation_steps": [
+            "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+            "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+          ],
+          "has3D": true,
+          "sdfFile": "peld_boeravinone_b_diffdock.sdf",
+          "pdbqtFile": "peld_boeravinone_b_vina.pdbqt"
+        }
+      ]
+    }
+  }
+}

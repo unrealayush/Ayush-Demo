@@ -1,0 +1,56 @@
+# contracts/scientific_language.yaml — SINGLE SOURCE OF TRUTH for scientific language control.
+#
+# Referenced by validate_contracts (docs/10): CHK-FORBIDDEN-LANG / CHK-ALLOWED-CLAIM /
+# CHK-DECISION-VALUESET. No other file (AGENTS.md, README.md, GEMINI.md, docs/07, docs/08,
+# memory/NO_HALLUCINATION_RULES.md, .claude/agents/*) may embed its own copy of these lists;
+# they must point here.
+#
+# Matching rule: case-insensitive; hyphens and runs of whitespace are normalized before compare,
+# so "patient-ready" == "patient ready" and "research use only" == "research-use-only".
+
+version: 1
+
+# Phrases that MUST NOT appear in UI strings, the evidence passport, interaction summaries,
+# the demo script, or README/marketing copy. Union/superset of all prior scattered copies.
+forbidden:
+  - "proven synergy"
+  - "proven synergistic"
+  - "clinical efficacy"
+  - "clinically effective"
+  - "treatment recommendation"
+  - "patient-ready"                 # also matches "patient ready"
+  - "patient-level recommendation"
+  - "patient-specific recommendation"
+  - "safe for patients"
+  - "regulatory-approved"
+  - "regulatory readiness"
+  - "cures MRSA"
+  - "treats MRSA"
+  - "validated MRSA cure"
+  - "clinical decision support"
+  - "diagnosis"
+
+# Cautious vocabulary permitted when describing scores, mechanisms, and combinations.
+allowed_language:
+  - "docking plausibility"
+  - "pose confidence"
+  - "predicted contacts"
+  - "plausible interaction"
+  - "validation-priority"
+  - "validation priority score"
+  - "ai combination plausibility"
+  - "combination plausibility"
+  - "mechanism hypothesis"
+  - "wet-lab validation required"
+  - "in-silico"
+  - "research-use-only prioritization"
+
+# Closed set for evidence_passport.json -> validation_decision. Any other string is a BLOCKER.
+allowed_validation_decisions:
+  - "Advance to Phase 1B wet-lab validation"
+  - "Hold pending target-structure improvement"
+  - "Hold pending ligand/target source traceability"
+  - "Do not advance; insufficient evidence"
+
+# Exact research-use disclaimer string (must appear in the passport and the UI footer).
+canonical_disclaimer: "Research-use-only prioritization demo. Not clinical guidance."
