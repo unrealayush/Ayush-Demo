@@ -46,7 +46,8 @@ const ORGANISMS = [
     targets: [
       { id: 'AgrA', label: 'AgrA', desc: 'Transcription Regulator', strain: 'USA300' },
       { id: 'SrtA', label: 'Sortase A / SrtA', desc: 'Transpeptidase Adhesion', strain: 'USA300' },
-      { id: 'MecA', label: 'PBP2a / MecA', desc: 'Beta-lactam Resistant Cell Wall', strain: 'USA300' }
+      { id: 'MecA', label: 'PBP2a / MecA', desc: 'Beta-lactam Resistant Cell Wall', strain: 'USA300' },
+      { id: 'MurA', label: 'MurA / MurA', desc: 'UDP-GlcNAc 1-carboxyvinyltransferase', strain: 'USA300' }
     ]
   },
   {
@@ -57,8 +58,7 @@ const ORGANISMS = [
     colorClass: 'text-cyan-600 dark:text-cyan-400 border-cyan-500/30 bg-cyan-50 dark:bg-cyan-950/20 shadow-[0_0_15px_rgba(6,182,212,0.15)]',
     activeColor: 'bg-cyan-500 border-cyan-400 text-cyan-700 dark:text-cyan-300',
     targets: [
-      { id: 'AcrB', label: 'AcrB', desc: 'E. coli Efflux Pump transporter', strain: 'K12 / MGH78578' },
-      { id: 'MurJ', label: 'MurJ', desc: 'E. coli Lipid II Flippase', strain: 'K12' },
+      { id: 'AcrB', label: 'AcrB', desc: 'K. pneumoniae Efflux Pump', strain: 'MGH78578' },
       { id: 'OmpK36', label: 'OmpK36', desc: 'K. pneumoniae Porin channel', strain: 'MGH78578' },
       { id: 'MrkH', label: 'MrkH', desc: 'K. pneumoniae Type III Fimbriae', strain: 'MGH78578' },
       { id: 'Wzc', label: 'Wzc', desc: 'K. pneumoniae Capsule Autokinase', strain: 'MGH78578' }

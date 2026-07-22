@@ -230,15 +230,15 @@
             "structure_availability": "PDB: 1VQQ, 5M18",
             "pdb_id": "1VQQ"
         },
-        "murj": {
-            "target_id": "murj",
-            "target_name": "MurJ",
-            "gene": "murJ",
+        "mura": {
+            "target_id": "mura",
+            "target_name": "MurA",
+            "gene": "murA",
             "organism": "Staphylococcus aureus",
             "target_class": "Cell wall biosynthesis",
-            "primary_function": "Lipid II flippase",
+            "primary_function": "UDP-N-acetylglucosamine 1-carboxyvinyltransferase",
             "role_in_amr": "Essential peptidoglycan synthesis target",
-            "uniprot": "Q2FZF4",
+            "uniprot": "P84058",
             "structure_availability": "AlphaFold",
             "pdb_id": "structure_pending"
         },
@@ -322,9 +322,9 @@
             "target_class": "AMR",
             "primary_function": "RND multidrug efflux pump",
             "role_in_amr": "Major antibiotic resistance determinant",
-            "uniprot": "Q8ZKQ2",
-            "structure_availability": "PDB: 5YIL",
-            "pdb_id": "5YIL"
+            "uniprot": "A6T5M4",
+            "structure_availability": "AlphaFold",
+            "pdb_id": "structure_pending"
         },
         "ompk36": {
             "target_id": "ompk36",
