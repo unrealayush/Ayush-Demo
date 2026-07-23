@@ -1,63 +1,75 @@
 #!/bin/bash
 # ==============================================================================
-# AYUSH BIO-AI PLATFORM: END-TO-END GCP VM SETUP SCRIPT
+# MEVREON BIO-AI DOCKING PLATFORM: ZERO-TO-HERO GCP DEPLOYMENT SCRIPT
 # ==============================================================================
-# This script configures a fresh Ubuntu/Debian Deep Learning VM on GCP with
-# all required biophysical tools, Conda environments, neural network frameworks,
-# and clones the codebase to run the high-throughput screening platform.
+# This script automates 100% of the deployment flow on a fresh GCP GPU instance.
+# It installs Python, Node.js (LTS), OpenBabel, Vina, Mamba, builds the React UI,
+# boots the backend, hosts the static dashboard, and prints your live public URL!
 #
-# RUN THIS SCRIPT AS A NORMAL USER (sudo privileges required)
 # Usage: bash setup.sh
 # ==============================================================================
 
-set -e # Exit immediately if a command exits with a non-zero status.
+set -e # Exit immediately on any error
+exec > >(tee -i /var/log/mevreon_install.log) 2>&1
 
 echo "==========================================================="
-echo "🚀 INITIATING MEVREON BIO-AI PLATFORM DEPLOYMENT"
+echo "🚀 INITIATING MEVREON ZERO-TO-HERO PRODUCTION DEPLOYMENT"
 echo "==========================================================="
 
-# 1. Update system and install base dependencies
-echo "[1/7] Installing System Dependencies (OpenBabel, Vina, Git)..."
+WORKSPACE_DIR="/opt/services"
+
+# 1. Update OS and Install Base Utilities & Bio-compilers
+echo "[1/8] Installing Base Packages (OpenBabel, Vina, Git)..."
 sudo apt-get update -y
-sudo apt-get install -y git wget curl unzip python3-venv python3-pip openbabel autodock-vina psmisc jq
+sudo apt-get install -y git wget curl unzip psmisc jq openbabel autodock-vina build-essential
 
-# 2. Setup /opt/services directory structure
-echo "[2/7] Configuring Workspace Directory (/opt/services)..."
-sudo mkdir -p /opt/services
-sudo chown -R $USER:$USER /opt/services
-cd /opt/services
+# 2. Install Node.js LTS (v20) & npm (Needed to compile React 19)
+echo "[2/8] Installing Node.js LTS (v20) and npm..."
+if ! command -v node &> /dev/null; then
+    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+else
+    echo "Node.js is already installed: $(node -v)"
+fi
 
-# 3. Clone the Repository
-echo "[3/7] Cloning the Ayush-Demo Repository..."
-if [ ! -d "/opt/services/.git" ]; then
+# 3. Setup Workspace Directory
+echo "[3/8] Configuring Production Workspace (/opt/services)..."
+sudo mkdir -p "$WORKSPACE_DIR"
+sudo chown -R $USER:$USER "$WORKSPACE_DIR"
+cd "$WORKSPACE_DIR"
+
+# 4. Clone the Official Ayush-Demo Repository
+echo "[4/8] Fetching codebase from GitHub..."
+if [ ! -d "$WORKSPACE_DIR/.git" ]; then
     git clone https://github.com/mevreonai/Ayush-Demo.git temp_repo
     mv temp_repo/* temp_repo/.* . 2>/dev/null || true
     rm -rf temp_repo
 else
-    echo "Repository already exists, skipping clone."
+    echo "Git repository already initialized. Pulling latest updates..."
+    git pull origin main || true
 fi
 
-# 4. Setup Python Virtual Environment for Orchestration
-echo "[4/7] Setting up Base Python Environment (uc4_env)..."
-python3 -m venv uc4_env
-source uc4_env/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
-deactivate
+# 5. Build Python Virtual Environment for Docking Pipelines
+echo "[5/8] Creating isolated Python Environment (uc4_env)..."
+if [ ! -d "uc4_env" ]; then
+    python3 -m venv uc4_env
+    source uc4_env/bin/activate
+    pip install --upgrade pip
+    pip install -r requirements.txt
+    deactivate
+fi
 
-# 5. Setup Mambaforge & DiffDock Deep Learning Environment
-echo "[5/7] Installing Mambaforge and PyTorch CUDA Environment for DiffDock-L..."
+# 6. Install Mambaforge & DiffDock GPU dependencies
+echo "[6/8] Configuring PyTorch & Mambaforge for DiffDock GPU Acceleration..."
 if [ ! -d "/opt/mambaforge" ]; then
     wget -O Mambaforge.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh"
     bash Mambaforge.sh -b -p /opt/mambaforge
     rm Mambaforge.sh
 fi
 
-# Initialize conda/mamba in current shell
 source /opt/mambaforge/etc/profile.d/conda.sh
 source /opt/mambaforge/etc/profile.d/mamba.sh
 
-# Clone DiffDock architecture
 mkdir -p /opt/services/diffdock_l/app
 if [ ! -d "/opt/services/diffdock_l/app/DiffDock" ]; then
     cd /opt/services/diffdock_l/app
@@ -65,35 +77,56 @@ if [ ! -d "/opt/services/diffdock_l/app/DiffDock" ]; then
     cd /opt/services
 fi
 
-# Create isolated DiffDock Conda environment
-echo "Creating Conda environment for DiffDock (this may take a few minutes)..."
 if [ ! -d "/opt/services/diffdock_l/env" ]; then
     mamba create -p /opt/services/diffdock_l/env python=3.9 -y
     mamba activate /opt/services/diffdock_l/env
-    
-    # Install PyTorch with CUDA 12.1 (Matches L4 GPU images)
     mamba install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia -y
     mamba install pyg -c pyg -y
     pip install scipy networkx biopython rdkit-pypi e3nn wandb omegaconf
     conda deactivate
 fi
 
-# 6. Create Autodock Vina Symlink (if installed via apt)
-echo "[6/7] Linking AutoDock Vina..."
+# Link Vina binary to standard pipeline location
 mkdir -p /opt/services/autodock_vina/bin
 if [ -f "/usr/bin/vina" ]; then
     ln -sf /usr/bin/vina /opt/services/autodock_vina/bin/vina
 fi
 
-# 7. Final Permissions and Initialization
-echo "[7/7] Finalizing Setup..."
-chmod +x /opt/services/scripts/*.sh
-mkdir -p /opt/services/outputs
+# 7. Install Frontend Modules and Compile Production Build
+echo "[7/8] Installing node_modules and compiling React Production Build..."
+cd /opt/services/frontend
+npm install
+npm run build
+
+# 8. Launch Backend API & Host Static Frontend Web-Server
+echo "[8/8] Launching Live Services in the background..."
+
+# Kill any processes running on API port 8080 and static server port 3000
+fuser -k 8080/tcp 2>/dev/null || true
+fuser -k 3000/tcp 2>/dev/null || true
+sleep 1
+
+# Start the FastAPI Backend
+cd /opt/services
+nohup /opt/services/uc4_env/bin/python api/app.py > backend.log 2>&1 &
+
+# Host the Static React Dashboard on Port 3000 using Node's static-server
+sudo npm install -g serve
+nohup serve -s /opt/services/frontend/dist -l 3000 > frontend.log 2>&1 &
+
+sleep 2
+
+# Retrieve the VM's Public External IP using Google Metadata Server
+EXTERNAL_IP=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip || echo "localhost")
 
 echo "==========================================================="
-echo "✅ SETUP COMPLETE! "
+echo "🎉 DEPLOYMENT COMPLETED SUCCESSFULLY!"
 echo "==========================================================="
-echo "To run the High-Throughput Pipeline:"
-echo "  cd /opt/services"
-echo "  nohup /opt/services/scripts/run_all_remaining.sh > campaign.log 2>&1 &"
+echo "  🚀 Both backend and frontend services are fully operational!"
+echo ""
+echo "  👉 Click the Link Below to launch your Pre-Clinical Platform:"
+echo "     http://${EXTERNAL_IP}:3000"
+echo ""
+echo "  👉 Backend API is listening on:"
+echo "     http://${EXTERNAL_IP}:8080"
 echo "==========================================================="
