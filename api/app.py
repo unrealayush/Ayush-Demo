@@ -2,16 +2,16 @@ from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
-from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 import os
+import sys
 import csv
 import json
 import yaml
 import subprocess
 from pathlib import Path
 import time
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Callable
 
 app = FastAPI(title="AYUSH Bio-AI Docking Pipeline API", version="1.0.0")
 
@@ -33,7 +33,8 @@ ASSETS_DIR = BASE_DIR / "assets"
 CONFIGS_DIR = BASE_DIR / "configs"
 
 # Active run statuses to track executions
-run_states = {
+RunState = Dict[str, Any]
+run_states: Dict[str, RunState] = {
     "esmfold": {"status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0, "start_time": None, "error": None},
     "vina": {"status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0, "start_time": None, "error": None},
     "diffdock": {"status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0, "start_time": None, "error": None},
@@ -73,7 +74,13 @@ def load_yaml(file_path: Path) -> Dict[str, Any]:
     except Exception:
         return {}
 
-def run_pipeline_command(model_key: str, cmd: List[str], cwd: str, success_logs: List[str], output_renamer_func=None):
+def run_pipeline_command(
+    model_key: str,
+    cmd: List[str],
+    cwd: str,
+    success_logs: List[str],
+    output_renamer_func: Optional[Callable[[], None]] = None,
+):
     """
     Executes a real model shell command in the background, captures live stdout stream
     dynamically, updates progress bar, and logs everything to the terminal output console.
@@ -100,8 +107,12 @@ def run_pipeline_command(model_key: str, cmd: List[str], cwd: str, success_logs:
         )
         
         # Stream stdout logs dynamically
+        stdout_stream = process.stdout
+        if stdout_stream is None:
+            raise RuntimeError("Failed to capture subprocess stdout stream")
+
         while True:
-            output = process.stdout.readline()
+            output = stdout_stream.readline()
             if output == '' and process.poll() is not None:
                 break
             if output:
@@ -117,7 +128,7 @@ def run_pipeline_command(model_key: str, cmd: List[str], cwd: str, success_logs:
                     state["progress"] = 90
         
         rc = process.poll()
-        stdout, stderr = process.communicate()
+        _stdout, stderr = process.communicate()
         
         if stderr:
             for line in stderr.splitlines():
@@ -156,7 +167,7 @@ def run_pipeline_command(model_key: str, cmd: List[str], cwd: str, success_logs:
 # --- Endpoints ---
 
 @app.get("/api/healthz")
-def healthz():
+def healthz() -> Dict[str, Any]:
     return {"status": "ok", "gpu_available": True}
 
 @app.get("/api/targets")
