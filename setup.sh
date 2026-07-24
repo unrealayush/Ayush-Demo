@@ -1,10 +1,10 @@
 #!/bin/bash
 # ==============================================================================
-# MEVREON BIO-AI DOCKING PLATFORM: ZERO-TO-HERO GCP DEPLOYMENT SCRIPT
+# MEVREON BIO-AI DOCKING PLATFORM: SELF-HEALING ZERO-TO-HERO DEPLOYMENT SCRIPT
 # ==============================================================================
 # This script automates 100% of the deployment flow on a fresh GCP GPU instance.
-# It installs Python, Node.js (LTS), OpenBabel, Vina, Mamba, builds the React UI,
-# boots the backend, hosts the static dashboard, and prints your live public URL!
+# It validates GPUs, installs Python/Node.js, clones, builds, hosts, verifies
+# services health, and prints your live public URL!
 #
 # Usage: bash setup.sh
 # ==============================================================================
@@ -13,18 +13,27 @@ set -e # Exit immediately on any error
 exec > >(tee -i /var/log/mevreon_install.log) 2>&1
 
 echo "==========================================================="
-echo "🚀 INITIATING MEVREON ZERO-TO-HERO PRODUCTION DEPLOYMENT"
+echo "🚀 INITIATING SELF-HEALING ZERO-TO-HERO DEPLOYMENT"
 echo "==========================================================="
 
 WORKSPACE_DIR="/opt/services"
 
-# 1. Update OS and Install Base Utilities & Bio-compilers
-echo "[1/8] Installing Base Packages (OpenBabel, Vina, Git)..."
+# 1. GPU & CUDA Hardware Validation Check
+echo "[1/9] Validating NVIDIA L4 GPU & CUDA Status..."
+if command -v nvidia-smi &> /dev/null; then
+    echo "✅ NVIDIA GPU Hardware Detected!"
+    nvidia-smi --query-gpu=name,driver_version,temperature.gpu --format=csv,noheader || true
+else
+    echo "⚠️ WARNING: NVIDIA GPU drivers are not active or missing. Pipelines will fallback to CPU emulation."
+fi
+
+# 2. Update OS and Install Base Utilities & Bio-compilers
+echo "[2/9] Installing Base Packages (OpenBabel, Vina, Git)..."
 sudo apt-get update -y
 sudo apt-get install -y git wget curl unzip psmisc jq openbabel autodock-vina build-essential
 
-# 2. Install Node.js LTS (v20) & npm (Needed to compile React 19)
-echo "[2/8] Installing Node.js LTS (v20) and npm..."
+# 3. Install Node.js LTS (v20) & npm
+echo "[3/9] Installing Node.js LTS (v20) and npm..."
 if ! command -v node &> /dev/null; then
     curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
     sudo apt-get install -y nodejs
@@ -32,14 +41,14 @@ else
     echo "Node.js is already installed: $(node -v)"
 fi
 
-# 3. Setup Workspace Directory
-echo "[3/8] Configuring Production Workspace (/opt/services)..."
+# 4. Setup Workspace Directory
+echo "[4/9] Configuring Production Workspace (/opt/services)..."
 sudo mkdir -p "$WORKSPACE_DIR"
 sudo chown -R $USER:$USER "$WORKSPACE_DIR"
 cd "$WORKSPACE_DIR"
 
-# 4. Clone the Official Ayush-Demo Repository
-echo "[4/8] Fetching codebase from GitHub..."
+# 5. Clone or Pull the Official Ayush-Demo Repository
+echo "[5/9] Fetching codebase from GitHub..."
 if [ ! -d "$WORKSPACE_DIR/.git" ]; then
     git clone https://github.com/mevreonai/Ayush-Demo.git temp_repo
     mv temp_repo/* temp_repo/.* . 2>/dev/null || true
@@ -49,8 +58,8 @@ else
     git pull origin main || true
 fi
 
-# 5. Build Python Virtual Environment for Docking Pipelines
-echo "[5/8] Creating isolated Python Environment (uc4_env)..."
+# 6. Build Python Virtual Environment for Docking Pipelines
+echo "[6/9] Creating isolated Python Environment (uc4_env)..."
 if [ ! -d "uc4_env" ]; then
     python3 -m venv uc4_env
     source uc4_env/bin/activate
@@ -59,8 +68,8 @@ if [ ! -d "uc4_env" ]; then
     deactivate
 fi
 
-# 6. Install Mambaforge & DiffDock GPU dependencies
-echo "[6/8] Configuring PyTorch & Mambaforge for DiffDock GPU Acceleration..."
+# 7. Install Mambaforge & DiffDock GPU dependencies
+echo "[7/9] Configuring PyTorch & Mambaforge for DiffDock GPU Acceleration..."
 if [ ! -d "/opt/mambaforge" ]; then
     wget -O Mambaforge.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh"
     bash Mambaforge.sh -b -p /opt/mambaforge
@@ -92,14 +101,14 @@ if [ -f "/usr/bin/vina" ]; then
     ln -sf /usr/bin/vina /opt/services/autodock_vina/bin/vina
 fi
 
-# 7. Install Frontend Modules and Compile Production Build
-echo "[7/8] Installing node_modules and compiling React Production Build..."
+# 8. Install Frontend Modules and Compile Production Build
+echo "[8/9] Installing node_modules and compiling React Production Build..."
 cd /opt/services/frontend
 npm install
 npm run build
 
-# 8. Launch Backend API & Host Static Frontend Web-Server
-echo "[8/8] Launching Live Services in the background..."
+# 9. Launch Backend API & Host Static Frontend Web-Server
+echo "[9/9] Launching Live Services in the background..."
 
 # Kill any processes running on API port 8080 and static server port 3000
 fuser -k 8080/tcp 2>/dev/null || true
@@ -114,7 +123,36 @@ nohup /opt/services/uc4_env/bin/python api/app.py > backend.log 2>&1 &
 sudo npm install -g serve
 nohup serve -s /opt/services/frontend/dist -l 3000 > frontend.log 2>&1 &
 
-sleep 2
+# ── Health-Verification Poll Loop ──
+echo "Verifying server boot statuses (polling)..."
+BOOT_OK=true
+
+for i in {1..15}; do
+    sleep 2
+    FRONTEND_CHECK=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000 || echo "000")
+    BACKEND_CHECK=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080 || echo "000")
+    
+    if [ "$FRONTEND_CHECK" -ge 200 ] && [ "$BACKEND_CHECK" -ge 200 ]; then
+        echo "✅ All services successfully booted and responding healthy!"
+        break
+    fi
+    echo "Waiting for services... (Attempt $i/15 - Frontend: $FRONTEND_CHECK, Backend: $BACKEND_CHECK)"
+    if [ $i -eq 15 ]; then
+        BOOT_OK=false
+    fi
+done
+
+# If health check failed, output debug logs
+if [ "$BOOT_OK" = false ]; then
+    echo "==========================================================="
+    echo "⚠️ DIAGNOSTICS: SERVICE BOOT FAILURE DETECTED"
+    echo "==========================================================="
+    echo "--- BACKEND LOGS (backend.log) ---"
+    tail -n 15 /opt/services/backend.log || true
+    echo "--- FRONTEND LOGS (frontend.log) ---"
+    tail -n 15 /opt/services/frontend.log || true
+    exit 1
+fi
 
 # Retrieve the VM's Public External IP using Google Metadata Server
 EXTERNAL_IP=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip || echo "localhost")
