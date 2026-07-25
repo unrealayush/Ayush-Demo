@@ -1,0 +1,21 @@
+{
+  "status": "PASSED",
+  "report_date": "2026-06-10",
+  "compounds_prepared": 2,
+  "details": [
+    {
+      "compound_id": "costunolide",
+      "compound_name": "Costunolide",
+      "rdkit_sdf_generated": true,
+      "openbabel_pdbqt_generated": true,
+      "status": "PASSED"
+    },
+    {
+      "compound_id": "dehydrocostus_lactone",
+      "compound_name": "Dehydrocostus lactone",
+      "rdkit_sdf_generated": true,
+      "openbabel_pdbqt_generated": true,
+      "status": "PASSED"
+    }
+  ]
+}

@@ -1,8 +1,63 @@
 # Mevreon Bio-AI Platform
 
-The **Mevreon Bio-AI Platform** is an enterprise-grade, serverless biophysical drug-discovery workbench. It screens phytochemical compounds (e.g., Kuth Actives) against multi-drug resistant pathogenic targets using a combination of physics-based thermodynamics (AutoDock Vina) and Generative AI spatial diffusion models (DiffDock-L).
+> **Enterprise-grade biophysical drug-discovery workbench** screening Ayush phytochemical compounds against multi-drug resistant pathogenic targets using AutoDock Vina (physics-based ΔG) and DiffDock-L (generative AI diffusion).
+
+---
+
+## 🚀 Quick Start — One-Click Cloud Deployment
+
+**Get the full platform running on your own Google Cloud in under 5 minutes.**
+
+### Prerequisites
+- [Google Cloud SDK](https://cloud.google.com/sdk/docs/install) installed
+- A GCP project with billing enabled
+- That's it — no Docker, Node.js, or Python needed on your machine
+
+### Deploy
+
+**On Mac / Linux / Git Bash:**
+```bash
+# 1. Clone this repository
+git clone https://github.com/mevreonai/Ayush-Demo.git
+cd Ayush-Demo
+
+# 2. Authenticate with Google Cloud (if not already)
+gcloud auth login
+gcloud config set project YOUR_PROJECT_ID
+
+# 3. Deploy — one command
+bash deploy.sh
+```
+
+**On Windows (PowerShell):**
+```powershell
+# 1. Clone this repository
+git clone https://github.com/mevreonai/Ayush-Demo.git
+cd Ayush-Demo
+
+# 2. Authenticate with Google Cloud (if not already)
+gcloud auth login
+gcloud config set project YOUR_PROJECT_ID
+
+# 3. Deploy — one command
+.\deploy.ps1
+```
+
+Within ~5 minutes you'll receive a live HTTPS URL. Open it to explore:
+- **12 pathogenic target proteins** across 3 drug-resistant organisms
+- **24 Ayush phytochemical compounds** screened per target (288 docking pairs)
+- AutoDock Vina binding affinities and DiffDock-L confidence scores
+- Interactive 3D molecular structure viewers (WebGL)
+- Evidence Passports with validation priority scores
+- Mechanism of Action cascade graphs
+- Downloadable screening leaderboards (CSV)
+
+> **Cost:** The platform scales to zero when idle — effectively $0/month. To remove: `gcloud run services delete ayush-bioai-demo --region us-central1`
+
+---
 
 ![Dashboard Preview](docs/reference_dashboard.png)
+
 
 ## Architecture Overview
 

@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "magnoflorine",
+  "nodes": [
+    {
+      "id": "magnoflorine",
+      "type": "compound",
+      "label": "Magnoflorine"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "magnoflorine",
+      "target": "mura",
+      "type": "binds",
+      "weight": 5.5
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

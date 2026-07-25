@@ -1,0 +1,24 @@
+{
+  "target_id": "peld",
+  "ligand_id": "azadirachtin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 82.696,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 84.254,
+      "rmsd_lower_bound": 1.955,
+      "rmsd_upper_bound": 8.084
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": 85.42,
+      "rmsd_lower_bound": 1.632,
+      "rmsd_upper_bound": 2.174
+    }
+  ]
+}

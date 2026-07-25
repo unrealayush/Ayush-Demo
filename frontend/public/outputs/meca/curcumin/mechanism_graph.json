@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_curcumin",
+      "label": "Curcumin",
+      "type": "compound"
+    },
+    {
+      "id": "T_meca",
+      "label": "PBP2a",
+      "type": "target"
+    },
+    {
+      "id": "P_alternative_penicillin-binding_protein",
+      "label": "Alternative penicillin-binding protein",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_confers_methicillin_resistance",
+      "label": "Confers methicillin resistance",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_curcumin",
+      "target": "T_meca",
+      "relation": "binds_to (Hydrogen bond ARG21)"
+    },
+    {
+      "source": "T_meca",
+      "target": "P_alternative_penicillin-binding_protein",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_alternative_penicillin-binding_protein",
+      "target": "PH_confers_methicillin_resistance",
+      "relation": "contributes_to"
+    }
+  ]
+}

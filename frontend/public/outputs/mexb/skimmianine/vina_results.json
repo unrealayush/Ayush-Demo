@@ -1,0 +1,60 @@
+{
+  "target_id": "mexb",
+  "ligand_id": "skimmianine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -0.617,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -0.54,
+      "rmsd_lower_bound": 2.068,
+      "rmsd_upper_bound": 5.258
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -0.487,
+      "rmsd_lower_bound": 2.125,
+      "rmsd_upper_bound": 2.957
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -0.465,
+      "rmsd_lower_bound": 3.102,
+      "rmsd_upper_bound": 4.691
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -0.456,
+      "rmsd_lower_bound": 1.916,
+      "rmsd_upper_bound": 5.391
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -0.447,
+      "rmsd_lower_bound": 2.28,
+      "rmsd_upper_bound": 3.231
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -0.436,
+      "rmsd_lower_bound": 3.386,
+      "rmsd_upper_bound": 5.769
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -0.433,
+      "rmsd_lower_bound": 2.031,
+      "rmsd_upper_bound": 5.753
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": 1.622,
+      "rmsd_lower_bound": 2.039,
+      "rmsd_upper_bound": 3.109
+    }
+  ]
+}

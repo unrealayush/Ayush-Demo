@@ -1,0 +1,54 @@
+{
+  "target_id": "mrkh",
+  "ligand_id": "nimbolide",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -9.111,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -8.744,
+      "rmsd_lower_bound": 1.389,
+      "rmsd_upper_bound": 2.037
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.894,
+      "rmsd_lower_bound": 3.571,
+      "rmsd_upper_bound": 7.442
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -7.873,
+      "rmsd_lower_bound": 4.784,
+      "rmsd_upper_bound": 7.569
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -7.562,
+      "rmsd_lower_bound": 7.619,
+      "rmsd_upper_bound": 10.4
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -7.051,
+      "rmsd_lower_bound": 6.4,
+      "rmsd_upper_bound": 9.279
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -7.019,
+      "rmsd_lower_bound": 2.94,
+      "rmsd_upper_bound": 5.993
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -6.217,
+      "rmsd_lower_bound": 4.523,
+      "rmsd_upper_bound": 8.361
+    }
+  ]
+}

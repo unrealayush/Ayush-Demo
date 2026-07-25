@@ -1,0 +1,60 @@
+{
+  "target_id": "mexb",
+  "ligand_id": "imperatorin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -0.62,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -0.609,
+      "rmsd_lower_bound": 2.129,
+      "rmsd_upper_bound": 5.129
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -0.579,
+      "rmsd_lower_bound": 2.497,
+      "rmsd_upper_bound": 4.573
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -0.55,
+      "rmsd_lower_bound": 1.78,
+      "rmsd_upper_bound": 4.588
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -0.474,
+      "rmsd_lower_bound": 2.062,
+      "rmsd_upper_bound": 5.776
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -0.463,
+      "rmsd_lower_bound": 2.111,
+      "rmsd_upper_bound": 2.74
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -0.463,
+      "rmsd_lower_bound": 2.633,
+      "rmsd_upper_bound": 3.776
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -0.432,
+      "rmsd_lower_bound": 1.383,
+      "rmsd_upper_bound": 4.563
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": 0.867,
+      "rmsd_lower_bound": 2.832,
+      "rmsd_upper_bound": 6.304
+    }
+  ]
+}

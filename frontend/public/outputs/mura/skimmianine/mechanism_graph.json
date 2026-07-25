@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "skimmianine",
+  "nodes": [
+    {
+      "id": "skimmianine",
+      "type": "compound",
+      "label": "Skimmianine"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "skimmianine",
+      "target": "mura",
+      "type": "binds",
+      "weight": 5.1
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

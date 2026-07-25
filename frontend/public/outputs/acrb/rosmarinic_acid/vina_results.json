@@ -1,0 +1,15 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "rosmarinic_acid",
+  "binding_affinity": -6.46,
+  "rmse_l.b.": 0.0,
+  "rmse_u.b.": 0.0,
+  "modes": [
+    {
+      "mode": 1,
+      "affinity": -6.46,
+      "rmsd_lb": 0.0,
+      "rmsd_ub": 0.0
+    }
+  ]
+}

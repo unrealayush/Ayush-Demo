@@ -1,0 +1,30 @@
+{
+  "target_id": "peld",
+  "ligand_id": "skimmianine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 5.543,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 6.237,
+      "rmsd_lower_bound": 1.847,
+      "rmsd_upper_bound": 6.14
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": 7.007,
+      "rmsd_lower_bound": 1.42,
+      "rmsd_upper_bound": 5.169
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": 8.293,
+      "rmsd_lower_bound": 1.533,
+      "rmsd_upper_bound": 5.944
+    }
+  ]
+}

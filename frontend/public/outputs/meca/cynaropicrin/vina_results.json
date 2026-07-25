@@ -1,0 +1,48 @@
+{
+  "target_id": "meca",
+  "ligand_id": "cynaropicrin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.069,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -4.311,
+      "rmsd_lower_bound": 3.017,
+      "rmsd_upper_bound": 6.686
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -4.02,
+      "rmsd_lower_bound": 2.853,
+      "rmsd_upper_bound": 4.896
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -3.98,
+      "rmsd_lower_bound": 2.654,
+      "rmsd_upper_bound": 6.202
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -3.774,
+      "rmsd_lower_bound": 3.504,
+      "rmsd_upper_bound": 6.535
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -3.7,
+      "rmsd_lower_bound": 2.251,
+      "rmsd_upper_bound": 4.073
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -3.288,
+      "rmsd_lower_bound": 2.082,
+      "rmsd_upper_bound": 4.947
+    }
+  ]
+}

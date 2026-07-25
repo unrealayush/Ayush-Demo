@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "eugenol",
+  "nodes": [
+    {
+      "id": "eugenol",
+      "type": "compound",
+      "label": "Eugenol"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "eugenol",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 3.8
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

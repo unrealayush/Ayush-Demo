@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "skimmianine",
+      "label": "Skimmianine",
+      "type": "compound"
+    },
+    {
+      "id": "mexb",
+      "label": "MexB Efflux Pump",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Antibiotic Resensitization",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "skimmianine",
+      "target": "mexb",
+      "relation": "Efflux Pump Inhibition"
+    },
+    {
+      "source": "mexb",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

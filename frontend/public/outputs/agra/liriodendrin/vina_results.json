@@ -1,0 +1,60 @@
+{
+  "target_id": "agra",
+  "ligand_id": "liriodendrin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.222,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.017,
+      "rmsd_lower_bound": 7.504,
+      "rmsd_upper_bound": 13.304
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.001,
+      "rmsd_lower_bound": 7.459,
+      "rmsd_upper_bound": 13.413
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.949,
+      "rmsd_lower_bound": 7.581,
+      "rmsd_upper_bound": 13.279
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.915,
+      "rmsd_lower_bound": 7.348,
+      "rmsd_upper_bound": 9.728
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -6.908,
+      "rmsd_lower_bound": 7.867,
+      "rmsd_upper_bound": 10.323
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -6.899,
+      "rmsd_lower_bound": 7.608,
+      "rmsd_upper_bound": 13.314
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -6.745,
+      "rmsd_lower_bound": 7.937,
+      "rmsd_upper_bound": 11.58
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -6.303,
+      "rmsd_lower_bound": 8.004,
+      "rmsd_upper_bound": 10.373
+    }
+  ]
+}

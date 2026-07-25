@@ -1,0 +1,11 @@
+{
+  "validation_priority_score": 62.9,
+  "decision": "Consider for wet-lab validation",
+  "evidence_strength": "Moderate preclinical plausibility",
+  "interpretation": "Validation-priority signal only; not clinical efficacy.",
+  "metrics": {
+    "affinity_contribution": 23.2,
+    "confidence_contribution": 14.7,
+    "interaction_contribution": 25.0
+  }
+}

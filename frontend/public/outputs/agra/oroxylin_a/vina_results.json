@@ -1,0 +1,60 @@
+{
+  "target_id": "agra",
+  "ligand_id": "oroxylin_a",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.814,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.462,
+      "rmsd_lower_bound": 1.447,
+      "rmsd_upper_bound": 3.214
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.395,
+      "rmsd_lower_bound": 12.615,
+      "rmsd_upper_bound": 14.245
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -7.391,
+      "rmsd_lower_bound": 2.98,
+      "rmsd_upper_bound": 5.573
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -7.259,
+      "rmsd_lower_bound": 3.297,
+      "rmsd_upper_bound": 5.763
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -6.878,
+      "rmsd_lower_bound": 13.952,
+      "rmsd_upper_bound": 15.201
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -6.836,
+      "rmsd_lower_bound": 2.487,
+      "rmsd_upper_bound": 6.898
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -6.8,
+      "rmsd_lower_bound": 13.027,
+      "rmsd_upper_bound": 15.148
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -6.736,
+      "rmsd_lower_bound": 13.186,
+      "rmsd_upper_bound": 14.817
+    }
+  ]
+}

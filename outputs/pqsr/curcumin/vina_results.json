@@ -1,0 +1,60 @@
+{
+  "target_id": "pqsr",
+  "ligand_id": "curcumin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -5.293,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.282,
+      "rmsd_lower_bound": 1.937,
+      "rmsd_upper_bound": 3.934
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -5.247,
+      "rmsd_lower_bound": 1.638,
+      "rmsd_upper_bound": 1.949
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -5.225,
+      "rmsd_lower_bound": 1.706,
+      "rmsd_upper_bound": 4.291
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -5.154,
+      "rmsd_lower_bound": 2.051,
+      "rmsd_upper_bound": 3.689
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -5.146,
+      "rmsd_lower_bound": 2.388,
+      "rmsd_upper_bound": 4.862
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -5.123,
+      "rmsd_lower_bound": 2.989,
+      "rmsd_upper_bound": 5.645
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -5.028,
+      "rmsd_lower_bound": 1.874,
+      "rmsd_upper_bound": 6.43
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -5.016,
+      "rmsd_lower_bound": 2.688,
+      "rmsd_upper_bound": 4.875
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "target_id": "murj",
+  "ligand_id": "skimmianine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.303,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.284,
+      "rmsd_lower_bound": 1.555,
+      "rmsd_upper_bound": 4.924
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.141,
+      "rmsd_lower_bound": 1.823,
+      "rmsd_upper_bound": 3.338
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.106,
+      "rmsd_lower_bound": 2.747,
+      "rmsd_upper_bound": 3.92
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.01,
+      "rmsd_lower_bound": 1.338,
+      "rmsd_upper_bound": 6.018
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -5.983,
+      "rmsd_lower_bound": 2.514,
+      "rmsd_upper_bound": 5.797
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -5.862,
+      "rmsd_lower_bound": 13.764,
+      "rmsd_upper_bound": 15.439
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -5.724,
+      "rmsd_lower_bound": 2.16,
+      "rmsd_upper_bound": 5.84
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -5.637,
+      "rmsd_lower_bound": 1.936,
+      "rmsd_upper_bound": 2.148
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "rosmarinic_acid",
+      "label": "Rosmarinic acid",
+      "type": "compound"
+    },
+    {
+      "id": "pqsr",
+      "label": "PqsR Co-Inducer",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Pyocyanin Reduction",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "rosmarinic_acid",
+      "target": "pqsr",
+      "relation": "Alkylquinolone Blockade"
+    },
+    {
+      "source": "pqsr",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

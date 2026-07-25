@@ -1,0 +1,10 @@
+{
+  "source_id": "PRECLINICAL_MURA_LIRIODENDRIN",
+  "priority_score": 80.9,
+  "evidence_strength": "Strong Evidence",
+  "next_validation_steps": [
+    "Perform MIC assays on target pathogenic strains",
+    "Conduct crystal violet biofilm prevention assay",
+    "Execute qPCR expression mapping of targeted gene"
+  ]
+}

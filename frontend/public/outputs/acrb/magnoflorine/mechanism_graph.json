@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "magnoflorine",
+  "nodes": [
+    {
+      "id": "magnoflorine",
+      "type": "compound",
+      "label": "Magnoflorine"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "magnoflorine",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 5.2
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

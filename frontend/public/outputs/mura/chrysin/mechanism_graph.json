@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "chrysin",
+  "nodes": [
+    {
+      "id": "chrysin",
+      "type": "compound",
+      "label": "Chrysin"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "chrysin",
+      "target": "mura",
+      "type": "binds",
+      "weight": 7.7
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "curcumin",
+      "label": "Curcumin",
+      "type": "compound"
+    },
+    {
+      "id": "peld",
+      "label": "PelD Synthase",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Biofilm Matrix Collapse",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "curcumin",
+      "target": "peld",
+      "relation": "Exopolysaccharide Decay"
+    },
+    {
+      "source": "peld",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

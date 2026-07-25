@@ -1,0 +1,60 @@
+{
+  "target_id": "pqsr",
+  "ligand_id": "bisdemethoxycurcumin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -5.201,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.094,
+      "rmsd_lower_bound": 1.49,
+      "rmsd_upper_bound": 2.07
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -5.05,
+      "rmsd_lower_bound": 2.258,
+      "rmsd_upper_bound": 4.526
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -5.032,
+      "rmsd_lower_bound": 3.076,
+      "rmsd_upper_bound": 5.505
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.995,
+      "rmsd_lower_bound": 2.274,
+      "rmsd_upper_bound": 3.708
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.986,
+      "rmsd_lower_bound": 2.597,
+      "rmsd_upper_bound": 4.505
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -4.965,
+      "rmsd_lower_bound": 1.809,
+      "rmsd_upper_bound": 5.76
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -4.843,
+      "rmsd_lower_bound": 2.35,
+      "rmsd_upper_bound": 3.43
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -4.686,
+      "rmsd_lower_bound": 1.843,
+      "rmsd_upper_bound": 4.138
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "target_id": "pqsr",
+  "ligand_id": "ursolic_acid",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -5.657,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.598,
+      "rmsd_lower_bound": 1.644,
+      "rmsd_upper_bound": 2.606
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -5.173,
+      "rmsd_lower_bound": 2.783,
+      "rmsd_upper_bound": 6.681
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -4.791,
+      "rmsd_lower_bound": 3.575,
+      "rmsd_upper_bound": 6.814
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.79,
+      "rmsd_lower_bound": 1.927,
+      "rmsd_upper_bound": 3.061
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.305,
+      "rmsd_lower_bound": 1.666,
+      "rmsd_upper_bound": 2.43
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -3.079,
+      "rmsd_lower_bound": 3.319,
+      "rmsd_upper_bound": 5.822
+    }
+  ]
+}

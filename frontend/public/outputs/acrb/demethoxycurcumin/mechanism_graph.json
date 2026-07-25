@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "demethoxycurcumin",
+  "nodes": [
+    {
+      "id": "demethoxycurcumin",
+      "type": "compound",
+      "label": "Demethoxycurcumin"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "demethoxycurcumin",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 6.1
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

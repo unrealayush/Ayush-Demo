@@ -1,0 +1,10 @@
+{
+  "status": "SUCCESS",
+  "target_id": "mexb",
+  "ligand_id": "baicalin",
+  "interactions": [],
+  "summary": {
+    "total_h_bonds": 0,
+    "total_hydrophobic": 0
+  }
+}

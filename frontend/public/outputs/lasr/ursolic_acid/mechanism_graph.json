@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_ursolic_acid",
+      "label": "Ursolic_acid",
+      "type": "compound"
+    },
+    {
+      "id": "T_lasr",
+      "label": "LasR",
+      "type": "target"
+    },
+    {
+      "id": "P_master_qs_transcription_regulator",
+      "label": "Master QS transcription regulator",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_controls_virulence_and_biofilm_maturation",
+      "label": "Controls virulence and biofilm maturation",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_ursolic_acid",
+      "target": "T_lasr",
+      "relation": "binds_to (Hydrogen bond SER146)"
+    },
+    {
+      "source": "T_lasr",
+      "target": "P_master_qs_transcription_regulator",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_master_qs_transcription_regulator",
+      "target": "PH_controls_virulence_and_biofilm_maturation",
+      "relation": "contributes_to"
+    }
+  ]
+}

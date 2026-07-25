@@ -1,0 +1,24 @@
+{
+  "target_id": "murj",
+  "ligand_id": "ursolic_acid",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.988,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.658,
+      "rmsd_lower_bound": 3.799,
+      "rmsd_upper_bound": 5.859
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -4.084,
+      "rmsd_lower_bound": 9.678,
+      "rmsd_upper_bound": 13.461
+    }
+  ]
+}

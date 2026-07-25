@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "chrysin",
+  "nodes": [
+    {
+      "id": "chrysin",
+      "type": "compound",
+      "label": "Chrysin"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "chrysin",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 7.4
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

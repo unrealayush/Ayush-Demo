@@ -1,0 +1,60 @@
+{
+  "target_id": "murj",
+  "ligand_id": "magnoflorine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.941,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.803,
+      "rmsd_lower_bound": 2.509,
+      "rmsd_upper_bound": 4.427
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.287,
+      "rmsd_lower_bound": 1.121,
+      "rmsd_upper_bound": 5.145
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.76,
+      "rmsd_lower_bound": 2.517,
+      "rmsd_upper_bound": 4.488
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.556,
+      "rmsd_lower_bound": 10.425,
+      "rmsd_upper_bound": 13.913
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -6.548,
+      "rmsd_lower_bound": 2.881,
+      "rmsd_upper_bound": 5.73
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -5.936,
+      "rmsd_lower_bound": 8.699,
+      "rmsd_upper_bound": 12.134
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -5.904,
+      "rmsd_lower_bound": 7.555,
+      "rmsd_upper_bound": 12.222
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -5.457,
+      "rmsd_lower_bound": 7.213,
+      "rmsd_upper_bound": 11.552
+    }
+  ]
+}

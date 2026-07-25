@@ -1,0 +1,60 @@
+{
+  "target_id": "srta",
+  "ligand_id": "rosmarinic_acid",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.365,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.276,
+      "rmsd_lower_bound": 9.375,
+      "rmsd_upper_bound": 12.669
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.189,
+      "rmsd_lower_bound": 4.968,
+      "rmsd_upper_bound": 8.703
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.185,
+      "rmsd_lower_bound": 5.057,
+      "rmsd_upper_bound": 8.766
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.027,
+      "rmsd_lower_bound": 1.609,
+      "rmsd_upper_bound": 9.177
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -5.982,
+      "rmsd_lower_bound": 8.5,
+      "rmsd_upper_bound": 11.505
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -5.899,
+      "rmsd_lower_bound": 5.321,
+      "rmsd_upper_bound": 10.298
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -5.87,
+      "rmsd_lower_bound": 6.445,
+      "rmsd_upper_bound": 9.545
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -5.802,
+      "rmsd_lower_bound": 9.149,
+      "rmsd_upper_bound": 12.709
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "report_date": "2026-06-10",
+  "total_files_checked": 24,
+  "total_files_missing": 0,
+  "missing_files": [],
+  "checked_files": {
+    "data/inputs/ligand_library.csv": true,
+    "data/inputs/pathogen_target_registry.csv": true,
+    "configs/docking_boxes.yaml": true,
+    "data/prepared/diffdock/diffdock_input.csv": true,
+    "data/prepared/targets/lasr/sequence.fasta": true,
+    "data/prepared/targets/lasr/raw_structure.pdb": true,
+    "data/prepared/targets/lasr/clean_receptor.pdb": true,
+    "data/prepared/targets/lasr/receptor.pdbqt": true,
+    "data/prepared/targets/pqsr/sequence.fasta": true,
+    "data/prepared/targets/pqsr/raw_structure.pdb": true,
+    "data/prepared/targets/pqsr/clean_receptor.pdb": true,
+    "data/prepared/targets/pqsr/receptor.pdbqt": true,
+    "data/prepared/targets/agra/sequence.fasta": true,
+    "data/prepared/targets/agra/raw_structure.pdb": true,
+    "data/prepared/targets/agra/clean_receptor.pdb": true,
+    "data/prepared/targets/agra/receptor.pdbqt": true,
+    "data/prepared/targets/srta/sequence.fasta": true,
+    "data/prepared/targets/srta/raw_structure.pdb": true,
+    "data/prepared/targets/srta/clean_receptor.pdb": true,
+    "data/prepared/targets/srta/receptor.pdbqt": true,
+    "data/prepared/ligands/costunolide.sdf": true,
+    "data/prepared/ligands/costunolide.pdbqt": true,
+    "data/prepared/ligands/dehydrocostus_lactone.sdf": true,
+    "data/prepared/ligands/dehydrocostus_lactone.pdbqt": true
+  }
+}

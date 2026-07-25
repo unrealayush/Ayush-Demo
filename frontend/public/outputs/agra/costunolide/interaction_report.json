@@ -1,0 +1,119 @@
+{
+  "status": "SUCCESS",
+  "target_id": "agra",
+  "ligand_id": "costunolide",
+  "interactions": [
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DG12",
+      "receptor_chain": "C",
+      "distance_angstroms": 3.3
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DT11",
+      "receptor_chain": "C",
+      "distance_angstroms": 3.33
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DT9",
+      "receptor_chain": "B",
+      "distance_angstroms": 3.34
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG198",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.36
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DC10",
+      "receptor_chain": "C",
+      "distance_angstroms": 3.37
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DA12",
+      "receptor_chain": "B",
+      "distance_angstroms": 3.39
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DA11",
+      "receptor_chain": "B",
+      "distance_angstroms": 3.42
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DA8",
+      "receptor_chain": "C",
+      "distance_angstroms": 3.43
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "HIS200",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.43
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DG13",
+      "receptor_chain": "B",
+      "distance_angstroms": 3.47
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "DA9",
+      "receptor_chain": "C",
+      "distance_angstroms": 3.47
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ASN201",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.47
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TYR229",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.73
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PHE203",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.11
+    },
+    {
+      "type": "pi_stacking",
+      "receptor_residue": "HIS200",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.39
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG198",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.59
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "HIS200",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.91
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG218",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.95
+    }
+  ],
+  "summary": {
+    "total_h_bonds": 12,
+    "total_hydrophobic": 2
+  }
+}

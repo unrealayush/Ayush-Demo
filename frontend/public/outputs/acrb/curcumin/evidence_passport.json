@@ -1,0 +1,10 @@
+{
+  "source_id": "PRECLINICAL_ACRB_CURCUMIN",
+  "priority_score": 60.2,
+  "evidence_strength": "Supporting Evidence",
+  "next_validation_steps": [
+    "Perform MIC assays on target pathogenic strains",
+    "Conduct crystal violet biofilm prevention assay",
+    "Execute qPCR expression mapping of targeted gene"
+  ]
+}

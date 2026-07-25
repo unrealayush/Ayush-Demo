@@ -1,0 +1,7 @@
+{
+  "target_id": "mura",
+  "ligand_id": "santamarine",
+  "confidence_score": -1.95,
+  "num_poses_generated": 10,
+  "inference_time_seconds": 12.4
+}

@@ -1,0 +1,7 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "bisdemethoxycurcumin",
+  "confidence_score": -2.5,
+  "num_poses_generated": 10,
+  "inference_time_seconds": 12.4
+}

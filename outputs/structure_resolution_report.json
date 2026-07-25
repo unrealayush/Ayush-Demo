@@ -1,0 +1,35 @@
+{
+  "status": "PASSED",
+  "report_date": "2026-06-10",
+  "targets_resolved": 4,
+  "details": [
+    {
+      "target_id": "lasr",
+      "structure_source": "RCSB_PDB",
+      "structure_id": "2UV0",
+      "download_url": "https://files.rcsb.org/download/2UV0.pdb",
+      "status": "resolved"
+    },
+    {
+      "target_id": "pqsr",
+      "structure_source": "RCSB_PDB",
+      "structure_id": "6B8A",
+      "download_url": "https://files.rcsb.org/download/6B8A.pdb",
+      "status": "resolved"
+    },
+    {
+      "target_id": "agra",
+      "structure_source": "RCSB_PDB",
+      "structure_id": "3BS1",
+      "download_url": "https://files.rcsb.org/download/3BS1.pdb",
+      "status": "resolved"
+    },
+    {
+      "target_id": "srta",
+      "structure_source": "RCSB_PDB",
+      "structure_id": "6R1V",
+      "download_url": "https://files.rcsb.org/download/6R1V.pdb",
+      "status": "resolved"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "ursolic_acid",
+  "confidence_score": -2.28,
+  "num_poses_generated": 10,
+  "inference_time_seconds": 12.4
+}

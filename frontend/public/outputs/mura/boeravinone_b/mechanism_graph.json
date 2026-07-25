@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "boeravinone_b",
+  "nodes": [
+    {
+      "id": "boeravinone_b",
+      "type": "compound",
+      "label": "Boeravinone B"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "boeravinone_b",
+      "target": "mura",
+      "type": "binds",
+      "weight": 8.2
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

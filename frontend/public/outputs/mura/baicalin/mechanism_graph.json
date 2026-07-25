@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "baicalin",
+  "nodes": [
+    {
+      "id": "baicalin",
+      "type": "compound",
+      "label": "Baicalin"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "baicalin",
+      "target": "mura",
+      "type": "binds",
+      "weight": 4.8
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

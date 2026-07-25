@@ -1,0 +1,25 @@
+Rank,Compound ID,Compound Name,Vina Affinity (kcal/mol),DiffDock Confidence,Hydrogen Bonds,Validation Priority Score,Preclinical Decision,Evidence Strength
+1,chrysin,Chrysin,-7.58,-0.37,5,64.6,Consider for wet-lab validation,Moderate preclinical plausibility
+2,boeravinone_b,Boeravinone B,-8.029,-0.56,5,64.4,Consider for wet-lab validation,Moderate preclinical plausibility
+3,baicalein,Baicalein,-7.562,-0.61,5,62.4,Consider for wet-lab validation,Moderate preclinical plausibility
+4,ursolic_acid,Ursolic acid,-7.85,-0.82,5,61.5,Consider for wet-lab validation,Moderate preclinical plausibility
+5,oroxylin_a,Oroxylin A,-7.313,-0.73,5,60.5,Consider for wet-lab validation,Moderate preclinical plausibility
+6,rosmarinic_acid,Rosmarinic acid,-7.516,-0.93,5,59.5,Review manually,Low preclinical plausibility
+7,conessine,Conessine,-7.834,-1.09,5,59.1,Review manually,Low preclinical plausibility
+8,nimbolide,Nimbolide,-7.832,-1.14,5,58.6,Review manually,Low preclinical plausibility
+9,magnoflorine,Magnoflorine,-7.822,-1.15,5,58.5,Review manually,Low preclinical plausibility
+10,costunolide,Costunolide,-6.695,-0.81,5,57.7,Review manually,Low preclinical plausibility
+11,cynaropicrin,Cynaropicrin,-7.618,-1.42,5,55.5,Review manually,Low preclinical plausibility
+12,bisdemethoxycurcumin,Bisdemethoxycurcumin,-7.153,-1.33,5,54.7,Review manually,Low preclinical plausibility
+13,baicalin,Baicalin,-7.697,-1.55,5,54.6,Review manually,Low preclinical plausibility
+14,demethoxycurcumin,Demethoxycurcumin,-7.217,-1.43,5,54.1,Review manually,Low preclinical plausibility
+15,eugenol,Eugenol,-5.172,-0.68,5,53.7,Review manually,Low preclinical plausibility
+16,santamarine,Santamarine,-6.765,-1.32,5,53.4,Review manually,Low preclinical plausibility
+17,aegeline,Aegeline,-6.935,-1.41,5,53.3,Review manually,Low preclinical plausibility
+18,liriodendrin,Liriodendrin,-6.622,-1.57,5,50.9,Review manually,Low preclinical plausibility
+19,imperatorin,Imperatorin,-7.055,-1.91,5,49.3,Review manually,Low preclinical plausibility
+20,azadirachtin,Azadirachtin,-7.251,-2.05,5,49.2,Review manually,Low preclinical plausibility
+21,nimbin,Nimbin,-7.196,-2.26,5,49.0,Review manually,Low preclinical plausibility
+22,dehydrocostus_lactone,Dehydrocostus lactone,-6.153,-1.7,5,48.1,Review manually,Low preclinical plausibility
+23,curcumin,Curcumin,-6.825,-2.35,5,47.8,Review manually,Low preclinical plausibility
+24,skimmianine,Skimmianine,-6.235,-2.18,5,45.8,Review manually,Low preclinical plausibility

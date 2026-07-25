@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "ursolic_acid",
+  "nodes": [
+    {
+      "id": "ursolic_acid",
+      "type": "compound",
+      "label": "Ursolic acid"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "ursolic_acid",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 5.0
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

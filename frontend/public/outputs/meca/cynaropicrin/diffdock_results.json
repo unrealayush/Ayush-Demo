@@ -1,0 +1,52 @@
+[
+  {
+    "rank": 1,
+    "confidence": -0.5,
+    "filename": "rank1_confidence-0.50.sdf"
+  },
+  {
+    "rank": 2,
+    "confidence": -0.59,
+    "filename": "rank2_confidence-0.59.sdf"
+  },
+  {
+    "rank": 3,
+    "confidence": -0.69,
+    "filename": "rank3_confidence-0.69.sdf"
+  },
+  {
+    "rank": 4,
+    "confidence": -1.14,
+    "filename": "rank4_confidence-1.14.sdf"
+  },
+  {
+    "rank": 5,
+    "confidence": -1.61,
+    "filename": "rank5_confidence-1.61.sdf"
+  },
+  {
+    "rank": 6,
+    "confidence": -1.7,
+    "filename": "rank6_confidence-1.70.sdf"
+  },
+  {
+    "rank": 7,
+    "confidence": -1.74,
+    "filename": "rank7_confidence-1.74.sdf"
+  },
+  {
+    "rank": 8,
+    "confidence": -1.81,
+    "filename": "rank8_confidence-1.81.sdf"
+  },
+  {
+    "rank": 9,
+    "confidence": -1.86,
+    "filename": "rank9_confidence-1.86.sdf"
+  },
+  {
+    "rank": 10,
+    "confidence": -2.18,
+    "filename": "rank10_confidence-2.18.sdf"
+  }
+]

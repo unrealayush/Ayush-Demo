@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "imperatorin",
+  "nodes": [
+    {
+      "id": "imperatorin",
+      "type": "compound",
+      "label": "Imperatorin"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "imperatorin",
+      "target": "mura",
+      "type": "binds",
+      "weight": 7.5
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

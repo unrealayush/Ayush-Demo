@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_azadirachtin",
+      "label": "Azadirachtin",
+      "type": "compound"
+    },
+    {
+      "id": "T_srta",
+      "label": "Sortase A",
+      "type": "target"
+    },
+    {
+      "id": "P_anchors_surface_proteins_to_peptidoglycan",
+      "label": "Anchors surface proteins to peptidoglycan",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_essential_for_colonization_and_biofilm_formation",
+      "label": "Essential for colonization and biofilm formation",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_azadirachtin",
+      "target": "T_srta",
+      "relation": "binds_to (Hydrogen bond ARG139)"
+    },
+    {
+      "source": "T_srta",
+      "target": "P_anchors_surface_proteins_to_peptidoglycan",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_anchors_surface_proteins_to_peptidoglycan",
+      "target": "PH_essential_for_colonization_and_biofilm_formation",
+      "relation": "contributes_to"
+    }
+  ]
+}

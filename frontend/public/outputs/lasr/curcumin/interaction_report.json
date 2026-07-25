@@ -1,0 +1,95 @@
+{
+  "status": "SUCCESS",
+  "target_id": "lasr",
+  "ligand_id": "curcumin",
+  "interactions": [
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLN81",
+      "receptor_chain": "G",
+      "distance_angstroms": 2.85
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG122",
+      "receptor_chain": "E",
+      "distance_angstroms": 3.0
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLU145",
+      "receptor_chain": "H",
+      "distance_angstroms": 3.31
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "PRO149",
+      "receptor_chain": "F",
+      "distance_angstroms": 3.33
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "THR150",
+      "receptor_chain": "F",
+      "distance_angstroms": 3.38
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "PRO149",
+      "receptor_chain": "H",
+      "distance_angstroms": 3.43
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO149",
+      "receptor_chain": "F",
+      "distance_angstroms": 3.83
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU30",
+      "receptor_chain": "F",
+      "distance_angstroms": 3.85
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PHE7",
+      "receptor_chain": "F",
+      "distance_angstroms": 4.09
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU148",
+      "receptor_chain": "H",
+      "distance_angstroms": 4.13
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO149",
+      "receptor_chain": "H",
+      "distance_angstroms": 4.29
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TRP152",
+      "receptor_chain": "H",
+      "distance_angstroms": 4.3
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TYR157",
+      "receptor_chain": "F",
+      "distance_angstroms": 4.46
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG122",
+      "receptor_chain": "E",
+      "distance_angstroms": 3.96
+    }
+  ],
+  "summary": {
+    "total_h_bonds": 6,
+    "total_hydrophobic": 7
+  }
+}

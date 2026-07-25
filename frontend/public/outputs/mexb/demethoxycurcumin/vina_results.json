@@ -1,0 +1,54 @@
+{
+  "target_id": "mexb",
+  "ligand_id": "demethoxycurcumin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -0.359,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -0.348,
+      "rmsd_lower_bound": 2.263,
+      "rmsd_upper_bound": 6.137
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -0.282,
+      "rmsd_lower_bound": 2.221,
+      "rmsd_upper_bound": 5.743
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -0.276,
+      "rmsd_lower_bound": 2.822,
+      "rmsd_upper_bound": 6.863
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -0.274,
+      "rmsd_lower_bound": 4.416,
+      "rmsd_upper_bound": 6.531
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -0.27,
+      "rmsd_lower_bound": 3.175,
+      "rmsd_upper_bound": 4.599
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -0.27,
+      "rmsd_lower_bound": 4.027,
+      "rmsd_upper_bound": 6.765
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -0.189,
+      "rmsd_lower_bound": 3.093,
+      "rmsd_upper_bound": 6.848
+    }
+  ]
+}

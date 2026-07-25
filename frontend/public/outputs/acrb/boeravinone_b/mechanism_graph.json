@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "boeravinone_b",
+  "nodes": [
+    {
+      "id": "boeravinone_b",
+      "type": "compound",
+      "label": "Boeravinone B"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "boeravinone_b",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 7.9
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

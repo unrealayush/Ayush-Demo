@@ -1,0 +1,48 @@
+{
+  "target_id": "peld",
+  "ligand_id": "demethoxycurcumin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 10.094,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 10.609,
+      "rmsd_lower_bound": 1.666,
+      "rmsd_upper_bound": 7.04
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": 11.332,
+      "rmsd_lower_bound": 1.583,
+      "rmsd_upper_bound": 6.803
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": 12.291,
+      "rmsd_lower_bound": 1.847,
+      "rmsd_upper_bound": 7.1
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": 12.338,
+      "rmsd_lower_bound": 1.554,
+      "rmsd_upper_bound": 6.123
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": 12.366,
+      "rmsd_lower_bound": 0.717,
+      "rmsd_upper_bound": 1.696
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": 12.823,
+      "rmsd_lower_bound": 1.78,
+      "rmsd_upper_bound": 4.356
+    }
+  ]
+}

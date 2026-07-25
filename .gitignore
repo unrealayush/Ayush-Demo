@@ -34,7 +34,6 @@ uc4_env/
 
 # Node
 frontend/node_modules/
-frontend/dist/
 frontend/.npm/
 
 # IDEs
@@ -47,12 +46,12 @@ frontend/.npm/
 .DS_Store
 Thumbs.db
 
-# Project specifics
-outputs/
+# Project specifics — NOTE: outputs/ is NOT ignored!
+# Pre-computed docking results MUST ship with the repo for the investor demo.
+# frontend/dist/ is also NOT ignored — the built React app is tracked.
 temp/
 *.log
 *.zip
-\
+
 # History files
 hist_cmds
-\

@@ -1,0 +1,7 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "chrysin",
+  "confidence_score": -0.85,
+  "num_poses_generated": 10,
+  "inference_time_seconds": 12.4
+}

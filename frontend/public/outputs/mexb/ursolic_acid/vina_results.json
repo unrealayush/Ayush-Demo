@@ -1,0 +1,48 @@
+{
+  "target_id": "mexb",
+  "ligand_id": "ursolic_acid",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -0.505,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -0.5,
+      "rmsd_lower_bound": 2.608,
+      "rmsd_upper_bound": 4.196
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -0.486,
+      "rmsd_lower_bound": 2.945,
+      "rmsd_upper_bound": 7.369
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -0.483,
+      "rmsd_lower_bound": 1.939,
+      "rmsd_upper_bound": 2.509
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -0.451,
+      "rmsd_lower_bound": 3.084,
+      "rmsd_upper_bound": 4.312
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -0.448,
+      "rmsd_lower_bound": 2.382,
+      "rmsd_upper_bound": 7.072
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -0.438,
+      "rmsd_lower_bound": 3.285,
+      "rmsd_upper_bound": 6.347
+    }
+  ]
+}

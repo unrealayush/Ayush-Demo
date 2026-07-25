@@ -1,0 +1,7 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "magnoflorine",
+  "confidence_score": -2.17,
+  "num_poses_generated": 10,
+  "inference_time_seconds": 12.4
+}

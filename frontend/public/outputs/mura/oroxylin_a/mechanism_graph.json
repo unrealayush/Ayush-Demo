@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "oroxylin_a",
+  "nodes": [
+    {
+      "id": "oroxylin_a",
+      "type": "compound",
+      "label": "Oroxylin A"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "oroxylin_a",
+      "target": "mura",
+      "type": "binds",
+      "weight": 6.6
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

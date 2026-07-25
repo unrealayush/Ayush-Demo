@@ -1,0 +1,42 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "baicalin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.18,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.84,
+      "rmsd_lower_bound": 1.098,
+      "rmsd_upper_bound": 2.27
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -5.294,
+      "rmsd_lower_bound": 3.145,
+      "rmsd_upper_bound": 6.389
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -5.086,
+      "rmsd_lower_bound": 3.062,
+      "rmsd_upper_bound": 5.403
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.564,
+      "rmsd_lower_bound": 6.419,
+      "rmsd_upper_bound": 9.65
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.23,
+      "rmsd_lower_bound": 1.495,
+      "rmsd_upper_bound": 2.079
+    }
+  ]
+}

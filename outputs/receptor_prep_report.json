@@ -1,0 +1,35 @@
+{
+  "status": "PASSED",
+  "report_date": "2026-06-10",
+  "receptors_prepared": 4,
+  "details": [
+    {
+      "target_id": "lasr",
+      "target_label": "LasR",
+      "clean_receptor_path": "data/prepared/targets/lasr/clean_receptor.pdb",
+      "receptor_pdbqt_path": "data/prepared/targets/lasr/receptor.pdbqt",
+      "status": "PASSED"
+    },
+    {
+      "target_id": "pqsr",
+      "target_label": "PqsR / MvfR",
+      "clean_receptor_path": "data/prepared/targets/pqsr/clean_receptor.pdb",
+      "receptor_pdbqt_path": "data/prepared/targets/pqsr/receptor.pdbqt",
+      "status": "PASSED"
+    },
+    {
+      "target_id": "agra",
+      "target_label": "AgrA",
+      "clean_receptor_path": "data/prepared/targets/agra/clean_receptor.pdb",
+      "receptor_pdbqt_path": "data/prepared/targets/agra/receptor.pdbqt",
+      "status": "PASSED"
+    },
+    {
+      "target_id": "srta",
+      "target_label": "Sortase A / SrtA",
+      "clean_receptor_path": "data/prepared/targets/srta/clean_receptor.pdb",
+      "receptor_pdbqt_path": "data/prepared/targets/srta/receptor.pdbqt",
+      "status": "PASSED"
+    }
+  ]
+}

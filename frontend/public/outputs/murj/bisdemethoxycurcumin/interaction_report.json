@@ -1,0 +1,203 @@
+{
+  "status": "SUCCESS",
+  "target_id": "murj",
+  "ligand_id": "bisdemethoxycurcumin",
+  "interactions": [
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLY196",
+      "receptor_chain": "A",
+      "distance_angstroms": 2.81
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG200",
+      "receptor_chain": "A",
+      "distance_angstroms": 2.92
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "HIS14",
+      "receptor_chain": "A",
+      "distance_angstroms": 2.99
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ILE7",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.0
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG178",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.07
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "THR197",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.13
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG44",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.15
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "MET43",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.23
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ASN153",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.26
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "HIS17",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.34
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLY157",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.36
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLU9",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.41
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "TYR160",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.42
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLY100",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.48
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "PRO152",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.48
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "HIS20",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.49
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PHE99",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.76
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ILE7",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.09
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU156",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.21
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO152",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.36
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "MET43",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.37
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TYR160",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.41
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PHE81",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.44
+    },
+    {
+      "type": "pi_stacking",
+      "receptor_residue": "HIS183",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.86
+    },
+    {
+      "type": "pi_stacking",
+      "receptor_residue": "HIS17",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.95
+    },
+    {
+      "type": "pi_stacking",
+      "receptor_residue": "HIS20",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.31
+    },
+    {
+      "type": "pi_stacking",
+      "receptor_residue": "HIS14",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.34
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG178",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.54
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "HIS20",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.57
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG200",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.65
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG44",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.84
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "HIS17",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.99
+    }
+  ],
+  "summary": {
+    "total_h_bonds": 16,
+    "total_hydrophobic": 7
+  }
+}

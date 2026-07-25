@@ -1,0 +1,60 @@
+{
+  "target_id": "agra",
+  "ligand_id": "santamarine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.036,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.721,
+      "rmsd_lower_bound": 1.992,
+      "rmsd_upper_bound": 3.115
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.379,
+      "rmsd_lower_bound": 1.909,
+      "rmsd_upper_bound": 4.803
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.122,
+      "rmsd_lower_bound": 7.032,
+      "rmsd_upper_bound": 9.351
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.113,
+      "rmsd_lower_bound": 12.581,
+      "rmsd_upper_bound": 14.183
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -6.076,
+      "rmsd_lower_bound": 1.824,
+      "rmsd_upper_bound": 3.813
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -6.024,
+      "rmsd_lower_bound": 13.913,
+      "rmsd_upper_bound": 16.287
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -6.001,
+      "rmsd_lower_bound": 14.863,
+      "rmsd_upper_bound": 17.179
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -5.755,
+      "rmsd_lower_bound": 13.868,
+      "rmsd_upper_bound": 16.054
+    }
+  ]
+}

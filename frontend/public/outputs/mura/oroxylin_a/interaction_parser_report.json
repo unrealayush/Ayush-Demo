@@ -1,0 +1,7 @@
+{
+  "target_id": "mura",
+  "ligand_id": "oroxylin_a",
+  "status": "PASSED",
+  "h_bonds_detected": 2,
+  "hydrophobic_interactions": 5
+}

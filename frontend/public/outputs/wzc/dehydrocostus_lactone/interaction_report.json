@@ -1,0 +1,113 @@
+{
+  "status": "SUCCESS",
+  "target_id": "wzc",
+  "ligand_id": "dehydrocostus_lactone",
+  "interactions": [
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLY240",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.32
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "THR65",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.34
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "LYS69",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.35
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "MET217",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.36
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLN247",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.36
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ASP105",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.5
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ALA134",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.75
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "MET218",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.78
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "VAL10",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.02
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "MET243",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.06
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "MET217",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.21
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TYR219",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.32
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "VAL64",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.37
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU196",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.39
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU244",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.44
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "VAL66",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.5
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "LYS69",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.58
+    }
+  ],
+  "summary": {
+    "total_h_bonds": 6,
+    "total_hydrophobic": 10
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "target_id": "meca",
+  "ligand_id": "baicalein",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.97,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.324,
+      "rmsd_lower_bound": 3.01,
+      "rmsd_upper_bound": 4.434
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.252,
+      "rmsd_lower_bound": 2.071,
+      "rmsd_upper_bound": 6.453
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -5.929,
+      "rmsd_lower_bound": 2.669,
+      "rmsd_upper_bound": 6.754
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -5.814,
+      "rmsd_lower_bound": 3.489,
+      "rmsd_upper_bound": 6.355
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -5.448,
+      "rmsd_lower_bound": 3.335,
+      "rmsd_upper_bound": 6.703
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -4.918,
+      "rmsd_lower_bound": 2.194,
+      "rmsd_upper_bound": 2.949
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -4.615,
+      "rmsd_lower_bound": 3.011,
+      "rmsd_upper_bound": 6.772
+    }
+  ]
+}

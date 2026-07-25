@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "demethoxycurcumin",
+      "label": "Demethoxycurcumin",
+      "type": "compound"
+    },
+    {
+      "id": "pqsr",
+      "label": "PqsR Co-Inducer",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Pyocyanin Reduction",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "demethoxycurcumin",
+      "target": "pqsr",
+      "relation": "Alkylquinolone Blockade"
+    },
+    {
+      "source": "pqsr",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

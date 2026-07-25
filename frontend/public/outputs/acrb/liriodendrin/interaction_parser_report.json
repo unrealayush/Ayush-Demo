@@ -1,0 +1,7 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "liriodendrin",
+  "status": "PASSED",
+  "h_bonds_detected": 3,
+  "hydrophobic_interactions": 3
+}

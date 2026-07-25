@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "rosmarinic_acid",
+  "nodes": [
+    {
+      "id": "rosmarinic_acid",
+      "type": "compound",
+      "label": "Rosmarinic acid"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "rosmarinic_acid",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 6.5
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

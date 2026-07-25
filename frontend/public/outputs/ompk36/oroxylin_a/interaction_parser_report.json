@@ -1,0 +1,7 @@
+{
+  "parser_version": "1.0",
+  "receptor_file": "data/prepared/targets/ompk36/clean_receptor.pdb",
+  "ligand_file": "/opt/services/outputs/ompk36/oroxylin_a/vina_pose.pdbqt",
+  "total_interactions_found": 17,
+  "status": "SUCCESS"
+}

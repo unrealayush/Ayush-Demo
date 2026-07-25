@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_conessine",
+      "label": "Conessine",
+      "type": "compound"
+    },
+    {
+      "id": "T_murj",
+      "label": "MurJ",
+      "type": "target"
+    },
+    {
+      "id": "P_lipid_ii_flippase",
+      "label": "Lipid II flippase",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_essential_peptidoglycan_synthesis_target",
+      "label": "Essential peptidoglycan synthesis target",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_conessine",
+      "target": "T_murj",
+      "relation": "binds_to (Hydrogen bond ARG44)"
+    },
+    {
+      "source": "T_murj",
+      "target": "P_lipid_ii_flippase",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_lipid_ii_flippase",
+      "target": "PH_essential_peptidoglycan_synthesis_target",
+      "relation": "contributes_to"
+    }
+  ]
+}

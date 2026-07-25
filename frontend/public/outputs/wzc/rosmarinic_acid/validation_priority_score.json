@@ -1,0 +1,11 @@
+{
+  "validation_priority_score": 59.5,
+  "decision": "Review manually",
+  "evidence_strength": "Low preclinical plausibility",
+  "interpretation": "Validation-priority signal only; not clinical efficacy.",
+  "metrics": {
+    "affinity_contribution": 25.1,
+    "confidence_contribution": 9.4,
+    "interaction_contribution": 25.0
+  }
+}

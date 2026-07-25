@@ -1,0 +1,60 @@
+{
+  "target_id": "mrkh",
+  "ligand_id": "magnoflorine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -8.066,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -8.021,
+      "rmsd_lower_bound": 2.375,
+      "rmsd_upper_bound": 4.555
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.938,
+      "rmsd_lower_bound": 2.768,
+      "rmsd_upper_bound": 5.698
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -7.857,
+      "rmsd_lower_bound": 5.673,
+      "rmsd_upper_bound": 8.028
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -7.847,
+      "rmsd_lower_bound": 1.437,
+      "rmsd_upper_bound": 5.201
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -7.788,
+      "rmsd_lower_bound": 2.843,
+      "rmsd_upper_bound": 4.533
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -7.753,
+      "rmsd_lower_bound": 2.562,
+      "rmsd_upper_bound": 4.195
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -7.59,
+      "rmsd_lower_bound": 2.806,
+      "rmsd_upper_bound": 5.801
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -7.443,
+      "rmsd_lower_bound": 4.252,
+      "rmsd_upper_bound": 6.707
+    }
+  ]
+}

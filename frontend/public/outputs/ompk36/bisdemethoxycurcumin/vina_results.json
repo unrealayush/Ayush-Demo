@@ -1,0 +1,48 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "bisdemethoxycurcumin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.062,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.766,
+      "rmsd_lower_bound": 7.365,
+      "rmsd_upper_bound": 8.316
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -5.723,
+      "rmsd_lower_bound": 8.694,
+      "rmsd_upper_bound": 12.356
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -5.051,
+      "rmsd_lower_bound": 17.585,
+      "rmsd_upper_bound": 20.498
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -5.025,
+      "rmsd_lower_bound": 18.606,
+      "rmsd_upper_bound": 21.099
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.497,
+      "rmsd_lower_bound": 23.586,
+      "rmsd_upper_bound": 24.832
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -4.126,
+      "rmsd_lower_bound": 18.124,
+      "rmsd_upper_bound": 20.638
+    }
+  ]
+}

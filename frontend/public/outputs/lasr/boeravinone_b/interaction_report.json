@@ -1,0 +1,173 @@
+{
+  "status": "SUCCESS",
+  "target_id": "lasr",
+  "ligand_id": "boeravinone_b",
+  "interactions": [
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLN160",
+      "receptor_chain": "E",
+      "distance_angstroms": 2.81
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ILE92",
+      "receptor_chain": "G",
+      "distance_angstroms": 2.9
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLU145",
+      "receptor_chain": "H",
+      "distance_angstroms": 3.09
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "SER77",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.12
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLN98",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.35
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG122",
+      "receptor_chain": "E",
+      "distance_angstroms": 3.39
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "PRO74",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.4
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLN81",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.41
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "PRO149",
+      "receptor_chain": "F",
+      "distance_angstroms": 3.45
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "SER146",
+      "receptor_chain": "F",
+      "distance_angstroms": 3.47
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "HIS78",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.48
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLN94",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.49
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ILE92",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.85
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU125",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.89
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU30",
+      "receptor_chain": "F",
+      "distance_angstroms": 3.96
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU148",
+      "receptor_chain": "H",
+      "distance_angstroms": 4.02
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO149",
+      "receptor_chain": "F",
+      "distance_angstroms": 4.09
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "VAL147",
+      "receptor_chain": "F",
+      "distance_angstroms": 4.24
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO149",
+      "receptor_chain": "H",
+      "distance_angstroms": 4.31
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ILE86",
+      "receptor_chain": "G",
+      "distance_angstroms": 4.33
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TRP152",
+      "receptor_chain": "H",
+      "distance_angstroms": 4.34
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PHE7",
+      "receptor_chain": "F",
+      "distance_angstroms": 4.47
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO74",
+      "receptor_chain": "G",
+      "distance_angstroms": 4.48
+    },
+    {
+      "type": "pi_stacking",
+      "receptor_residue": "HIS78",
+      "receptor_chain": "G",
+      "distance_angstroms": 4.29
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG122",
+      "receptor_chain": "E",
+      "distance_angstroms": 3.54
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "LYS42",
+      "receptor_chain": "E",
+      "distance_angstroms": 3.56
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "HIS78",
+      "receptor_chain": "G",
+      "distance_angstroms": 3.8
+    }
+  ],
+  "summary": {
+    "total_h_bonds": 12,
+    "total_hydrophobic": 11
+  }
+}

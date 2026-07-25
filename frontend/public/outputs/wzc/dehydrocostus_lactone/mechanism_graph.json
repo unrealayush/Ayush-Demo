@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_dehydrocostus_lactone",
+      "label": "Dehydrocostus_lactone",
+      "type": "compound"
+    },
+    {
+      "id": "T_wzc",
+      "label": "Wzc",
+      "type": "target"
+    },
+    {
+      "id": "P_tyrosine_autokinase",
+      "label": "Tyrosine autokinase",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_capsule_formation_and_biofilm_protection",
+      "label": "Capsule formation and biofilm protection",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_dehydrocostus_lactone",
+      "target": "T_wzc",
+      "relation": "binds_to (Hydrogen bond GLY240)"
+    },
+    {
+      "source": "T_wzc",
+      "target": "P_tyrosine_autokinase",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_tyrosine_autokinase",
+      "target": "PH_capsule_formation_and_biofilm_protection",
+      "relation": "contributes_to"
+    }
+  ]
+}

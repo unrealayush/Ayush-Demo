@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_imperatorin",
+      "label": "Imperatorin",
+      "type": "compound"
+    },
+    {
+      "id": "T_pqsr",
+      "label": "PqsR (MvfR)",
+      "type": "target"
+    },
+    {
+      "id": "P_pqs_signaling_regulator",
+      "label": "PQS signaling regulator",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_controls_virulence,_persistence_and_mature_biofilms",
+      "label": "Controls virulence, persistence and mature biofilms",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_imperatorin",
+      "target": "T_pqsr",
+      "relation": "binds_to (Hydrogen bond ALA316)"
+    },
+    {
+      "source": "T_pqsr",
+      "target": "P_pqs_signaling_regulator",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_pqs_signaling_regulator",
+      "target": "PH_controls_virulence,_persistence_and_mature_biofilms",
+      "relation": "contributes_to"
+    }
+  ]
+}

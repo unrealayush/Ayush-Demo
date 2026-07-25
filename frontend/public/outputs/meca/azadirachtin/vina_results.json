@@ -1,0 +1,18 @@
+{
+  "target_id": "meca",
+  "ligand_id": "azadirachtin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 3.381,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 6.371,
+      "rmsd_lower_bound": 2.383,
+      "rmsd_upper_bound": 5.301
+    }
+  ]
+}

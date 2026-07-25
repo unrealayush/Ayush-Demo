@@ -1,0 +1,30 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "nimbin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -2.72,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -0.611,
+      "rmsd_lower_bound": 2.121,
+      "rmsd_upper_bound": 7.663
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -0.353,
+      "rmsd_lower_bound": 2.754,
+      "rmsd_upper_bound": 5.775
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": 0.046,
+      "rmsd_lower_bound": 3.1,
+      "rmsd_upper_bound": 9.616
+    }
+  ]
+}

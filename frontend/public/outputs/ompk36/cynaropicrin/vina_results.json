@@ -1,0 +1,36 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "cynaropicrin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -4.176,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -3.489,
+      "rmsd_lower_bound": 17.447,
+      "rmsd_upper_bound": 21.218
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -3.311,
+      "rmsd_lower_bound": 10.409,
+      "rmsd_upper_bound": 14.265
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -2.308,
+      "rmsd_lower_bound": 17.83,
+      "rmsd_upper_bound": 21.86
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -2.208,
+      "rmsd_lower_bound": 10.142,
+      "rmsd_upper_bound": 13.897
+    }
+  ]
+}

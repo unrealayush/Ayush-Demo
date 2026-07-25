@@ -1,0 +1,7 @@
+{
+  "target_id": "mura",
+  "ligand_id": "magnoflorine",
+  "status": "PASSED",
+  "h_bonds_detected": 2,
+  "hydrophobic_interactions": 5
+}

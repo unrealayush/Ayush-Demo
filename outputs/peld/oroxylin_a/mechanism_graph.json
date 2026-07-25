@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "oroxylin_a",
+      "label": "Oroxylin A",
+      "type": "compound"
+    },
+    {
+      "id": "peld",
+      "label": "PelD Synthase",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Biofilm Matrix Collapse",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "oroxylin_a",
+      "target": "peld",
+      "relation": "Exopolysaccharide Decay"
+    },
+    {
+      "source": "peld",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

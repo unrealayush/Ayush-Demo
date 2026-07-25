@@ -1,0 +1,60 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "dehydrocostus_lactone",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -4.994,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -4.986,
+      "rmsd_lower_bound": 1.935,
+      "rmsd_upper_bound": 3.689
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -4.913,
+      "rmsd_lower_bound": 7.622,
+      "rmsd_upper_bound": 10.138
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -4.824,
+      "rmsd_lower_bound": 1.537,
+      "rmsd_upper_bound": 4.153
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.819,
+      "rmsd_lower_bound": 1.781,
+      "rmsd_upper_bound": 4.34
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.817,
+      "rmsd_lower_bound": 1.814,
+      "rmsd_upper_bound": 4.112
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -4.796,
+      "rmsd_lower_bound": 1.953,
+      "rmsd_upper_bound": 3.972
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -4.502,
+      "rmsd_lower_bound": 1.262,
+      "rmsd_upper_bound": 1.887
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -4.379,
+      "rmsd_lower_bound": 2.001,
+      "rmsd_upper_bound": 2.89
+    }
+  ]
+}

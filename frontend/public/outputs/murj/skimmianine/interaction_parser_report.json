@@ -1,0 +1,7 @@
+{
+  "parser_version": "1.0",
+  "receptor_file": "data/prepared/targets/murj/clean_receptor.pdb",
+  "ligand_file": "/opt/services/outputs/murj/skimmianine/vina_pose.pdbqt",
+  "total_interactions_found": 35,
+  "status": "SUCCESS"
+}

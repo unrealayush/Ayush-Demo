@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "demethoxycurcumin",
+      "label": "Demethoxycurcumin",
+      "type": "compound"
+    },
+    {
+      "id": "mexb",
+      "label": "MexB Efflux Pump",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Antibiotic Resensitization",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "demethoxycurcumin",
+      "target": "mexb",
+      "relation": "Efflux Pump Inhibition"
+    },
+    {
+      "source": "mexb",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

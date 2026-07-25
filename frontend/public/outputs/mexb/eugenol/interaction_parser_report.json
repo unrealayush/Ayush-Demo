@@ -1,0 +1,7 @@
+{
+  "parser_version": "1.0",
+  "receptor_file": "data/prepared/targets/mexb/clean_receptor.pdb",
+  "ligand_file": "/opt/services/outputs/mexb/eugenol/vina_pose.pdbqt",
+  "total_interactions_found": 0,
+  "status": "SUCCESS"
+}

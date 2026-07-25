@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "aegeline",
+      "label": "Aegeline",
+      "type": "compound"
+    },
+    {
+      "id": "pqsr",
+      "label": "PqsR Co-Inducer",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Pyocyanin Reduction",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "aegeline",
+      "target": "pqsr",
+      "relation": "Alkylquinolone Blockade"
+    },
+    {
+      "source": "pqsr",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

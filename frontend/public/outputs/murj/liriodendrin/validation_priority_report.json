@@ -1,0 +1,10 @@
+{
+  "status": "SUCCESS",
+  "inputs_processed": {
+    "affinity": -7.703,
+    "confidence": -2.71,
+    "h_bonds": 16,
+    "hydrophobic": 12
+  },
+  "final_score": 50.7
+}

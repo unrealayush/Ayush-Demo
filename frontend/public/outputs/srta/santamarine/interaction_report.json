@@ -1,0 +1,125 @@
+{
+  "status": "SUCCESS",
+  "target_id": "srta",
+  "ligand_id": "santamarine",
+  "interactions": [
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLY61",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.08
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ASN40",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.11
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG139",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.18
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "TRP136",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.43
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PHE64",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.71
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ALA46",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.87
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO36",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.88
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU111",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.93
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO105",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.96
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TRP136",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.07
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ALA60",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.15
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ILE124",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.15
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ALA34",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.27
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "VAL135",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.35
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "TYR129",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.43
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU39",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.46
+    },
+    {
+      "type": "pi_stacking",
+      "receptor_residue": "HIS62",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.91
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "HIS62",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.64
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG139",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.75
+    }
+  ],
+  "summary": {
+    "total_h_bonds": 4,
+    "total_hydrophobic": 12
+  }
+}

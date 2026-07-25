@@ -1,0 +1,7 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "cynaropicrin",
+  "confidence_score": -0.63,
+  "num_poses_generated": 10,
+  "inference_time_seconds": 12.4
+}

@@ -1,0 +1,37 @@
+{
+  "status": "PASSED",
+  "report_date": "2026-06-10",
+  "compounds_fetched": 2,
+  "details": [
+    {
+      "compound_name": "Costunolide",
+      "pubchem": {
+        "pubchem_cid": 5281437,
+        "name": "Costunolide",
+        "smiles": "CC1=CCCC(=CC2C(CC1)C(=C)C(=O)O2)C",
+        "formula": "C15H20O2",
+        "weight": 232.32,
+        "inchikey": "HRYLQFBHBWLLLL-AHNJNIBGSA-N"
+      },
+      "chembl": {
+        "chembl_id": "CHEMBL86416",
+        "pref_name": "COSTUNOLIDE"
+      }
+    },
+    {
+      "compound_name": "Dehydrocostus lactone",
+      "pubchem": {
+        "pubchem_cid": 73174,
+        "name": "(-)-Dehydrocostus lactone",
+        "smiles": "C=C1CCC2C(C3C1CCC3=C)OC(=O)C2=C",
+        "formula": "C15H18O2",
+        "weight": 230.3,
+        "inchikey": "NETSQGRTUNRXEO-XUXIUFHCSA-N"
+      },
+      "chembl": {
+        "chembl_id": "CHEMBL88985",
+        "pref_name": "DEHYDROCOSTUSLACTONE"
+      }
+    }
+  ]
+}

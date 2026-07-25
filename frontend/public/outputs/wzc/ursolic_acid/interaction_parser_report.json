@@ -1,0 +1,7 @@
+{
+  "parser_version": "1.0",
+  "receptor_file": "data/prepared/targets/wzc/clean_receptor.pdb",
+  "ligand_file": "/opt/services/outputs/wzc/ursolic_acid/vina_pose.pdbqt",
+  "total_interactions_found": 33,
+  "status": "SUCCESS"
+}

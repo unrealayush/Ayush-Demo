@@ -1,0 +1,7 @@
+{
+  "parser_version": "1.0",
+  "receptor_file": "data/prepared/targets/agra/clean_receptor.pdb",
+  "ligand_file": "/opt/services/outputs/agra/nimbolide/vina_pose.pdbqt",
+  "total_interactions_found": 25,
+  "status": "SUCCESS"
+}

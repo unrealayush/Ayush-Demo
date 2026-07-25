@@ -1,0 +1,7 @@
+{
+  "target_id": "mura",
+  "ligand_id": "demethoxycurcumin",
+  "confidence_score": -1.62,
+  "num_poses_generated": 10,
+  "inference_time_seconds": 12.4
+}

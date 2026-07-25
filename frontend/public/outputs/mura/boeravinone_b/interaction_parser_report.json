@@ -1,0 +1,7 @@
+{
+  "target_id": "mura",
+  "ligand_id": "boeravinone_b",
+  "status": "PASSED",
+  "h_bonds_detected": 3,
+  "hydrophobic_interactions": 5
+}

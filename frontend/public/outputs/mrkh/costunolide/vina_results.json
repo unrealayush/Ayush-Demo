@@ -1,0 +1,60 @@
+{
+  "target_id": "mrkh",
+  "ligand_id": "costunolide",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.15,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.069,
+      "rmsd_lower_bound": 11.459,
+      "rmsd_upper_bound": 13.382
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.991,
+      "rmsd_lower_bound": 2.728,
+      "rmsd_upper_bound": 4.529
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.952,
+      "rmsd_lower_bound": 3.699,
+      "rmsd_upper_bound": 5.91
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.909,
+      "rmsd_lower_bound": 2.921,
+      "rmsd_upper_bound": 5.306
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -6.81,
+      "rmsd_lower_bound": 4.224,
+      "rmsd_upper_bound": 6.986
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -6.757,
+      "rmsd_lower_bound": 11.269,
+      "rmsd_upper_bound": 12.844
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -6.659,
+      "rmsd_lower_bound": 12.464,
+      "rmsd_upper_bound": 14.482
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -6.615,
+      "rmsd_lower_bound": 2.38,
+      "rmsd_upper_bound": 4.683
+    }
+  ]
+}

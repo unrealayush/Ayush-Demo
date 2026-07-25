@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "rosmarinic_acid",
+  "nodes": [
+    {
+      "id": "rosmarinic_acid",
+      "type": "compound",
+      "label": "Rosmarinic acid"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "rosmarinic_acid",
+      "target": "mura",
+      "type": "binds",
+      "weight": 6.8
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

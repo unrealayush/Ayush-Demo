@@ -1,0 +1,36 @@
+{
+  "target_id": "peld",
+  "ligand_id": "eugenol",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -3.973,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -3.612,
+      "rmsd_lower_bound": 2.487,
+      "rmsd_upper_bound": 4.847
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -3.075,
+      "rmsd_lower_bound": 1.266,
+      "rmsd_upper_bound": 2.236
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -2.702,
+      "rmsd_lower_bound": 1.979,
+      "rmsd_upper_bound": 4.789
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -2.254,
+      "rmsd_lower_bound": 2.901,
+      "rmsd_upper_bound": 5.184
+    }
+  ]
+}

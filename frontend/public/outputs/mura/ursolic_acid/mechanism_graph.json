@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "ursolic_acid",
+  "nodes": [
+    {
+      "id": "ursolic_acid",
+      "type": "compound",
+      "label": "Ursolic acid"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "ursolic_acid",
+      "target": "mura",
+      "type": "binds",
+      "weight": 5.3
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

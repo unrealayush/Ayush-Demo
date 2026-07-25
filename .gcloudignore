@@ -1,23 +1,24 @@
+# ============================================================
 # Files to ignore when uploading source to Cloud Build
-# This reduces upload size from 175MB to ~30MB
+# ============================================================
+# IMPORTANT: frontend/public/outputs/ MUST be uploaded — it contains
+# all pre-computed docking results that get baked into the container.
+# ============================================================
 
-# Node modules (will be reinstalled in Docker)
+# Node modules (reinstalled during Docker build)
 frontend/node_modules/
 node_modules/
 
-# Frontend build output (will be rebuilt in Docker)
-frontend/dist/
-
-# Git
+# Git internals
 .git/
 .gitignore
 
-# Documentation (not needed at runtime)
+# Heavy docs not needed at runtime
 docs/
-*.zip
 *.docx
 *.xlsx
 *.pptx
+*.zip
 
 # IDE and OS files
 .vscode/
@@ -38,8 +39,12 @@ tests/
 .gemini/
 .github/
 
-# Dev files
-evidence_pack.zip
+# Dev-only files
 evidence_pack_manifest.json
 generate_context.py
 MIGRATION_CONTEXT.md
+PROJECT_ARCHITECTURE_CONTEXT.md
+FIX_SUMMARY.md
+
+# Large log files
+*.log

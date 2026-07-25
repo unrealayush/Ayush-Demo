@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "dehydrocostus_lactone",
+  "nodes": [
+    {
+      "id": "dehydrocostus_lactone",
+      "type": "compound",
+      "label": "Dehydrocostus lactone"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "dehydrocostus_lactone",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 6.8
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "nimbolide",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -3.306,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -3.066,
+      "rmsd_lower_bound": 3.235,
+      "rmsd_upper_bound": 5.418
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -2.262,
+      "rmsd_lower_bound": 1.613,
+      "rmsd_upper_bound": 2.323
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -0.557,
+      "rmsd_lower_bound": 3.012,
+      "rmsd_upper_bound": 5.706
+    }
+  ]
+}

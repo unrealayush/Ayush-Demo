@@ -1,0 +1,60 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "eugenol",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -5.357,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.028,
+      "rmsd_lower_bound": 1.951,
+      "rmsd_upper_bound": 3.184
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -4.729,
+      "rmsd_lower_bound": 2.147,
+      "rmsd_upper_bound": 4.285
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -4.666,
+      "rmsd_lower_bound": 2.369,
+      "rmsd_upper_bound": 4.241
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.642,
+      "rmsd_lower_bound": 16.478,
+      "rmsd_upper_bound": 17.846
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.418,
+      "rmsd_lower_bound": 16.28,
+      "rmsd_upper_bound": 17.743
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -4.289,
+      "rmsd_lower_bound": 3.257,
+      "rmsd_upper_bound": 5.108
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -4.211,
+      "rmsd_lower_bound": 18.094,
+      "rmsd_upper_bound": 19.924
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -4.191,
+      "rmsd_lower_bound": 12.155,
+      "rmsd_upper_bound": 13.905
+    }
+  ]
+}

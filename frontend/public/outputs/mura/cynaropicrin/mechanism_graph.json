@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "cynaropicrin",
+  "nodes": [
+    {
+      "id": "cynaropicrin",
+      "type": "compound",
+      "label": "Cynaropicrin"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "cynaropicrin",
+      "target": "mura",
+      "type": "binds",
+      "weight": 8.0
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

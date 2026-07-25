@@ -1,0 +1,60 @@
+{
+  "target_id": "mrkh",
+  "ligand_id": "cynaropicrin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -8.097,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.711,
+      "rmsd_lower_bound": 2.735,
+      "rmsd_upper_bound": 6.229
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.575,
+      "rmsd_lower_bound": 2.207,
+      "rmsd_upper_bound": 5.956
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -7.489,
+      "rmsd_lower_bound": 2.14,
+      "rmsd_upper_bound": 5.911
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -7.476,
+      "rmsd_lower_bound": 2.169,
+      "rmsd_upper_bound": 5.539
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -7.425,
+      "rmsd_lower_bound": 7.338,
+      "rmsd_upper_bound": 9.593
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -7.352,
+      "rmsd_lower_bound": 6.971,
+      "rmsd_upper_bound": 9.607
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -7.31,
+      "rmsd_lower_bound": 2.968,
+      "rmsd_upper_bound": 7.02
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -7.263,
+      "rmsd_lower_bound": 2.419,
+      "rmsd_upper_bound": 4.415
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "target_id": "agra",
+  "ligand_id": "nimbin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.752,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.433,
+      "rmsd_lower_bound": 14.932,
+      "rmsd_upper_bound": 17.896
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.392,
+      "rmsd_lower_bound": 14.187,
+      "rmsd_upper_bound": 18.293
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -5.957,
+      "rmsd_lower_bound": 16.214,
+      "rmsd_upper_bound": 19.447
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -5.898,
+      "rmsd_lower_bound": 2.601,
+      "rmsd_upper_bound": 7.647
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -5.633,
+      "rmsd_lower_bound": 16.191,
+      "rmsd_upper_bound": 19.775
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -5.532,
+      "rmsd_lower_bound": 15.448,
+      "rmsd_upper_bound": 18.807
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -5.452,
+      "rmsd_lower_bound": 14.78,
+      "rmsd_upper_bound": 18.893
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -5.415,
+      "rmsd_lower_bound": 15.364,
+      "rmsd_upper_bound": 19.159
+    }
+  ]
+}

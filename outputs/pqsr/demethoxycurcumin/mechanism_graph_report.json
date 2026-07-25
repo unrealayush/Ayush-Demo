@@ -1,0 +1,7 @@
+{
+  "status": "SUCCESS",
+  "nodes_generated": 4,
+  "edges_generated": 3,
+  "target_mapped": "pqsr",
+  "ligand_mapped": "demethoxycurcumin"
+}

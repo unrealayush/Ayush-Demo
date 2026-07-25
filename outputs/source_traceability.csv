@@ -1,0 +1,13 @@
+source_id,database_name,compound_id,url,date_accessed
+PUBCHEM_CID_5281437,PubChem,costunolide,https://pubchem.ncbi.nlm.nih.gov/compound/5281437,2026-06-10
+CHEMBL_ID_CHEMBL86416,ChEMBL,costunolide,https://www.ebi.ac.uk/chembl/molecule/CHEMBL86416,2026-06-10
+PUBCHEM_CID_73174,PubChem,dehydrocostus_lactone,https://pubchem.ncbi.nlm.nih.gov/compound/73174,2026-06-10
+CHEMBL_ID_CHEMBL88985,ChEMBL,dehydrocostus_lactone,https://www.ebi.ac.uk/chembl/molecule/CHEMBL88985,2026-06-10
+UNIPROT_ACC_P25084,UniProt,lasr,https://www.uniprot.org/uniprotkb/P25084,2026-06-10
+NCBI_PROT_AAA25874.1,NCBI Protein,lasr,https://www.ncbi.nlm.nih.gov/protein/AAA25874.1,2026-06-10
+UNIPROT_ACC_Q9I4X0,UniProt,pqsr,https://www.uniprot.org/uniprotkb/Q9I4X0,2026-06-10
+NCBI_PROT_AAG04392.1,NCBI Protein,pqsr,https://www.ncbi.nlm.nih.gov/protein/AAG04392.1,2026-06-10
+UNIPROT_ACC_P0A0I7,UniProt,agra,https://www.uniprot.org/uniprotkb/P0A0I7,2026-06-10
+NCBI_PROT_AAA26597.1,NCBI Protein,agra,https://www.ncbi.nlm.nih.gov/protein/AAA26597.1,2026-06-10
+UNIPROT_ACC_Q2FV99,UniProt,srta,https://www.uniprot.org/uniprotkb/Q2FV99,2026-06-10
+NCBI_PROT_ABD31836.1,NCBI Protein,srta,https://www.ncbi.nlm.nih.gov/protein/ABD31836.1,2026-06-10

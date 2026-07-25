@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "nimbolide",
+  "nodes": [
+    {
+      "id": "nimbolide",
+      "type": "compound",
+      "label": "Nimbolide"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "nimbolide",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 5.4
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

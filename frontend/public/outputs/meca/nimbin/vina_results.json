@@ -1,0 +1,12 @@
+{
+  "target_id": "meca",
+  "ligand_id": "nimbin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -2.222,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    }
+  ]
+}

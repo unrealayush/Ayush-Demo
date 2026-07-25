@@ -1,0 +1,12 @@
+{
+  "target_id": "meca",
+  "ligand_id": "ursolic_acid",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 0.58,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    }
+  ]
+}

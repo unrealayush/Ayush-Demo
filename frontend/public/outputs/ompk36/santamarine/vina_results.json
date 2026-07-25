@@ -1,0 +1,54 @@
+{
+  "target_id": "ompk36",
+  "ligand_id": "santamarine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -5.282,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.106,
+      "rmsd_lower_bound": 9.182,
+      "rmsd_upper_bound": 12.582
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -4.938,
+      "rmsd_lower_bound": 1.78,
+      "rmsd_upper_bound": 4.849
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -4.716,
+      "rmsd_lower_bound": 6.404,
+      "rmsd_upper_bound": 8.987
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.451,
+      "rmsd_lower_bound": 1.9,
+      "rmsd_upper_bound": 2.231
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.416,
+      "rmsd_lower_bound": 1.948,
+      "rmsd_upper_bound": 4.9
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -4.193,
+      "rmsd_lower_bound": 9.799,
+      "rmsd_upper_bound": 13.623
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -3.941,
+      "rmsd_lower_bound": 2.501,
+      "rmsd_upper_bound": 5.993
+    }
+  ]
+}

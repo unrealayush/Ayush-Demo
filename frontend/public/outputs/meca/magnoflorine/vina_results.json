@@ -1,0 +1,48 @@
+{
+  "target_id": "meca",
+  "ligand_id": "magnoflorine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.29,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.678,
+      "rmsd_lower_bound": 2.636,
+      "rmsd_upper_bound": 4.46
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -5.072,
+      "rmsd_lower_bound": 3.087,
+      "rmsd_upper_bound": 5.463
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -5.021,
+      "rmsd_lower_bound": 3.305,
+      "rmsd_upper_bound": 5.429
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.125,
+      "rmsd_lower_bound": 4.086,
+      "rmsd_upper_bound": 5.68
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -3.857,
+      "rmsd_lower_bound": 3.992,
+      "rmsd_upper_bound": 5.665
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -3.66,
+      "rmsd_lower_bound": 2.668,
+      "rmsd_upper_bound": 5.565
+    }
+  ]
+}

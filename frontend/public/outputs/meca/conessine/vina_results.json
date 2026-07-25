@@ -1,0 +1,24 @@
+{
+  "target_id": "meca",
+  "ligand_id": "conessine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -6.02,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -5.125,
+      "rmsd_lower_bound": 2.202,
+      "rmsd_upper_bound": 7.506
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -4.858,
+      "rmsd_lower_bound": 3.16,
+      "rmsd_upper_bound": 7.693
+    }
+  ]
+}

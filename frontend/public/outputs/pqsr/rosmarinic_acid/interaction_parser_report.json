@@ -1,0 +1,7 @@
+{
+  "parser_version": "1.0",
+  "receptor_file": "data/prepared/targets/pqsr/clean_receptor.pdb",
+  "ligand_file": "/opt/services/outputs/pqsr/rosmarinic_acid/vina_pose.pdbqt",
+  "total_interactions_found": 26,
+  "status": "SUCCESS"
+}

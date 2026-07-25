@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "dehydrocostus_lactone",
+  "nodes": [
+    {
+      "id": "dehydrocostus_lactone",
+      "type": "compound",
+      "label": "Dehydrocostus lactone"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "dehydrocostus_lactone",
+      "target": "mura",
+      "type": "binds",
+      "weight": 7.1
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

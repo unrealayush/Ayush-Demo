@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "curcumin",
+  "nodes": [
+    {
+      "id": "curcumin",
+      "type": "compound",
+      "label": "Curcumin"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "curcumin",
+      "target": "mura",
+      "type": "binds",
+      "weight": 6.2
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

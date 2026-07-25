@@ -1,0 +1,101 @@
+{
+  "status": "SUCCESS",
+  "target_id": "pqsr",
+  "ligand_id": "ursolic_acid",
+  "interactions": [
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "PRO202",
+      "receptor_chain": "A",
+      "distance_angstroms": 2.88
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ALA145",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.05
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "LEU639",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.05
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "GLU148",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.12
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ALA201",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.22
+    },
+    {
+      "type": "hydrogen_bond",
+      "receptor_residue": "ARG320",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.45
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ALA201",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.79
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ALA145",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.29
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU639",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.29
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU146",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.34
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "PRO202",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.35
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "LEU149",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.36
+    },
+    {
+      "type": "hydrophobic",
+      "receptor_residue": "ALA142",
+      "receptor_chain": "A",
+      "distance_angstroms": 4.5
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG320",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.6
+    },
+    {
+      "type": "salt_bridge",
+      "receptor_residue": "ARG640",
+      "receptor_chain": "A",
+      "distance_angstroms": 3.62
+    }
+  ],
+  "summary": {
+    "total_h_bonds": 6,
+    "total_hydrophobic": 7
+  }
+}

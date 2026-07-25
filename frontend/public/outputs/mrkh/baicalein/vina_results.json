@@ -1,0 +1,60 @@
+{
+  "target_id": "mrkh",
+  "ligand_id": "baicalein",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -8.456,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.895,
+      "rmsd_lower_bound": 8.986,
+      "rmsd_upper_bound": 11.095
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.827,
+      "rmsd_lower_bound": 9.799,
+      "rmsd_upper_bound": 12.216
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -7.8,
+      "rmsd_lower_bound": 8.581,
+      "rmsd_upper_bound": 10.996
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -7.629,
+      "rmsd_lower_bound": 8.251,
+      "rmsd_upper_bound": 10.265
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -7.553,
+      "rmsd_lower_bound": 7.205,
+      "rmsd_upper_bound": 9.124
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -7.522,
+      "rmsd_lower_bound": 7.314,
+      "rmsd_upper_bound": 9.176
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -7.455,
+      "rmsd_lower_bound": 7.997,
+      "rmsd_upper_bound": 9.874
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -7.385,
+      "rmsd_lower_bound": 7.086,
+      "rmsd_upper_bound": 8.072
+    }
+  ]
+}

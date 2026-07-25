@@ -1,0 +1,30 @@
+{
+  "target_id": "peld",
+  "ligand_id": "rosmarinic_acid",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 7.742,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 9.08,
+      "rmsd_lower_bound": 1.621,
+      "rmsd_upper_bound": 6.615
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": 9.754,
+      "rmsd_lower_bound": 1.727,
+      "rmsd_upper_bound": 6.855
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": 10.087,
+      "rmsd_lower_bound": 1.348,
+      "rmsd_upper_bound": 4.262
+    }
+  ]
+}

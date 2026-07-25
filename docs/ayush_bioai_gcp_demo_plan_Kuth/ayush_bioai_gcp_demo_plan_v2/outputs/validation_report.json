@@ -1,0 +1,38 @@
+{
+  "run_mode": "local-planning",
+  "phase": "gate0",
+  "overall_result": "pass",
+  "checks": [
+    {
+      "check_id": "CHK-CONFIG-CONSISTENCY",
+      "status": "pass",
+      "severity": "WARN",
+      "findings": []
+    },
+    {
+      "check_id": "CHK-SCENARIO-REGISTRY",
+      "status": "pass",
+      "severity": "BLOCKER",
+      "findings": []
+    },
+    {
+      "check_id": "CHK-SCENARIO-DEFAULT",
+      "status": "pass",
+      "severity": "BLOCKER",
+      "findings": []
+    },
+    {
+      "check_id": "CHK-SCENARIO-NO-CROSSPRODUCT",
+      "status": "pass",
+      "severity": "BLOCKER",
+      "findings": []
+    }
+  ],
+  "go_no_go": {
+    "CHK-CONFIG-CONSISTENCY": "go",
+    "CHK-SCENARIO-REGISTRY": "go",
+    "CHK-SCENARIO-DEFAULT": "go",
+    "CHK-SCENARIO-NO-CROSSPRODUCT": "go"
+  },
+  "note": "Phase 0 scaffold: only scenario + config checks implemented; others pending artifacts."
+}

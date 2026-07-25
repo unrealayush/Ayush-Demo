@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "dehydrocostus_lactone",
+      "label": "Dehydrocostus lactone",
+      "type": "compound"
+    },
+    {
+      "id": "lasr",
+      "label": "LasR Receptor",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Biofilm Inhibition",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "dehydrocostus_lactone",
+      "target": "lasr",
+      "relation": "Quorum Sensing Blockade"
+    },
+    {
+      "source": "lasr",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

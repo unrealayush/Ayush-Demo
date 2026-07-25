@@ -1,0 +1,12 @@
+{
+  "target_id": "peld",
+  "ligand_id": "baicalein",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 6.052,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    }
+  ]
+}

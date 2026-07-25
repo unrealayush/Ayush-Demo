@@ -1,0 +1,36 @@
+{
+  "target_id": "peld",
+  "ligand_id": "boeravinone_b",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 21.262,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 21.812,
+      "rmsd_lower_bound": 2.823,
+      "rmsd_upper_bound": 6.44
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": 22.676,
+      "rmsd_lower_bound": 2.477,
+      "rmsd_upper_bound": 6.454
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": 22.788,
+      "rmsd_lower_bound": 2.698,
+      "rmsd_upper_bound": 6.018
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": 24.097,
+      "rmsd_lower_bound": 1.275,
+      "rmsd_upper_bound": 6.984
+    }
+  ]
+}

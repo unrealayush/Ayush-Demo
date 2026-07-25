@@ -1,0 +1,60 @@
+{
+  "target_id": "pqsr",
+  "ligand_id": "demethoxycurcumin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -4.897,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -4.867,
+      "rmsd_lower_bound": 1.595,
+      "rmsd_upper_bound": 3.442
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -4.809,
+      "rmsd_lower_bound": 2.713,
+      "rmsd_upper_bound": 4.129
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -4.79,
+      "rmsd_lower_bound": 2.192,
+      "rmsd_upper_bound": 3.469
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -4.783,
+      "rmsd_lower_bound": 3.038,
+      "rmsd_upper_bound": 5.975
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -4.778,
+      "rmsd_lower_bound": 1.692,
+      "rmsd_upper_bound": 3.816
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -4.764,
+      "rmsd_lower_bound": 2.145,
+      "rmsd_upper_bound": 3.476
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -4.738,
+      "rmsd_lower_bound": 2.097,
+      "rmsd_upper_bound": 6.756
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -4.635,
+      "rmsd_lower_bound": 2.645,
+      "rmsd_upper_bound": 6.441
+    }
+  ]
+}

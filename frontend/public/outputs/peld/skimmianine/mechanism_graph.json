@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_skimmianine",
+      "label": "Skimmianine",
+      "type": "compound"
+    },
+    {
+      "id": "T_peld",
+      "label": "PelD",
+      "type": "target"
+    },
+    {
+      "id": "P_c-di-gmp_receptor_controlling_pel_polysaccharide_synthesis",
+      "label": "c-di-GMP receptor controlling Pel polysaccharide synthesis",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_eps_production_and_biofilm_architecture",
+      "label": "EPS production and biofilm architecture",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_skimmianine",
+      "target": "T_peld",
+      "relation": "binds_to (Hydrogen bond CYS318)"
+    },
+    {
+      "source": "T_peld",
+      "target": "P_c-di-gmp_receptor_controlling_pel_polysaccharide_synthesis",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_c-di-gmp_receptor_controlling_pel_polysaccharide_synthesis",
+      "target": "PH_eps_production_and_biofilm_architecture",
+      "relation": "contributes_to"
+    }
+  ]
+}

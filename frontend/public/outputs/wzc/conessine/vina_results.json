@@ -1,0 +1,60 @@
+{
+  "target_id": "wzc",
+  "ligand_id": "conessine",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.834,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -7.659,
+      "rmsd_lower_bound": 5.108,
+      "rmsd_upper_bound": 6.597
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -7.406,
+      "rmsd_lower_bound": 2.441,
+      "rmsd_upper_bound": 3.961
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -7.2,
+      "rmsd_lower_bound": 4.649,
+      "rmsd_upper_bound": 8.192
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -7.195,
+      "rmsd_lower_bound": 2.631,
+      "rmsd_upper_bound": 3.63
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -7.162,
+      "rmsd_lower_bound": 5.362,
+      "rmsd_upper_bound": 6.957
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -7.121,
+      "rmsd_lower_bound": 2.446,
+      "rmsd_upper_bound": 7.634
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -7.063,
+      "rmsd_lower_bound": 4.177,
+      "rmsd_upper_bound": 6.361
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -6.852,
+      "rmsd_lower_bound": 5.189,
+      "rmsd_upper_bound": 9.168
+    }
+  ]
+}

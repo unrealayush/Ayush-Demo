@@ -1,0 +1,60 @@
+{
+  "target_id": "agra",
+  "ligand_id": "bisdemethoxycurcumin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.063,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.962,
+      "rmsd_lower_bound": 2.901,
+      "rmsd_upper_bound": 5.514
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.856,
+      "rmsd_lower_bound": 1.501,
+      "rmsd_upper_bound": 2.144
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.651,
+      "rmsd_lower_bound": 1.494,
+      "rmsd_upper_bound": 1.705
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.65,
+      "rmsd_lower_bound": 12.247,
+      "rmsd_upper_bound": 15.024
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -6.604,
+      "rmsd_lower_bound": 1.908,
+      "rmsd_upper_bound": 2.984
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -6.544,
+      "rmsd_lower_bound": 2.608,
+      "rmsd_upper_bound": 6.316
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -6.491,
+      "rmsd_lower_bound": 2.374,
+      "rmsd_upper_bound": 5.154
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -6.476,
+      "rmsd_lower_bound": 1.516,
+      "rmsd_upper_bound": 5.86
+    }
+  ]
+}

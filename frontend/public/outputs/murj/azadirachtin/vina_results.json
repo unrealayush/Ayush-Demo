@@ -1,0 +1,24 @@
+{
+  "target_id": "murj",
+  "ligand_id": "azadirachtin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -3.364,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -2.382,
+      "rmsd_lower_bound": 7.214,
+      "rmsd_upper_bound": 11.552
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -1.364,
+      "rmsd_lower_bound": 6.601,
+      "rmsd_upper_bound": 11.211
+    }
+  ]
+}

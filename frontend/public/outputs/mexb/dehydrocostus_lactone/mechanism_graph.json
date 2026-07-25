@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_dehydrocostus_lactone",
+      "label": "Dehydrocostus_lactone",
+      "type": "compound"
+    },
+    {
+      "id": "T_mexb",
+      "label": "MexB",
+      "type": "target"
+    },
+    {
+      "id": "P_rnd_family_multidrug_efflux_transporter",
+      "label": "RND family multidrug efflux transporter",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_major_multidrug_resistance_mechanism",
+      "label": "Major multidrug resistance mechanism",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_dehydrocostus_lactone",
+      "target": "T_mexb",
+      "relation": "binds_to"
+    },
+    {
+      "source": "T_mexb",
+      "target": "P_rnd_family_multidrug_efflux_transporter",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_rnd_family_multidrug_efflux_transporter",
+      "target": "PH_major_multidrug_resistance_mechanism",
+      "relation": "contributes_to"
+    }
+  ]
+}

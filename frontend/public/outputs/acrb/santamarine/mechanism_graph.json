@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "santamarine",
+  "nodes": [
+    {
+      "id": "santamarine",
+      "type": "compound",
+      "label": "Santamarine"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "santamarine",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 5.6
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

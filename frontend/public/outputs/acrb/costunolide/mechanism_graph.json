@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "costunolide",
+  "nodes": [
+    {
+      "id": "costunolide",
+      "type": "compound",
+      "label": "Costunolide"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "costunolide",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 4.1
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

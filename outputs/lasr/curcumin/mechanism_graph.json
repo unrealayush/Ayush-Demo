@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "id": "curcumin",
+      "label": "Curcumin",
+      "type": "compound"
+    },
+    {
+      "id": "lasr",
+      "label": "LasR Receptor",
+      "type": "target"
+    },
+    {
+      "id": "phenotype",
+      "label": "Biofilm Inhibition",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "curcumin",
+      "target": "lasr",
+      "relation": "Quorum Sensing Blockade"
+    },
+    {
+      "source": "lasr",
+      "target": "phenotype",
+      "relation": "Triggers"
+    }
+  ]
+}

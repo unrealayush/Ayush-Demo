@@ -1,0 +1,12 @@
+{
+  "target_id": "peld",
+  "ligand_id": "liriodendrin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 74.236,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    }
+  ]
+}

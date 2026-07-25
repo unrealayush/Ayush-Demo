@@ -1,0 +1,25 @@
+compound_id,compound_name,pubchem_cid,chembl_id,canonical_smiles,molecular_formula,molecular_weight
+costunolide,Costunolide,5281437,CHEMBL_LEGACY_COSTUNOLIDE,None,Unknown,0.0
+dehydrocostus_lactone,Dehydrocostus lactone,73174,CHEMBL_LEGACY_DEHYDROCOSTUS_LACTONE,None,Unknown,0.0
+cynaropicrin,Cynaropicrin,5281773,CHEMBL_LEGACY_CYNAROPICRIN,None,Unknown,0.0
+santamarine,Santamarine,91457,CHEMBL_LEGACY_SANTAMARINE,None,Unknown,0.0
+conessine,Conessine,441072,CHEMBL_LEGACY_CONESSINE,None,Unknown,0.0
+baicalein,Baicalein,5281605,CHEMBL_LEGACY_BAICALEIN,None,Unknown,0.0
+oroxylin_a,Oroxylin A,5320315,CHEMBL_LEGACY_OROXYLIN_A,None,Unknown,0.0
+chrysin,Chrysin,5281607,CHEMBL_LEGACY_CHRYSIN,None,Unknown,0.0
+baicalin,Baicalin,64982,CHEMBL_LEGACY_BAICALIN,None,Unknown,0.0
+magnoflorine,Magnoflorine,73337,CHEMBL_LEGACY_MAGNOFLORINE,None,Unknown,0.0
+aegeline,Aegeline,15558450,CHEMBL_LEGACY_AEGELINE,None,Unknown,0.0
+imperatorin,Imperatorin,10212,CHEMBL_LEGACY_IMPERATORIN,None,Unknown,0.0
+skimmianine,Skimmianine,23475,CHEMBL_LEGACY_SKIMMIANINE,None,Unknown,0.0
+boeravinone_b,Boeravinone B,5318767,CHEMBL_LEGACY_BOERAVINONE_B,None,Unknown,0.0
+liriodendrin,Liriodendrin,3084137,CHEMBL_LEGACY_LIRIODENDRIN,None,Unknown,0.0
+nimbolide,Nimbolide,100017,CHEMBL_LEGACY_NIMBOLIDE,None,Unknown,0.0
+nimbin,Nimbin,102095200,CHEMBL_LEGACY_NIMBIN,None,Unknown,0.0
+azadirachtin,Azadirachtin,5281303,CHEMBL_LEGACY_AZADIRACHTIN,None,Unknown,0.0
+eugenol,Eugenol,3314,CHEMBL_LEGACY_EUGENOL,None,Unknown,0.0
+ursolic_acid,Ursolic acid,64945,CHEMBL_LEGACY_URSOLIC_ACID,None,Unknown,0.0
+rosmarinic_acid,Rosmarinic acid,5281792,CHEMBL_LEGACY_ROSMARINIC_ACID,None,Unknown,0.0
+curcumin,Curcumin,969516,CHEMBL_LEGACY_CURCUMIN,None,Unknown,0.0
+demethoxycurcumin,Demethoxycurcumin,5469424,CHEMBL_LEGACY_DEMETHOXYCURCUMIN,None,Unknown,0.0
+bisdemethoxycurcumin,Bisdemethoxycurcumin,5315472,CHEMBL_LEGACY_BISDEMETHOXYCURCUMIN,None,Unknown,0.0

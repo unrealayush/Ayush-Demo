@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "C_costunolide",
+      "label": "Costunolide",
+      "type": "compound"
+    },
+    {
+      "id": "T_agra",
+      "label": "AgrA",
+      "type": "target"
+    },
+    {
+      "id": "P_agra",
+      "label": "Virulence Regulation",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_agra",
+      "label": "Biofilm Initiation",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_costunolide",
+      "target": "T_agra",
+      "relation": "binds_to"
+    },
+    {
+      "source": "T_agra",
+      "target": "P_agra",
+      "relation": "regulates"
+    },
+    {
+      "source": "P_agra",
+      "target": "PH_agra",
+      "relation": "drives"
+    },
+    {
+      "source": "C_costunolide",
+      "target": "PH_agra",
+      "relation": "inhibits"
+    }
+  ]
+}

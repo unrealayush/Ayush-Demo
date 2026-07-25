@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "oroxylin_a",
+  "nodes": [
+    {
+      "id": "oroxylin_a",
+      "type": "compound",
+      "label": "Oroxylin A"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "oroxylin_a",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 6.3
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

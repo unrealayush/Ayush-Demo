@@ -1,0 +1,18 @@
+{
+  "target_id": "peld",
+  "ligand_id": "oroxylin_a",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 9.2,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 10.095,
+      "rmsd_lower_bound": 1.688,
+      "rmsd_upper_bound": 2.146
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "target_id": "pqsr",
+  "ligand_id": "liriodendrin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": 10.894,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": 11.81,
+      "rmsd_lower_bound": 0.899,
+      "rmsd_upper_bound": 1.921
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": 12.317,
+      "rmsd_lower_bound": 1.808,
+      "rmsd_upper_bound": 2.877
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": 12.583,
+      "rmsd_lower_bound": 7.428,
+      "rmsd_upper_bound": 12.298
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": 13.302,
+      "rmsd_lower_bound": 6.92,
+      "rmsd_upper_bound": 10.064
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": 13.418,
+      "rmsd_lower_bound": 6.243,
+      "rmsd_upper_bound": 9.484
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": 13.858,
+      "rmsd_lower_bound": 1.555,
+      "rmsd_upper_bound": 13.329
+    }
+  ]
+}

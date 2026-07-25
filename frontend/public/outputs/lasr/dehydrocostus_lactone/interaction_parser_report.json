@@ -1,0 +1,7 @@
+{
+  "parser_version": "1.0",
+  "receptor_file": "data/prepared/targets/lasr/clean_receptor.pdb",
+  "ligand_file": "/opt/services/outputs/lasr/dehydrocostus_lactone/vina_pose.pdbqt",
+  "total_interactions_found": 20,
+  "status": "SUCCESS"
+}

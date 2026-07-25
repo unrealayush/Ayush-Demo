@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_skimmianine",
+      "label": "Skimmianine",
+      "type": "compound"
+    },
+    {
+      "id": "T_ompk36",
+      "label": "OmpK36",
+      "type": "target"
+    },
+    {
+      "id": "P_outer_membrane_porin",
+      "label": "Outer membrane porin",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_carbapenem_uptake_and_resistance_regulation",
+      "label": "Carbapenem uptake and resistance regulation",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_skimmianine",
+      "target": "T_ompk36",
+      "relation": "binds_to (Hydrogen bond LYS668)"
+    },
+    {
+      "source": "T_ompk36",
+      "target": "P_outer_membrane_porin",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_outer_membrane_porin",
+      "target": "PH_carbapenem_uptake_and_resistance_regulation",
+      "relation": "contributes_to"
+    }
+  ]
+}

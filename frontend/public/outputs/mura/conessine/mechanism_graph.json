@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "conessine",
+  "nodes": [
+    {
+      "id": "conessine",
+      "type": "compound",
+      "label": "Conessine"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "conessine",
+      "target": "mura",
+      "type": "binds",
+      "weight": 7.3
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

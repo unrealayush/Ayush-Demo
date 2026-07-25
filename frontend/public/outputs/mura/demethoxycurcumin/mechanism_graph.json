@@ -1,0 +1,35 @@
+{
+  "target_id": "mura",
+  "ligand_id": "demethoxycurcumin",
+  "nodes": [
+    {
+      "id": "demethoxycurcumin",
+      "type": "compound",
+      "label": "Demethoxycurcumin"
+    },
+    {
+      "id": "mura",
+      "type": "protein",
+      "label": "MURA"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "demethoxycurcumin",
+      "target": "mura",
+      "type": "binds",
+      "weight": 6.4
+    },
+    {
+      "source": "mura",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

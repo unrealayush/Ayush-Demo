@@ -1,0 +1,24 @@
+{
+  "target_id": "murj",
+  "ligand_id": "nimbolide",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -8.338,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.638,
+      "rmsd_lower_bound": 4.22,
+      "rmsd_upper_bound": 11.191
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -5.533,
+      "rmsd_lower_bound": 1.715,
+      "rmsd_upper_bound": 4.813
+    }
+  ]
+}

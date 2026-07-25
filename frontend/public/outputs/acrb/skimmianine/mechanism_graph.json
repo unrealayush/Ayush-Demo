@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "skimmianine",
+  "nodes": [
+    {
+      "id": "skimmianine",
+      "type": "compound",
+      "label": "Skimmianine"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "skimmianine",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 4.8
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

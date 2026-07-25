@@ -1,0 +1,35 @@
+{
+  "target_id": "acrb",
+  "ligand_id": "azadirachtin",
+  "nodes": [
+    {
+      "id": "azadirachtin",
+      "type": "compound",
+      "label": "Azadirachtin"
+    },
+    {
+      "id": "acrb",
+      "type": "protein",
+      "label": "ACRB"
+    },
+    {
+      "id": "biofilm_decay",
+      "type": "phenotype",
+      "label": "Biofilm Inhibition"
+    }
+  ],
+  "edges": [
+    {
+      "source": "azadirachtin",
+      "target": "acrb",
+      "type": "binds",
+      "weight": 3.9
+    },
+    {
+      "source": "acrb",
+      "target": "biofilm_decay",
+      "type": "downregulates",
+      "weight": 0.9
+    }
+  ]
+}

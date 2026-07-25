@@ -1,0 +1,36 @@
+{
+  "target_id": "pqsr",
+  "ligand_id": "azadirachtin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -4.222,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -3.421,
+      "rmsd_lower_bound": 1.691,
+      "rmsd_upper_bound": 2.271
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -3.125,
+      "rmsd_lower_bound": 1.932,
+      "rmsd_upper_bound": 5.069
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -2.941,
+      "rmsd_lower_bound": 2.78,
+      "rmsd_upper_bound": 5.098
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -2.28,
+      "rmsd_lower_bound": 2.07,
+      "rmsd_upper_bound": 8.668
+    }
+  ]
+}

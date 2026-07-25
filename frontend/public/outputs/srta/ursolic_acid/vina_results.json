@@ -1,0 +1,60 @@
+{
+  "target_id": "srta",
+  "ligand_id": "ursolic_acid",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -7.023,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -6.947,
+      "rmsd_lower_bound": 1.422,
+      "rmsd_upper_bound": 7.47
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -6.726,
+      "rmsd_lower_bound": 1.639,
+      "rmsd_upper_bound": 2.354
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -6.636,
+      "rmsd_lower_bound": 2.95,
+      "rmsd_upper_bound": 7.994
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -6.275,
+      "rmsd_lower_bound": 4.019,
+      "rmsd_upper_bound": 9.34
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -6.238,
+      "rmsd_lower_bound": 3.423,
+      "rmsd_upper_bound": 7.651
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": -6.168,
+      "rmsd_lower_bound": 3.406,
+      "rmsd_upper_bound": 6.111
+    },
+    {
+      "mode": 8,
+      "affinity_kcal_mol": -6.151,
+      "rmsd_lower_bound": 7.042,
+      "rmsd_upper_bound": 10.848
+    },
+    {
+      "mode": 9,
+      "affinity_kcal_mol": -6.083,
+      "rmsd_lower_bound": 3.198,
+      "rmsd_upper_bound": 5.284
+    }
+  ]
+}

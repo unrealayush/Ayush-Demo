@@ -1,0 +1,48 @@
+{
+  "target_id": "mexb",
+  "ligand_id": "baicalin",
+  "results": [
+    {
+      "mode": 1,
+      "affinity_kcal_mol": -0.571,
+      "rmsd_lower_bound": 0.0,
+      "rmsd_upper_bound": 0.0
+    },
+    {
+      "mode": 2,
+      "affinity_kcal_mol": -0.514,
+      "rmsd_lower_bound": 3.826,
+      "rmsd_upper_bound": 9.781
+    },
+    {
+      "mode": 3,
+      "affinity_kcal_mol": -0.474,
+      "rmsd_lower_bound": 2.106,
+      "rmsd_upper_bound": 4.118
+    },
+    {
+      "mode": 4,
+      "affinity_kcal_mol": -0.403,
+      "rmsd_lower_bound": 4.711,
+      "rmsd_upper_bound": 7.749
+    },
+    {
+      "mode": 5,
+      "affinity_kcal_mol": -0.389,
+      "rmsd_lower_bound": 3.189,
+      "rmsd_upper_bound": 9.217
+    },
+    {
+      "mode": 6,
+      "affinity_kcal_mol": -0.357,
+      "rmsd_lower_bound": 4.111,
+      "rmsd_upper_bound": 7.883
+    },
+    {
+      "mode": 7,
+      "affinity_kcal_mol": 1.121,
+      "rmsd_lower_bound": 2.931,
+      "rmsd_upper_bound": 4.353
+    }
+  ]
+}

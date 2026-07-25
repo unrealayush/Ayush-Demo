@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_liriodendrin",
+      "label": "Liriodendrin",
+      "type": "compound"
+    },
+    {
+      "id": "T_mrkh",
+      "label": "MrkH",
+      "type": "target"
+    },
+    {
+      "id": "P_regulates_type_iii_fimbriae",
+      "label": "Regulates type III fimbriae",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_surface_attachment_and_biofilm_formation",
+      "label": "Surface attachment and biofilm formation",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_liriodendrin",
+      "target": "T_mrkh",
+      "relation": "binds_to (Hydrogen bond SER346)"
+    },
+    {
+      "source": "T_mrkh",
+      "target": "P_regulates_type_iii_fimbriae",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_regulates_type_iii_fimbriae",
+      "target": "PH_surface_attachment_and_biofilm_formation",
+      "relation": "contributes_to"
+    }
+  ]
+}

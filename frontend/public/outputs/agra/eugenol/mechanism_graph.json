@@ -1,0 +1,41 @@
+{
+  "nodes": [
+    {
+      "id": "C_eugenol",
+      "label": "Eugenol",
+      "type": "compound"
+    },
+    {
+      "id": "T_agra",
+      "label": "AgrA",
+      "type": "target"
+    },
+    {
+      "id": "P_response_regulator_of_agr_system",
+      "label": "Response regulator of Agr system",
+      "type": "pathway"
+    },
+    {
+      "id": "PH_controls_toxins,_virulence_and_biofilm_dispersal",
+      "label": "Controls toxins, virulence and biofilm dispersal",
+      "type": "phenotype"
+    }
+  ],
+  "edges": [
+    {
+      "source": "C_eugenol",
+      "target": "T_agra",
+      "relation": "binds_to (Hydrogen bond ASN201)"
+    },
+    {
+      "source": "T_agra",
+      "target": "P_response_regulator_of_agr_system",
+      "relation": "has_function"
+    },
+    {
+      "source": "P_response_regulator_of_agr_system",
+      "target": "PH_controls_toxins,_virulence_and_biofilm_dispersal",
+      "relation": "contributes_to"
+    }
+  ]
+}
