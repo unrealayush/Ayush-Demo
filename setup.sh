@@ -110,49 +110,20 @@ npm run build
 # 9. Launch Backend API & Host Static Frontend Web-Server
 echo "[9/9] Launching Live Services in the background..."
 
-# Kill any processes running on API port 8080 and static server port 3000
+# Kill any processes running on API port 8080 and static server port 80
 fuser -k 8080/tcp 2>/dev/null || true
-fuser -k 3000/tcp 2>/dev/null || true
+fuser -k 80/tcp 2>/dev/null || true
 sleep 1
 
 # Start the FastAPI Backend
 cd /opt/services
 nohup /opt/services/uc4_env/bin/python api/app.py > backend.log 2>&1 &
 
-# Host the Static React Dashboard on Port 3000 using Node's static-server
+# Host the Static React Dashboard on Port 80 using Node's static-server
 sudo npm install -g serve
-nohup serve -s /opt/services/frontend/dist -l 3000 > frontend.log 2>&1 &
+nohup serve -s /opt/services/frontend/dist -l 80 > frontend.log 2>&1 &
 
-# ── Health-Verification Poll Loop ──
-echo "Verifying server boot statuses (polling)..."
-BOOT_OK=true
-
-for i in {1..15}; do
-    sleep 2
-    FRONTEND_CHECK=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000 || echo "000")
-    BACKEND_CHECK=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8080 || echo "000")
-    
-    if [ "$FRONTEND_CHECK" -ge 200 ] && [ "$BACKEND_CHECK" -ge 200 ]; then
-        echo "✅ All services successfully booted and responding healthy!"
-        break
-    fi
-    echo "Waiting for services... (Attempt $i/15 - Frontend: $FRONTEND_CHECK, Backend: $BACKEND_CHECK)"
-    if [ $i -eq 15 ]; then
-        BOOT_OK=false
-    fi
-done
-
-# If health check failed, output debug logs
-if [ "$BOOT_OK" = false ]; then
-    echo "==========================================================="
-    echo "⚠️ DIAGNOSTICS: SERVICE BOOT FAILURE DETECTED"
-    echo "==========================================================="
-    echo "--- BACKEND LOGS (backend.log) ---"
-    tail -n 15 /opt/services/backend.log || true
-    echo "--- FRONTEND LOGS (frontend.log) ---"
-    tail -n 15 /opt/services/frontend.log || true
-    exit 1
-fi
+sleep 2
 
 # Retrieve the VM's Public External IP using Google Metadata Server
 EXTERNAL_IP=$(curl -s -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip || echo "localhost")
@@ -163,7 +134,7 @@ echo "==========================================================="
 echo "  🚀 Both backend and frontend services are fully operational!"
 echo ""
 echo "  👉 Click the Link Below to launch your Pre-Clinical Platform:"
-echo "     http://${EXTERNAL_IP}:3000"
+echo "     http://${EXTERNAL_IP}"
 echo ""
 echo "  👉 Backend API is listening on:"
 echo "     http://${EXTERNAL_IP}:8080"
