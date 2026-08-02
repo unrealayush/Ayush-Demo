@@ -1,25 +1,25 @@
 Rank,Compound ID,Compound Name,Vina Affinity (kcal/mol),DiffDock Confidence,Hydrogen Bonds,Hydrophobic Contacts,Validation Priority Score,Preclinical Decision,Evidence Strength
-1,azadirachtin,Azadirachtin,-7.95,1.45,3,4,79.7,Consider for wet-lab validation,Moderate preclinical plausibility
-2,ursolic_acid,Ursolic acid,-8.12,1.3,3,4,79.0,Consider for wet-lab validation,Moderate preclinical plausibility
-3,boeravinone_b,Boeravinone B,-7.54,1.15,2,5,72.7,Consider for wet-lab validation,Moderate preclinical plausibility
-4,nimbin,Nimbin,-7.32,1.05,3,3,72.1,Consider for wet-lab validation,Moderate preclinical plausibility
-5,chrysin,Chrysin,-7.12,0.96,2,4,67.6,Consider for wet-lab validation,Moderate preclinical plausibility
-6,costunolide,Costunolide,-7.13,0.85,2,4,66.7,Consider for wet-lab validation,Moderate preclinical plausibility
-7,cynaropicrin,Cynaropicrin,-6.45,0.72,2,3,61.3,Consider for wet-lab validation,Moderate preclinical plausibility
-8,conessine,Conessine,-6.21,0.6,2,3,59.5,Review manually,Low preclinical plausibility
-9,dehydrocostus_lactone,Dehydrocostus lactone,-6.32,0.52,2,2,57.2,Review manually,Low preclinical plausibility
-10,curcumin,Curcumin,-6.31,0.4,2,2,56.0,Review manually,Low preclinical plausibility
-11,rosmarinic_acid,Rosmarinic acid,-5.84,0.31,1,3,50.7,Review manually,Low preclinical plausibility
-12,oroxylin_a,Oroxylin A,-5.51,0.22,1,2,46.8,Review manually,Low preclinical plausibility
-13,baicalein,Baicalein,-5.42,0.15,1,2,45.9,Review manually,Low preclinical plausibility
-14,santamarine,Santamarine,-5.54,0.05,1,2,45.4,Review manually,Low preclinical plausibility
-15,nimbolide,Nimbolide,0.0,-0.15,4,6,41.2,Review manually,Low preclinical plausibility
-16,aegeline,Aegeline,-5.21,-0.05,0,3,40.5,Review manually,Low preclinical plausibility
-17,demethoxycurcumin,Demethoxycurcumin,-5.12,-0.12,1,1,40.5,Review manually,Low preclinical plausibility
-18,liriodendrin,Liriodendrin,0.0,-0.28,3,5,40.0,Review manually,Low preclinical plausibility
-19,baicalin,Baicalin,0.0,-0.42,4,4,38.8,Review manually,Low preclinical plausibility
-20,bisdemethoxycurcumin,Bisdemethoxycurcumin,-4.91,-0.2,0,2,36.2,Review manually,Low preclinical plausibility
-21,eugenol,Eugenol,-4.42,-0.35,0,2,33.1,Review manually,Low preclinical plausibility
-22,magnoflorine,Magnoflorine,-4.51,-0.42,0,1,30.8,Review manually,Low preclinical plausibility
-23,imperatorin,Imperatorin,-4.32,-0.55,0,1,29.1,Review manually,Low preclinical plausibility
-24,skimmianine,Skimmianine,-4.11,-0.62,0,1,27.8,Review manually,Low preclinical plausibility
+1,aegeline,Aegeline,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+2,azadirachtin,Azadirachtin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+3,baicalein,Baicalein,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+4,baicalin,Baicalin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+5,bisdemethoxycurcumin,Bisdemethoxycurcumin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+6,boeravinone_b,Boeravinone B,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+7,chrysin,Chrysin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+8,conessine,Conessine,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+9,costunolide,Costunolide,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+10,curcumin,Curcumin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+11,cynaropicrin,Cynaropicrin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+12,dehydrocostus_lactone,Dehydrocostus lactone,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+13,demethoxycurcumin,Demethoxycurcumin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+14,eugenol,Eugenol,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+15,imperatorin,Imperatorin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+16,liriodendrin,Liriodendrin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+17,magnoflorine,Magnoflorine,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+18,nimbin,Nimbin,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+19,nimbolide,Nimbolide,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+20,oroxylin_a,Oroxylin A,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+21,rosmarinic_acid,Rosmarinic acid,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+22,santamarine,Santamarine,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+23,skimmianine,Skimmianine,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility
+24,ursolic_acid,Ursolic acid,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility

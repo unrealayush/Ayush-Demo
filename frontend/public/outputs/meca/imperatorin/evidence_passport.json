@@ -1,26 +1,26 @@
 {
-  "passport_id": "EP-SRTA-COSTU-001",
-  "generated_at": "2026-06-28T10:10:10.157228+00:00",
-  "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+  "passport_id": "EP-MECA-IMPER-001",
+  "generated_at": "2026-08-01T19:43:00.397382+00:00",
+  "executive_summary": "Imperatorin demonstrates in-silico binding potential to Staphylococcus aureus PBP2a / MecA. The interaction yields a validation priority score of 52.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {
-      "entity": "Sortase A Structure",
+      "entity": "PBP2a / MecA Structure",
       "source": "RCSB_PDB",
-      "accession_or_url": "6R1V"
+      "accession_or_url": "1VQQ"
     },
     {
-      "entity": "Costunolide",
+      "entity": "Imperatorin",
       "source": "PubChem",
-      "accession_or_url": "CID 5281437"
+      "accession_or_url": "CID 10212"
     },
     {
       "entity": "Context",
-      "source": "Unknown",
-      "accession_or_url": "PUBCHEM_CID_5281437"
+      "source": "PubChem",
+      "accession_or_url": "PUBCHEM_CID_10212"
     }
   ],
   "next_validation_steps": [
     "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
-    "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+    "AI-driven docking confidence (-1.60) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
   ]
 }

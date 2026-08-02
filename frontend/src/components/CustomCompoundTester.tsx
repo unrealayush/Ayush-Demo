@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   FlaskConical,
   Play,
@@ -7,7 +7,9 @@ import {
   Terminal,
   X,
   Sparkles,
-  Cpu
+  Cpu,
+  AlertCircle,
+  RotateCcw
 } from 'lucide-react';
 import axios from 'axios';
 
@@ -32,13 +34,33 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
   availableTargets
 }) => {
   const [compoundName, setCompoundName] = useState('Withaferin A (Custom Ayush Active)');
-  const [smiles, setSmiles] = useState('CC1=C2C(C(=O)O1)CC3C2(CCC4C3C(=O)C5(C4(C=CC(=O)O5)C)O)C');
+  const [smiles, setSmiles] = useState('CC1CC2C(CC3C2(CC(C4C3(CC(=O)C=C4)C)O)O)OC1=O');
   const [targetId, setTargetId] = useState('PqsR');
   const [engine, setEngine] = useState<'combined' | 'vina' | 'diffdock'>('combined');
   const [isDocking, setIsDocking] = useState(false);
   const [progress, setProgress] = useState(0);
   const [logs, setLogs] = useState<string[]>([]);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [runError, setRunError] = useState<string | null>(null);
+  const [runId, setRunId] = useState<string | null>(null);
+  const [elapsed, setElapsed] = useState(0);
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const logEndRef = useRef<HTMLDivElement>(null);
+
+  // Auto-scroll logs to bottom
+  useEffect(() => {
+    if (logEndRef.current) {
+      logEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [logs]);
+
+  // Cleanup polling on unmount
+  useEffect(() => {
+    return () => {
+      if (pollRef.current) clearInterval(pollRef.current);
+    };
+  }, []);
 
   if (!isOpen) return null;
 
@@ -46,51 +68,141 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
     const file = e.target.files?.[0];
     if (file) {
       setFileName(file.name);
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const text = event.target?.result as string;
-        if (text && text.length > 5) {
-          // Attempt to extract SMILES or use raw text
-          setSmiles(text.split('\n')[0].trim());
-        }
-      };
-      reader.readAsText(file);
+      setUploadedFile(file);
+      // If it's a text-based file, try to extract SMILES
+      if (file.name.endsWith('.txt') || file.name.endsWith('.smi')) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const text = event.target?.result as string;
+          if (text && text.length > 5) {
+            setSmiles(text.split('\n')[0].trim());
+          }
+        };
+        reader.readAsText(file);
+      }
     }
+  };
+
+  const stopPolling = () => {
+    if (pollRef.current) {
+      clearInterval(pollRef.current);
+      pollRef.current = null;
+    }
+  };
+
+  const pollStatus = () => {
+    pollRef.current = setInterval(async () => {
+      try {
+        const res = await axios.get('/api/run/custom/status');
+        const data = res.data;
+
+        setProgress(data.progress || 0);
+        setElapsed(data.elapsed || 0);
+
+        if (data.logs && data.logs.length > 0) {
+          setLogs(data.logs);
+        }
+
+        if (data.status === 'Completed') {
+          stopPolling();
+
+          // Fetch final results
+          try {
+            const resultRes = await axios.get('/api/run/custom/results');
+            const result = resultRes.data;
+
+            if (result.status === 'success') {
+              setLogs(prev => [
+                ...prev,
+                `[${new Date().toLocaleTimeString()}] ✅ REAL PIPELINE COMPLETED`,
+                `[${new Date().toLocaleTimeString()}] Vina Affinity: ${result.vinaAffinity} kcal/mol`,
+                `[${new Date().toLocaleTimeString()}] DiffDock Confidence: ${result.diffdockConfidence}`,
+                `[${new Date().toLocaleTimeString()}] Priority Score: ${result.priorityScore}/100`,
+                `[${new Date().toLocaleTimeString()}] Files Generated: ${result.filesGenerated}`,
+                `[${new Date().toLocaleTimeString()}] Decision: ${result.decision}`
+              ]);
+
+              setTimeout(() => {
+                setIsDocking(false);
+                onRunSuccess({
+                  targetId: result.targetId,
+                  compoundId: result.compoundId,
+                  compoundName: result.compoundName,
+                  vinaAffinity: result.vinaAffinity || 0,
+                  diffdockConfidence: result.diffdockConfidence || 0,
+                  priorityScore: result.priorityScore || 0
+                });
+                // Reset the custom run state for next run
+                axios.post('/api/run/custom/reset').catch(() => {});
+                onClose();
+              }, 2000);
+            } else {
+              setRunError('Pipeline completed but could not parse results.');
+              setIsDocking(false);
+            }
+          } catch (err) {
+            setRunError('Pipeline completed but failed to fetch results.');
+            setIsDocking(false);
+          }
+        } else if (data.status === 'Failed') {
+          stopPolling();
+          setRunError(data.error || 'Pipeline execution failed.');
+          setIsDocking(false);
+          // Reset for next run
+          axios.post('/api/run/custom/reset').catch(() => {});
+        }
+      } catch (err) {
+        // Network error during polling — keep trying
+        console.warn('Poll error:', err);
+      }
+    }, 2000); // Poll every 2 seconds
   };
 
   const handleRunDocking = async () => {
     setIsDocking(true);
-    setProgress(5);
+    setProgress(0);
+    setRunError(null);
+    setElapsed(0);
     setLogs([
-      `[${new Date().toLocaleTimeString()}] Initializing custom compound docking pipeline...`,
+      `[${new Date().toLocaleTimeString()}] Initializing real pipeline execution...`,
       `[${new Date().toLocaleTimeString()}] Target: ${targetId} | Engine: ${engine.toUpperCase()}`,
       `[${new Date().toLocaleTimeString()}] Compound: "${compoundName}"`
     ]);
 
-    // Animated log stream simulation & backend trigger
-    setTimeout(() => {
-      setProgress(25);
-      setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] Parsing molecular SMILES string & 3D conformer generation...`]);
-    }, 600);
-    setTimeout(() => {
-      setProgress(50);
-      setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] Spawning AutoDock Vina thermodynamic grid search (center_x=12.4, size=20.0)...`]);
-    }, 1400);
-    setTimeout(() => {
-      setProgress(75);
-      setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] Executing DiffDock-L PyTorch spatial diffusion model inference on VM GPU...`]);
-    }, 2200);
-    setTimeout(() => {
-      setProgress(90);
-      setLogs(prev => [...prev, `[${new Date().toLocaleTimeString()}] Computing non-covalent interaction maps & Evidence Passport...`]);
-    }, 3000);
-
     try {
-      // Call backend API (if available) or generate real response
       const cleanCompoundId = compoundName.toLowerCase().replace(/[^a-z0-9]/g, '_');
-      
-      let resData = null;
-      try {
+
+      // Check if user uploaded SDF/PDBQT files
+      if (uploadedFile && (uploadedFile.name.endsWith('.sdf') || uploadedFile.name.endsWith('.pdbqt') || uploadedFile.name.endsWith('.pdb'))) {
+        // Use multipart upload endpoint
+        const formData = new FormData();
+        formData.append('target_id', targetId.toLowerCase());
+        formData.append('compound_name', compoundName);
+        formData.append('compound_id', cleanCompoundId);
+        formData.append('engine', engine);
+        
+        if (smiles) {
+          formData.append('smiles', smiles);
+        }
+
+        if (uploadedFile.name.endsWith('.sdf')) {
+          formData.append('ligand_sdf', uploadedFile);
+        } else if (uploadedFile.name.endsWith('.pdbqt')) {
+          formData.append('ligand_pdbqt', uploadedFile);
+        }
+
+        const res = await axios.post('/api/run/custom-upload', formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
+        setRunId(res.data.run_id);
+        setLogs(prev => [
+          ...prev,
+          `[${new Date().toLocaleTimeString()}] Pipeline triggered on VM. Run ID: ${res.data.run_id}`,
+          `[${new Date().toLocaleTimeString()}] Uploaded file: ${uploadedFile.name}`,
+          `[${new Date().toLocaleTimeString()}] Waiting for real-time VM execution logs...`
+        ]);
+      } else {
+        // Use JSON endpoint with SMILES
         const res = await axios.post('/api/run/custom', {
           target_id: targetId.toLowerCase(),
           compound_name: compoundName,
@@ -98,41 +210,31 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
           smiles: smiles,
           engine: engine
         });
-        resData = res.data;
-      } catch (err) {
-        console.warn('Backend API endpoint call fallback to dynamic engine calculation', err);
-      }
-
-      setTimeout(() => {
-        setProgress(100);
+        setRunId(res.data.run_id);
         setLogs(prev => [
           ...prev,
-          `[${new Date().toLocaleTimeString()}] ✅ In-Silico Docking & Evidence Passport generated successfully!`,
-          `[${new Date().toLocaleTimeString()}] Calculated Vina Affinity: -7.84 kcal/mol`,
-          `[${new Date().toLocaleTimeString()}] DiffDock Confidence Score: +1.42 (HIGH CONFIDENCE)`,
-          `[${new Date().toLocaleTimeString()}] Validation Priority Score: 78.5 / 100`
+          `[${new Date().toLocaleTimeString()}] Pipeline triggered on VM. Run ID: ${res.data.run_id}`,
+          `[${new Date().toLocaleTimeString()}] Waiting for real-time VM execution logs...`
         ]);
+      }
 
-        const resultObj = resData || {
-          targetId: targetId,
-          compoundId: cleanCompoundId,
-          compoundName: compoundName,
-          vinaAffinity: -7.84,
-          diffdockConfidence: 1.42,
-          priorityScore: 78.5
-        };
+      // Start polling for real status updates
+      setProgress(5);
+      pollStatus();
 
-        setTimeout(() => {
-          setIsDocking(false);
-          onRunSuccess(resultObj);
-          onClose();
-        }, 1200);
-      }, 3800);
-
-    } catch (e) {
-      console.error('Error during docking run:', e);
+    } catch (e: any) {
+      const errMsg = e?.response?.data?.message || e?.response?.data?.detail || e?.message || 'Unknown error';
+      setRunError(`Failed to trigger pipeline: ${errMsg}`);
       setIsDocking(false);
+      console.error('Error triggering docking:', e);
     }
+  };
+
+  const formatElapsed = (seconds: number) => {
+    if (seconds < 60) return `${seconds.toFixed(1)}s`;
+    const mins = Math.floor(seconds / 60);
+    const secs = (seconds % 60).toFixed(0);
+    return `${mins}m ${secs}s`;
   };
 
   return (
@@ -148,11 +250,11 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
             <div>
               <h2 className="text-base font-bold text-slate-100 flex items-center gap-2">
                 Test Custom Ayush Compound
-                <span className="px-2 py-0.5 rounded text-[10px] uppercase font-mono font-bold bg-cyan-950 text-cyan-400 border border-cyan-800">
-                  Live Cross-Verification
+                <span className="px-2 py-0.5 rounded text-[10px] uppercase font-mono font-bold bg-emerald-950 text-emerald-400 border border-emerald-800">
+                  Real VM Execution
                 </span>
               </h2>
-              <p className="text-xs text-slate-400">Run physics-based docking & generative AI on a new compound or target</p>
+              <p className="text-xs text-slate-400">Runs real AutoDock Vina + DiffDock-L on NVIDIA L4 GPU — delivers 11 output files</p>
             </div>
           </div>
           <button
@@ -186,11 +288,11 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
           <div>
             <div className="flex items-center justify-between mb-2">
               <label className="text-xs font-bold uppercase tracking-wider text-slate-300">
-                2. Chemical Structure (SMILES string or File)
+                2. Chemical Structure (SMILES string or Upload File)
               </label>
               <label className="text-xs text-cyan-400 cursor-pointer hover:underline flex items-center gap-1">
                 <Upload className="w-3.5 h-3.5" />
-                Upload .SDF / .PDBQT
+                Upload .SDF / .PDBQT / .PDB
                 <input
                   type="file"
                   accept=".sdf,.pdbqt,.mol2,.pdb,.txt"
@@ -252,15 +354,29 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
             </div>
           </div>
 
+          {/* Error Display */}
+          {runError && (
+            <div className="flex items-start gap-2 p-3 bg-red-950/50 border border-red-500/30 rounded-lg text-xs text-red-300">
+              <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-bold mb-1">Pipeline Error</p>
+                <p className="font-mono">{runError}</p>
+              </div>
+            </div>
+          )}
+
           {/* Live Progress Bar & Console Log Terminal */}
           {isDocking && (
             <div className="space-y-2 bg-slate-950 border border-cyan-900/60 rounded-xl p-4 animate-in fade-in duration-300">
               <div className="flex items-center justify-between text-xs font-mono font-bold text-cyan-400">
                 <span className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 animate-spin text-cyan-400" />
-                  Running In-Silico Docking Simulation...
+                  Executing Real Pipeline on VM GPU...
                 </span>
-                <span>{progress}%</span>
+                <div className="flex items-center gap-3">
+                  <span className="text-slate-500">{formatElapsed(elapsed)}</span>
+                  <span>{progress}%</span>
+                </div>
               </div>
               <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
                 <div
@@ -269,14 +385,51 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
                 />
               </div>
 
+              {/* Pipeline Stage Indicators */}
+              <div className="flex items-center gap-1 mt-1">
+                {[
+                  { label: 'Prep', threshold: 15 },
+                  { label: 'Vina', threshold: 30 },
+                  { label: 'DiffDock', threshold: 50 },
+                  { label: 'Interactions', threshold: 70 },
+                  { label: 'MoA Graph', threshold: 75 },
+                  { label: 'Score', threshold: 80 },
+                  { label: 'Passport', threshold: 85 },
+                ].map((stage) => (
+                  <span
+                    key={stage.label}
+                    className={`px-1.5 py-0.5 rounded text-[8px] font-bold font-mono border ${
+                      progress >= stage.threshold
+                        ? 'bg-emerald-950 text-emerald-400 border-emerald-800'
+                        : progress >= stage.threshold - 10
+                        ? 'bg-cyan-950 text-cyan-400 border-cyan-800 animate-pulse'
+                        : 'bg-slate-900 text-slate-600 border-slate-800'
+                    }`}
+                  >
+                    {progress >= stage.threshold ? '✓' : ''} {stage.label}
+                  </span>
+                ))}
+              </div>
+
               {/* Terminal Logs */}
-              <div className="mt-3 bg-slate-950 rounded-lg p-3 border border-slate-800 max-h-36 overflow-y-auto font-mono text-[11px] space-y-1">
+              <div className="mt-3 bg-slate-950 rounded-lg p-3 border border-slate-800 max-h-48 overflow-y-auto font-mono text-[11px] space-y-0.5">
                 {logs.map((log, index) => (
-                  <div key={index} className="text-slate-300 flex items-start gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-cyan-500 shrink-0 mt-0.5" />
+                  <div key={index} className={`flex items-start gap-1.5 ${
+                    log.includes('ERROR') || log.includes('FATAL') || log.includes('❌')
+                      ? 'text-red-400'
+                      : log.includes('SUCCESS') || log.includes('✅') || log.includes('✓')
+                      ? 'text-emerald-400'
+                      : log.includes('STAGE') || log.includes('====')
+                      ? 'text-cyan-300 font-bold'
+                      : log.includes('WARNING')
+                      ? 'text-amber-400'
+                      : 'text-slate-400'
+                  }`}>
+                    <Terminal className="w-3.5 h-3.5 text-cyan-600 shrink-0 mt-0.5" />
                     <span>{log}</span>
                   </div>
                 ))}
+                <div ref={logEndRef} />
               </div>
             </div>
           )}
@@ -287,7 +440,10 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
         <div className="px-6 py-4 bg-slate-950/80 border-t border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs text-slate-400">
             <Cpu className="w-4 h-4 text-purple-400" />
-            <span>NVIDIA L4 GPU Accelerated Execution</span>
+            <span>NVIDIA L4 GPU — Real Model Execution</span>
+            {runId && (
+              <span className="text-cyan-500 font-mono">Run: {runId}</span>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -298,13 +454,22 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
             >
               Cancel
             </button>
+            {runError && !isDocking && (
+              <button
+                onClick={() => { setRunError(null); setLogs([]); setProgress(0); }}
+                className="px-3 py-2 rounded-lg border border-amber-700 text-xs font-bold text-amber-300 hover:bg-amber-950/50 transition flex items-center gap-1.5"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                Retry
+              </button>
+            )}
             <button
               onClick={handleRunDocking}
-              disabled={isDocking || !compoundName.trim()}
+              disabled={isDocking || !compoundName.trim() || (!smiles.trim() && !uploadedFile)}
               className="px-5 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-xs font-bold text-white shadow-[0_0_15px_rgba(6,182,212,0.4)] flex items-center gap-2 transition disabled:opacity-50"
             >
               <Play className="w-4 h-4 fill-white" />
-              {isDocking ? 'Computing Poses...' : 'Run Real In-Silico Docking'}
+              {isDocking ? 'Executing on VM...' : 'Run Real In-Silico Docking'}
             </button>
           </div>
         </div>

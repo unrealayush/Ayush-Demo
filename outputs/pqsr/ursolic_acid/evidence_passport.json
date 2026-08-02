@@ -1,8 +1,27 @@
 {
-  "executive_summary": "Ursolic acid exhibits highly favorable structural and spatial complementarity against the PqsR Co-Inducer ligand-binding domain, leading to efficient alkylquinolone blockade and subsequent pyocyanin reduction.",
+  "passport_id": "EP-PQSR-URSOL-001",
+  "generated_at": "2026-08-01T19:43:07.115155+00:00",
+  "executive_summary": "Ursolic acid demonstrates in-silico binding potential to Pseudomonas aeruginosa PqsR / MvfR. The interaction yields a validation priority score of 49.2/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+  "traceability_matrix": [
+    {
+      "entity": "PqsR / MvfR Structure",
+      "source": "RCSB_PDB",
+      "accession_or_url": "6B8A"
+    },
+    {
+      "entity": "Ursolic acid",
+      "source": "PubChem",
+      "accession_or_url": "CID 64945"
+    },
+    {
+      "entity": "Context",
+      "source": "PubChem",
+      "accession_or_url": "PUBCHEM_CID_64945"
+    }
+  ],
   "next_validation_steps": [
-    "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate pyocyanin reduction kinetics.",
-    "Evaluate competitive displacement of standard autoinducer ligands from the PqsR Co-Inducer pocket using fluorescent assays.",
-    "Verify non-specific cytotoxicity limits against mammalian cell lines."
+    "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+    "Binding affinity (-5.66 kcal/mol) is weak. Recommend computational chemistry efforts to improve ligand binding.",
+    "AI-driven docking confidence (-1.40) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
   ]
 }

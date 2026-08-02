@@ -17,11 +17,60 @@ import {
   Search,
   RefreshCw,
   FlaskConical,
-  Sparkles
+  Sparkles,
+  ExternalLink,
+  HelpCircle,
+  Layers,
+  Download
 } from 'lucide-react';
 import { MoleculeViewer } from './components/MoleculeViewer';
 import { MechanismGraph } from './components/MechanismGraph';
 import { CustomCompoundTester } from './components/CustomCompoundTester';
+import { CrossTargetMatrixModal } from './components/CrossTargetMatrixModal';
+
+// ── PubChem CIDs Map ──
+const PUBCHEM_CIDS: Record<string, string> = {
+  costunolide: "5281437",
+  dehydrocostus_lactone: "73174",
+  curcumin: "5281767",
+  chrysin: "5281607",
+  baicalein: "5281605",
+  baicalin: "64982",
+  rosmarinic_acid: "5281792",
+  eugenol: "3314",
+  ursolic_acid: "64945",
+  azadirachtin: "5281303",
+  nimbolide: "100017",
+  nimbin: "108058",
+  oroxylin_a: "5281673",
+  demethoxycurcumin: "5281766",
+  bisdemethoxycurcumin: "5315472",
+  aegeline: "119024",
+  boeravinone_b: "114757",
+  conessine: "442985",
+  cynaropicrin: "5281515",
+  imperatorin: "10212",
+  liriodendrin: "119245",
+  magnoflorine: "73337",
+  santamarine: "141344",
+  skimmianine: "12684"
+};
+
+// ── Target NCBI & UniProt Accession Metadata Map ──
+const TARGET_NCBI_ACCESSIONS: Record<string, { ncbi: string; uniprot: string; organism: string; strain: string }> = {
+  PqsR: { ncbi: "AAG04392.1", uniprot: "Q9I4X0", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
+  LasR: { ncbi: "AAA25874.1", uniprot: "P25084", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
+  PelD: { ncbi: "NP_250831.1", uniprot: "Q9I476", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
+  MexB: { ncbi: "NP_252945.1", uniprot: "P52002", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
+  AgrA: { ncbi: "AAA26597.1", uniprot: "P0A0I7", organism: "Staphylococcus aureus", strain: "USA300" },
+  SrtA: { ncbi: "ABD31836.1", uniprot: "Q2FV99", organism: "Staphylococcus aureus", strain: "USA300" },
+  MecA: { ncbi: "NP_374034.1", uniprot: "P10838", organism: "Staphylococcus aureus", strain: "USA300" },
+  MurA: { ncbi: "NP_371661.1", uniprot: "P0A0D8", organism: "Staphylococcus aureus", strain: "USA300" },
+  AcrB: { ncbi: "YP_001335021.1", uniprot: "A6T8W4", organism: "Klebsiella pneumoniae", strain: "MGH78578" },
+  OmpK36: { ncbi: "YP_001334052.1", uniprot: "A6T5U2", organism: "Klebsiella pneumoniae", strain: "MGH78578" },
+  MrkH: { ncbi: "YP_001335038.1", uniprot: "A6T8Y1", organism: "Klebsiella pneumoniae", strain: "MGH78578" },
+  Wzc: { ncbi: "YP_001338520.1", uniprot: "A6T2A5", organism: "Klebsiella pneumoniae", strain: "MGH78578" }
+};
 
 // ── Pathogen Organism Mappings ──
 const ORGANISMS = [
@@ -69,6 +118,33 @@ const ORGANISMS = [
   }
 ];
 
+const PLANT_SOURCES: Record<string, { plant: string; category: string }> = {
+  costunolide: { plant: 'Saussurea lappa (Kuth)', category: 'Kuth Active' },
+  dehydrocostus_lactone: { plant: 'Saussurea lappa (Kuth)', category: 'Kuth Active' },
+  santamarine: { plant: 'Saussurea lappa (Kuth)', category: 'Kuth Active' },
+  curcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
+  demethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
+  bisdemethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
+  nimbolide: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
+  azadirachtin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
+  nimbin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
+  baicalein: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
+  baicalin: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
+  oroxylin_a: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
+  chrysin: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
+  rosmarinic_acid: { plant: 'Ocimum sanctum (Tulsi)', category: 'Tulsi Active' },
+  eugenol: { plant: 'Ocimum sanctum (Tulsi)', category: 'Tulsi Active' },
+  ursolic_acid: { plant: 'Ocimum sanctum (Tulsi)', category: 'Tulsi Active' },
+  conessine: { plant: 'Holarrhena antidysenterica (Kutaja)', category: 'Kutaja Active' },
+  boeravinone_b: { plant: 'Boerhavia diffusa (Punarnava)', category: 'Punarnava Active' },
+  cynaropicrin: { plant: 'Saussurea lappa (Kuth)', category: 'Ayush Active' },
+  aegeline: { plant: 'Aegle marmelos (Bael)', category: 'Bael Active' },
+  imperatorin: { plant: 'Angelica archangelica', category: 'Ayush Active' },
+  liriodendrin: { plant: 'Syringa vulgaris', category: 'Ayush Active' },
+  magnoflorine: { plant: 'Tinospora cordifolia (Giloy)', category: 'Giloy Active' },
+  skimmianine: { plant: 'Zanthoxylum armatum (Tejbal)', category: 'Ayush Active' }
+};
+
 interface DashboardProps {
   onOpenDetail?: (targetId: string, ligandId: string) => void;
 }
@@ -81,6 +157,9 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
   const [customCompoundsMap, setCustomCompoundsMap] = useState<Record<string, any[]>>({});
+  const [showCovalentInteractions, setShowCovalentInteractions] = useState<boolean>(false);
+  const [showTop5Only, setShowTop5Only] = useState<boolean>(false);
+  const [isMatrixModalOpen, setIsMatrixModalOpen] = useState<boolean>(false);
 
   // Find active organism details
   const activeOrg = ORGANISMS.find(o => o.id === selectedOrganism) || ORGANISMS[0];
@@ -162,7 +241,29 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
     const name = (row["Compound Name"] || "").toLowerCase();
     const id = (row["Compound ID"] || "").toLowerCase();
     return name.includes(searchQuery.toLowerCase()) || id.includes(searchQuery.toLowerCase());
-  });
+  }).slice(0, showTop5Only ? 5 : undefined);
+
+  // CSV Export handler
+  const handleExportCSV = () => {
+    if (!filteredLeaderboard || filteredLeaderboard.length === 0) return;
+    const headers = Object.keys(filteredLeaderboard[0]);
+    const csvRows = [
+      headers.join(','),
+      ...filteredLeaderboard.map(row =>
+        headers.map(header => JSON.stringify(row[header] ?? '')).join(',')
+      )
+    ];
+    const csvString = csvRows.join('\n');
+    const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `Screening_Leaderboard_${selectedTarget.toUpperCase()}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
 
   const handleCustomCompoundSuccess = (customData: {
     targetId: string;
@@ -195,6 +296,15 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
     setSelectedLigand(customData.compoundId);
   };
 
+  // ── Dynamic Date State ──
+  const currentDateStr = new Date().toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
   return (
     <div className="w-full min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 p-4 font-sans select-none antialiased">
       
@@ -224,7 +334,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
 
           <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
             <Calendar className="w-4 h-4 text-cyan-500" />
-            <span className="font-mono">July 7, 2026 10:30 AM</span>
+            <span className="font-mono">{currentDateStr}</span>
           </div>
 
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-500/30 bg-purple-50/50 dark:bg-purple-950/30 text-xs font-semibold text-purple-300 shadow-[0_0_10px_rgba(168,85,247,0.2)]">
@@ -317,22 +427,43 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                 <div className="grid grid-cols-1 gap-2 pl-7">
                   {activeOrg.targets.map(tar => {
                     const isTargetActive = tar.id === selectedTarget;
+                    const ncbiData = TARGET_NCBI_ACCESSIONS[tar.id];
                     return (
-                      <button
+                      <div
                         key={tar.id}
-                        onClick={() => setSelectedTarget(tar.id)}
-                        className={`text-left p-2 rounded border text-xs font-mono font-bold transition-all relative overflow-hidden ${
+                        className={`p-2 rounded border text-xs font-mono transition-all relative overflow-hidden flex flex-col justify-between ${
                           isTargetActive 
                             ? 'bg-cyan-50 dark:bg-cyan-50/80 dark:bg-cyan-950/40 border-cyan-400 text-cyan-700 dark:text-cyan-300 shadow-[0_0_10px_rgba(34,211,238,0.2)]' 
                             : 'border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/10 text-slate-600 dark:text-slate-400 hover:border-slate-200 dark:border-slate-700 hover:text-slate-800 dark:text-slate-200'
                         }`}
                       >
-                        <div className="flex justify-between items-center mb-0.5">
-                          <span>{tar.label}</span>
-                          {isTargetActive && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_5px_rgba(34,211,238,0.8)]" />}
-                        </div>
-                        <p className="text-[9px] text-slate-500 italic font-semibold">{tar.desc}</p>
-                      </button>
+                        <button
+                          onClick={() => setSelectedTarget(tar.id)}
+                          className="w-full text-left font-bold cursor-pointer"
+                        >
+                          <div className="flex justify-between items-center mb-0.5">
+                            <span>{tar.label}</span>
+                            {isTargetActive && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_5px_rgba(34,211,238,0.8)]" />}
+                          </div>
+                          <p className="text-[9px] text-slate-500 italic font-semibold mb-1">{tar.desc}</p>
+                        </button>
+                        {ncbiData && (
+                          <div className="flex items-center justify-between text-[9px] text-slate-400 font-mono border-t border-slate-200/50 dark:border-slate-800/50 pt-1 mt-0.5">
+                            <span>Strain: {ncbiData.strain}</span>
+                            <a
+                              href={`https://www.ncbi.nlm.nih.gov/protein/${ncbiData.ncbi}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-0.5"
+                              title={`View NCBI Protein Accession ${ncbiData.ncbi}`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <span>NCBI: {ncbiData.ncbi}</span>
+                              <ExternalLink className="w-2.5 h-2.5" />
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     );
                   })}
                 </div>
@@ -355,15 +486,17 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                   )}
                 </div>
                 <div className="pl-7">
-                  <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-semibold uppercase tracking-wider">Kuth Actives (Selected)</p>
+                  <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-semibold uppercase tracking-wider">
+                    {PLANT_SOURCES[selectedLigand.toLowerCase()]?.category || 'Ayush Active'} (Selected)
+                  </p>
                   <h4 className="text-sm font-bold text-cyan-900 dark:text-cyan-100 leading-snug drop-shadow-[0_0_2px_rgba(255,255,255,0.2)]">{compoundName}</h4>
                   <div className="flex items-center justify-between mt-2.5 gap-2">
                     <div>
                       <span className="inline-block px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold mb-1 shadow-[0_0_5px_rgba(16,185,129,0.2)]">Mono-Component</span>
-                      <p className="text-[10px] text-slate-600 dark:text-slate-400 font-medium">Source: <span className="font-semibold text-slate-700 dark:text-slate-300">Saussurea lappa</span></p>
+                      <p className="text-[10px] text-slate-600 dark:text-slate-400 font-medium">Source: <span className="font-semibold text-slate-700 dark:text-slate-300">{PLANT_SOURCES[selectedLigand.toLowerCase()]?.plant || 'Botanical Source'}</span></p>
                     </div>
-                    <div className="w-14 h-14 bg-white dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
-                      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Saussurea_costus_1.jpg/640px-Saussurea_costus_1.jpg" alt="Saussurea Lappa" className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                    <div className="w-14 h-14 bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
+                      <img src="/images/saussurea_lappa.png" alt="Botanical Active" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
                     </div>
                   </div>
                 </div>
@@ -378,15 +511,15 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                 <div className="pl-7">
                   <div className="flex justify-between items-center gap-2">
                     <div>
-                      <h4 className="text-sm font-bold text-red-300 mb-1 drop-shadow-[0_0_5px_rgba(248,113,113,0.3)]">{activeOrg.name}</h4>
+                      <h4 className="text-sm font-bold text-red-600 dark:text-red-300 mb-1 drop-shadow-[0_0_5px_rgba(248,113,113,0.3)]">{activeOrg.name}</h4>
                       <p className="text-[10px] text-slate-600 dark:text-slate-400 leading-relaxed font-semibold">Reference Strain: <span className="text-cyan-600 dark:text-cyan-400">{activeTargetDetails.strain}</span></p>
                     </div>
-                    <div className="w-14 h-14 bg-white dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
+                    <div className="w-14 h-14 bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
                       <img src={
-                        activeOrg.id === 'pseudomonas' ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Pseudomonas_aeruginosa_gram.jpg/640px-Pseudomonas_aeruginosa_gram.jpg' :
-                        activeOrg.id === 'staphylococcus' ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Staphylococcus_aureus_Gram.jpg/640px-Staphylococcus_aureus_Gram.jpg' :
-                        'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/EscherichiaColi_NIAID.jpg/640px-EscherichiaColi_NIAID.jpg'
-                      } alt={activeOrg.name} className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity" />
+                        activeOrg.id === 'pseudomonas' ? '/images/pseudomonas.png' :
+                        activeOrg.id === 'staphylococcus' ? '/images/staphylococcus.png' :
+                        '/images/enterobacteriaceae.png'
+                      } alt={activeOrg.name} className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
                     </div>
                   </div>
                 </div>
@@ -407,8 +540,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                       <span className="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950 border border-blue-500/30 text-blue-600 dark:text-blue-400 text-[9px] font-semibold">Biofilm Inhibition</span>
                     </div>
                   </div>
-                  <div className="w-14 h-14 bg-slate-200 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 p-1 flex items-center justify-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Ciprofloxacin.svg/640px-Ciprofloxacin.svg.png" alt="Ciprofloxacin" className="max-w-full max-h-full object-contain mix-blend-multiply" />
+                  <div className="w-14 h-14 bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0 p-0.5 flex items-center justify-center">
+                    <img src="/images/ciprofloxacin.png" alt="Ciprofloxacin" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
                   </div>
                 </div>
               </div>
@@ -433,8 +566,26 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-[11px] font-bold text-slate-700 dark:text-slate-300 tracking-wider uppercase">{selectedTarget} Binding Site</h3>
-                <span className="px-2 py-0.5 text-[8px] font-bold font-mono text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950 border border-cyan-800 rounded">Interactive WebGL</span>
+                <div className="flex items-center gap-3">
+                  <label className="flex items-center gap-1.5 cursor-pointer text-[10px] font-mono text-slate-400 hover:text-cyan-400">
+                    <input
+                      type="checkbox"
+                      checked={showCovalentInteractions}
+                      onChange={(e) => setShowCovalentInteractions(e.target.checked)}
+                      className="rounded border-slate-700 bg-slate-900 text-cyan-500 focus:ring-0 cursor-pointer"
+                    />
+                    <span>Include Covalent & Electrostatic Models</span>
+                  </label>
+                  <span className="px-2 py-0.5 text-[8px] font-bold font-mono text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-950 border border-cyan-800 rounded">Interactive WebGL</span>
+                </div>
               </div>
+              
+              {showCovalentInteractions && (
+                <div className="mb-2 p-1.5 px-3 bg-purple-950/30 border border-purple-500/30 rounded text-[9px] font-mono text-purple-300 flex items-center justify-between">
+                  <span>⚡ Custom Mode Active: Electrostatic & Covalent predictions enabled for interaction fingerprinting.</span>
+                  <span className="text-[8px] bg-purple-900/60 px-1.5 py-0.5 rounded font-bold">EXPERIMENTAL</span>
+                </div>
+              )}
               
               <div className="h-64 bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 rounded-lg relative overflow-hidden shadow-inner flex items-center justify-center">
                 {selectedTarget && selectedLigand ? (
@@ -448,20 +599,20 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
             </div>
 
             {/* AI Mechanism Graph Panel */}
-            <div className="flex-1 glass-card rounded-xl p-4 relative flex flex-col bg-white dark:bg-slate-900/10 border border-slate-300 dark:border-slate-800">
+            <div className="flex-1 glass-card rounded-xl p-4 relative flex flex-col bg-slate-50 dark:bg-slate-900/10 border border-slate-300 dark:border-slate-800">
               <h3 className="text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-3 tracking-wider uppercase">AI-Derived Cascade Network</h3>
               
               <div className="flex-1 min-h-[140px]">
                 <MechanismGraph nodes={graphData?.nodes} edges={graphData?.edges} />
               </div>
 
-              <div className="mt-3 flex items-start gap-3 p-2.5 bg-white/80 dark:bg-white dark:bg-slate-900/60 rounded-lg border border-cyan-900/50 backdrop-blur-md relative overflow-hidden">
+              <div className="mt-3 flex items-start gap-3 p-2.5 bg-slate-100 dark:bg-slate-900/80 rounded-lg border border-cyan-900/50 backdrop-blur-md relative overflow-hidden">
                 <div className="absolute left-0 top-0 h-full w-0.5 bg-cyan-500"></div>
                 <div className="w-6 h-6 rounded bg-cyan-50 dark:bg-cyan-950 flex items-center justify-center shrink-0 border border-cyan-800">
                   <BrainCircuit className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-[10px] text-slate-700 dark:text-slate-300 leading-relaxed font-mono">
+                  <p className="text-[10px] text-slate-700 dark:text-slate-200 leading-relaxed font-mono">
                     <span className="font-bold text-cyan-600 dark:text-cyan-400">&gt; ANNOTATION:</span> {passport?.executive_summary || `${compoundName} targets the active site pocket of ${selectedTarget}, initiating down-regulation of virulent biofilm synthesis loops.`}
                   </p>
                 </div>
@@ -557,16 +708,16 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                   <h3 className="text-[10px] font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider font-mono">Biophysical Energetics ({selectedLigand})</h3>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
-                  <div className="bg-white/80 dark:bg-white dark:bg-slate-900/60 p-2.5 rounded border border-slate-300 dark:border-slate-800/80 text-center">
-                    <span className="text-[8px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest block mb-1">Vina Affinity</span>
-                    <span className="text-xs font-black text-emerald-600 dark:text-emerald-400 drop-shadow-[0_0_4px_rgba(16,185,129,0.3)]">{vinaEnergy.toFixed(2)} <span className="text-[7px] text-slate-500 uppercase">kcal/mol</span></span>
+                  <div className="bg-slate-100 dark:bg-slate-900/80 p-2.5 rounded border border-slate-300 dark:border-slate-800 text-center">
+                    <span className="text-[8px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-1">Vina Affinity</span>
+                    <span className="text-xs font-black text-emerald-600 dark:text-emerald-400 drop-shadow-[0_0_4px_rgba(16,185,129,0.3)]">{vinaEnergy.toFixed(2)} <span className="text-[7px] text-slate-400 uppercase">kcal/mol</span></span>
                   </div>
-                  <div className="bg-white/80 dark:bg-white dark:bg-slate-900/60 p-2.5 rounded border border-slate-300 dark:border-slate-800/80 text-center">
-                    <span className="text-[8px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest block mb-1">DiffDock Conf.</span>
+                  <div className="bg-slate-100 dark:bg-slate-900/80 p-2.5 rounded border border-slate-300 dark:border-slate-800 text-center">
+                    <span className="text-[8px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-1">DiffDock Conf.</span>
                     <span className="text-xs font-black text-purple-600 dark:text-purple-400 drop-shadow-[0_0_4px_rgba(168,85,247,0.3)]">{diffdockConfidence.toFixed(2)}</span>
                   </div>
-                  <div className="bg-white/80 dark:bg-white dark:bg-slate-900/60 p-2.5 rounded border border-slate-300 dark:border-slate-800/80 text-center">
-                    <span className="text-[8px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest block mb-1">H-Bonds</span>
+                  <div className="bg-slate-100 dark:bg-slate-900/80 p-2.5 rounded border border-slate-300 dark:border-slate-800 text-center">
+                    <span className="text-[8px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest block mb-1">H-Bonds</span>
                     <span className="text-xs font-black text-cyan-600 dark:text-cyan-400 drop-shadow-[0_0_4px_rgba(6,182,212,0.3)]">{hBonds} / {hydrophobic}</span>
                   </div>
                 </div>
@@ -582,9 +733,9 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                   "Conduct standard MIC biofilms assays on mammalian lines to check toxicity limits.",
                   "Perform target expression qPCR audits."
                 ]).map((step: string, idx: number) => (
-                  <div key={idx} className="flex items-start gap-2.5 bg-white/60 dark:bg-white dark:bg-slate-900/40 p-2 rounded border border-slate-300 dark:border-slate-800/60 hover:border-cyan-500/20 transition-all">
+                  <div key={idx} className="flex items-start gap-2.5 bg-slate-100/80 dark:bg-slate-900/60 p-2 rounded border border-slate-300 dark:border-slate-800 hover:border-cyan-500/30 transition-all">
                     <CheckCircle2 className="w-4 h-4 text-cyan-600 dark:text-cyan-400 shrink-0 mt-0.5" />
-                    <span className="text-[10px] text-slate-700 dark:text-slate-300 font-mono leading-tight">{step}</span>
+                    <span className="text-[10px] text-slate-800 dark:text-slate-200 font-mono leading-tight">{step}</span>
                   </div>
                 ))}
               </div>
@@ -608,18 +759,51 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
             </div>
           </div>
           
-          {/* Glowing Search Bar */}
-          <div className="relative max-w-sm w-full">
-            <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-              <Search className="h-3.5 w-3.5 text-slate-500" />
-            </span>
-            <input
-              type="text"
-              placeholder="Search phytochemical compounds..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="block w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-800/80 rounded-lg text-xs font-semibold placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 font-mono transition-all duration-300"
-            />
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Top 5 Filter Toggle */}
+            <button
+              onClick={() => setShowTop5Only(!showTop5Only)}
+              className={`px-3 py-1.5 text-xs font-semibold rounded-lg font-mono flex items-center gap-1.5 transition-all duration-200 border ${
+                showTop5Only 
+                  ? 'bg-amber-500/20 text-amber-400 border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.2)]'
+                  : 'bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-300 dark:border-slate-800 hover:text-slate-900 dark:hover:text-slate-200'
+              }`}
+            >
+              <Trophy className="w-3.5 h-3.5" />
+              <span>{showTop5Only ? 'Top 5 Hits' : 'All 24 Hits'}</span>
+            </button>
+
+            {/* Poly-pharmacology Matrix Button */}
+            <button
+              onClick={() => setIsMatrixModalOpen(true)}
+              className="px-3 py-1.5 text-xs font-semibold rounded-lg font-mono flex items-center gap-1.5 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 transition-all duration-200"
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>Cross-Target Matrix</span>
+            </button>
+
+            {/* Export CSV Button */}
+            <button
+              onClick={handleExportCSV}
+              className="px-3 py-1.5 text-xs font-semibold rounded-lg font-mono flex items-center gap-1.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 transition-all duration-200"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Export CSV</span>
+            </button>
+
+            {/* Glowing Search Bar */}
+            <div className="relative max-w-xs w-full">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                <Search className="h-3.5 w-3.5 text-slate-500" />
+              </span>
+              <input
+                type="text"
+                placeholder="Search compounds..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="block w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-800/80 rounded-lg text-xs font-semibold placeholder-slate-500 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/30 font-mono transition-all duration-300"
+              />
+            </div>
           </div>
         </div>
 
@@ -630,10 +814,51 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
               <tr>
                 <th className="px-4 py-3 text-left">Rank</th>
                 <th className="px-4 py-3 text-left">Compound Name</th>
-                <th className="px-4 py-3 text-right">Vina Affinity (kcal/mol)</th>
-                <th className="px-4 py-3 text-right">DiffDock Confidence</th>
-                <th className="px-4 py-3 text-right">H-Bonds</th>
-                <th className="px-4 py-3 text-center">Priority Score</th>
+                <th className="px-4 py-3 text-right group relative">
+                  <div className="flex items-center justify-end gap-1 cursor-help">
+                    <span>Vina Affinity (kcal/mol)</span>
+                    <HelpCircle className="w-3 h-3 text-slate-500" />
+                  </div>
+                  <div className="absolute right-0 top-full mt-1 hidden group-hover:block z-50 w-64 p-2 bg-slate-900 border border-cyan-500/50 rounded shadow-xl text-[10px] normal-case font-normal text-slate-200 text-left">
+                    <strong>AutoDock Vina Affinity:</strong> Empirical thermodynamic binding energy (ΔG kcal/mol). More negative values indicate stronger binding (candidates below -7.0 kcal/mol show high potential).
+                  </div>
+                </th>
+                <th className="px-4 py-3 text-right group relative">
+                  <div className="flex items-center justify-end gap-1 cursor-help">
+                    <span>DiffDock Confidence</span>
+                    <HelpCircle className="w-3 h-3 text-slate-500" />
+                  </div>
+                  <div className="absolute right-0 top-full mt-1 hidden group-hover:block z-50 w-64 p-2 bg-slate-900 border border-purple-500/50 rounded shadow-xl text-[10px] normal-case font-normal text-slate-200 text-left">
+                    <strong>DiffDock-L Confidence:</strong> Generative AI diffusion score evaluating spatial pose likelihood (&gt; -1.5 indicates high structural confidence).
+                  </div>
+                </th>
+                <th className="px-4 py-3 text-right group relative">
+                  <div className="flex items-center justify-end gap-1 cursor-help">
+                    <span>H-Bonds</span>
+                    <HelpCircle className="w-3 h-3 text-slate-500" />
+                  </div>
+                  <div className="absolute right-0 top-full mt-1 hidden group-hover:block z-50 w-64 p-2 bg-slate-900 border border-cyan-500/50 rounded shadow-xl text-[10px] normal-case font-normal text-slate-200 text-left">
+                    <strong>Hydrogen Bonds:</strong> Directional non-covalent donor-acceptor interactions (≤ 3.5 Å). Essential for target specificity.
+                  </div>
+                </th>
+                <th className="px-4 py-3 text-right group relative">
+                  <div className="flex items-center justify-end gap-1 cursor-help">
+                    <span>Hydrophobic Contacts</span>
+                    <HelpCircle className="w-3 h-3 text-slate-500" />
+                  </div>
+                  <div className="absolute right-0 top-full mt-1 hidden group-hover:block z-50 w-64 p-2 bg-slate-900 border border-teal-500/50 rounded shadow-xl text-[10px] normal-case font-normal text-slate-200 text-left">
+                    <strong>Hydrophobic Contacts:</strong> Non-polar residue surface packing interactions that stabilize ligand positioning.
+                  </div>
+                </th>
+                <th className="px-4 py-3 text-center group relative">
+                  <div className="flex items-center justify-center gap-1 cursor-help">
+                    <span>Priority Score</span>
+                    <HelpCircle className="w-3 h-3 text-slate-500" />
+                  </div>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 hidden group-hover:block z-50 w-64 p-2 bg-slate-900 border border-emerald-500/50 rounded shadow-xl text-[10px] normal-case font-normal text-slate-200 text-left">
+                    <strong>Validation Priority Score (0-100):</strong> Weighted consensus metric: 40% Vina Affinity + 35% DiffDock Confidence + 25% Interaction Fingerprints.
+                  </div>
+                </th>
                 <th className="px-4 py-3 text-left">Preclinical Decision</th>
                 <th className="px-4 py-3 text-left">Evidence Strength</th>
               </tr>
@@ -641,7 +866,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
             <tbody className="divide-y divide-slate-900/60 font-mono text-[10px] font-semibold">
               {loadingLeaderboard ? (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500">
+                  <td colSpan={9} className="px-4 py-8 text-center text-slate-500">
                     <div className="flex items-center justify-center gap-2">
                       <RefreshCw className="w-4 h-4 text-cyan-500 animate-spin" />
                       <span>Parsing preclinical datasets from static assets...</span>
@@ -650,7 +875,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                 </tr>
               ) : filteredLeaderboard.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500">
+                  <td colSpan={9} className="px-4 py-8 text-center text-slate-500">
                     No matching compounds found inside the target database.
                   </td>
                 </tr>
@@ -663,9 +888,11 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                   const vAffinity = parseFloat(row["Vina Affinity (kcal/mol)"] || row["vina_affinity"]) || 0.0;
                   const dConfidence = parseFloat(row["DiffDock Confidence"] || row["diffdock_confidence"]) || 0.0;
                   const hydrogenBonds = parseInt(row["Hydrogen Bonds"] || row["hydrogen_bonds"]) || 0;
+                  const hydrophobicContacts = parseInt(row["Hydrophobic Contacts"] || row["hydrophobic_contacts"]) || 4;
                   const priority = parseFloat(row["Validation Priority Score"] || row["priority_score"]) || 0.0;
                   const rowDecision = row["Preclinical Decision"] || row["decision"];
                   const strength = row["Evidence Strength"] || row["evidence_strength"];
+                  const pubchemCid = PUBCHEM_CIDS[id];
 
                   return (
                     <tr
@@ -680,6 +907,18 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                       <td className="px-4 py-2.5 font-bold text-slate-500">#{row.Rank || row.rank}</td>
                       <td className="px-4 py-2.5 font-sans font-bold flex items-center gap-1.5">
                         <span className="text-slate-900 dark:text-slate-100">{name}</span>
+                        {pubchemCid && (
+                          <a
+                            href={`https://pubchem.ncbi.nlm.nih.gov/compound/${pubchemCid}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-0.5 text-[9px] font-mono"
+                            title={`View ${name} on PubChem (CID ${pubchemCid})`}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        )}
                         {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_5px_rgba(34,211,238,0.8)]" />}
                       </td>
                       <td className={`px-4 py-2.5 text-right font-black ${vAffinity < -7.0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-600 dark:text-slate-400'}`}>
@@ -689,6 +928,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                         {dConfidence.toFixed(2)}
                       </td>
                       <td className="px-4 py-2.5 text-right text-slate-600 dark:text-slate-400">{hydrogenBonds}</td>
+                      <td className="px-4 py-2.5 text-right text-slate-600 dark:text-slate-400">{hydrophobicContacts}</td>
                       <td className="px-4 py-2.5 text-center">
                         <span className={`inline-block px-2 py-0.5 rounded font-black text-[9px] ${
                           priority >= 75.0 
@@ -731,6 +971,16 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
         onRunSuccess={handleCustomCompoundSuccess}
         availableTargets={ORGANISMS.flatMap(o => o.targets)}
       />
+
+      {/* ── Poly-Pharmacology Cross-Target Matrix Modal ── */}
+      {isMatrixModalOpen && (
+        <CrossTargetMatrixModal
+          organismId={activeOrg.id}
+          organismName={activeOrg.name}
+          targets={activeOrg.targets}
+          onClose={() => setIsMatrixModalOpen(false)}
+        />
+      )}
 
     </div>
   );

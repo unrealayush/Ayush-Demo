@@ -1,21 +1,28 @@
 import { useState, useEffect } from 'react';
 import Dashboard from './Dashboard';
 import { LigandDetail } from './components/LigandDetail';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, Sun, Zap } from 'lucide-react';
+
+export type ThemeMode = 'dark' | 'light' | 'cyber';
 
 const App = () => {
   const [currentView, setCurrentView] = useState<'dashboard' | 'detail'>('dashboard');
   const [detailTarget, setDetailTarget] = useState('');
   const [detailLigand, setDetailLigand] = useState('');
-  const [isDark, setIsDark] = useState(true);
+  const [theme, setTheme] = useState<ThemeMode>('dark');
 
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
+    const root = document.documentElement;
+    root.classList.remove('dark', 'light', 'cyber');
+
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else if (theme === 'cyber') {
+      root.classList.add('dark', 'cyber');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.add('light');
     }
-  }, [isDark]);
+  }, [theme]);
 
   const handleOpenDetail = (targetId: string, ligandId: string) => {
     setDetailTarget(targetId);
@@ -39,17 +46,46 @@ const App = () => {
         />
       )}
 
-      {/* Floating Settings / Theme Toggle */}
-      <button
-        onClick={() => setIsDark(!isDark)}
-        className="fixed bottom-6 right-6 w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 z-50 bg-slate-800 dark:bg-cyan-900 border border-slate-700 dark:border-cyan-500/50"
-      >
-        {isDark ? (
-          <Sun className="w-5 h-5 text-amber-400 drop-shadow-[0_0_5px_rgba(251,191,36,0.8)]" />
-        ) : (
-          <Moon className="w-5 h-5 text-indigo-400 drop-shadow-[0_0_5px_rgba(99,102,241,0.8)]" />
-        )}
-      </button>
+      {/* Floating 3-Way Theme Switcher (Dark / Light / Cyber) */}
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1.5 p-1.5 rounded-full shadow-2xl bg-slate-900/90 dark:bg-slate-900/90 border border-slate-700 dark:border-cyan-500/50 backdrop-blur-md">
+        
+        <button
+          onClick={() => setTheme('dark')}
+          title="Classic Dark Theme"
+          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+            theme === 'dark'
+              ? 'bg-cyan-500 text-white shadow-[0_0_12px_rgba(6,182,212,0.8)] scale-110'
+              : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Moon className="w-4 h-4" />
+        </button>
+
+        <button
+          onClick={() => setTheme('light')}
+          title="Clean Light Theme"
+          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+            theme === 'light'
+              ? 'bg-amber-500 text-white shadow-[0_0_12px_rgba(245,158,11,0.8)] scale-110'
+              : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Sun className="w-4 h-4" />
+        </button>
+
+        <button
+          onClick={() => setTheme('cyber')}
+          title="Cyberpunk Midnight Theme"
+          className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${
+            theme === 'cyber'
+              ? 'bg-purple-600 text-white shadow-[0_0_12px_rgba(168,85,247,0.8)] scale-110'
+              : 'text-slate-400 hover:text-slate-200'
+          }`}
+        >
+          <Zap className="w-4 h-4" />
+        </button>
+
+      </div>
     </div>
   );
 };

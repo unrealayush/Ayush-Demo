@@ -1,8 +1,26 @@
 {
-  "executive_summary": "Ursolic acid exhibits highly favorable structural and spatial complementarity against the MexB Efflux Pump ligand-binding domain, leading to efficient efflux pump inhibition and subsequent antibiotic resensitization.",
+  "passport_id": "EP-MEXB-URSOL-001",
+  "generated_at": "2026-08-01T19:43:06.054268+00:00",
+  "executive_summary": "Ursolic acid demonstrates in-silico binding potential to Pseudomonas aeruginosa MexB. The interaction yields a validation priority score of 0.0/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+  "traceability_matrix": [
+    {
+      "entity": "MexB Structure",
+      "source": "RCSB_PDB",
+      "accession_or_url": "2GF4"
+    },
+    {
+      "entity": "Ursolic acid",
+      "source": "PubChem",
+      "accession_or_url": "CID 64945"
+    },
+    {
+      "entity": "Context",
+      "source": "PubChem",
+      "accession_or_url": "PUBCHEM_CID_64945"
+    }
+  ],
   "next_validation_steps": [
-    "Perform micro-dilution biofilm assays against P. aeruginosa strain to evaluate antibiotic resensitization kinetics.",
-    "Evaluate competitive displacement of standard autoinducer ligands from the MexB Efflux Pump pocket using fluorescent assays.",
-    "Verify non-specific cytotoxicity limits against mammalian cell lines."
+    "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+    "Binding affinity (0.00 kcal/mol) is weak. Recommend computational chemistry efforts to improve ligand binding."
   ]
 }

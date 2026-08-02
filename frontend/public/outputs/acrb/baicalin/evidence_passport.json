@@ -1,10 +1,26 @@
 {
-  "source_id": "PRECLINICAL_ACRB_BAICALIN",
-  "priority_score": 41.8,
-  "evidence_strength": "Supporting Evidence",
+  "passport_id": "EP-ACRB-BAICA-001",
+  "generated_at": "2026-08-01T19:42:59.686486+00:00",
+  "executive_summary": "Baicalin demonstrates in-silico binding potential to Klebsiella pneumoniae AcrB. The interaction yields a validation priority score of 54.8/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+  "traceability_matrix": [
+    {
+      "entity": "AcrB Structure",
+      "source": "RCSB_PDB",
+      "accession_or_url": "5NC5"
+    },
+    {
+      "entity": "Baicalin",
+      "source": "PubChem",
+      "accession_or_url": "CID 64982"
+    },
+    {
+      "entity": "Context",
+      "source": "PubChem",
+      "accession_or_url": "PUBCHEM_CID_64982"
+    }
+  ],
   "next_validation_steps": [
-    "Perform MIC assays on target pathogenic strains",
-    "Conduct crystal violet biofilm prevention assay",
-    "Execute qPCR expression mapping of targeted gene"
+    "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
+    "Binding affinity (0.00 kcal/mol) is weak. Recommend computational chemistry efforts to improve ligand binding."
   ]
 }

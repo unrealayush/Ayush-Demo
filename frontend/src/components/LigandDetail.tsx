@@ -34,7 +34,7 @@ export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, 
   const { data: graphReport } = useQuery({ queryKey: ['graphReport', targetId, ligandId], queryFn: () => fetchJson('mechanism_graph_report.json') });
 
   const JsonBlock = ({ title, data }: { title: string, data: any }) => (
-    <div className="bg-white/70 dark:bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden flex flex-col h-full">
+    <div className="bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden flex flex-col h-full">
       <div className="bg-slate-100 dark:bg-slate-800 px-3 py-1.5 flex justify-between items-center border-b border-slate-200 dark:border-slate-700">
         <span className="text-[10px] font-bold text-slate-700 dark:text-slate-300 font-mono tracking-wider">{title}</span>
         <FileJson className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
@@ -57,12 +57,47 @@ export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, 
               <Fingerprint className="text-cyan-600 dark:text-cyan-400" />
               Forensic Dossier: <span className="text-cyan-600 dark:text-cyan-400 capitalize">{ligandId.replace('_', ' ')}</span> <span className="text-slate-500">→</span> <span className="text-purple-600 dark:text-purple-400">{targetId.toUpperCase()}</span>
             </h1>
-            <p className="text-xs text-slate-600 dark:text-slate-400 font-mono mt-1">Exhaustive 11-file analytical trace & coordinate visualization</p>
+            <div className="flex items-center gap-4 text-xs font-mono text-slate-400 mt-1">
+              <span>Exhaustive 11-file analytical trace & coordinate visualization</span>
+              <span className="text-slate-600">|</span>
+              <a
+                href={`https://pubchem.ncbi.nlm.nih.gov/compound/${ligandId}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-cyan-400 hover:underline inline-flex items-center gap-1 font-bold"
+              >
+                <span>PubChem Search</span>
+              </a>
+              <span className="text-slate-600">|</span>
+              <a
+                href={`https://www.ncbi.nlm.nih.gov/protein/?term=${targetId}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-purple-400 hover:underline inline-flex items-center gap-1 font-bold"
+              >
+                <span>NCBI Sequence Database</span>
+              </a>
+            </div>
           </div>
         </div>
         <div className="flex gap-2">
-          <button className="flex items-center gap-2 px-3 py-1.5 bg-cyan-50 dark:bg-cyan-950 border border-cyan-700 rounded text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:bg-cyan-900 transition-colors">
-            <Download className="w-4 h-4" /> Export Archive
+          <button
+            onClick={() => {
+              if (passport) {
+                const blob = new Blob([JSON.stringify(passport, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `Evidence_Passport_${targetId.toUpperCase()}_${ligandId.toUpperCase()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+              }
+            }}
+            className="flex items-center gap-2 px-3 py-1.5 bg-cyan-50 dark:bg-cyan-950 border border-cyan-700 rounded text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:bg-cyan-900 transition-colors shadow-[0_0_10px_rgba(6,182,212,0.3)]"
+          >
+            <Download className="w-4 h-4" /> Export Passport JSON
           </button>
         </div>
       </header>

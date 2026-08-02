@@ -1,0 +1,2 @@
+Rank,Compound ID,Compound Name,Vina Affinity (kcal/mol),DiffDock Confidence,Hydrogen Bonds,Hydrophobic Contacts,Validation Priority Score,Preclinical Decision,Evidence Strength
+1,docked,Docked,0.0,0.0,4,5,42.5,Review manually,Low preclinical plausibility

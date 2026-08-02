@@ -1,0 +1,589 @@
+#!/usr/bin/env python3
+"""
+run_single_compound.py — Full pipeline for a single compound against a single target.
+
+Runs on the VM locally. Executes:
+  1. Ligand preparation (SMILES → SDF → PDBQT via RDKit + OpenBabel)
+  2. AutoDock Vina docking
+  3. DiffDock-L inference on GPU
+  4. Interaction Parser (Stage 8)
+  5. Mechanism Graph Builder (Stage 9)
+  6. Validation Scorer (Stage 10)
+  7. Evidence Passport Generator (Stage 11)
+
+Outputs all 11 files to: outputs/{target_id}/{compound_id}/
+
+Usage:
+  python scripts/run_single_compound.py \
+    --target pqsr \
+    --compound_id withaferin_a \
+    --compound_name "Withaferin A" \
+    --smiles "CC1CC2C(CC3C2(CC(C4C3(CC(=O)C=C4)C)O)O)OC1=O"
+
+  Or with user-uploaded files:
+  python scripts/run_single_compound.py \
+    --target pqsr \
+    --compound_id my_compound \
+    --compound_name "My Compound" \
+    --ligand_sdf /path/to/ligand.sdf \
+    --ligand_pdbqt /path/to/ligand.pdbqt
+"""
+
+import os
+import sys
+import json
+import yaml
+import shutil
+import subprocess
+import argparse
+import time
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+PREPARED_DIR = BASE_DIR / "data" / "prepared"
+OUTPUTS_DIR = BASE_DIR / "outputs"
+CONFIGS_DIR = BASE_DIR / "configs"
+
+def log(msg):
+    """Print a timestamped log message (captured by the API for live streaming)."""
+    print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
+
+
+def prepare_ligand_from_smiles(smiles, compound_id, compound_name, lig_dir):
+    """Stage 1: Convert SMILES → 3D SDF (RDKit) → PDBQT (OpenBabel)."""
+    log(f"STAGE 1: Preparing ligand '{compound_name}' from SMILES...")
+    
+    sdf_path = lig_dir / f"{compound_id}.sdf"
+    pdbqt_path = lig_dir / f"{compound_id}.pdbqt"
+    
+    # RDKit 3D conformer generation
+    try:
+        from rdkit import Chem
+        from rdkit.Chem import AllChem
+        
+        mol = Chem.MolFromSmiles(smiles)
+        if not mol:
+            log(f"ERROR: Invalid SMILES string for {compound_name}")
+            return None, None
+        
+        mol_h = Chem.AddHs(mol)
+        
+        params = AllChem.ETKDGv3()
+        params.useBasicKnowledge = True
+        params.randomSeed = 42
+        
+        if AllChem.EmbedMolecule(mol_h, params) == -1:
+            if AllChem.EmbedMolecule(mol_h, randomSeed=42) == -1:
+                log(f"ERROR: Conformer generation failed for {compound_name}")
+                return None, None
+        
+        if AllChem.MMFFOptimizeMolecule(mol_h, mmffVariant='MMFF94') == -1:
+            AllChem.UFFOptimizeMolecule(mol_h)
+        
+        with Chem.SDWriter(str(sdf_path)) as writer:
+            writer.SetKekulize(True)
+            writer.write(mol_h)
+        
+        log(f"RDKit: 3D conformer saved → {sdf_path.name}")
+    except ImportError:
+        log("ERROR: RDKit not installed on this environment")
+        return None, None
+    except Exception as e:
+        log(f"ERROR: RDKit conformer generation failed: {e}")
+        return None, None
+    
+    # OpenBabel SDF → PDBQT conversion
+    try:
+        cmd = ["obabel", str(sdf_path), "-isdf", "-opdbqt", "-O", str(pdbqt_path)]
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        log(f"OpenBabel: Converted to PDBQT → {pdbqt_path.name}")
+    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+        log(f"WARNING: OpenBabel conversion failed: {e}")
+        pdbqt_path = None
+    
+    return sdf_path, pdbqt_path
+
+
+def copy_user_files(ligand_sdf, ligand_pdbqt, compound_id, lig_dir):
+    """Copy user-uploaded SDF/PDBQT files into the output directory."""
+    sdf_dest = None
+    pdbqt_dest = None
+    
+    if ligand_sdf and os.path.exists(ligand_sdf):
+        sdf_dest = lig_dir / f"{compound_id}.sdf"
+        shutil.copy(ligand_sdf, str(sdf_dest))
+        log(f"Copied user SDF → {sdf_dest.name}")
+    
+    if ligand_pdbqt and os.path.exists(ligand_pdbqt):
+        pdbqt_dest = lig_dir / f"{compound_id}.pdbqt"
+        shutil.copy(ligand_pdbqt, str(pdbqt_dest))
+        log(f"Copied user PDBQT → {pdbqt_dest.name}")
+    
+    return sdf_dest, pdbqt_dest
+
+
+def run_vina(target_id, compound_id, lig_dir, ligand_pdbqt):
+    """Stage 3: Run AutoDock Vina docking."""
+    log("STAGE 3: Running AutoDock Vina thermodynamic grid search...")
+    
+    vina_binary = "/opt/services/autodock_vina/bin/vina"
+    if not os.path.exists(vina_binary):
+        # Fallback to system-installed vina
+        vina_binary = shutil.which("vina") or "/usr/bin/vina"
+    
+    receptor_pdbqt = PREPARED_DIR / "targets" / target_id / "receptor.pdbqt"
+    out_pdbqt = lig_dir / "vina_pose.pdbqt"
+    
+    if not receptor_pdbqt.exists():
+        log(f"ERROR: Receptor PDBQT not found at {receptor_pdbqt}")
+        return False
+    
+    if not ligand_pdbqt or not os.path.exists(ligand_pdbqt):
+        log("ERROR: Ligand PDBQT not available for Vina")
+        return False
+    
+    # Load docking box coordinates
+    cx, cy, cz = 0.0, 0.0, 0.0
+    sx, sy, sz = 20.0, 20.0, 20.0
+    
+    yaml_path = CONFIGS_DIR / "docking_boxes.yaml"
+    if yaml_path.exists():
+        try:
+            with open(yaml_path, "r") as f:
+                boxes = yaml.safe_load(f)
+                if target_id in boxes:
+                    cx = boxes[target_id].get("center_x", 0.0)
+                    cy = boxes[target_id].get("center_y", 0.0)
+                    cz = boxes[target_id].get("center_z", 0.0)
+                    sx = boxes[target_id].get("size_x", 20.0)
+                    sy = boxes[target_id].get("size_y", 20.0)
+                    sz = boxes[target_id].get("size_z", 20.0)
+                    log(f"Loaded docking box from config: center=({cx}, {cy}, {cz})")
+        except Exception as e:
+            log(f"WARNING: Failed to parse docking_boxes.yaml: {e}")
+    
+    # If no coordinates, compute centroid from PDB
+    if cx == 0.0 and cy == 0.0 and cz == 0.0:
+        pdb_path = PREPARED_DIR / "targets" / target_id / "clean_receptor.pdb"
+        if pdb_path.exists():
+            xs, ys, zs = [], [], []
+            with open(pdb_path, "r") as f:
+                for line in f:
+                    if line.startswith("ATOM") or line.startswith("HETATM"):
+                        try:
+                            xs.append(float(line[30:38]))
+                            ys.append(float(line[38:46]))
+                            zs.append(float(line[46:54]))
+                        except ValueError:
+                            continue
+            if xs:
+                cx = round(sum(xs) / len(xs), 2)
+                cy = round(sum(ys) / len(ys), 2)
+                cz = round(sum(zs) / len(zs), 2)
+                sx, sy, sz = 25.0, 25.0, 25.0
+                log(f"Auto-computed centroid: ({cx}, {cy}, {cz})")
+    
+    cmd = [
+        vina_binary,
+        "--receptor", str(receptor_pdbqt),
+        "--ligand", str(ligand_pdbqt),
+        "--center_x", str(cx), "--center_y", str(cy), "--center_z", str(cz),
+        "--size_x", str(sx), "--size_y", str(sy), "--size_z", str(sz),
+        "--exhaustiveness", "8",
+        "--out", str(out_pdbqt)
+    ]
+    
+    log(f"CMD: {' '.join(cmd)}")
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+        
+        # Log Vina stdout (contains scoring output)
+        for line in result.stdout.splitlines():
+            if line.strip():
+                log(f"  [Vina] {line.strip()}")
+        
+        # Parse output PDBQT for results
+        results = []
+        if out_pdbqt.exists():
+            with open(out_pdbqt, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("REMARK VINA RESULT:"):
+                        parts = line.split()
+                        if len(parts) >= 6:
+                            results.append({
+                                "mode": len(results) + 1,
+                                "affinity_kcal_mol": float(parts[3]),
+                                "rmsd_lower_bound": float(parts[4]),
+                                "rmsd_upper_bound": float(parts[5])
+                            })
+        
+        vina_json = lig_dir / "vina_results.json"
+        with open(vina_json, "w", encoding="utf-8") as f:
+            json.dump({"target_id": target_id, "ligand_id": compound_id, "results": results}, f, indent=2)
+        
+        if results:
+            log(f"Vina SUCCESS: Best affinity = {results[0]['affinity_kcal_mol']} kcal/mol ({len(results)} poses)")
+        else:
+            log("Vina completed but no scored poses found.")
+        
+        return True
+    except Exception as e:
+        log(f"ERROR: Vina execution failed: {e}")
+        # Write empty results so downstream stages don't crash
+        vina_json = lig_dir / "vina_results.json"
+        with open(vina_json, "w", encoding="utf-8") as f:
+            json.dump({"target_id": target_id, "ligand_id": compound_id, "results": []}, f, indent=2)
+        return False
+
+
+def run_diffdock(target_id, compound_id, lig_dir, ligand_sdf):
+    """Stage 4: Run DiffDock-L GPU inference."""
+    log("STAGE 4: Running DiffDock-L generative AI diffusion model on GPU...")
+    
+    env_path = "/opt/services/diffdock_l/env"
+    diffdock_dir = "/opt/services/diffdock_l/app/DiffDock"
+    
+    protein_pdb = PREPARED_DIR / "targets" / target_id / "clean_receptor.pdb"
+    
+    if not protein_pdb.exists():
+        log(f"ERROR: Clean receptor PDB not found at {protein_pdb}")
+        return False
+    
+    if not ligand_sdf or not os.path.exists(ligand_sdf):
+        log("ERROR: Ligand SDF not available for DiffDock")
+        return False
+    
+    # Use a temp output dir to prevent collisions
+    temp_out_dir = OUTPUTS_DIR / f"temp_dd_{target_id}_{compound_id}"
+    shutil.rmtree(temp_out_dir, ignore_errors=True)
+    os.makedirs(temp_out_dir, exist_ok=True)
+    
+    cmd = [
+        "/opt/mambaforge/bin/mamba", "run", "-p", env_path,
+        "python", "inference.py",
+        "--protein_path", str(protein_pdb),
+        "--ligand_description", str(ligand_sdf),
+        "--out_dir", str(temp_out_dir),
+        "--complex_name", "docked",
+        "--samples_per_complex", "10",
+        "--model_dir", os.path.join(diffdock_dir, "score_model"),
+        "--ckpt", "best_ema_inference_epoch_model.pt",
+        "--confidence_model_dir", os.path.join(diffdock_dir, "confidence_model"),
+        "--confidence_ckpt", "best_model_epoch75.pt"
+    ]
+    
+    log(f"CMD: {' '.join(cmd)}")
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, cwd=diffdock_dir)
+        
+        for line in result.stdout.splitlines():
+            if line.strip():
+                log(f"  [DiffDock] {line.strip()}")
+        
+        # Parse ranked output SDF files
+        import glob
+        docked_folder = temp_out_dir / "docked"
+        sdf_files = glob.glob(os.path.join(str(docked_folder), "rank*_confidence*.sdf"))
+        
+        results = []
+        for filepath in sdf_files:
+            filename = os.path.basename(filepath)
+            parts = filename.replace(".sdf", "").split("_confidence")
+            if len(parts) == 2:
+                try:
+                    rank = int(parts[0].replace("rank", ""))
+                    confidence = float(parts[1])
+                    results.append({"rank": rank, "confidence": confidence, "filename": filename})
+                except ValueError:
+                    pass
+        
+        results.sort(key=lambda x: x["rank"])
+        
+        # Copy best pose
+        if results:
+            src_sdf = docked_folder / results[0]["filename"]
+            shutil.copy(str(src_sdf), str(lig_dir / "diffdock_pose.sdf"))
+        
+        # Write results JSON
+        dd_json = lig_dir / "diffdock_results.json"
+        with open(dd_json, "w", encoding="utf-8") as f:
+            json.dump(results, f, indent=2)
+        
+        shutil.rmtree(temp_out_dir, ignore_errors=True)
+        
+        if results:
+            log(f"DiffDock SUCCESS: Best confidence = {results[0]['confidence']} ({len(results)} poses)")
+        else:
+            log("DiffDock completed but no ranked poses found.")
+        
+        return True
+    except Exception as e:
+        log(f"ERROR: DiffDock execution failed: {e}")
+        shutil.rmtree(temp_out_dir, ignore_errors=True)
+        # Write empty results
+        dd_json = lig_dir / "diffdock_results.json"
+        with open(dd_json, "w", encoding="utf-8") as f:
+            json.dump([], f, indent=2)
+        return False
+
+
+def run_interaction_parser(target_id, compound_id, lig_dir):
+    """Stage 8: Parse non-covalent interactions from the docked pose."""
+    log("STAGE 8: Parsing non-covalent interaction fingerprints...")
+    
+    receptor = f"data/prepared/targets/{target_id}/clean_receptor.pdb"
+    
+    # Prefer vina pose (PDBQT), fall back to diffdock pose (SDF)
+    ligand_file = lig_dir / "vina_pose.pdbqt"
+    if not ligand_file.exists():
+        ligand_file = lig_dir / "diffdock_pose.sdf"
+    
+    if not ligand_file.exists():
+        log("WARNING: No docked pose available for interaction parsing, skipping Stage 8")
+        # Write minimal results
+        with open(lig_dir / "interaction_report.json", "w") as f:
+            json.dump({"status": "SKIPPED", "target_id": target_id, "ligand_id": compound_id, "interactions": [], "summary": {"total_h_bonds": 0, "total_hydrophobic": 0}}, f, indent=2)
+        with open(lig_dir / "interaction_parser_report.json", "w") as f:
+            json.dump({"parser_version": "1.0", "total_interactions_found": 0, "status": "SKIPPED"}, f, indent=2)
+        return
+    
+    cmd = [
+        sys.executable,
+        str(BASE_DIR / "backend" / "stage8_interaction_parser" / "interaction_parser.py"),
+        "--receptor", receptor,
+        "--ligand", str(ligand_file),
+        "--target_id", target_id,
+        "--ligand_id", compound_id,
+        "--out_dir", str(lig_dir)
+    ]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, cwd=str(BASE_DIR))
+        log(f"Stage 8 completed: {result.stdout.strip()}")
+    except Exception as e:
+        log(f"WARNING: Stage 8 interaction parsing failed: {e}")
+
+
+def run_mechanism_graph(target_id, compound_id, lig_dir):
+    """Stage 9: Build mechanism of action cascade graph."""
+    log("STAGE 9: Building mechanism of action cascade graph...")
+    
+    interaction_report = lig_dir / "interaction_report.json"
+    target_registry = "docs/AYUSH_AMR_Final_Targets.xlsx"
+    
+    cmd = [
+        sys.executable,
+        str(BASE_DIR / "backend" / "stage9_mechanism_graph" / "mechanism_graph_builder.py"),
+        "--interaction_report", str(interaction_report),
+        "--target_registry", target_registry,
+        "--out_dir", str(lig_dir)
+    ]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, cwd=str(BASE_DIR))
+        log(f"Stage 9 completed: {result.stdout.strip()}")
+    except Exception as e:
+        log(f"WARNING: Stage 9 mechanism graph failed: {e}")
+        # Write minimal fallback
+        if not (lig_dir / "mechanism_graph.json").exists():
+            with open(lig_dir / "mechanism_graph.json", "w") as f:
+                json.dump({
+                    "nodes": [
+                        {"id": f"C_{compound_id}", "label": compound_id.replace("_", " ").title(), "type": "compound"},
+                        {"id": f"T_{target_id}", "label": target_id.upper(), "type": "target"},
+                        {"id": "P_pathway", "label": "Target Pathway", "type": "pathway"},
+                        {"id": "PH_phenotype", "label": "AMR Disruption", "type": "phenotype"}
+                    ],
+                    "edges": [
+                        {"source": f"C_{compound_id}", "target": f"T_{target_id}", "relation": "binds_to"},
+                        {"source": f"T_{target_id}", "target": "P_pathway", "relation": "has_function"},
+                        {"source": "P_pathway", "target": "PH_phenotype", "relation": "contributes_to"}
+                    ]
+                }, f, indent=2)
+            with open(lig_dir / "mechanism_graph_report.json", "w") as f:
+                json.dump({"status": "FALLBACK", "nodes_generated": 4, "edges_generated": 3}, f, indent=2)
+
+
+def run_validation_scorer(target_id, compound_id, lig_dir):
+    """Stage 10: Compute validation priority score from all upstream outputs."""
+    log("STAGE 10: Computing validation priority score...")
+    
+    cmd = [
+        sys.executable,
+        str(BASE_DIR / "backend" / "stage10_validation_scorer" / "validation_scorer.py"),
+        "--interaction_report", str(lig_dir / "interaction_report.json"),
+        "--mechanism_graph", str(lig_dir / "mechanism_graph.json"),
+        "--vina_report", str(lig_dir / "vina_results.json"),
+        "--diffdock_report", str(lig_dir / "diffdock_results.json"),
+        "--diffdock_dir", str(lig_dir),
+        "--out_dir", str(lig_dir)
+    ]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, cwd=str(BASE_DIR))
+        log(f"Stage 10 completed: {result.stdout.strip()}")
+    except Exception as e:
+        log(f"WARNING: Stage 10 validation scorer failed: {e}")
+
+
+def run_evidence_passport(target_id, compound_id, lig_dir):
+    """Stage 11: Generate evidence passport from all pipeline outputs."""
+    log("STAGE 11: Generating evidence passport...")
+    
+    cmd = [
+        sys.executable,
+        str(BASE_DIR / "backend" / "stage11_evidence_passport" / "passport_generator.py"),
+        "--interaction_report", str(lig_dir / "interaction_report.json"),
+        "--mechanism_graph", str(lig_dir / "mechanism_graph.json"),
+        "--validation_score", str(lig_dir / "validation_priority_score.json"),
+        "--diffdock_results", str(lig_dir / "diffdock_results.json"),
+        "--vina_results", str(lig_dir / "vina_results.json"),
+        "--target_registry", "data/inputs/pathogen_target_registry.csv",
+        "--ligand_registry", "data/inputs/ligand_library.csv",
+        "--target_id", target_id,
+        "--ligand_id", compound_id,
+        "--out_dir", str(lig_dir)
+    ]
+    
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, check=True, cwd=str(BASE_DIR))
+        log(f"Stage 11 completed: {result.stdout.strip()}")
+    except Exception as e:
+        log(f"WARNING: Stage 11 evidence passport failed: {e}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Run full docking pipeline for a single compound")
+    parser.add_argument("--target", required=True, help="Target ID (e.g. pqsr, lasr, agra)")
+    parser.add_argument("--compound_id", required=True, help="Compound identifier (e.g. withaferin_a)")
+    parser.add_argument("--compound_name", default=None, help="Human-readable compound name")
+    parser.add_argument("--smiles", default=None, help="SMILES string for ligand preparation")
+    parser.add_argument("--ligand_sdf", default=None, help="Path to user-uploaded SDF file")
+    parser.add_argument("--ligand_pdbqt", default=None, help="Path to user-uploaded PDBQT file")
+    parser.add_argument("--engine", default="combined", choices=["combined", "vina", "diffdock"],
+                        help="Which docking engine(s) to run")
+    args = parser.parse_args()
+    
+    target_id = args.target.lower()
+    compound_id = args.compound_id.lower().replace(" ", "_")
+    compound_name = args.compound_name or compound_id.replace("_", " ").title()
+    
+    # Create output directory
+    lig_dir = OUTPUTS_DIR / target_id / compound_id
+    os.makedirs(lig_dir, exist_ok=True)
+    
+    log("=" * 60)
+    log(f"MEVREON BIO-AI PIPELINE: SINGLE COMPOUND RUN")
+    log(f"  Target: {target_id.upper()}")
+    log(f"  Compound: {compound_name} ({compound_id})")
+    log(f"  Engine: {args.engine.upper()}")
+    log(f"  Output: {lig_dir}")
+    log("=" * 60)
+    
+    # ── Stage 1: Ligand Preparation ──
+    sdf_path = None
+    pdbqt_path = None
+    
+    if args.ligand_sdf or args.ligand_pdbqt:
+        # User uploaded files directly
+        sdf_path, pdbqt_path = copy_user_files(args.ligand_sdf, args.ligand_pdbqt, compound_id, lig_dir)
+    elif args.smiles:
+        # Generate from SMILES
+        sdf_path, pdbqt_path = prepare_ligand_from_smiles(args.smiles, compound_id, compound_name, lig_dir)
+    else:
+        # Check if prepared files already exist in the global prepared dir
+        existing_sdf = PREPARED_DIR / "ligands" / f"{compound_id}.sdf"
+        existing_pdbqt = PREPARED_DIR / "ligands" / f"{compound_id}.pdbqt"
+        if existing_sdf.exists():
+            sdf_path = existing_sdf
+            log(f"Using existing prepared SDF: {existing_sdf}")
+        if existing_pdbqt.exists():
+            pdbqt_path = existing_pdbqt
+            log(f"Using existing prepared PDBQT: {existing_pdbqt}")
+    
+    if not sdf_path and not pdbqt_path:
+        log("FATAL: No ligand file available. Provide --smiles, --ligand_sdf, or --ligand_pdbqt")
+        sys.exit(1)
+    
+    # ── Stage 3: AutoDock Vina ──
+    vina_ok = False
+    if args.engine in ["combined", "vina"]:
+        if pdbqt_path:
+            vina_ok = run_vina(target_id, compound_id, lig_dir, pdbqt_path)
+        else:
+            log("SKIPPING Vina: No PDBQT file available")
+    
+    # ── Stage 4: DiffDock-L ──
+    diffdock_ok = False
+    if args.engine in ["combined", "diffdock"]:
+        if sdf_path:
+            diffdock_ok = run_diffdock(target_id, compound_id, lig_dir, sdf_path)
+        else:
+            log("SKIPPING DiffDock: No SDF file available")
+    
+    # ── Stage 8: Interaction Parser ──
+    run_interaction_parser(target_id, compound_id, lig_dir)
+    
+    # ── Stage 9: Mechanism Graph ──
+    run_mechanism_graph(target_id, compound_id, lig_dir)
+    
+    # ── Stage 10: Validation Scorer ──
+    run_validation_scorer(target_id, compound_id, lig_dir)
+    
+    # ── Stage 11: Evidence Passport ──
+    run_evidence_passport(target_id, compound_id, lig_dir)
+    
+    # ── Summary ──
+    log("=" * 60)
+    log("PIPELINE EXECUTION COMPLETE")
+    
+    # Count generated files
+    generated_files = list(lig_dir.glob("*"))
+    log(f"Generated {len(generated_files)} output files in {lig_dir}")
+    for f in sorted(generated_files):
+        log(f"  ✓ {f.name} ({f.stat().st_size} bytes)")
+    
+    # Read final score for summary output
+    score_path = lig_dir / "validation_priority_score.json"
+    vina_path = lig_dir / "vina_results.json"
+    dd_path = lig_dir / "diffdock_results.json"
+    
+    summary = {
+        "status": "success",
+        "target_id": target_id,
+        "compound_id": compound_id,
+        "compound_name": compound_name,
+        "output_dir": str(lig_dir),
+        "files_generated": len(generated_files),
+        "vina_executed": vina_ok,
+        "diffdock_executed": diffdock_ok
+    }
+    
+    if score_path.exists():
+        with open(score_path) as f:
+            score_data = json.load(f)
+            summary["priority_score"] = score_data.get("validation_priority_score", 0)
+            summary["decision"] = score_data.get("decision", "N/A")
+            summary["evidence_strength"] = score_data.get("evidence_strength", "N/A")
+    
+    if vina_path.exists():
+        with open(vina_path) as f:
+            vina_data = json.load(f)
+            if vina_data.get("results"):
+                summary["vina_affinity"] = vina_data["results"][0]["affinity_kcal_mol"]
+    
+    if dd_path.exists():
+        with open(dd_path) as f:
+            dd_data = json.load(f)
+            if isinstance(dd_data, list) and dd_data:
+                summary["diffdock_confidence"] = dd_data[0]["confidence"]
+    
+    # Print JSON summary on last line for API to parse
+    log("=" * 60)
+    print(f"PIPELINE_RESULT_JSON:{json.dumps(summary)}")
+
+
+if __name__ == "__main__":
+    main()

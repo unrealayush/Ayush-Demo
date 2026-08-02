@@ -1,25 +1,25 @@
-Rank,Compound ID,Compound Name,Organism Mapped,Target Mapped,Vina Binding Energy (kcal/mol),DiffDock Confidence Score,Validation Priority Score,Preclinical Decision,Evidence Strength
-1,boeravinone_b,Boeravinone B,Klebsiella pneumoniae,acrb,-7.9,-0.52,85.5,High Priority,Strong Evidence
-2,cynaropicrin,Cynaropicrin,Klebsiella pneumoniae,acrb,-7.72,-0.63,83.2,High Priority,Strong Evidence
-3,liriodendrin,Liriodendrin,Klebsiella pneumoniae,acrb,-7.54,-0.74,80.9,High Priority,Strong Evidence
-4,chrysin,Chrysin,Klebsiella pneumoniae,acrb,-7.36,-0.85,78.6,High Priority,Strong Evidence
-5,imperatorin,Imperatorin,Klebsiella pneumoniae,acrb,-7.18,-0.96,76.3,High Priority,Strong Evidence
-6,conessine,Conessine,Klebsiella pneumoniae,acrb,-7.0,-1.07,74.0,High Priority,Strong Evidence
-7,dehydrocostus_lactone,Dehydrocostus lactone,Klebsiella pneumoniae,acrb,-6.82,-1.18,71.7,High Priority,Strong Evidence
-8,baicalein,Baicalein,Klebsiella pneumoniae,acrb,-6.64,-1.29,69.4,Review manually,Supporting Evidence
-9,rosmarinic_acid,Rosmarinic acid,Klebsiella pneumoniae,acrb,-6.46,-1.4,67.1,Review manually,Supporting Evidence
-10,oroxylin_a,Oroxylin A,Klebsiella pneumoniae,acrb,-6.28,-1.51,64.8,Review manually,Supporting Evidence
-11,demethoxycurcumin,Demethoxycurcumin,Klebsiella pneumoniae,acrb,-6.1,-1.62,62.5,Review manually,Supporting Evidence
-12,curcumin,Curcumin,Klebsiella pneumoniae,acrb,-5.92,-1.73,60.2,Review manually,Supporting Evidence
-13,aegeline,Aegeline,Klebsiella pneumoniae,acrb,-5.74,-1.84,57.9,Review manually,Supporting Evidence
-14,santamarine,Santamarine,Klebsiella pneumoniae,acrb,-5.56,-1.95,55.6,Review manually,Supporting Evidence
-15,nimbolide,Nimbolide,Klebsiella pneumoniae,acrb,-5.38,-2.06,53.3,Review manually,Supporting Evidence
-16,magnoflorine,Magnoflorine,Klebsiella pneumoniae,acrb,-5.2,-2.17,51.0,Review manually,Supporting Evidence
-17,ursolic_acid,Ursolic acid,Klebsiella pneumoniae,acrb,-5.02,-2.28,48.7,Review manually,Supporting Evidence
-18,skimmianine,Skimmianine,Klebsiella pneumoniae,acrb,-4.84,-2.39,46.4,Review manually,Supporting Evidence
-19,bisdemethoxycurcumin,Bisdemethoxycurcumin,Klebsiella pneumoniae,acrb,-4.66,-2.5,44.1,Low Priority,Supporting Evidence
-20,baicalin,Baicalin,Klebsiella pneumoniae,acrb,-4.48,-2.61,41.8,Low Priority,Supporting Evidence
-21,nimbin,Nimbin,Klebsiella pneumoniae,acrb,-4.3,-2.72,39.5,Low Priority,Supporting Evidence
-22,costunolide,Costunolide,Klebsiella pneumoniae,acrb,-4.12,-2.83,37.2,Low Priority,Supporting Evidence
-23,azadirachtin,Azadirachtin,Klebsiella pneumoniae,acrb,-3.94,-2.94,34.9,Low Priority,Supporting Evidence
-24,eugenol,Eugenol,Klebsiella pneumoniae,acrb,-3.76,-3.05,32.6,Low Priority,Supporting Evidence
+Rank,Compound ID,Compound Name,Vina Affinity (kcal/mol),DiffDock Confidence,Hydrogen Bonds,Hydrophobic Contacts,Validation Priority Score,Preclinical Decision,Evidence Strength
+1,aegeline,Aegeline,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+2,azadirachtin,Azadirachtin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+3,baicalein,Baicalein,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+4,baicalin,Baicalin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+5,bisdemethoxycurcumin,Bisdemethoxycurcumin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+6,boeravinone_b,Boeravinone B,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+7,chrysin,Chrysin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+8,conessine,Conessine,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+9,costunolide,Costunolide,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+10,curcumin,Curcumin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+11,cynaropicrin,Cynaropicrin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+12,dehydrocostus_lactone,Dehydrocostus lactone,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+13,demethoxycurcumin,Demethoxycurcumin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+14,eugenol,Eugenol,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+15,imperatorin,Imperatorin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+16,liriodendrin,Liriodendrin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+17,magnoflorine,Magnoflorine,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+18,nimbin,Nimbin,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+19,nimbolide,Nimbolide,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+20,oroxylin_a,Oroxylin A,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+21,rosmarinic_acid,Rosmarinic acid,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+22,santamarine,Santamarine,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+23,skimmianine,Skimmianine,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility
+24,ursolic_acid,Ursolic acid,0.0,0.0,8,11,54.8,Review manually,Low preclinical plausibility

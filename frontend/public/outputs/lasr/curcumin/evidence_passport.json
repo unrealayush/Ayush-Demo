@@ -1,26 +1,27 @@
 {
-  "passport_id": "EP-SRTA-COSTU-001",
-  "generated_at": "2026-06-28T10:10:10.157228+00:00",
-  "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus Sortase A. The interaction yields a validation priority score of 58.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
+  "passport_id": "EP-LASR-CURCU-001",
+  "generated_at": "2026-08-01T19:43:00.141436+00:00",
+  "executive_summary": "Curcumin demonstrates in-silico binding potential to Pseudomonas aeruginosa LasR. The interaction yields a validation priority score of 58.4/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {
-      "entity": "Sortase A Structure",
+      "entity": "LasR Structure",
       "source": "RCSB_PDB",
-      "accession_or_url": "6R1V"
+      "accession_or_url": "2UV0"
     },
     {
-      "entity": "Costunolide",
+      "entity": "Curcumin",
       "source": "PubChem",
-      "accession_or_url": "CID 5281437"
+      "accession_or_url": "CID 5281767"
     },
     {
       "entity": "Context",
-      "source": "Unknown",
-      "accession_or_url": "PUBCHEM_CID_5281437"
+      "source": "PubChem",
+      "accession_or_url": "PUBCHEM_CID_5281767"
     }
   ],
   "next_validation_steps": [
     "Overall validation score is low. Review individual metric contributions (Affinity, Confidence, Interactions) to identify weak points.",
-    "AI-driven docking confidence (-0.96) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
+    "Binding affinity (-6.22 kcal/mol) is weak. Recommend computational chemistry efforts to improve ligand binding.",
+    "AI-driven docking confidence (-0.55) is low. Recommend additional computational validation, such as Molecular Dynamics simulation, to assess pose stability."
   ]
 }

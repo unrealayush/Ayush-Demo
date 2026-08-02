@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi import FastAPI, HTTPException, BackgroundTasks, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -8,9 +8,11 @@ import sys
 import csv
 import json
 import yaml
+import shutil
 import subprocess
 from pathlib import Path
 import time
+import uuid
 from typing import Optional, List, Dict, Any, Callable
 
 app = FastAPI(title="AYUSH Bio-AI Docking Pipeline API", version="1.0.0")
@@ -39,7 +41,12 @@ run_states: Dict[str, RunState] = {
     "vina": {"status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0, "start_time": None, "error": None},
     "diffdock": {"status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0, "start_time": None, "error": None},
     "screen": {"status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0, "start_time": None, "error": None},
+    "custom": {"status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0, "start_time": None, "error": None, "result": None, "run_id": None},
 }
+
+# Directory for user-uploaded files
+UPLOADS_DIR = BASE_DIR / "data" / "uploads"
+UPLOADS_DIR.mkdir(parents=True, exist_ok=True)
 
 # --- Models ---
 class RunRequest(BaseModel):
@@ -314,7 +321,7 @@ def run_esmfold(req: RunRequest, background_tasks: BackgroundTasks):
     env_path = "/opt/services/esmfold2/env"
     
     # Temporary output paths
-    temp_out_path = OUTPUTS_DIR / f"esm_temp_{uuid_hex()}.tmp"
+    temp_out_path = OUTPUTS_DIR / f"esm_temp_{uuid.uuid4().hex[:8]}.tmp"
     final_cif_path = OUTPUTS_DIR / "esm_test_run.cif"
     
     # Command to run biohub/ESMFold2 in conda env
@@ -505,7 +512,7 @@ def download_screening_results(target_id: str):
         raise HTTPException(status_code=404, detail=f"Screening leaderboard not found for target {target_id}. Please run the screening first.")
     return FileResponse(csv_path, media_type="text/csv", filename=f"{target_id}_screening_leaderboard.csv")
 
-# --- Custom Compound Testing Endpoint ---
+# --- Real Custom Compound Docking Pipeline ---
 
 class CustomDockingRequest(BaseModel):
     target_id: str
@@ -514,69 +521,311 @@ class CustomDockingRequest(BaseModel):
     smiles: Optional[str] = None
     engine: Optional[str] = "combined"
 
+def _run_real_custom_pipeline(
+    target_id: str,
+    compound_id: str,
+    compound_name: str,
+    smiles: Optional[str],
+    ligand_sdf_path: Optional[str],
+    ligand_pdbqt_path: Optional[str],
+    engine: str,
+    run_id: str,
+):
+    """
+    Background task: runs the real pipeline via run_single_compound.py as a local subprocess.
+    Streams stdout into run_states["custom"]["logs"] for real-time frontend polling.
+    """
+    state = run_states["custom"]
+    state["status"] = "Running"
+    state["start_time"] = time.time()
+    state["progress"] = 5
+    state["run_id"] = run_id
+    state["logs"] = [f"[{time.strftime('%H:%M:%S')}] Pipeline triggered. Run ID: {run_id}"]
+    state["error"] = None
+    state["result"] = None
+    
+    try:
+        # Build the command for the real pipeline script
+        cmd = [
+            sys.executable,
+            str(BASE_DIR / "scripts" / "run_single_compound.py"),
+            "--target", target_id,
+            "--compound_id", compound_id,
+            "--compound_name", compound_name,
+            "--engine", engine,
+        ]
+        
+        if smiles:
+            cmd.extend(["--smiles", smiles])
+        if ligand_sdf_path:
+            cmd.extend(["--ligand_sdf", ligand_sdf_path])
+        if ligand_pdbqt_path:
+            cmd.extend(["--ligand_pdbqt", ligand_pdbqt_path])
+        
+        state["progress"] = 10
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Spawning pipeline subprocess on VM...")
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] CMD: {' '.join(cmd)}")
+        
+        # Execute subprocess and stream stdout in real-time
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            cwd=str(BASE_DIR)
+        )
+        
+        stdout_stream = process.stdout
+        if stdout_stream is None:
+            raise RuntimeError("Failed to capture subprocess stdout")
+        
+        result_json = None
+        
+        while True:
+            output = stdout_stream.readline()
+            if output == '' and process.poll() is not None:
+                break
+            if output:
+                cleaned = output.strip()
+                state["logs"].append(cleaned)
+                
+                # Parse pipeline result from final output line
+                if cleaned.startswith("PIPELINE_RESULT_JSON:"):
+                    try:
+                        result_json = json.loads(cleaned.replace("PIPELINE_RESULT_JSON:", ""))
+                    except json.JSONDecodeError:
+                        pass
+                
+                # Dynamic progress estimation from stage markers
+                if "STAGE 1" in cleaned:
+                    state["progress"] = 15
+                elif "STAGE 3" in cleaned or "Vina" in cleaned:
+                    state["progress"] = 30
+                elif "Vina SUCCESS" in cleaned:
+                    state["progress"] = 45
+                elif "STAGE 4" in cleaned or "DiffDock" in cleaned:
+                    state["progress"] = 50
+                elif "DiffDock SUCCESS" in cleaned:
+                    state["progress"] = 65
+                elif "STAGE 8" in cleaned:
+                    state["progress"] = 70
+                elif "STAGE 9" in cleaned:
+                    state["progress"] = 75
+                elif "STAGE 10" in cleaned:
+                    state["progress"] = 80
+                elif "STAGE 11" in cleaned:
+                    state["progress"] = 85
+                elif "PIPELINE EXECUTION COMPLETE" in cleaned:
+                    state["progress"] = 95
+        
+        rc = process.poll()
+        _, stderr = process.communicate()
+        
+        if stderr:
+            for line in stderr.splitlines():
+                if line.strip():
+                    state["logs"].append(f"[STDERR] {line.strip()}")
+        
+        state["elapsed"] = round(time.time() - state["start_time"], 2)
+        
+        if rc == 0 and result_json:
+            state["progress"] = 100
+            state["status"] = "Completed"
+            state["result"] = result_json
+            state["logs"].append(f"[{time.strftime('%H:%M:%S')}] ✅ Pipeline completed successfully! {result_json.get('files_generated', 0)} files generated.")
+        elif rc == 0:
+            state["progress"] = 100
+            state["status"] = "Completed"
+            state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Pipeline exited with code 0 (result JSON not captured).")
+            # Try to read results from output files directly
+            out_dir = OUTPUTS_DIR / target_id / compound_id
+            state["result"] = _read_result_from_outputs(out_dir, target_id, compound_id, compound_name)
+        else:
+            state["progress"] = 100
+            state["status"] = "Failed"
+            state["error"] = f"Pipeline script exited with code {rc}"
+            state["logs"].append(f"[{time.strftime('%H:%M:%S')}] ❌ Pipeline failed. Exit code: {rc}")
+            
+    except Exception as e:
+        state["progress"] = 100
+        state["status"] = "Failed"
+        state["error"] = str(e)
+        state["elapsed"] = round(time.time() - state["start_time"], 2) if state["start_time"] else 0.0
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] ❌ Exception: {str(e)}")
+
+
+def _read_result_from_outputs(out_dir: Path, target_id: str, compound_id: str, compound_name: str) -> Dict:
+    """Read final results from the output files if the pipeline JSON marker was missed."""
+    result = {
+        "status": "success",
+        "target_id": target_id,
+        "compound_id": compound_id,
+        "compound_name": compound_name,
+        "output_dir": str(out_dir),
+        "files_generated": len(list(out_dir.glob("*"))) if out_dir.exists() else 0,
+    }
+    
+    score_path = out_dir / "validation_priority_score.json"
+    if score_path.exists():
+        with open(score_path) as f:
+            score_data = json.load(f)
+            result["priority_score"] = score_data.get("validation_priority_score", 0)
+            result["decision"] = score_data.get("decision", "N/A")
+            result["evidence_strength"] = score_data.get("evidence_strength", "N/A")
+    
+    vina_path = out_dir / "vina_results.json"
+    if vina_path.exists():
+        with open(vina_path) as f:
+            vina_data = json.load(f)
+            if vina_data.get("results"):
+                result["vina_affinity"] = vina_data["results"][0]["affinity_kcal_mol"]
+    
+    dd_path = out_dir / "diffdock_results.json"
+    if dd_path.exists():
+        with open(dd_path) as f:
+            dd_data = json.load(f)
+            if isinstance(dd_data, list) and dd_data:
+                result["diffdock_confidence"] = dd_data[0]["confidence"]
+    
+    return result
+
+
 @app.post("/api/run/custom")
-def run_custom_docking(req: CustomDockingRequest):
+def run_custom_docking(req: CustomDockingRequest, background_tasks: BackgroundTasks):
+    """Trigger real docking pipeline for a custom compound on the VM."""
+    state = run_states["custom"]
+    if state["status"] == "Running":
+        return JSONResponse(status_code=400, content={"message": "A custom docking run is already in progress. Wait for completion or check /api/run/custom/status."})
+    
     target_id = req.target_id.lower()
     compound_name = req.compound_name
     compound_id = req.compound_id.lower().replace(" ", "_")
-    smiles = req.smiles or "CC(=O)Oc1ccccc1C(=O)O"
+    smiles = req.smiles
+    engine = req.engine or "combined"
+    run_id = uuid.uuid4().hex[:8]
     
-    target_dir = OUTPUTS_DIR / target_id / compound_id
-    target_dir.mkdir(parents=True, exist_ok=True)
+    if not smiles:
+        raise HTTPException(status_code=400, detail="SMILES string is required for custom compound docking.")
     
-    import hashlib
-    h = int(hashlib.md5(smiles.encode()).hexdigest(), 16)
-    vina_affinity = round(-5.5 - (h % 350) / 100.0, 3)
-    diffdock_confidence = round(0.5 + (h % 150) / 100.0, 2)
-    priority_score = round(min(98.0, max(48.0, 50.0 + (-vina_affinity * 4.2))), 1)
+    background_tasks.add_task(
+        _run_real_custom_pipeline,
+        target_id, compound_id, compound_name,
+        smiles, None, None,
+        engine, run_id
+    )
     
-    passport_data = {
-        "passport_id": f"EP-{target_id.upper()}-{compound_id.upper()[:6]}-001",
-        "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "executive_summary": f"{compound_name} demonstrates high in-silico binding potential to target {target_id.upper()}. The interaction yields a validation priority score of {priority_score}/100. DiffDock spatial confidence (+{diffdock_confidence}) indicates strong structural shape complementarity.",
-        "traceability_matrix": [
-            {"entity": f"{target_id.upper()} Target Protein", "source": "RCSB_PDB / AlphaFold_DB", "accession_or_url": f"TARGET_{target_id.upper()}"},
-            {"entity": compound_name, "source": "User SMILES / PubChem", "accession_or_url": smiles[:30]}
-        ],
-        "next_validation_steps": [
-            "High validation priority score (>70/100). Recommend initiating in-vitro assay testing.",
-            "Pose stability confirmed via hybrid thermodynamic Vina and DiffDock generative diffusion models."
-        ]
-    }
-    with open(target_dir / "evidence_passport.json", "w", encoding="utf-8") as f:
-        json.dump(passport_data, f, indent=2)
-        
-    graph_data = {
-        "target": target_id.upper(),
-        "compound": compound_name,
-        "nodes": [
-            {"id": "c1", "label": compound_name, "type": "compound"},
-            {"id": "t1", "label": f"{target_id.upper()} Binding Pocket", "type": "target"},
-            {"id": "p1", "label": "Phenotypic AMR Disruption", "type": "phenotype"}
-        ],
-        "edges": [
-            {"source": "c1", "target": "t1", "relation": f"Inhibits (ΔG = {vina_affinity} kcal/mol)"},
-            {"source": "t1", "target": "p1", "relation": "Suppresses Pathogenicity"}
-        ]
-    }
-    with open(target_dir / "mechanism_graph.json", "w", encoding="utf-8") as f:
-        json.dump(graph_data, f, indent=2)
-        
+    return {"message": f"Real pipeline triggered for {compound_name} on {target_id.upper()}", "status": "Running", "run_id": run_id}
+
+
+@app.post("/api/run/custom-upload")
+async def run_custom_docking_upload(
+    background_tasks: BackgroundTasks,
+    target_id: str = Form(...),
+    compound_name: str = Form(...),
+    compound_id: str = Form(...),
+    engine: str = Form("combined"),
+    smiles: Optional[str] = Form(None),
+    ligand_sdf: Optional[UploadFile] = File(None),
+    ligand_pdbqt: Optional[UploadFile] = File(None),
+):
+    """Trigger real docking pipeline with user-uploaded SDF/PDBQT files."""
+    state = run_states["custom"]
+    if state["status"] == "Running":
+        return JSONResponse(status_code=400, content={"message": "A custom docking run is already in progress."})
+    
+    target_id = target_id.lower()
+    compound_id = compound_id.lower().replace(" ", "_")
+    run_id = uuid.uuid4().hex[:8]
+    
+    # Save uploaded files to disk
+    sdf_path = None
+    pdbqt_path = None
+    
+    upload_dir = UPLOADS_DIR / run_id
+    upload_dir.mkdir(parents=True, exist_ok=True)
+    
+    if ligand_sdf and ligand_sdf.filename:
+        sdf_path = str(upload_dir / f"{compound_id}.sdf")
+        with open(sdf_path, "wb") as f:
+            content = await ligand_sdf.read()
+            f.write(content)
+    
+    if ligand_pdbqt and ligand_pdbqt.filename:
+        pdbqt_path = str(upload_dir / f"{compound_id}.pdbqt")
+        with open(pdbqt_path, "wb") as f:
+            content = await ligand_pdbqt.read()
+            f.write(content)
+    
+    if not smiles and not sdf_path and not pdbqt_path:
+        raise HTTPException(status_code=400, detail="Provide SMILES string or upload SDF/PDBQT file.")
+    
+    background_tasks.add_task(
+        _run_real_custom_pipeline,
+        target_id, compound_id, compound_name,
+        smiles, sdf_path, pdbqt_path,
+        engine, run_id
+    )
+    
+    return {"message": f"Real pipeline triggered for {compound_name}", "status": "Running", "run_id": run_id}
+
+
+@app.get("/api/run/custom/status")
+def get_custom_status():
+    """Poll the status of the current custom docking run."""
+    state = run_states["custom"]
+    if state["status"] == "Running" and state["start_time"] is not None:
+        state["elapsed"] = round(time.time() - state["start_time"], 2)
     return {
-        "status": "success",
-        "targetId": target_id,
-        "compoundId": compound_id,
-        "compoundName": compound_name,
-        "vinaAffinity": vina_affinity,
-        "diffdockConfidence": diffdock_confidence,
-        "priorityScore": priority_score,
-        "message": f"Custom in-silico docking completed for {compound_name} on target {target_id.upper()}"
+        "status": state["status"],
+        "progress": state["progress"],
+        "elapsed": state["elapsed"],
+        "logs": state["logs"],
+        "error": state["error"],
+        "run_id": state.get("run_id"),
     }
 
-# --- Utility uuid hex generator ---
-def uuid_hex() -> str:
-    import uuid
-    return uuid.uuid4().hex[:8]
+
+@app.get("/api/run/custom/results")
+def get_custom_results():
+    """Get the final results of the completed custom docking run."""
+    state = run_states["custom"]
+    if state["status"] == "Running":
+        return {"status": "running", "message": "Pipeline is still executing. Poll /api/run/custom/status."}
+    if state["status"] == "Failed":
+        return {"status": "failed", "error": state["error"]}
+    if state["status"] == "Idle":
+        return {"status": "idle", "message": "No custom docking has been run yet."}
+    
+    result = state.get("result")
+    if result:
+        return {
+            "status": "success",
+            "targetId": result.get("target_id", ""),
+            "compoundId": result.get("compound_id", ""),
+            "compoundName": result.get("compound_name", ""),
+            "vinaAffinity": result.get("vina_affinity", 0.0),
+            "diffdockConfidence": result.get("diffdock_confidence", 0.0),
+            "priorityScore": result.get("priority_score", 0.0),
+            "decision": result.get("decision", "N/A"),
+            "evidenceStrength": result.get("evidence_strength", "N/A"),
+            "filesGenerated": result.get("files_generated", 0),
+            "message": f"Real pipeline completed for {result.get('compound_name', 'compound')}"
+        }
+    
+    return {"status": "completed", "message": "Run completed but result data not available."}
+
+
+@app.post("/api/run/custom/reset")
+def reset_custom_run():
+    """Reset the custom run state so a new run can be started."""
+    state = run_states["custom"]
+    if state["status"] == "Running":
+        return JSONResponse(status_code=400, content={"message": "Cannot reset while a run is in progress."})
+    run_states["custom"] = {
+        "status": "Idle", "progress": 0, "logs": [], "elapsed": 0.0,
+        "start_time": None, "error": None, "result": None, "run_id": None
+    }
+    return {"status": "reset", "message": "Custom run state cleared."}
 
 # Mount React static files if the production build exists
 react_dist = BASE_DIR / "frontend" / "dist"
