@@ -2,21 +2,19 @@ import { useState, useEffect } from 'react';
 import Dashboard from './Dashboard';
 import { LandingPage } from './components/LandingPage';
 import { LigandDetail } from './components/LigandDetail';
-import { ComparisonView } from './components/ComparisonView';
 import { CustomCompoundTester } from './components/CustomCompoundTester';
 import { Moon, Sun, Zap } from 'lucide-react';
 
 export type ThemeMode = 'dark' | 'light' | 'cyber';
 
 const App = () => {
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail' | 'comparison'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail'>('landing');
   const [selectedOrganism, setSelectedOrganism] = useState<string>('pseudomonas');
   const [selectedTarget, setSelectedTarget] = useState<string>('PqsR');
   const [detailTarget, setDetailTarget] = useState('');
   const [detailLigand, setDetailLigand] = useState('');
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
-  const [comparisonLeaderboard, setComparisonLeaderboard] = useState<any[]>([]);
 
   // ── Theme Switcher ──
   useEffect(() => {
@@ -65,8 +63,6 @@ const App = () => {
       window.location.hash = `#/${selectedOrganism}/${selectedTarget}`;
     } else if (currentView === 'detail' && detailTarget && detailLigand) {
       window.location.hash = `#/${selectedOrganism}/${detailTarget}/${detailLigand}`;
-    } else if (currentView === 'comparison') {
-      window.location.hash = `#/${selectedOrganism}/${selectedTarget}/compare`;
     }
   }, [currentView, selectedOrganism, selectedTarget, detailTarget, detailLigand]);
 
@@ -74,7 +70,7 @@ const App = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (currentView === 'detail' || currentView === 'comparison') {
+        if (currentView === 'detail') {
           setCurrentView('dashboard');
         } else if (currentView === 'dashboard') {
           setCurrentView('landing');
@@ -103,11 +99,6 @@ const App = () => {
     setCurrentView('detail');
   };
 
-  const handleOpenComparison = (leaderboardData: any[]) => {
-    setComparisonLeaderboard(leaderboardData);
-    setCurrentView('comparison');
-  };
-
   const handleBackToDashboard = () => {
     setCurrentView('dashboard');
   };
@@ -129,14 +120,7 @@ const App = () => {
             initialOrganism={selectedOrganism}
             initialTarget={selectedTarget}
             onOpenDetail={handleOpenDetail}
-            onOpenComparison={handleOpenComparison}
             onBackToLanding={handleBackToLanding}
-          />
-        ) : currentView === 'comparison' ? (
-          <ComparisonView
-            targetId={selectedTarget}
-            leaderboard={comparisonLeaderboard}
-            onBack={handleBackToDashboard}
           />
         ) : (
           <LigandDetail
