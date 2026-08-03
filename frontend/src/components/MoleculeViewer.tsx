@@ -252,12 +252,6 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
             </button>
           </div>
 
-          {/* Active Site Residue Labels Overlay Badge */}
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 z-20 bg-slate-900/90 border border-cyan-500/40 rounded-full px-3 py-1 text-[9px] font-mono font-bold text-cyan-300 shadow-lg backdrop-blur-md flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            <span>Active Site: {targetId.toUpperCase()} Active Pocket</span>
-          </div>
-
           {/* 3D Visualizer Color Code Legend */}
           <div className="absolute bottom-2 left-2 flex items-center gap-3 bg-slate-950/90 border border-slate-800 rounded px-2.5 py-1 text-[8px] text-slate-300 font-bold select-none shadow-lg font-mono z-10 backdrop-blur-sm">
             <div className="flex items-center gap-1">

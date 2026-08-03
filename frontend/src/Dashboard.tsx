@@ -20,13 +20,11 @@ import {
   Sparkles,
   ExternalLink,
   HelpCircle,
-  Layers,
   Download
 } from 'lucide-react';
 import { MoleculeViewer } from './components/MoleculeViewer';
 import { MechanismGraph } from './components/MechanismGraph';
 import { CustomCompoundTester } from './components/CustomCompoundTester';
-import { CrossTargetMatrixModal } from './components/CrossTargetMatrixModal';
 
 // ── PubChem CIDs Map ──
 const PUBCHEM_CIDS: Record<string, string> = {
@@ -159,7 +157,6 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
   const [customCompoundsMap, setCustomCompoundsMap] = useState<Record<string, any[]>>({});
   const [showCovalentInteractions, setShowCovalentInteractions] = useState<boolean>(false);
   const [showTop5Only, setShowTop5Only] = useState<boolean>(false);
-  const [isMatrixModalOpen, setIsMatrixModalOpen] = useState<boolean>(false);
 
   // Find active organism details
   const activeOrg = ORGANISMS.find(o => o.id === selectedOrganism) || ORGANISMS[0];
@@ -773,15 +770,6 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
               <span>{showTop5Only ? 'Top 5 Hits' : 'All 24 Hits'}</span>
             </button>
 
-            {/* Poly-pharmacology Matrix Button */}
-            <button
-              onClick={() => setIsMatrixModalOpen(true)}
-              className="px-3 py-1.5 text-xs font-semibold rounded-lg font-mono flex items-center gap-1.5 bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 transition-all duration-200"
-            >
-              <Layers className="w-3.5 h-3.5" />
-              <span>Cross-Target Matrix</span>
-            </button>
-
             {/* Export CSV Button */}
             <button
               onClick={handleExportCSV}
@@ -971,16 +959,6 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
         onRunSuccess={handleCustomCompoundSuccess}
         availableTargets={ORGANISMS.flatMap(o => o.targets)}
       />
-
-      {/* ── Poly-Pharmacology Cross-Target Matrix Modal ── */}
-      {isMatrixModalOpen && (
-        <CrossTargetMatrixModal
-          organismId={activeOrg.id}
-          organismName={activeOrg.name}
-          targets={activeOrg.targets}
-          onClose={() => setIsMatrixModalOpen(false)}
-        />
-      )}
 
     </div>
   );
