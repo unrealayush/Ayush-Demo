@@ -89,8 +89,8 @@ const ORGANISMS = [
     ncbiAssembly: 'GCF_000006765',
     emoji: '🦠',
     description: 'Gram-negative opportunistic pathogen',
-    colorClass: 'text-teal-400 border-teal-500/30 bg-[#060b14] hover:border-teal-400/60 shadow-[0_0_20px_rgba(20,184,166,0.1)]',
-    activeColor: 'bg-teal-500/20 border-teal-400 text-teal-300 ring-1 ring-teal-500/40',
+    colorClass: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-50 dark:bg-emerald-950/20 shadow-[0_0_15px_rgba(16,185,129,0.15)]',
+    activeColor: 'bg-emerald-500 border-emerald-400 text-emerald-700 dark:text-emerald-300',
     targets: [
       { id: 'LasR', label: 'LasR', desc: 'Quorum sensing regulator', strain: 'PAO1' },
       { id: 'PqsR', label: 'PqsR (MvfR)', desc: 'PQS signaling regulator', strain: 'PAO1' },
@@ -106,8 +106,8 @@ const ORGANISMS = [
     ncbiAssembly: 'GCF_000013425',
     emoji: '🧫',
     description: 'Gram-positive virulent pathogen',
-    colorClass: 'text-rose-400 border-rose-500/30 bg-[#060b14] hover:border-rose-400/60 shadow-[0_0_20px_rgba(244,63,94,0.1)]',
-    activeColor: 'bg-rose-500/20 border-rose-400 text-rose-300 ring-1 ring-rose-500/40',
+    colorClass: 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-950/20 shadow-[0_0_15px_rgba(244,63,94,0.15)]',
+    activeColor: 'bg-rose-500 border-rose-400 text-rose-300',
     targets: [
       { id: 'AgrA', label: 'AgrA', desc: 'Agr QS response regulator', strain: 'NCTC 8325' },
       { id: 'SrtA', label: 'Sortase A', desc: 'Peptidoglycan transpeptidase', strain: 'NCTC 8325' },
@@ -123,8 +123,8 @@ const ORGANISMS = [
     ncbiAssembly: 'GCF_000016305',
     emoji: '🧬',
     description: 'Gram-negative drug-resistant pathogen',
-    colorClass: 'text-indigo-400 border-indigo-500/30 bg-[#060b14] hover:border-indigo-400/60 shadow-[0_0_20px_rgba(99,102,241,0.1)]',
-    activeColor: 'bg-indigo-500/20 border-indigo-400 text-indigo-300 ring-1 ring-indigo-500/40',
+    colorClass: 'text-cyan-600 dark:text-cyan-400 border-cyan-500/30 bg-cyan-50 dark:bg-cyan-950/20 shadow-[0_0_15px_rgba(6,182,212,0.15)]',
+    activeColor: 'bg-cyan-500 border-cyan-400 text-cyan-700 dark:text-cyan-300',
     targets: [
       { id: 'MrkH', label: 'MrkH', desc: 'Type III fimbriae regulator (Adhesion)', strain: 'MGH78578' },
       { id: 'Wzc', label: 'Wzc', desc: 'Capsule tyrosine autokinase', strain: 'MGH78578' },
@@ -360,19 +360,19 @@ const Dashboard: React.FC<DashboardProps> = ({
   });
 
   return (
-    <div className="w-full min-h-screen bg-[#04070d] text-slate-100 p-4 font-sans select-none antialiased relative grain-overlay">
+    <div className="w-full min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 p-4 font-sans select-none antialiased">
       
       {/* ── Top Navigation Bar ── */}
-      <header className="flex flex-col lg:flex-row items-center justify-between gap-4 bg-[#060b14]/80 border border-slate-800/80 backdrop-blur-md px-6 py-4 rounded-2xl mb-4 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal-500/40 to-transparent"></div>
+      <header className="flex flex-col lg:flex-row items-center justify-between gap-4 glass-panel px-6 py-4 rounded-xl mb-4 shadow-[0_0_20px_rgba(14,165,233,0.15)] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
 
         <div className="flex items-center gap-4 relative z-10">
-          <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(20,184,166,0.3)]">
-            <div className="text-teal-400 font-bold text-xl">🧬</div>
+          <div className="w-10 h-10 rounded-lg bg-cyan-50 dark:bg-cyan-950 border border-cyan-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xl">🧬</div>
           </div>
           <div>
-            <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-cyan-300 to-indigo-400 tracking-tight">AYUSH Bio-AI Evidence Platform</h1>
-            <p className="text-[10px] text-slate-400 font-mono tracking-wider uppercase mt-0.5">Mechanism-linked validation for traditional phytomedicines</p>
+            <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 tracking-tight">AYUSH Bio-AI Evidence Demo</h1>
+            <p className="text-xs text-slate-600 dark:text-slate-400 font-medium tracking-wide uppercase mt-0.5">Mechanism-linked validation for AYUSH medicines</p>
           </div>
         </div>
 
@@ -381,19 +381,19 @@ const Dashboard: React.FC<DashboardProps> = ({
           {onBackToLanding && (
             <button
               onClick={onBackToLanding}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 hover:border-teal-500/40 text-xs font-mono font-semibold text-slate-300 hover:text-teal-300 transition"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-cyan-500/50 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 hover:text-cyan-400 transition"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-teal-400" />
-              <span>Overview</span>
+              <ArrowLeft className="w-3.5 h-3.5 text-cyan-500" />
+              <span>Landing Page</span>
             </button>
           )}
 
           {/* Search Ctrl+K Button */}
           <button
             onClick={() => setIsCommandPaletteOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 hover:border-teal-500/40 text-xs font-mono text-slate-300 hover:text-teal-300 transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/80 hover:border-cyan-500/50 text-xs font-mono text-slate-300 hover:text-cyan-300 transition"
           >
-            <Search className="w-3.5 h-3.5 text-teal-400" />
+            <Search className="w-3.5 h-3.5 text-cyan-400" />
             <span>Search</span>
             <kbd className="hidden sm:inline-flex px-1 py-0.2 rounded border border-slate-700 bg-slate-800 text-[9px]">Ctrl+K</kbd>
           </button>
@@ -470,20 +470,20 @@ const Dashboard: React.FC<DashboardProps> = ({
             <button
               key={org.id}
               onClick={() => setSelectedOrganism(org.id)}
-              className={`flex flex-col items-center p-3.5 rounded-2xl border text-center transition-all duration-300 relative overflow-hidden ${
+              className={`flex flex-col items-center p-3 rounded-xl border text-center transition-all duration-300 relative overflow-hidden ${
                 isActive 
-                  ? `${org.activeColor} shadow-lg scale-[1.01]` 
-                  : 'border-slate-800/60 bg-[#060b14] hover:border-slate-700 text-slate-400 hover:text-slate-200'
+                  ? `${org.colorClass} border-cyan-400 ring-1 ring-cyan-500/30 scale-[1.01]` 
+                  : 'border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/10 hover:border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-800 dark:text-slate-200'
               }`}
             >
               {isActive && (
-                <span className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-teal-400 to-transparent" />
+                <span className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
               )}
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-1.5 mb-1">
                 <span className="text-lg">{org.emoji}</span>
-                <span className="text-sm font-bold font-serif italic tracking-wide">{org.name} ({org.shortName})</span>
+                <span className="text-xs font-bold font-serif italic tracking-wide">{org.name} ({org.shortName})</span>
               </div>
-              <p className="text-[10px] text-slate-400 italic font-medium font-sans">{org.description}</p>
+              <p className="text-[10px] text-slate-500 italic font-medium">{org.description}</p>
             </button>
           );
         })}
@@ -494,7 +494,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 
         {/* ── LEFT COLUMN: Demo Inputs (span-3) ── */}
         <div className="col-span-12 xl:col-span-3 flex flex-col gap-4">
-          <div className="bg-[#060b14] border border-slate-800/60 rounded-2xl shadow-xl p-5 flex-1 relative overflow-hidden flex flex-col justify-between">
+          <div className="glass-panel rounded-xl p-5 flex-1 relative overflow-hidden flex flex-col justify-between">
              <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-cyan-500/50 to-transparent"></div>
 
              <div>
@@ -638,7 +638,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 
         {/* ── MIDDLE COLUMN: Mechanism Layer (span-5) ── */}
         <div className="col-span-12 xl:col-span-5 flex flex-col gap-4">
-          <div className="bg-[#060b14] border border-slate-800/60 rounded-2xl shadow-xl p-5 flex-1 flex flex-col relative overflow-hidden">
+          <div className="glass-panel rounded-xl p-5 flex-1 flex flex-col relative overflow-hidden">
             <div className="absolute top-0 left-1/4 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-50"></div>
 
             <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-700/50 pb-3">
@@ -710,7 +710,7 @@ const Dashboard: React.FC<DashboardProps> = ({
 
         {/* ── RIGHT COLUMN: Evidence Passport (span-4) ── */}
         <div className="col-span-12 xl:col-span-4 flex flex-col gap-4">
-          <div className="bg-[#060b14] border border-slate-800/60 rounded-2xl shadow-xl p-5 flex-1 flex flex-col justify-between relative overflow-hidden">
+          <div className="glass-panel rounded-xl p-5 flex-1 flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 h-full w-0.5 bg-gradient-to-b from-purple-500/50 to-transparent"></div>
 
             <div>
@@ -857,7 +857,7 @@ const Dashboard: React.FC<DashboardProps> = ({
       />
 
       {/* ── Interactive 24-Compound Preclinical Leaderboard Table / Chart (Spans Full Width) ── */}
-      <div className="bg-[#060b14] border border-slate-800/60 rounded-2xl shadow-xl p-5 mb-4 shadow-[0_0_20px_rgba(14,165,233,0.1)] relative overflow-hidden">
+      <div className="glass-panel rounded-xl p-5 mb-4 shadow-[0_0_20px_rgba(14,165,233,0.1)] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
         
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-300 dark:border-slate-800 pb-3.5 mb-4">
