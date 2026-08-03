@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Play, Pause, Box, Eye } from 'lucide-react';
+import { Play, Pause, Box, Eye, RotateCcw, Sparkles } from 'lucide-react';
 
 interface MoleculeViewerProps {
   targetId: string;
@@ -15,11 +15,12 @@ declare global {
 export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligandId }) => {
   const viewerRef = useRef<HTMLDivElement>(null);
   const viewerInstance = useRef<any>(null);
+  const modelsRef = useRef<Record<string, any>>({});
 
   const [viewMode, setViewMode] = useState<'3d' | '2d'>('3d');
-  const [isSpinning, setIsSpinning] = useState(true);
+  const [isSpinning, setIsSpinning] = useState(false);
   const [representation, setRepresentation] = useState<'cartoon' | 'stick' | 'sphere' | 'surface'>('cartoon');
-  const [modelsLoaded, setModelsLoaded] = useState<Record<string, any>>({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const targetLower = targetId.toLowerCase();
   const ligandLower = ligandId.toLowerCase();
@@ -27,14 +28,10 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
   useEffect(() => {
     if (viewMode !== '3d' || !viewerRef.current || !window.$3Dmol) return;
 
-    // Initialize viewer
-    if (viewerInstance.current) {
-      try {
-        viewerInstance.current.clear();
-      } catch (e) {
-        console.warn('Error clearing 3Dmol viewer:', e);
-      }
-    } else {
+    setIsLoading(true);
+
+    // Initialize or clear 3Dmol viewer
+    if (!viewerInstance.current) {
       viewerInstance.current = window.$3Dmol.createViewer(viewerRef.current, {
         backgroundColor: '#020617',
         id: `viewer_${targetId}_${ligandId}`
@@ -43,6 +40,9 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
 
     const viewer = viewerInstance.current;
     viewer.clear();
+    try {
+      viewer.removeAllSurfaces();
+    } catch (e) {}
 
     const receptorUrl = `/data/prepared/targets/${targetLower}/clean_receptor.pdb`;
     const vinaUrl = `/outputs/${targetLower}/${ligandLower}/vina_pose.pdbqt`;
@@ -50,47 +50,54 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
 
     const loaded: Record<string, any> = {};
 
-    // 1. Fetch & Load Target Protein Ribbon
-    fetch(receptorUrl)
+    // 1. Fetch & Load Target Protein Receptor
+    const loadReceptor = fetch(receptorUrl)
       .then(res => (res.ok ? res.text() : Promise.reject(`Receptor not found`)))
       .then(pdbData => {
         const m = viewer.addModel(pdbData, 'pdb');
         loaded.receptor = m;
-        applyStyle(viewer, loaded, representation);
-        viewer.render();
       })
       .catch(err => console.warn('Receptor load error:', err));
 
     // 2. Fetch & Load Vina Pose (Green Sticks)
-    fetch(vinaUrl)
+    const loadVina = fetch(vinaUrl)
       .then(res => (res.ok ? res.text() : Promise.reject(`Vina pose not found`)))
       .then(vinaData => {
         const m = viewer.addModel(vinaData, 'pdbqt');
         loaded.vina = m;
-        applyStyle(viewer, loaded, representation);
-        viewer.zoomTo({ model: m.getID() });
-        viewer.render();
       })
       .catch(err => console.warn('Vina load error:', err));
 
     // 3. Fetch & Load DiffDock Pose (Purple Sticks)
-    fetch(diffdockUrl)
+    const loadDiffDock = fetch(diffdockUrl)
       .then(res => (res.ok ? res.text() : Promise.reject(`DiffDock pose not found`)))
       .then(ddData => {
         const m = viewer.addModel(ddData, 'sdf');
         loaded.diffdock = m;
-        applyStyle(viewer, loaded, representation);
-        viewer.render();
       })
-      .catch(err => console.warn('DiffDock load error:', err))
-      .finally(() => {
-        setModelsLoaded(loaded);
+      .catch(err => console.warn('DiffDock load error:', err));
 
-        // Auto spin if enabled
-        if (isSpinning) {
-          viewer.spin('y', 0.8);
-        }
-      });
+    // Wait for all models to load then apply default styling
+    Promise.allSettled([loadReceptor, loadVina, loadDiffDock]).then(() => {
+      modelsRef.current = loaded;
+      applyStyle(viewer, loaded, representation);
+
+      // Focus / Zoom to ligand or receptor
+      if (loaded.vina) {
+        viewer.zoomTo({ model: loaded.vina.getID() });
+      } else if (loaded.receptor) {
+        viewer.zoomTo({ model: loaded.receptor.getID() });
+      } else {
+        viewer.zoomTo();
+      }
+
+      viewer.render();
+      setIsLoading(false);
+
+      if (isSpinning) {
+        viewer.spin('y', 0.5);
+      }
+    });
 
     // Resize listener
     const handleResize = () => {
@@ -103,42 +110,87 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
     };
   }, [targetId, ligandId, viewMode]);
 
-  // Handle Representation Style Switching
-  const applyStyle = (viewer: any, loaded: Record<string, any>, styleType: 'cartoon' | 'stick' | 'sphere' | 'surface') => {
+  // Apply visual representation style cleanly
+  const applyStyle = (
+    viewer: any,
+    loaded: Record<string, any>,
+    styleType: 'cartoon' | 'stick' | 'sphere' | 'surface'
+  ) => {
     if (!viewer) return;
 
-    // Receptor styling
+    // CRITICAL FIX: Clear all surfaces first so surface mesh does NOT linger on top of other representations!
+    try {
+      viewer.removeAllSurfaces();
+    } catch (e) {
+      console.warn('Error clearing surfaces:', e);
+    }
+
+    // 1. Receptor Styling
     if (loaded.receptor) {
-      viewer.setStyle({ model: loaded.receptor.getID() }, {});
+      const receptorId = loaded.receptor.getID();
+      viewer.setStyle({ model: receptorId }, {});
+
       if (styleType === 'cartoon') {
-        viewer.setStyle({ model: loaded.receptor.getID() }, { cartoon: { color: 'spectrum', opacity: 0.85 } });
+        viewer.setStyle(
+          { model: receptorId },
+          { cartoon: { color: 'spectrum', opacity: 0.9 } }
+        );
       } else if (styleType === 'stick') {
-        viewer.setStyle({ model: loaded.receptor.getID() }, { stick: { colorscheme: 'chainHetatm', radius: 0.12 } });
+        viewer.setStyle(
+          { model: receptorId },
+          { stick: { colorscheme: 'chainHetatm', radius: 0.12 } }
+        );
       } else if (styleType === 'sphere') {
-        viewer.setStyle({ model: loaded.receptor.getID() }, { sphere: { colorscheme: 'spectrum', scale: 0.4 } });
+        viewer.setStyle(
+          { model: receptorId },
+          { sphere: { colorscheme: 'spectrum', scale: 0.3 } }
+        );
       } else if (styleType === 'surface') {
-        viewer.setStyle({ model: loaded.receptor.getID() }, { cartoon: { color: 'spectrum', opacity: 0.5 } });
+        viewer.setStyle(
+          { model: receptorId },
+          { cartoon: { color: 'spectrum', opacity: 0.4 } }
+        );
         try {
-          viewer.addSurface(window.$3Dmol.SurfaceType.VDW, { opacity: 0.4, color: 'lightblue' }, { model: loaded.receptor.getID() });
-        } catch (e) {}
+          viewer.addSurface(
+            window.$3Dmol.SurfaceType.VDW,
+            { opacity: 0.45, color: 'cyan' },
+            { model: receptorId }
+          );
+        } catch (e) {
+          console.warn('Error adding VDW surface:', e);
+        }
       }
     }
 
-    // Vina Pose (Green Sticks/Spheres)
+    // 2. Vina Pose (Emerald / Green Sticks or Spheres)
     if (loaded.vina) {
+      const vinaId = loaded.vina.getID();
       if (styleType === 'sphere') {
-        viewer.setStyle({ model: loaded.vina.getID() }, { sphere: { colorscheme: 'greenCarbon', scale: 0.8 } });
+        viewer.setStyle(
+          { model: vinaId },
+          { sphere: { colorscheme: 'greenCarbon', scale: 0.75 } }
+        );
       } else {
-        viewer.setStyle({ model: loaded.vina.getID() }, { stick: { colorscheme: 'greenCarbon', radius: 0.22 } });
+        viewer.setStyle(
+          { model: vinaId },
+          { stick: { colorscheme: 'greenCarbon', radius: 0.24 } }
+        );
       }
     }
 
-    // DiffDock Pose (Purple Sticks/Spheres)
+    // 3. DiffDock Pose (Purple / Magenta Sticks or Spheres)
     if (loaded.diffdock) {
+      const ddId = loaded.diffdock.getID();
       if (styleType === 'sphere') {
-        viewer.setStyle({ model: loaded.diffdock.getID() }, { sphere: { colorscheme: 'purpleCarbon', scale: 0.8 } });
+        viewer.setStyle(
+          { model: ddId },
+          { sphere: { colorscheme: 'purpleCarbon', scale: 0.75 } }
+        );
       } else {
-        viewer.setStyle({ model: loaded.diffdock.getID() }, { stick: { colorscheme: 'purpleCarbon', radius: 0.22 } });
+        viewer.setStyle(
+          { model: ddId },
+          { stick: { colorscheme: 'purpleCarbon', radius: 0.24 } }
+        );
       }
     }
 
@@ -148,7 +200,7 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
   const handleStyleChange = (newStyle: 'cartoon' | 'stick' | 'sphere' | 'surface') => {
     setRepresentation(newStyle);
     if (viewerInstance.current) {
-      applyStyle(viewerInstance.current, modelsLoaded, newStyle);
+      applyStyle(viewerInstance.current, modelsRef.current, newStyle);
     }
   };
 
@@ -157,15 +209,30 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
     setIsSpinning(nextSpin);
     if (viewerInstance.current) {
       if (nextSpin) {
-        viewerInstance.current.spin('y', 0.8);
+        viewerInstance.current.spin('y', 0.5);
       } else {
         viewerInstance.current.spin(false);
       }
     }
   };
 
+  const handleResetView = () => {
+    if (viewerInstance.current) {
+      const viewer = viewerInstance.current;
+      const loaded = modelsRef.current;
+      if (loaded.vina) {
+        viewer.zoomTo({ model: loaded.vina.getID() });
+      } else if (loaded.receptor) {
+        viewer.zoomTo({ model: loaded.receptor.getID() });
+      } else {
+        viewer.zoomTo();
+      }
+      viewer.render();
+    }
+  };
+
   return (
-    <div className="w-full h-full relative overflow-hidden rounded-lg group">
+    <div className="w-full h-full relative overflow-hidden rounded-lg group bg-slate-950">
       
       {/* 2D / 3D Mode Toggle Bar */}
       <div className="absolute top-2 right-2 z-20 flex items-center gap-1.5 bg-slate-900/90 border border-slate-700/80 rounded-lg p-1 shadow-lg backdrop-blur-md">
@@ -193,6 +260,14 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
 
       {viewMode === '3d' ? (
         <>
+          {/* Loading Indicator */}
+          {isLoading && (
+            <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-slate-950/80 backdrop-blur-sm text-cyan-400 font-mono text-xs gap-2">
+              <Sparkles className="w-6 h-6 animate-spin" />
+              <span className="animate-pulse">Loading 3D Co-Crystal Structures...</span>
+            </div>
+          )}
+
           {/* 3Dmol Render Container */}
           <div ref={viewerRef} className="w-full h-full cursor-move" />
 
@@ -209,6 +284,15 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
             >
               {isSpinning ? <Pause className="w-3 h-3 text-cyan-400" /> : <Play className="w-3 h-3" />}
               <span>{isSpinning ? 'Spinning' : 'Spin'}</span>
+            </button>
+
+            {/* Reset View Button */}
+            <button
+              onClick={handleResetView}
+              title="Reset Zoom / Re-center Binding Site"
+              className="p-1.5 rounded text-slate-400 hover:text-slate-200 transition"
+            >
+              <RotateCcw className="w-3 h-3" />
             </button>
 
             <div className="w-px h-4 bg-slate-700 mx-0.5" />
@@ -284,7 +368,6 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
               alt={`${ligandId} 2D Structure`}
               className="max-w-full max-h-full object-contain filter invert contrast-125"
               onError={(e: any) => {
-                // Fallback icon if PubChem fails
                 e.target.style.display = 'none';
               }}
             />
