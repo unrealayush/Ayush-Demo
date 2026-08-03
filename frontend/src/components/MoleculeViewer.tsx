@@ -118,82 +118,68 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
   ) => {
     if (!viewer) return;
 
-    // CRITICAL FIX: Clear all surfaces first so surface mesh does NOT linger on top of other representations!
+    // ─── PHASE 1: FULL WIPE ───
+    // Remove ALL surfaces (VDW mesh from surface mode)
     try {
       viewer.removeAllSurfaces();
-    } catch (e) {
-      console.warn('Error clearing surfaces:', e);
+    } catch (e) {}
+
+    // Clear ALL model styles to empty {} in a single pass
+    // This ensures sphere geometry buffers, cartoon ribbons, and stick bonds are all flushed
+    const allModels = [loaded.receptor, loaded.vina, loaded.diffdock].filter(Boolean);
+    for (const model of allModels) {
+      try {
+        viewer.setStyle({ model: model.getID() }, {});
+      } catch (e) {}
     }
 
-    // 1. Receptor Styling
-    if (loaded.receptor) {
-      const receptorId = loaded.receptor.getID();
-      viewer.setStyle({ model: receptorId }, {});
+    // Force a render between clear and apply so WebGL flushes stale geometry
+    viewer.render();
 
+    // ─── PHASE 2: APPLY NEW STYLES ───
+
+    // Receptor
+    if (loaded.receptor) {
+      const rid = loaded.receptor.getID();
       if (styleType === 'cartoon') {
-        viewer.setStyle(
-          { model: receptorId },
-          { cartoon: { color: 'spectrum', opacity: 0.9 } }
-        );
+        viewer.setStyle({ model: rid }, { cartoon: { color: 'spectrum', opacity: 0.9 } });
       } else if (styleType === 'stick') {
-        viewer.setStyle(
-          { model: receptorId },
-          { stick: { colorscheme: 'chainHetatm', radius: 0.12 } }
-        );
+        viewer.setStyle({ model: rid }, { stick: { colorscheme: 'chainHetatm', radius: 0.12 } });
       } else if (styleType === 'sphere') {
-        viewer.setStyle(
-          { model: receptorId },
-          { sphere: { colorscheme: 'spectrum', scale: 0.3 } }
-        );
+        viewer.setStyle({ model: rid }, { sphere: { colorscheme: 'spectrum', scale: 0.3 } });
       } else if (styleType === 'surface') {
-        viewer.setStyle(
-          { model: receptorId },
-          { cartoon: { color: 'spectrum', opacity: 0.4 } }
-        );
+        viewer.setStyle({ model: rid }, { cartoon: { color: 'spectrum', opacity: 0.4 } });
         try {
           viewer.addSurface(
             window.$3Dmol.SurfaceType.VDW,
             { opacity: 0.45, color: 'cyan' },
-            { model: receptorId }
+            { model: rid }
           );
-        } catch (e) {
-          console.warn('Error adding VDW surface:', e);
-        }
+        } catch (e) {}
       }
     }
 
-    // 2. Vina Pose (Emerald / Green Sticks or Spheres)
+    // Vina Pose (Green)
     if (loaded.vina) {
-      const vinaId = loaded.vina.getID();
+      const vid = loaded.vina.getID();
       if (styleType === 'sphere') {
-        viewer.setStyle(
-          { model: vinaId },
-          { sphere: { colorscheme: 'greenCarbon', scale: 0.75 } }
-        );
+        viewer.setStyle({ model: vid }, { sphere: { colorscheme: 'greenCarbon', scale: 0.75 } });
       } else {
-        viewer.setStyle(
-          { model: vinaId },
-          { stick: { colorscheme: 'greenCarbon', radius: 0.24 } }
-        );
+        viewer.setStyle({ model: vid }, { stick: { colorscheme: 'greenCarbon', radius: 0.24 } });
       }
     }
 
-    // 3. DiffDock Pose (Purple / Magenta Sticks or Spheres)
+    // DiffDock Pose (Purple)
     if (loaded.diffdock) {
-      const ddId = loaded.diffdock.getID();
+      const did = loaded.diffdock.getID();
       if (styleType === 'sphere') {
-        viewer.setStyle(
-          { model: ddId },
-          { sphere: { colorscheme: 'purpleCarbon', scale: 0.75 } }
-        );
+        viewer.setStyle({ model: did }, { sphere: { colorscheme: 'purpleCarbon', scale: 0.75 } });
       } else {
-        viewer.setStyle(
-          { model: ddId },
-          { stick: { colorscheme: 'purpleCarbon', radius: 0.24 } }
-        );
+        viewer.setStyle({ model: did }, { stick: { colorscheme: 'purpleCarbon', radius: 0.24 } });
       }
     }
 
+    // Final render with all new styles applied
     viewer.render();
   };
 
