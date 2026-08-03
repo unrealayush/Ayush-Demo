@@ -405,7 +405,6 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-lg">{org.emoji}</span>
                 <span className="text-xs font-bold font-serif italic tracking-wide">{org.name}</span>
-                <span className="text-[10px] font-sans font-semibold opacity-75">({org.shortName})</span>
               </div>
               <p className="text-[10px] text-slate-500 italic font-medium">{org.description}</p>
             </button>
@@ -520,8 +519,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                 <div className="pl-7">
                   <div className="flex justify-between items-center gap-2">
                     <div>
-                      <h4 className="text-sm font-bold text-red-600 dark:text-red-300 mb-1 drop-shadow-[0_0_5px_rgba(248,113,113,0.3)]">
-                        <span className="italic font-serif">{activeOrg.name}</span> <span className="font-sans font-normal text-xs text-red-400">({activeOrg.shortName})</span>
+                      <h4 className="text-sm font-bold text-red-600 dark:text-red-300 mb-1 drop-shadow-[0_0_5px_rgba(248,113,113,0.3)] italic font-serif">
+                        {activeOrg.name}
                       </h4>
                       <p className="text-[10px] text-slate-600 dark:text-slate-400 leading-relaxed font-semibold">Reference Strain: <span className="text-cyan-600 dark:text-cyan-400">{activeTargetDetails.strain}</span></p>
                     </div>
