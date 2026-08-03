@@ -1,15 +1,15 @@
+import { useEffect, useRef, useState } from 'react';
 import {
-  Database,
-  Sparkles,
   ArrowRight,
   FlaskConical,
-  Dna,
   ExternalLink,
-  FileText,
-  ChevronRight,
+  ChevronDown,
+  Target,
+  Leaf,
   Cpu,
-  Microscope,
-  Award
+  FileSearch,
+  Layers,
+  Beaker
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -17,476 +17,580 @@ interface LandingPageProps {
   onOpenCustomTester: () => void;
 }
 
+/* ── Intersection Observer Hook for Scroll Reveals ── */
+function useScrollReveal() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    // Observe the parent and all reveal children inside it
+    const revealEls = el.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    revealEls.forEach((child) => observer.observe(child));
+
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
+
+/* ── Animated Counter ── */
+function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated.current) {
+          hasAnimated.current = true;
+          let start = 0;
+          const duration = 1800;
+          const startTime = performance.now();
+          const step = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            start = Math.floor(eased * target);
+            setCount(start);
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
+/* ── Main Landing Page Component ── */
 export const LandingPage: React.FC<LandingPageProps> = ({
   onSelectOrganism,
   onOpenCustomTester
 }) => {
+  const scrollContainerRef = useScrollReveal();
+  const [heroLoaded, setHeroLoaded] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setHeroLoaded(true), 100);
+    return () => clearTimeout(t);
+  }, []);
+
+  const scrollToSection = () => {
+    document.getElementById('pathogens')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="w-full min-h-screen bg-slate-950 text-slate-100 font-sans select-none antialiased relative overflow-hidden">
-      {/* Dynamic Background Glowing Orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full filter blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/3 w-[500px] h-[500px] bg-emerald-500/10 rounded-full filter blur-[150px] pointer-events-none" />
+    <div ref={scrollContainerRef} className="w-full min-h-screen bg-[#04070d] text-slate-100 font-sans antialiased relative overflow-x-hidden">
 
-      {/* ── Top Hero Header ── */}
-      <header className="relative z-20 max-w-7xl mx-auto px-6 py-6 flex items-center justify-between border-b border-slate-800/80">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.3)]">
-            <span className="text-cyan-400 font-bold text-xl">🧬</span>
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* SECTION 1 — FULL-SCREEN HERO                         */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden grain-overlay">
+
+        {/* Abstract Background Shapes */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-teal-500/[0.07] to-transparent animate-float-slow" />
+          <div className="absolute top-1/2 -left-48 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-indigo-500/[0.05] to-transparent animate-float-medium" />
+          <div className="absolute bottom-20 right-1/4 w-72 h-72 rounded-full bg-gradient-to-t from-rose-500/[0.04] to-transparent animate-drift" />
+          {/* Grid pattern */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }} />
+        </div>
+
+        {/* Top Nav */}
+        <header className="relative z-30 w-full max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center">
+              <span className="text-lg">🧬</span>
+            </div>
+            <span className="text-sm font-semibold text-slate-300 tracking-wide">
+              AYUSH <span className="text-teal-400">Bio-AI</span>
+            </span>
           </div>
-          <div>
-            <h1 className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 tracking-tight">
-              AYUSH Bio-AI Platform
-            </h1>
-            <p className="text-[10px] text-slate-400 font-mono tracking-wider uppercase">
-              In-Silico Mechanism Validation for Traditional Phytochemicals
-            </p>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onOpenCustomTester}
+              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700/60 text-slate-300 text-xs font-medium hover:border-teal-500/40 hover:text-teal-300 transition-all duration-300"
+            >
+              <FlaskConical className="w-3.5 h-3.5" />
+              Test Compound
+            </button>
+            <button
+              onClick={() => onSelectOrganism('pseudomonas')}
+              className="flex items-center gap-2 px-5 py-2 rounded-lg bg-teal-500/90 hover:bg-teal-400 text-[#04070d] text-xs font-bold transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
+            >
+              Launch Workspace
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </header>
+
+        {/* Hero Content */}
+        <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-6 sm:px-10 text-center max-w-5xl mx-auto">
+          
+          {/* Badge */}
+          <div className={`transition-all duration-1000 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-700/50 bg-slate-900/40 text-[11px] font-medium text-slate-400 mb-8 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+              Preclinical Evidence Pipeline — 288 Docked Pairs Pre-computed
+            </span>
+          </div>
+
+          {/* Title */}
+          <h1 className={`transition-all duration-1000 delay-150 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <span className="block text-4xl sm:text-[3.5rem] md:text-[4.2rem] font-bold tracking-tight leading-[1.1] text-slate-100 mb-3">
+              Validating Traditional
+            </span>
+            <span className="block text-4xl sm:text-[3.5rem] md:text-[4.2rem] font-bold tracking-tight leading-[1.1] text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-cyan-300 to-indigo-400 text-shimmer mb-3">
+              AYUSH Phytochemicals
+            </span>
+            <span className="block text-4xl sm:text-[3.5rem] md:text-[4.2rem] font-bold tracking-tight leading-[1.1] text-slate-100">
+              Against AMR Pathogens
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className={`mt-7 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed transition-all duration-1000 delay-300 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            An integrated computational framework combining <span className="text-slate-200 font-medium">AutoDock&nbsp;Vina</span> physics, <span className="text-slate-200 font-medium">DiffDock‑L</span> generative pose confidence, and <span className="text-slate-200 font-medium">2D/3D interaction fingerprinting</span> to discover novel plant‑derived anti‑infective leads.
+          </p>
+
+          {/* Quick Organism Buttons */}
+          <div className={`mt-10 flex flex-wrap items-center justify-center gap-3 transition-all duration-1000 delay-500 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {[
+              { id: 'pseudomonas', label: 'P. aeruginosa', color: 'teal' },
+              { id: 'staphylococcus', label: 'S. aureus', color: 'rose' },
+              { id: 'klebsiella', label: 'K. pneumoniae', color: 'indigo' }
+            ].map((org) => (
+              <button
+                key={org.id}
+                onClick={() => onSelectOrganism(org.id)}
+                className={`group relative flex items-center gap-2.5 px-5 py-3 rounded-xl border transition-all duration-300 hover:-translate-y-0.5 ${
+                  org.color === 'teal' ? 'border-teal-500/30 hover:border-teal-400/60 hover:shadow-[0_8px_30px_rgba(20,184,166,0.15)]' :
+                  org.color === 'rose' ? 'border-rose-500/30 hover:border-rose-400/60 hover:shadow-[0_8px_30px_rgba(244,63,94,0.15)]' :
+                  'border-indigo-500/30 hover:border-indigo-400/60 hover:shadow-[0_8px_30px_rgba(99,102,241,0.15)]'
+                } bg-slate-900/30 backdrop-blur-sm`}
+              >
+                <span className={`text-sm font-semibold italic font-serif ${
+                  org.color === 'teal' ? 'text-teal-300' : org.color === 'rose' ? 'text-rose-300' : 'text-indigo-300'
+                }`}>
+                  {org.label}
+                </span>
+                <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-slate-300 group-hover:translate-x-0.5 transition-all" />
+              </button>
+            ))}
           </div>
         </div>
 
-        <div className="flex items-center gap-4 font-mono text-xs">
-          <button
-            onClick={onOpenCustomTester}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-cyan-500/40 text-cyan-300 font-semibold transition hover:scale-105 shadow-[0_0_15px_rgba(6,182,212,0.2)]"
-          >
-            <FlaskConical className="w-4 h-4 text-cyan-400" />
-            <span>Test Custom Compound</span>
+        {/* Scroll Indicator */}
+        <div className={`relative z-20 flex flex-col items-center pb-10 transition-all duration-1000 delay-700 ${heroLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <button onClick={scrollToSection} className="flex flex-col items-center gap-2 text-slate-500 hover:text-teal-400 transition-colors">
+            <span className="text-[10px] font-mono uppercase tracking-widest">Explore</span>
+            <ChevronDown className="w-4 h-4 animate-bounce" />
           </button>
-
-          <button
-            onClick={() => onSelectOrganism('pseudomonas')}
-            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold transition hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.4)]"
-          >
-            <span>Launch Screening Workspace</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </div>
-      </header>
-
-      {/* ── Main Hero Container ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 pt-12 pb-16 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-semibold mb-6 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
-          <span>Mechanism-Linked Preclinical Evidence Pipeline (288 Pre-loaded Docked Pairs)</span>
-        </div>
-
-        <h1 className="text-4xl sm:text-6xl font-black text-slate-100 tracking-tight leading-tight max-w-5xl mx-auto mb-6">
-          Validating Traditional <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-emerald-400">AYUSH Phytochemicals</span> Against Critical AMR Pathogens
-        </h1>
-
-        <p className="text-base sm:text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-sans">
-          An integrated computational framework combining structural bio-AI, AutoDock Vina physics, DiffDock-L generative pose confidence, and 2D/3D interaction fingerprinting to discover novel plant-derived anti-infective leads.
-        </p>
-
-        {/* Quick Launch Buttons */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-14 font-mono">
-          <button
-            onClick={() => onSelectOrganism('pseudomonas', 'PqsR')}
-            className="px-6 py-3.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-500/50 text-emerald-300 font-bold text-sm flex items-center gap-2.5 transition hover:scale-105 shadow-[0_0_20px_rgba(16,185,129,0.2)]"
-          >
-            <span>Explore P. aeruginosa Screening</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => onSelectOrganism('staphylococcus', 'AgrA')}
-            className="px-6 py-3.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/50 text-rose-300 font-bold text-sm flex items-center gap-2.5 transition hover:scale-105 shadow-[0_0_20px_rgba(244,63,94,0.2)]"
-          >
-            <span>Explore S. aureus Screening</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
-
-          <button
-            onClick={() => onSelectOrganism('klebsiella', 'AcrB')}
-            className="px-6 py-3.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 text-cyan-300 font-bold text-sm flex items-center gap-2.5 transition hover:scale-105 shadow-[0_0_20px_rgba(6,182,212,0.2)]"
-          >
-            <span>Explore K. pneumoniae Screening</span>
-            <ChevronRight className="w-4 h-4" />
-          </button>
-        </div>
-
-        {/* Live Metrics Grid Banner */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto p-6 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-2xl">
-          <div className="flex flex-col items-center p-3 border-r border-slate-800/60">
-            <span className="text-3xl font-black text-cyan-400 font-mono">288</span>
-            <span className="text-xs text-slate-400 font-medium mt-1">Pre-computed Docked Pairs</span>
-            <span className="text-[10px] text-slate-500 font-mono uppercase mt-0.5">0ms Instant Load</span>
-          </div>
-
-          <div className="flex flex-col items-center p-3 border-r border-slate-800/60">
-            <span className="text-3xl font-black text-emerald-400 font-mono">12</span>
-            <span className="text-xs text-slate-400 font-medium mt-1">Virulence & AMR Targets</span>
-            <span className="text-[10px] text-slate-500 font-mono uppercase mt-0.5">PDB & AlphaFold</span>
-          </div>
-
-          <div className="flex flex-col items-center p-3 border-r border-slate-800/60">
-            <span className="text-3xl font-black text-purple-400 font-mono">24</span>
-            <span className="text-xs text-slate-400 font-medium mt-1">AYUSH Phytochemicals</span>
-            <span className="text-[10px] text-slate-500 font-mono uppercase mt-0.5">Verified PubChem CIDs</span>
-          </div>
-
-          <div className="flex flex-col items-center p-3">
-            <span className="text-3xl font-black text-rose-400 font-mono">3</span>
-            <span className="text-xs text-slate-400 font-medium mt-1">WHO Priority Pathogens</span>
-            <span className="text-[10px] text-slate-500 font-mono uppercase mt-0.5">Clinical Isolates</span>
-          </div>
         </div>
       </section>
 
-      {/* ── Pathogen Organisms Section (The 3 Pathogens) ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/60">
-        <div className="flex flex-col items-center text-center mb-10">
-          <h2 className="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase mb-2">
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* SCROLLING METRICS TICKER STRIP                       */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <div className="relative z-10 border-y border-slate-800/50 bg-slate-900/30 backdrop-blur-sm py-3 overflow-hidden">
+        <div className="animate-ticker flex items-center gap-12 whitespace-nowrap text-[11px] font-mono text-slate-500 uppercase tracking-wider px-6"
+             style={{ width: 'max-content' }}>
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-12">
+              <span>288 Pre-computed Docked Pairs</span>
+              <span className="text-teal-500">●</span>
+              <span>12 Virulence & AMR Targets</span>
+              <span className="text-rose-500">●</span>
+              <span>24 AYUSH Phytochemicals</span>
+              <span className="text-indigo-500">●</span>
+              <span>3 WHO Priority Pathogens</span>
+              <span className="text-amber-500">●</span>
+              <span>AutoDock Vina + DiffDock-L Ensemble</span>
+              <span className="text-teal-500">●</span>
+              <span>GCS Bucket Traceable</span>
+              <span className="text-rose-500">●</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* SECTION 2 — KEY METRICS (Animated Counters)          */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+          {[
+            { value: 288, label: 'Docked Molecular\nPairs', accent: 'teal' },
+            { value: 12, label: 'Validated Protein\nTargets', accent: 'indigo' },
+            { value: 24, label: 'Pure\nPhytochemicals', accent: 'amber' },
+            { value: 3, label: 'WHO Priority\nPathogens', accent: 'rose' }
+          ].map((item, idx) => (
+            <div key={idx} className={`reveal stagger-${idx + 1} text-center`}>
+              <div className={`text-5xl sm:text-6xl font-bold font-mono tracking-tighter mb-2 ${
+                item.accent === 'teal' ? 'text-teal-400' :
+                item.accent === 'indigo' ? 'text-indigo-400' :
+                item.accent === 'amber' ? 'text-amber-400' : 'text-rose-400'
+              }`}>
+                <AnimatedCounter target={item.value} />
+              </div>
+              <div className="text-xs text-slate-500 font-medium leading-snug whitespace-pre-line">
+                {item.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* SECTION 3 — PATHOGEN ORGANISM CARDS                  */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <section id="pathogens" className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-16">
+        {/* Section Header */}
+        <div className="reveal mb-14">
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-teal-400 mb-3 block">
             Target Pathogen Spectrum
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight mb-3">
+            Select a pathogen to begin screening
           </h2>
-          <h3 className="text-3xl font-bold text-slate-100">
-            Select a Pathogen to Launch Target Screening
-          </h3>
-          <p className="text-sm text-slate-400 mt-2 max-w-2xl">
-            Each organism features 4 curated molecular target vectors representing quorum sensing, adhesion, efflux pumps, and cell wall biosynthesis.
+          <p className="text-sm text-slate-500 max-w-xl leading-relaxed">
+            Each organism features 4 curated molecular target vectors — quorum sensing regulators, adhesion factors, efflux pumps, and cell wall biosynthesis enzymes.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-          {/* Organism 1: Pseudomonas aeruginosa */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          {/* Card — P. aeruginosa */}
           <div
             onClick={() => onSelectOrganism('pseudomonas')}
-            className="group relative rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-emerald-500/30 hover:border-emerald-400 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)] cursor-pointer flex flex-col justify-between"
+            className="reveal-scale stagger-1 group relative rounded-2xl border border-slate-800/60 bg-[#060b14] p-6 transition-all duration-500 cursor-pointer hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(20,184,166,0.12)]"
           >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-2xl">
-                  🦠
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">
-                  Gram-Negative
-                </span>
-              </div>
-
-              <h4 className="text-xl font-bold text-slate-100 group-hover:text-emerald-300 transition-colors font-serif italic mb-1">
-                Pseudomonas aeruginosa
-              </h4>
-              <p className="text-xs font-mono text-emerald-400 mb-3 font-semibold">
-                Shortform: (P. aeruginosa) | Reference Strain: PAO1
-              </p>
-              <p className="text-xs text-slate-400 mb-6 leading-relaxed">
-                Critical opportunistic pathogen causing severe burn, lung, and biofilm-associated hospital infections. Controlled via quorum sensing and efflux pumps.
-              </p>
-
-              <div className="space-y-2 mb-6">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold block">
-                  Active Molecular Targets (4):
-                </span>
-                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-emerald-400">LasR</span> (QS Receptor)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-emerald-400">PqsR</span> (MvfR QS)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-emerald-400">PelD</span> (Biofilm EPS)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-emerald-400">MexB</span> (Efflux Pump)
-                  </div>
-                </div>
-              </div>
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-teal-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="flex items-center justify-between mb-5">
+              <span className="px-2 py-0.5 rounded-md border border-teal-500/20 bg-teal-500/5 text-[9px] font-mono font-semibold text-teal-400 uppercase tracking-wider">
+                Gram −ve
+              </span>
+              <span className="text-[10px] font-mono text-slate-600">PAO1</span>
             </div>
 
-            <button className="w-full py-2.5 rounded-xl bg-emerald-500/20 group-hover:bg-emerald-500 text-emerald-300 group-hover:text-slate-950 font-bold font-mono text-xs flex items-center justify-center gap-2 transition-all">
-              <span>Open P. aeruginosa Workspace</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <h3 className="text-xl font-bold text-slate-100 group-hover:text-teal-300 transition-colors font-serif italic leading-tight mb-1">
+              Pseudomonas aeruginosa
+            </h3>
+            <p className="text-[11px] text-slate-500 mb-5 leading-relaxed">
+              Critical opportunistic pathogen — burn infections, ventilator‑associated pneumonia, biofilm-protected hospital persistence.
+            </p>
+
+            <div className="grid grid-cols-2 gap-1.5 mb-6">
+              {['LasR', 'PqsR', 'PelD', 'MexB'].map((t) => (
+                <div key={t} className="px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800/60 text-[10px] font-mono">
+                  <span className="text-teal-400 font-bold">{t}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-between pt-4 border-t border-slate-800/40">
+              <span className="text-[10px] text-slate-600 font-mono">4 targets · 96 pairs</span>
+              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-teal-400 group-hover:translate-x-1 transition-all" />
+            </div>
           </div>
 
-          {/* Organism 2: Staphylococcus aureus */}
+          {/* Card — S. aureus */}
           <div
             onClick={() => onSelectOrganism('staphylococcus')}
-            className="group relative rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-rose-500/30 hover:border-rose-400 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(244,63,94,0.2)] cursor-pointer flex flex-col justify-between"
+            className="reveal-scale stagger-2 group relative rounded-2xl border border-slate-800/60 bg-[#060b14] p-6 transition-all duration-500 cursor-pointer hover:border-rose-500/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(244,63,94,0.12)]"
           >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-2xl">
-                  🧫
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] font-bold">
-                  Gram-Positive
-                </span>
-              </div>
-
-              <h4 className="text-xl font-bold text-slate-100 group-hover:text-rose-300 transition-colors font-serif italic mb-1">
-                Staphylococcus aureus
-              </h4>
-              <p className="text-xs font-mono text-rose-400 mb-3 font-semibold">
-                Shortform: (S. aureus) | Strains: NCTC 8325 / MRSA USA300
-              </p>
-              <p className="text-xs text-slate-400 mb-6 leading-relaxed">
-                Virulent pathogen responsible for skin, blood, and medical device infections. Resistant strains (MRSA) target transpeptidases and quorum sensing.
-              </p>
-
-              <div className="space-y-2 mb-6">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold block">
-                  Active Molecular Targets (4):
-                </span>
-                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-rose-400">AgrA</span> (Agr QS)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-rose-400">Sortase A</span> (Adhesion)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-rose-400">PBP2a</span> (Methicillin R)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-rose-400">MurJ</span> (Lipid II Flippase)
-                  </div>
-                </div>
-              </div>
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-rose-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="flex items-center justify-between mb-5">
+              <span className="px-2 py-0.5 rounded-md border border-rose-500/20 bg-rose-500/5 text-[9px] font-mono font-semibold text-rose-400 uppercase tracking-wider">
+                Gram +ve
+              </span>
+              <span className="text-[10px] font-mono text-slate-600">NCTC 8325 / MRSA</span>
             </div>
 
-            <button className="w-full py-2.5 rounded-xl bg-rose-500/20 group-hover:bg-rose-500 text-rose-300 group-hover:text-slate-950 font-bold font-mono text-xs flex items-center justify-center gap-2 transition-all">
-              <span>Open S. aureus Workspace</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            <h3 className="text-xl font-bold text-slate-100 group-hover:text-rose-300 transition-colors font-serif italic leading-tight mb-1">
+              Staphylococcus aureus
+            </h3>
+            <p className="text-[11px] text-slate-500 mb-5 leading-relaxed">
+              Virulent pathogen — skin, bloodstream, and device infections. MRSA strains target transpeptidases and quorum sensing.
+            </p>
+
+            <div className="grid grid-cols-2 gap-1.5 mb-6">
+              {['AgrA', 'Sortase A', 'PBP2a', 'MurJ'].map((t) => (
+                <div key={t} className="px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800/60 text-[10px] font-mono">
+                  <span className="text-rose-400 font-bold">{t}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-between pt-4 border-t border-slate-800/40">
+              <span className="text-[10px] text-slate-600 font-mono">4 targets · 96 pairs</span>
+              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-rose-400 group-hover:translate-x-1 transition-all" />
+            </div>
           </div>
 
-          {/* Organism 3: Klebsiella pneumoniae */}
+          {/* Card — K. pneumoniae */}
           <div
             onClick={() => onSelectOrganism('klebsiella')}
-            className="group relative rounded-2xl bg-gradient-to-b from-slate-900/90 to-slate-950 border border-cyan-500/30 hover:border-cyan-400 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(6,182,212,0.2)] cursor-pointer flex flex-col justify-between"
+            className="reveal-scale stagger-3 group relative rounded-2xl border border-slate-800/60 bg-[#060b14] p-6 transition-all duration-500 cursor-pointer hover:border-indigo-500/40 hover:-translate-y-1 hover:shadow-[0_20px_60px_-10px_rgba(99,102,241,0.12)]"
           >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-2xl">
-                  🧬
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-[10px] font-bold">
-                  Gram-Negative
-                </span>
-              </div>
-
-              <h4 className="text-xl font-bold text-slate-100 group-hover:text-cyan-300 transition-colors font-serif italic mb-1">
-                Klebsiella pneumoniae
-              </h4>
-              <p className="text-xs font-mono text-cyan-400 mb-3 font-semibold">
-                Shortform: (K. pneumoniae) | Reference Strain: MGH78578
-              </p>
-              <p className="text-xs text-slate-400 mb-6 leading-relaxed">
-                Hypervirulent multi-drug resistant bacillus causing nosocomial pneumonia and urinary infections. Protected by heavy polysaccharide capsule.
-              </p>
-
-              <div className="space-y-2 mb-6">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold block">
-                  Active Molecular Targets (4):
-                </span>
-                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-cyan-400">MrkH</span> (Type III Fimbriae)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-cyan-400">Wzc</span> (Capsule Kinase)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-cyan-400">AcrB</span> (Efflux Pump)
-                  </div>
-                  <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
-                    <span className="font-bold text-cyan-400">OmpK36</span> (Outer Porin)
-                  </div>
-                </div>
-              </div>
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="flex items-center justify-between mb-5">
+              <span className="px-2 py-0.5 rounded-md border border-indigo-500/20 bg-indigo-500/5 text-[9px] font-mono font-semibold text-indigo-400 uppercase tracking-wider">
+                Gram −ve
+              </span>
+              <span className="text-[10px] font-mono text-slate-600">MGH78578</span>
             </div>
 
-            <button className="w-full py-2.5 rounded-xl bg-cyan-500/20 group-hover:bg-cyan-500 text-cyan-300 group-hover:text-slate-950 font-bold font-mono text-xs flex items-center justify-center gap-2 transition-all">
-              <span>Open K. pneumoniae Workspace</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
+            <h3 className="text-xl font-bold text-slate-100 group-hover:text-indigo-300 transition-colors font-serif italic leading-tight mb-1">
+              Klebsiella pneumoniae
+            </h3>
+            <p className="text-[11px] text-slate-500 mb-5 leading-relaxed">
+              Hypervirulent multi‑drug resistant bacillus — nosocomial pneumonia, urinary infections, heavy polysaccharide capsule.
+            </p>
 
+            <div className="grid grid-cols-2 gap-1.5 mb-6">
+              {['MrkH', 'Wzc', 'AcrB', 'OmpK36'].map((t) => (
+                <div key={t} className="px-2.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800/60 text-[10px] font-mono">
+                  <span className="text-indigo-400 font-bold">{t}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center justify-between pt-4 border-t border-slate-800/40">
+              <span className="text-[10px] text-slate-600 font-mono">4 targets · 96 pairs</span>
+              <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-indigo-400 group-hover:translate-x-1 transition-all" />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── Scientific Methodological Pipeline Breakdown ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/60">
-        <div className="flex flex-col items-center text-center mb-12">
-          <h2 className="text-xs font-mono font-bold text-purple-400 tracking-wider uppercase mb-2">
-            Rigorous Computational Protocol
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* SECTION 4 — PIPELINE METHODOLOGY (Horizontal Steps)  */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-20 border-t border-slate-800/30">
+        <div className="reveal mb-14">
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-indigo-400 mb-3 block">
+            Computational Protocol
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight mb-3">
+            5-stage preclinical validation
           </h2>
-          <h3 className="text-3xl font-bold text-slate-100">
-            5-Stage Preclinical Validation Pipeline
-          </h3>
-          <p className="text-sm text-slate-400 mt-2 max-w-2xl">
-            From verified 3D protein coordinate structures to standardized forensic evidence passports.
+          <p className="text-sm text-slate-500 max-w-xl leading-relaxed">
+            From verified 3D protein coordinates to standardized forensic evidence passports — every step is traceable and reproducible.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 font-mono">
-
-          {/* Stage 1 */}
-          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 font-bold text-xs flex items-center justify-center">1</span>
-                <Dna className="w-4 h-4 text-cyan-400" />
-              </div>
-              <h5 className="text-xs font-bold text-slate-200 mb-1">Target Preparation</h5>
-              <p className="text-[10px] text-slate-400 font-sans leading-relaxed">
-                PDB & AlphaFold structural curation, residue protonation, and active pocket grid alignment.
-              </p>
-            </div>
-            <div className="mt-4 pt-2 border-t border-slate-800 text-[9px] text-cyan-400">
-              RCSB PDB / UniProt
-            </div>
-          </div>
-
-          {/* Stage 2 */}
-          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center">2</span>
-                <Cpu className="w-4 h-4 text-emerald-400" />
-              </div>
-              <h5 className="text-xs font-bold text-slate-200 mb-1">Ensemble Docking</h5>
-              <p className="text-[10px] text-slate-400 font-sans leading-relaxed">
-                AutoDock Vina physics ($\Delta G$ energy) + DiffDock-L deep generative pose confidence.
-              </p>
-            </div>
-            <div className="mt-4 pt-2 border-t border-slate-800 text-[9px] text-emerald-400">
-              Vina + DiffDock-L
-            </div>
-          </div>
-
-          {/* Stage 3 */}
-          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 font-bold text-xs flex items-center justify-center">3</span>
-                <Microscope className="w-4 h-4 text-purple-400" />
-              </div>
-              <h5 className="text-xs font-bold text-slate-200 mb-1">Fingerprinting</h5>
-              <p className="text-[10px] text-slate-400 font-sans leading-relaxed">
-                3.5Å H-bond counts, hydrophobic contacts, and active site residue proximity maps.
-              </p>
-            </div>
-            <div className="mt-4 pt-2 border-t border-slate-800 text-[9px] text-purple-400">
-              PLIP Interactivity
-            </div>
-          </div>
-
-          {/* Stage 4 */}
-          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center">4</span>
-                <Award className="w-4 h-4 text-amber-400" />
-              </div>
-              <h5 className="text-xs font-bold text-slate-200 mb-1">Priority Ranking</h5>
-              <p className="text-[10px] text-slate-400 font-sans leading-relaxed">
-                Composite scoring (40% Vina + 35% DiffDock + 25% Fingerprints) to order candidates.
-              </p>
-            </div>
-            <div className="mt-4 pt-2 border-t border-slate-800 text-[9px] text-amber-400">
-              Score: 0.0 - 100.0
-            </div>
-          </div>
-
-          {/* Stage 5 */}
-          <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center justify-between mb-3">
-                <span className="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 font-bold text-xs flex items-center justify-center">5</span>
-                <FileText className="w-4 h-4 text-blue-400" />
-              </div>
-              <h5 className="text-xs font-bold text-slate-200 mb-1">Evidence Passports</h5>
-              <p className="text-[10px] text-slate-400 font-sans leading-relaxed">
-                JSON & Markdown forensic trace dossiers with PubChem CIDs and NCBI protein links.
-              </p>
-            </div>
-            <div className="mt-4 pt-2 border-t border-slate-800 text-[9px] text-blue-400">
-              JSON + MD Audit Trail
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── Phytochemical Library Spotlight ── */}
-      <section className="relative z-10 max-w-7xl mx-auto px-6 py-12 border-t border-slate-800/60">
-        <div className="flex flex-col items-center text-center mb-8">
-          <h2 className="text-xs font-mono font-bold text-emerald-400 tracking-wider uppercase mb-2">
-            Curated AYUSH Medicinal Flora
-          </h2>
-          <h3 className="text-3xl font-bold text-slate-100">
-            24 Pure Phytochemical Compounds
-          </h3>
-          <p className="text-sm text-slate-400 mt-2 max-w-2xl">
-            Derived from classical Indian botanical sources with verified PubChem Registry entries.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 font-mono text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-5 gap-4">
           {[
-            { name: 'Curcumin', plant: 'Curcuma longa (Turmeric)', cid: '969516' },
-            { name: 'Azadirachtin', plant: 'Azadirachta indica (Neem)', cid: '5281303' },
-            { name: 'Ursolic Acid', plant: 'Ocimum tenuiflorum (Tulsi)', cid: '64945' },
-            { name: 'Costunolide', plant: 'Saussurea costus (Kuth)', cid: '5281437' },
-            { name: 'Boeravinone B', plant: 'Boerhavia diffusa (Punarnava)', cid: '5318767' },
-            { name: 'Aegeline', plant: 'Aegle marmelos (Bael)', cid: '15558450' },
-            { name: 'Baicalein', plant: 'Oroxylum indicum (Shyonaka)', cid: '5281605' },
-            { name: 'Conessine', plant: 'Holarrhena antidysenterica', cid: '441072' },
-            { name: 'Magnoflorine', plant: 'Tinospora cordifolia (Guduchi)', cid: '73337' },
-            { name: 'Eugenol', plant: 'Ocimum tenuiflorum (Tulsi)', cid: '3314' },
-            { name: 'Nimbolide', plant: 'Azadirachta indica (Neem)', cid: '100017' },
-            { name: 'Chrysin', plant: 'Oroxylum indicum (Shyonaka)', cid: '5281607' }
-          ].map((item, idx) => (
+            { num: '01', title: 'Target Prep', desc: 'PDB & AlphaFold curation, protonation, grid alignment', icon: Target, color: 'teal' },
+            { num: '02', title: 'Ensemble Dock', desc: 'AutoDock Vina ΔG + DiffDock-L generative confidence', icon: Cpu, color: 'cyan' },
+            { num: '03', title: 'Fingerprinting', desc: '3.5Å H-bond counts, hydrophobic contacts, residue maps', icon: FileSearch, color: 'indigo' },
+            { num: '04', title: 'Priority Score', desc: '40% Vina + 35% DiffDock + 25% Fingerprints composite', icon: Layers, color: 'amber' },
+            { num: '05', title: 'Evidence Passport', desc: 'JSON + MD forensic trace with PubChem & NCBI links', icon: Beaker, color: 'rose' }
+          ].map((step, idx) => (
+            <div key={idx} className={`reveal stagger-${idx + 1} relative p-5 rounded-xl border border-slate-800/40 bg-[#060b14] group hover:border-${step.color}-500/30 transition-all duration-300`}>
+              {/* Connector line */}
+              {idx < 4 && (
+                <div className="hidden sm:block absolute top-1/2 -right-2.5 w-5 h-px bg-slate-800/60 z-10" />
+              )}
+              <div className="flex items-center justify-between mb-4">
+                <span className={`text-[10px] font-mono font-bold tracking-wider ${
+                  step.color === 'teal' ? 'text-teal-500' :
+                  step.color === 'cyan' ? 'text-cyan-500' :
+                  step.color === 'indigo' ? 'text-indigo-500' :
+                  step.color === 'amber' ? 'text-amber-500' : 'text-rose-500'
+                }`}>
+                  {step.num}
+                </span>
+                <step.icon className="w-4 h-4 text-slate-600" />
+              </div>
+              <h4 className="text-sm font-bold text-slate-200 mb-1.5">{step.title}</h4>
+              <p className="text-[10px] text-slate-500 leading-relaxed">{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* SECTION 5 — PHYTOCHEMICAL LIBRARY                    */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-20 border-t border-slate-800/30">
+        <div className="reveal mb-12">
+          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-400 mb-3 block">
+            Curated AYUSH Medicinal Flora
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight mb-3">
+            24 pure phytochemical compounds
+          </h2>
+          <p className="text-sm text-slate-500 max-w-xl leading-relaxed">
+            Derived from 9 classical Indian botanical sources with verified PubChem Registry entries — every compound is structurally validated.
+          </p>
+        </div>
+
+        {/* Plant Sources — Horizontal Scroll */}
+        <div className="reveal mb-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Leaf className="w-3.5 h-3.5 text-teal-500" />
+            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Botanical Sources</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {[
+              'Curcuma longa (Turmeric)',
+              'Azadirachta indica (Neem)',
+              'Ocimum tenuiflorum (Tulsi)',
+              'Saussurea costus (Kuth)',
+              'Boerhavia diffusa (Punarnava)',
+              'Aegle marmelos (Bael)',
+              'Oroxylum indicum (Shyonaka)',
+              'Holarrhena antidysenterica (Kutaja)',
+              'Tinospora cordifolia (Guduchi)'
+            ].map((plant, idx) => (
+              <span
+                key={idx}
+                className={`reveal stagger-${Math.min(idx + 1, 6)} px-3 py-1.5 rounded-lg border border-slate-800/50 bg-slate-900/30 text-[10px] text-slate-400 font-medium italic`}
+              >
+                {plant}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Compound Grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+          {[
+            { name: 'Curcumin', cid: '969516' },
+            { name: 'Azadirachtin', cid: '5281303' },
+            { name: 'Ursolic Acid', cid: '64945' },
+            { name: 'Costunolide', cid: '5281437' },
+            { name: 'Boeravinone B', cid: '5318767' },
+            { name: 'Aegeline', cid: '15558450' },
+            { name: 'Baicalein', cid: '5281605' },
+            { name: 'Conessine', cid: '441072' },
+            { name: 'Magnoflorine', cid: '73337' },
+            { name: 'Eugenol', cid: '3314' },
+            { name: 'Nimbolide', cid: '100017' },
+            { name: 'Chrysin', cid: '5281607' },
+            { name: 'Demethoxycurcumin', cid: '5469424' },
+            { name: 'Bisdemethoxycurcumin', cid: '5315472' },
+            { name: 'Rosmarinic Acid', cid: '5281792' },
+            { name: 'Costus Lactone', cid: '164748' },
+            { name: 'Nimbin', cid: '102095200' },
+            { name: 'Cynaropicrin', cid: '5281773' },
+            { name: 'Marmelosin', cid: '68077' },
+            { name: 'Kurchessine', cid: '441073' },
+            { name: 'Berberine', cid: '2353' },
+            { name: 'Liriodendrin', cid: '5315206' },
+            { name: 'Oroxylin A', cid: '5320315' },
+            { name: 'Tinosporin', cid: '21637571' }
+          ].map((compound, idx) => (
             <a
               key={idx}
-              href={`https://pubchem.ncbi.nlm.nih.gov/compound/${item.cid}`}
+              href={`https://pubchem.ncbi.nlm.nih.gov/compound/${compound.cid}`}
               target="_blank"
               rel="noreferrer"
-              className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/40 transition-all hover:scale-105 flex flex-col justify-between group"
+              className={`reveal stagger-${(idx % 6) + 1} group p-2.5 rounded-lg border border-slate-800/40 bg-[#060b14] hover:border-teal-500/30 transition-all duration-300 hover:-translate-y-0.5`}
             >
-              <div>
-                <span className="font-bold text-slate-200 group-hover:text-cyan-300 transition-colors block text-xs truncate">
-                  {item.name}
-                </span>
-                <span className="text-[9px] text-slate-500 italic block mt-0.5 truncate font-sans">
-                  {item.plant}
-                </span>
-              </div>
-              <div className="mt-2 text-[9px] text-cyan-400 font-bold flex items-center justify-between border-t border-slate-800/60 pt-1">
-                <span>CID: {item.cid}</span>
-                <ExternalLink className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="block text-[10px] font-semibold text-slate-300 group-hover:text-teal-300 transition-colors truncate">
+                {compound.name}
+              </span>
+              <div className="flex items-center justify-between mt-1">
+                <span className="text-[8px] font-mono text-slate-600">CID {compound.cid}</span>
+                <ExternalLink className="w-2.5 h-2.5 text-slate-700 group-hover:text-teal-500 transition-colors" />
               </div>
             </a>
           ))}
         </div>
       </section>
 
-      {/* ── Footer ── */}
-      <footer className="relative z-10 border-t border-slate-800 bg-slate-950 py-8 px-6 text-xs text-slate-500 font-mono">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="text-slate-200 font-bold">mevreon Bio-AI</span>
-            <span>|</span>
-            <span>AYUSH AMR Screening Pipeline v1.4.0</span>
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* SECTION 6 — CTA BANNER                               */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-20 border-t border-slate-800/30">
+        <div className="reveal relative rounded-2xl border border-slate-800/40 bg-gradient-to-br from-[#060b14] to-[#0a1020] p-10 sm:p-14 text-center overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-teal-500/[0.04] rounded-full filter blur-[80px]" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-500/[0.04] rounded-full filter blur-[60px]" />
           </div>
+          <div className="relative z-10">
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-3 tracking-tight">
+              Ready to explore docking results?
+            </h3>
+            <p className="text-sm text-slate-500 max-w-lg mx-auto mb-8 leading-relaxed">
+              Select a pathogen above or jump straight into the screening workspace to browse pre-computed molecular interaction evidence.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <button
+                onClick={() => onSelectOrganism('pseudomonas')}
+                className="relative flex items-center gap-2 px-7 py-3 rounded-xl bg-teal-500/90 hover:bg-teal-400 text-[#04070d] text-sm font-bold transition-all duration-300 hover:shadow-[0_0_40px_rgba(20,184,166,0.3)]"
+              >
+                Launch Screening Workspace
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <button
+                onClick={onOpenCustomTester}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-700/60 text-slate-300 text-sm font-medium hover:border-teal-500/40 hover:text-teal-300 transition-all duration-300"
+              >
+                <FlaskConical className="w-4 h-4" />
+                Test Custom Compound
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="flex items-center gap-6 text-slate-400">
-            <a href="https://github.com/unrealayush/Ayush-Demo" target="_blank" rel="noreferrer" className="hover:text-cyan-400 transition-colors flex items-center gap-1">
-              <span>GitHub Repository</span>
-              <ExternalLink className="w-3 h-3" />
+      {/* ══════════════════════════════════════════════════════ */}
+      {/* FOOTER                                                */}
+      {/* ══════════════════════════════════════════════════════ */}
+      <footer className="relative z-10 border-t border-slate-800/30 py-8 px-6 sm:px-10">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-600 font-mono">
+          <div className="flex items-center gap-2">
+            <span className="text-slate-400 font-semibold">mevreon Bio-AI</span>
+            <span className="text-slate-800">|</span>
+            <span>AYUSH AMR Screening Pipeline v1.4</span>
+          </div>
+          <div className="flex items-center gap-5">
+            <a
+              href="https://github.com/unrealayush/Ayush-Demo"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-teal-400 transition-colors flex items-center gap-1"
+            >
+              GitHub
+              <ExternalLink className="w-2.5 h-2.5" />
             </a>
-            <span className="text-slate-700">|</span>
-            <span className="text-purple-400 flex items-center gap-1">
-              <Database className="w-3 h-3 text-purple-400" />
-              GCS Bucket Traceable
-            </span>
+            <span className="text-slate-800">|</span>
+            <span className="text-slate-500">GCS Bucket Traceable</span>
           </div>
         </div>
       </footer>
+
     </div>
   );
 };
