@@ -20,7 +20,8 @@ import {
   Sparkles,
   ExternalLink,
   HelpCircle,
-  Download
+  Download,
+  ArrowLeft
 } from 'lucide-react';
 import { MoleculeViewer } from './components/MoleculeViewer';
 import { MechanismGraph } from './components/MechanismGraph';
@@ -156,12 +157,20 @@ const PLANT_SOURCES: Record<string, { plant: string; category: string }> = {
 
 interface DashboardProps {
   onOpenDetail?: (targetId: string, ligandId: string) => void;
+  initialOrganism?: string;
+  initialTarget?: string;
+  onBackToLanding?: () => void;
 }
 
-const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
+const Dashboard: React.FC<DashboardProps> = ({
+  onOpenDetail,
+  initialOrganism = 'pseudomonas',
+  initialTarget = 'PqsR',
+  onBackToLanding
+}) => {
   // ── States ──
-  const [selectedOrganism, setSelectedOrganism] = useState<string>('pseudomonas');
-  const [selectedTarget, setSelectedTarget] = useState<string>('PqsR');
+  const [selectedOrganism, setSelectedOrganism] = useState<string>(initialOrganism);
+  const [selectedTarget, setSelectedTarget] = useState<string>(initialTarget);
   const [selectedLigand, setSelectedLigand] = useState<string>('Chrysin');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
@@ -331,6 +340,17 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
         </div>
 
         <div className="flex flex-wrap items-center gap-3 relative z-10">
+          {/* Back to Landing Page Button */}
+          {onBackToLanding && (
+            <button
+              onClick={onBackToLanding}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-cyan-500/50 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 hover:text-cyan-400 transition"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-cyan-500" />
+              <span>Landing Page</span>
+            </button>
+          )}
+
           {/* Custom Testing Action Button */}
           <button
             onClick={() => setIsCustomTesterOpen(true)}

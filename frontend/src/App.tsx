@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react';
 import Dashboard from './Dashboard';
+import { LandingPage } from './components/LandingPage';
 import { LigandDetail } from './components/LigandDetail';
+import { CustomCompoundTester } from './components/CustomCompoundTester';
 import { Moon, Sun, Zap } from 'lucide-react';
 
 export type ThemeMode = 'dark' | 'light' | 'cyber';
 
 const App = () => {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'detail'>('dashboard');
+  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail'>('landing');
+  const [selectedOrganism, setSelectedOrganism] = useState<string>('pseudomonas');
+  const [selectedTarget, setSelectedTarget] = useState<string>('PqsR');
   const [detailTarget, setDetailTarget] = useState('');
   const [detailLigand, setDetailLigand] = useState('');
   const [theme, setTheme] = useState<ThemeMode>('dark');
+  const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -24,6 +29,18 @@ const App = () => {
     }
   }, [theme]);
 
+  const handleSelectOrganism = (organismId: string, targetId?: string) => {
+    setSelectedOrganism(organismId);
+    if (targetId) {
+      setSelectedTarget(targetId);
+    } else {
+      if (organismId === 'pseudomonas') setSelectedTarget('PqsR');
+      else if (organismId === 'staphylococcus') setSelectedTarget('AgrA');
+      else if (organismId === 'klebsiella') setSelectedTarget('MrkH');
+    }
+    setCurrentView('dashboard');
+  };
+
   const handleOpenDetail = (targetId: string, ligandId: string) => {
     setDetailTarget(targetId);
     setDetailLigand(ligandId);
@@ -34,17 +51,57 @@ const App = () => {
     setCurrentView('dashboard');
   };
 
+  const handleBackToLanding = () => {
+    setCurrentView('landing');
+  };
+
   return (
     <div className="w-full min-h-screen relative transition-colors duration-300">
-      {currentView === 'dashboard' ? (
-        <Dashboard onOpenDetail={handleOpenDetail} />
+      {currentView === 'landing' ? (
+        <LandingPage
+          onSelectOrganism={handleSelectOrganism}
+          onOpenCustomTester={() => setIsCustomTesterOpen(true)}
+        />
+      ) : currentView === 'dashboard' ? (
+        <Dashboard
+          initialOrganism={selectedOrganism}
+          initialTarget={selectedTarget}
+          onOpenDetail={handleOpenDetail}
+          onBackToLanding={handleBackToLanding}
+        />
       ) : (
-        <LigandDetail 
-          targetId={detailTarget} 
-          ligandId={detailLigand} 
-          onBack={handleBackToDashboard} 
+        <LigandDetail
+          targetId={detailTarget}
+          ligandId={detailLigand}
+          onBack={handleBackToDashboard}
         />
       )}
+
+      {/* Global Custom Compound Tester Modal (Accessible from Landing Page or Floating bar) */}
+      <CustomCompoundTester
+        isOpen={isCustomTesterOpen}
+        onClose={() => setIsCustomTesterOpen(false)}
+        onRunSuccess={(customData) => {
+          setSelectedOrganism('pseudomonas');
+          setSelectedTarget(customData.targetId);
+          setCurrentView('dashboard');
+          setIsCustomTesterOpen(false);
+        }}
+        availableTargets={[
+          { id: 'PqsR', label: 'PqsR / MvfR' },
+          { id: 'LasR', label: 'LasR' },
+          { id: 'PelD', label: 'PelD' },
+          { id: 'MexB', label: 'MexB' },
+          { id: 'AgrA', label: 'AgrA' },
+          { id: 'SrtA', label: 'Sortase A' },
+          { id: 'MecA', label: 'PBP2a' },
+          { id: 'MurJ', label: 'MurJ' },
+          { id: 'MrkH', label: 'MrkH' },
+          { id: 'Wzc', label: 'Wzc' },
+          { id: 'AcrB', label: 'AcrB' },
+          { id: 'OmpK36', label: 'OmpK36' }
+        ]}
+      />
 
       {/* Floating 3-Way Theme Switcher (Dark / Light / Cyber) */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1.5 p-1.5 rounded-full shadow-2xl bg-slate-900/90 dark:bg-slate-900/90 border border-slate-700 dark:border-cyan-500/50 backdrop-blur-md">
