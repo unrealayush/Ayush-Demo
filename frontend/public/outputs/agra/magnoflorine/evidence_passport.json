@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-AGRA-MAGNO-001",
-  "generated_at": "2026-08-01T19:42:59.977568+00:00",
+  "generated_at": "2026-08-03T13:55:59.244307+00:00",
   "executive_summary": "Magnoflorine demonstrates in-silico binding potential to Staphylococcus aureus AgrA. The interaction yields a validation priority score of 52.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

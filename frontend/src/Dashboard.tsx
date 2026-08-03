@@ -30,44 +30,46 @@ import { CustomCompoundTester } from './components/CustomCompoundTester';
 const PUBCHEM_CIDS: Record<string, string> = {
   costunolide: "5281437",
   dehydrocostus_lactone: "73174",
-  curcumin: "5281767",
-  chrysin: "5281607",
+  cynaropicrin: "5281773",
+  santamarine: "91457",
+  conessine: "441072",
   baicalein: "5281605",
+  oroxylin_a: "5320315",
+  chrysin: "5281607",
   baicalin: "64982",
-  rosmarinic_acid: "5281792",
+  magnoflorine: "73337",
+  aegeline: "15558450",
+  imperatorin: "10212",
+  skimmianine: "23475",
+  boeravinone_b: "5318767",
+  liriodendrin: "3084137",
+  nimbolide: "100017",
+  nimbin: "102095200",
+  azadirachtin: "5281303",
   eugenol: "3314",
   ursolic_acid: "64945",
-  azadirachtin: "5281303",
-  nimbolide: "100017",
-  nimbin: "108058",
-  oroxylin_a: "5281673",
-  demethoxycurcumin: "5281766",
-  bisdemethoxycurcumin: "5315472",
-  aegeline: "119024",
-  boeravinone_b: "114757",
-  conessine: "442985",
-  cynaropicrin: "5281515",
-  imperatorin: "10212",
-  liriodendrin: "119245",
-  magnoflorine: "73337",
-  santamarine: "141344",
-  skimmianine: "12684"
+  rosmarinic_acid: "5281792",
+  curcumin: "969516",
+  demethoxycurcumin: "5469424",
+  bisdemethoxycurcumin: "5315472"
 };
 
 // ── Target NCBI & UniProt Accession Metadata Map ──
-const TARGET_NCBI_ACCESSIONS: Record<string, { ncbi: string; uniprot: string; organism: string; strain: string }> = {
-  PqsR: { ncbi: "AAG04392.1", uniprot: "Q9I4X0", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
-  LasR: { ncbi: "AAA25874.1", uniprot: "P25084", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
-  PelD: { ncbi: "NP_250831.1", uniprot: "Q9I476", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
-  MexB: { ncbi: "NP_252945.1", uniprot: "P52002", organism: "Pseudomonas aeruginosa", strain: "PAO1" },
-  AgrA: { ncbi: "AAA26597.1", uniprot: "P0A0I7", organism: "Staphylococcus aureus", strain: "USA300" },
-  SrtA: { ncbi: "ABD31836.1", uniprot: "Q2FV99", organism: "Staphylococcus aureus", strain: "USA300" },
-  MecA: { ncbi: "NP_374034.1", uniprot: "P10838", organism: "Staphylococcus aureus", strain: "USA300" },
-  MurA: { ncbi: "NP_371661.1", uniprot: "P0A0D8", organism: "Staphylococcus aureus", strain: "USA300" },
-  AcrB: { ncbi: "YP_001335021.1", uniprot: "A6T8W4", organism: "Klebsiella pneumoniae", strain: "MGH78578" },
-  OmpK36: { ncbi: "YP_001334052.1", uniprot: "A6T5U2", organism: "Klebsiella pneumoniae", strain: "MGH78578" },
-  MrkH: { ncbi: "YP_001335038.1", uniprot: "A6T8Y1", organism: "Klebsiella pneumoniae", strain: "MGH78578" },
-  Wzc: { ncbi: "YP_001338520.1", uniprot: "A6T2A5", organism: "Klebsiella pneumoniae", strain: "MGH78578" }
+const TARGET_NCBI_ACCESSIONS: Record<string, { ncbi: string; uniprot: string; organism: string; shortOrg: string; strain: string; locus: string; gene: string; pdb: string }> = {
+  LasR: { ncbi: "AAA25874.1", uniprot: "P25084", organism: "Pseudomonas aeruginosa", shortOrg: "P. aeruginosa", strain: "PAO1", locus: "PA1430", gene: "lasR", pdb: "PDB: 2UV0" },
+  PqsR: { ncbi: "AAG04392.1", uniprot: "Q9I147", organism: "Pseudomonas aeruginosa", shortOrg: "P. aeruginosa", strain: "PAO1", locus: "PA1003", gene: "pqsR", pdb: "PDB: 4JVC" },
+  PelD: { ncbi: "NP_250831.1", uniprot: "Q9I4I8", organism: "Pseudomonas aeruginosa", shortOrg: "P. aeruginosa", strain: "PAO1", locus: "PA3061", gene: "pelD", pdb: "PDB: 4Q35" },
+  MexB: { ncbi: "NP_252945.1", uniprot: "Q51547", organism: "Pseudomonas aeruginosa", shortOrg: "P. aeruginosa", strain: "PAO1", locus: "PA0426", gene: "mexB", pdb: "PDB: 2V50" },
+  
+  AgrA: { ncbi: "AAA26597.1", uniprot: "P0A0I7", organism: "Staphylococcus aureus", shortOrg: "S. aureus", strain: "NCTC 8325", locus: "SAOUHSC_02265", gene: "agrA", pdb: "PDB: 4G4K" },
+  SrtA: { ncbi: "ABD31836.1", uniprot: "Q2FV99", organism: "Staphylococcus aureus", shortOrg: "S. aureus", strain: "NCTC 8325", locus: "SAOUHSC_01843", gene: "srtA", pdb: "PDB: 1T2P" },
+  MecA: { ncbi: "NP_374034.1", uniprot: "Q9KX75", organism: "Staphylococcus aureus", shortOrg: "S. aureus", strain: "MRSA USA300 / N315", locus: "strain specific", gene: "mecA", pdb: "PDB: 1VQQ, 5M18" },
+  MurJ: { ncbi: "NP_371661.1", uniprot: "Q2FZF4", organism: "Staphylococcus aureus", shortOrg: "S. aureus", strain: "NCTC 8325", locus: "SAOUHSC_00643", gene: "murJ", pdb: "AlphaFold" },
+  
+  MrkH: { ncbi: "YP_001335038.1", uniprot: "A0A0H3JXK0", organism: "Klebsiella pneumoniae", shortOrg: "K. pneumoniae", strain: "MGH78578", locus: "KPN_03274", gene: "mrkH", pdb: "AlphaFold" },
+  Wzc: { ncbi: "YP_001338520.1", uniprot: "Q8ZIN0", organism: "Klebsiella pneumoniae", shortOrg: "K. pneumoniae", strain: "MGH78578", locus: "KPN_02477", gene: "wzc", pdb: "AlphaFold" },
+  AcrB: { ncbi: "YP_001335021.1", uniprot: "Q8ZKQ2", organism: "Klebsiella pneumoniae", shortOrg: "K. pneumoniae", strain: "MGH78578", locus: "KPN_02072", gene: "acrB", pdb: "PDB: 5YIL" },
+  OmpK36: { ncbi: "YP_001334052.1", uniprot: "A6T5Y8", organism: "Klebsiella pneumoniae", shortOrg: "K. pneumoniae", strain: "MGH78578", locus: "KPN_03267", gene: "ompK36", pdb: "PDB: 5NXA" }
 };
 
 // ── Pathogen Organism Mappings ──
@@ -75,72 +77,81 @@ const ORGANISMS = [
   {
     id: 'pseudomonas',
     name: 'Pseudomonas aeruginosa',
+    shortName: 'P. aeruginosa',
+    strain: 'PAO1',
+    ncbiAssembly: 'GCF_000006765',
     emoji: '🦠',
     description: 'Gram-negative opportunistic pathogen',
     colorClass: 'text-emerald-600 dark:text-emerald-400 border-emerald-500/30 bg-emerald-50 dark:bg-emerald-950/20 shadow-[0_0_15px_rgba(16,185,129,0.15)]',
     activeColor: 'bg-emerald-500 border-emerald-400 text-emerald-700 dark:text-emerald-300',
     targets: [
-      { id: 'PqsR', label: 'PqsR / MvfR', desc: 'Transcription Regulator (LBD)', strain: 'PAO1' },
-      { id: 'LasR', label: 'LasR', desc: 'Autoinducer Receptor', strain: 'PAO1' },
-      { id: 'PelD', label: 'PelD', desc: 'c-di-GMP Synthase effector', strain: 'PAO1' },
-      { id: 'MexB', label: 'MexB', desc: 'Multi-drug Efflux Pump', strain: 'PAO1' }
+      { id: 'LasR', label: 'LasR', desc: 'Quorum sensing regulator', strain: 'PAO1' },
+      { id: 'PqsR', label: 'PqsR (MvfR)', desc: 'PQS signaling regulator', strain: 'PAO1' },
+      { id: 'PelD', label: 'PelD', desc: 'c-di-GMP receptor (Biofilm matrix)', strain: 'PAO1' },
+      { id: 'MexB', label: 'MexB', desc: 'RND multidrug efflux transporter', strain: 'PAO1' }
     ]
   },
   {
     id: 'staphylococcus',
     name: 'Staphylococcus aureus',
+    shortName: 'S. aureus',
+    strain: 'NCTC 8325',
+    ncbiAssembly: 'GCF_000013425',
     emoji: '🧫',
     description: 'Gram-positive virulent pathogen',
     colorClass: 'text-rose-600 dark:text-rose-400 border-rose-500/30 bg-rose-950/20 shadow-[0_0_15px_rgba(244,63,94,0.15)]',
     activeColor: 'bg-rose-500 border-rose-400 text-rose-300',
     targets: [
-      { id: 'AgrA', label: 'AgrA', desc: 'Transcription Regulator', strain: 'USA300' },
-      { id: 'SrtA', label: 'Sortase A / SrtA', desc: 'Transpeptidase Adhesion', strain: 'USA300' },
-      { id: 'MecA', label: 'PBP2a / MecA', desc: 'Beta-lactam Resistant Cell Wall', strain: 'USA300' },
-      { id: 'MurA', label: 'MurA / MurA', desc: 'UDP-GlcNAc 1-carboxyvinyltransferase', strain: 'USA300' }
+      { id: 'AgrA', label: 'AgrA', desc: 'Agr QS response regulator', strain: 'NCTC 8325' },
+      { id: 'SrtA', label: 'Sortase A', desc: 'Peptidoglycan transpeptidase', strain: 'NCTC 8325' },
+      { id: 'MecA', label: 'PBP2a', desc: 'Methicillin resistance transpeptidase', strain: 'MRSA USA300 / N315' },
+      { id: 'MurJ', label: 'MurJ', desc: 'Lipid II flippase cell wall target', strain: 'NCTC 8325' }
     ]
   },
   {
-    id: 'enterobacteriaceae',
-    name: 'Enterobacteriaceae (E. coli / K. pneumoniae)',
+    id: 'klebsiella',
+    name: 'Klebsiella pneumoniae',
+    shortName: 'K. pneumoniae',
+    strain: 'MGH78578',
+    ncbiAssembly: 'GCF_000016305',
     emoji: '🧬',
-    description: 'Gram-negative drug-resistant bacilli',
+    description: 'Gram-negative drug-resistant pathogen',
     colorClass: 'text-cyan-600 dark:text-cyan-400 border-cyan-500/30 bg-cyan-50 dark:bg-cyan-950/20 shadow-[0_0_15px_rgba(6,182,212,0.15)]',
     activeColor: 'bg-cyan-500 border-cyan-400 text-cyan-700 dark:text-cyan-300',
     targets: [
-      { id: 'AcrB', label: 'AcrB', desc: 'K. pneumoniae Efflux Pump', strain: 'MGH78578' },
-      { id: 'OmpK36', label: 'OmpK36', desc: 'K. pneumoniae Porin channel', strain: 'MGH78578' },
-      { id: 'MrkH', label: 'MrkH', desc: 'K. pneumoniae Type III Fimbriae', strain: 'MGH78578' },
-      { id: 'Wzc', label: 'Wzc', desc: 'K. pneumoniae Capsule Autokinase', strain: 'MGH78578' }
+      { id: 'MrkH', label: 'MrkH', desc: 'Type III fimbriae regulator (Adhesion)', strain: 'MGH78578' },
+      { id: 'Wzc', label: 'Wzc', desc: 'Capsule tyrosine autokinase', strain: 'MGH78578' },
+      { id: 'AcrB', label: 'AcrB', desc: 'RND multidrug efflux pump', strain: 'MGH78578' },
+      { id: 'OmpK36', label: 'OmpK36', desc: 'Outer membrane porin channel', strain: 'MGH78578' }
     ]
   }
 ];
 
 const PLANT_SOURCES: Record<string, { plant: string; category: string }> = {
-  costunolide: { plant: 'Saussurea lappa (Kuth)', category: 'Kuth Active' },
-  dehydrocostus_lactone: { plant: 'Saussurea lappa (Kuth)', category: 'Kuth Active' },
-  santamarine: { plant: 'Saussurea lappa (Kuth)', category: 'Kuth Active' },
-  curcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
-  demethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
-  bisdemethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
-  nimbolide: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
-  azadirachtin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
-  nimbin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
+  costunolide: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
+  dehydrocostus_lactone: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
+  cynaropicrin: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
+  santamarine: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
+  conessine: { plant: 'Holarrhena antidysenterica (Kutaja)', category: 'Kutaja Active' },
   baicalein: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
-  baicalin: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
   oroxylin_a: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
   chrysin: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
-  rosmarinic_acid: { plant: 'Ocimum sanctum (Tulsi)', category: 'Tulsi Active' },
-  eugenol: { plant: 'Ocimum sanctum (Tulsi)', category: 'Tulsi Active' },
-  ursolic_acid: { plant: 'Ocimum sanctum (Tulsi)', category: 'Tulsi Active' },
-  conessine: { plant: 'Holarrhena antidysenterica (Kutaja)', category: 'Kutaja Active' },
-  boeravinone_b: { plant: 'Boerhavia diffusa (Punarnava)', category: 'Punarnava Active' },
-  cynaropicrin: { plant: 'Saussurea lappa (Kuth)', category: 'Ayush Active' },
+  baicalin: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
+  magnoflorine: { plant: 'Tinospora cordifolia (Guduchi)', category: 'Guduchi Active' },
   aegeline: { plant: 'Aegle marmelos (Bael)', category: 'Bael Active' },
-  imperatorin: { plant: 'Angelica archangelica', category: 'Ayush Active' },
-  liriodendrin: { plant: 'Syringa vulgaris', category: 'Ayush Active' },
-  magnoflorine: { plant: 'Tinospora cordifolia (Giloy)', category: 'Giloy Active' },
-  skimmianine: { plant: 'Zanthoxylum armatum (Tejbal)', category: 'Ayush Active' }
+  imperatorin: { plant: 'Aegle marmelos (Bael)', category: 'Bael Active' },
+  skimmianine: { plant: 'Aegle marmelos (Bael)', category: 'Bael Active' },
+  boeravinone_b: { plant: 'Boerhavia diffusa (Punarnava)', category: 'Punarnava Active' },
+  liriodendrin: { plant: 'Boerhavia diffusa (Punarnava)', category: 'Punarnava Active' },
+  nimbolide: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
+  nimbin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
+  azadirachtin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
+  eugenol: { plant: 'Ocimum tenuiflorum (Tulsi)', category: 'Tulsi Active' },
+  ursolic_acid: { plant: 'Ocimum tenuiflorum (Tulsi)', category: 'Tulsi Active' },
+  rosmarinic_acid: { plant: 'Ocimum tenuiflorum (Tulsi)', category: 'Tulsi Active' },
+  curcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
+  demethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
+  bisdemethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' }
 };
 
 interface DashboardProps {
@@ -393,7 +404,8 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
               )}
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-lg">{org.emoji}</span>
-                <span className="text-xs font-black uppercase tracking-wider font-mono">{org.name}</span>
+                <span className="text-xs font-bold font-serif italic tracking-wide">{org.name}</span>
+                <span className="text-[10px] font-sans font-semibold opacity-75">({org.shortName})</span>
               </div>
               <p className="text-[10px] text-slate-500 italic font-medium">{org.description}</p>
             </button>
@@ -508,7 +520,9 @@ const Dashboard: React.FC<DashboardProps> = ({ onOpenDetail }) => {
                 <div className="pl-7">
                   <div className="flex justify-between items-center gap-2">
                     <div>
-                      <h4 className="text-sm font-bold text-red-600 dark:text-red-300 mb-1 drop-shadow-[0_0_5px_rgba(248,113,113,0.3)]">{activeOrg.name}</h4>
+                      <h4 className="text-sm font-bold text-red-600 dark:text-red-300 mb-1 drop-shadow-[0_0_5px_rgba(248,113,113,0.3)]">
+                        <span className="italic font-serif">{activeOrg.name}</span> <span className="font-sans font-normal text-xs text-red-400">({activeOrg.shortName})</span>
+                      </h4>
                       <p className="text-[10px] text-slate-600 dark:text-slate-400 leading-relaxed font-semibold">Reference Strain: <span className="text-cyan-600 dark:text-cyan-400">{activeTargetDetails.strain}</span></p>
                     </div>
                     <div className="w-14 h-14 bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">

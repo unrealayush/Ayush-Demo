@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MECA-CHRYS-001",
-  "generated_at": "2026-08-01T19:43:00.336028+00:00",
+  "generated_at": "2026-08-03T13:56:04.526621+00:00",
   "executive_summary": "Chrysin demonstrates in-silico binding potential to Staphylococcus aureus PBP2a / MecA. The interaction yields a validation priority score of 62.9/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

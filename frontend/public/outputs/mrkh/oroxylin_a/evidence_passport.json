@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MRKH-OROXY-001",
-  "generated_at": "2026-08-01T19:43:00.900904+00:00",
+  "generated_at": "2026-08-03T13:56:12.962402+00:00",
   "executive_summary": "Oroxylin A demonstrates in-silico binding potential to Klebsiella pneumoniae MrkH. The interaction yields a validation priority score of 58.6/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MURJ-AZADI-001",
-  "generated_at": "2026-08-01T19:43:01.175335+00:00",
+  "generated_at": "2026-08-03T13:56:16.078807+00:00",
   "executive_summary": "Azadirachtin demonstrates in-silico binding potential to Staphylococcus aureus MurJ. The interaction yields a validation priority score of 36.2/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

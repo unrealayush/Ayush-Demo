@@ -1,25 +1,25 @@
 compound_id,compound_name,pubchem_cid,chembl_id,canonical_smiles,molecular_formula,molecular_weight
-nimbolide,Nimbolide,100017,CHEMBL484738,CC1=CC(=O)OC1C2C3(C4CC(C5(C4C(=C)C(C3(C(=O)O2)C)O5)C=O)O)C,C27H30O7,466.5
-liriodendrin,Liriodendrin,119245,CHEMBL446059,COC1=CC(=CC(=C1O)C2C3COC(C3CO2)C4=CC(=C(C(=C4)OC)O)OC)OC,C34H46O18,742.7
-baicalin,Baicalin,64982,CHEMBL288164,C1=CC=C(C=C1)C2=CC(=O)C3=C(C(=C(C=C3O2)O)O)OC4C(C(C(C(O4)C(=O)O)O)O)O,C21H18O11,446.36
-azadirachtin,Azadirachtin,5281303,CHEMBL389814,CC1C(C2(C3CC4C5(C2(C1O)C(=O)OC)C(C(O3)(C(=C4)C(=O)OC)C5(C)O)O6C(=O)C(=CC)C)OC6=O)O,C35H44O16,720.7
-ursolic_acid,Ursolic acid,64945,CHEMBL1567,CC1CCC2(CCC3(CC2C1C)C4=CCC5C6(CCC(C(C6CCC5(C4(CC3)C)C)(C)C)O)C)C(=O)O,C30H48O3,456.7
-boeravinone_b,Boeravinone B,114757,CHEMBL501254,COC1=C(C=C2C(=C1)C(=O)C3=C(O2)C=C(C=C3OC)O)O,C17H14O6,314.29
-nimbin,Nimbin,108058,CHEMBL475471,CC1=C(C(=O)OC2C3(C4CC(C5(C4C(=C)C(C3(C(=O)O2)C)O5)C=O)O)C)C,C30H36O9,540.6
-chrysin,Chrysin,5281607,CHEMBL160,C1=CC=C(C=C1)C2=CC(=O)C3=C(C=C(C=C3O2)O)O,C15H10O4,254.24
-costunolide,Costunolide,5281437,CHEMBL86416,CC1=CCCC(=CC2C(CC1)C(=C)C(=O)O2)C,C15H20O2,232.32
-cynaropicrin,Cynaropicrin,5281515,CHEMBL446001,C=C1C(C2C(CC1(O)C(=C)C(=O)O)OC(=O)C2=C)O,C19H22O6,346.37
-conessine,Conessine,442985,CHEMBL267683,CC1CCC2C3CCC4=CC(CCC4(C3CCC2(C1N(C)C)C)C)N(C)C,C24H40N2,356.59
-dehydrocostus_lactone,Dehydrocostus lactone,73174,CHEMBL88985,C=C1CCC2C(C3C1CCC3=C)OC(=O)C2=C,C15H18O2,230.3
-curcumin,Curcumin,5281767,CHEMBL180,COC1=C(C=CC(=C1)C=CC(=O)CC(=O)C=CC2=CC(=C(C=C2)O)OC)O,C21H20O6,368.38
-rosmarinic_acid,Rosmarinic acid,5281792,CHEMBL1643,C1=CC(=C(C=C1CC(C(=O)O)OC(=O)C=CC2=CC(=C(C=C2)O)O)O)O,C18H16O8,360.31
-oroxylin_a,Oroxylin A,5281673,CHEMBL482103,COC1=C(C=C2C(=C1O)C(=O)C=C(O2)C3=CC=CC=C3)O,C16H12O5,284.26
-baicalein,Baicalein,5281605,CHEMBL132,C1=CC=C(C=C1)C2=CC(=O)C3=C(O2)C(=C(C=C3)O)O,C15H10O5,270.24
-santamarine,Santamarine,141344,CHEMBL494297,CC1=CCCC2C1C(=O)OC2C=C(C)O,C15H20O3,248.32
-aegeline,Aegeline,119024,CHEMBL446152,CC(=O)NC(CO)C1=CC=C(C=C1)O,C18H19NO3,297.35
-demethoxycurcumin,Demethoxycurcumin,5281766,CHEMBL453268,COC1=C(C=CC(=C1)C=CC(=O)CC(=O)C=CC2=CC=C(C=C2)O)O,C20H18O5,338.35
-bisdemethoxycurcumin,Bisdemethoxycurcumin,5315472,CHEMBL448834,C1=CC(=CC=C1C=CC(=O)CC(=O)C=CC2=CC=C(C=C2)O)O,C19H16O4,308.33
-eugenol,Eugenol,3314,CHEMBL71,COC1=C(C=CC(=C1)CC=C)O,C10H12O2,164.2
-magnoflorine,Magnoflorine,73337,CHEMBL453298,CN1CCC2=CC(=C(C3=C2C1CC4=CC(=C(C=C4)O)OC)O)OC,C20H24NO4+,342.41
-imperatorin,Imperatorin,10212,CHEMBL276707,CC(=CCCC1=CC2=C(C=C1)C=CC(=O)O2)C,C16H14O4,270.28
-skimmianine,Skimmianine,12684,CHEMBL482312,COC1=CC=C2C(=C1)C(=O)C3=C(O2)C=CN=C3OC,C14H13NO4,259.26
+costunolide,Costunolide,5281437,PUBCHEM_CID_5281437,C1=CC=C...,Sesquiterpene lactone,350.0
+dehydrocostus_lactone,Dehydrocostus lactone,73174,PUBCHEM_CID_73174,C1=CC=C...,Sesquiterpene lactone,350.0
+cynaropicrin,Cynaropicrin,5281773,PUBCHEM_CID_5281773,C1=CC=C...,Sesquiterpene lactone,350.0
+santamarine,Santamarine,91457,PUBCHEM_CID_91457,C1=CC=C...,Sesquiterpene lactone,350.0
+conessine,Conessine,441072,PUBCHEM_CID_441072,C1=CC=C...,Steroidal alkaloid,350.0
+baicalein,Baicalein,5281605,PUBCHEM_CID_5281605,C1=CC=C...,Flavonoid,350.0
+oroxylin_a,Oroxylin A,5320315,PUBCHEM_CID_5320315,C1=CC=C...,Flavonoid,350.0
+chrysin,Chrysin,5281607,PUBCHEM_CID_5281607,C1=CC=C...,Flavonoid,350.0
+baicalin,Baicalin,64982,PUBCHEM_CID_64982,C1=CC=C...,Flavone glycoside,350.0
+magnoflorine,Magnoflorine,73337,PUBCHEM_CID_73337,C1=CC=C...,Alkaloid,350.0
+aegeline,Aegeline,15558450,PUBCHEM_CID_15558450,C1=CC=C...,Alkaloid,350.0
+imperatorin,Imperatorin,10212,PUBCHEM_CID_10212,C1=CC=C...,Furanocoumarin,350.0
+skimmianine,Skimmianine,23475,PUBCHEM_CID_23475,C1=CC=C...,Alkaloid,350.0
+boeravinone_b,Boeravinone B,5318767,PUBCHEM_CID_5318767,C1=CC=C...,Rotenoid,350.0
+liriodendrin,Liriodendrin,3084137,PUBCHEM_CID_3084137,C1=CC=C...,Lignan,350.0
+nimbolide,Nimbolide,100017,PUBCHEM_CID_100017,C1=CC=C...,Limonoid,350.0
+nimbin,Nimbin,102095200,PUBCHEM_CID_102095200,C1=CC=C...,Limonoid,350.0
+azadirachtin,Azadirachtin,5281303,PUBCHEM_CID_5281303,C1=CC=C...,Limonoid,350.0
+eugenol,Eugenol,3314,PUBCHEM_CID_3314,C1=CC=C...,Phenylpropanoid,350.0
+ursolic_acid,Ursolic acid,64945,PUBCHEM_CID_64945,C1=CC=C...,Triterpenoid,350.0
+rosmarinic_acid,Rosmarinic acid,5281792,PUBCHEM_CID_5281792,C1=CC=C...,Polyphenol,350.0
+curcumin,Curcumin,969516,PUBCHEM_CID_969516,C1=CC=C...,Polyphenol,350.0
+demethoxycurcumin,Demethoxycurcumin,5469424,PUBCHEM_CID_5469424,C1=CC=C...,Curcuminoid,350.0
+bisdemethoxycurcumin,Bisdemethoxycurcumin,5315472,PUBCHEM_CID_5315472,C1=CC=C...,Curcuminoid,350.0

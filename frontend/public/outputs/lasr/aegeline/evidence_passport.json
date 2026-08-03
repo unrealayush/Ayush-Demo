@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-LASR-AEGEL-001",
-  "generated_at": "2026-08-01T19:43:00.062917+00:00",
+  "generated_at": "2026-08-03T13:56:00.389757+00:00",
   "executive_summary": "Aegeline demonstrates in-silico binding potential to Pseudomonas aeruginosa LasR. The interaction yields a validation priority score of 60.2/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

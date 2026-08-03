@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-WZC-COSTU-001",
-  "generated_at": "2026-08-01T19:43:05.006496+00:00",
+  "generated_at": "2026-08-03T13:56:33.301540+00:00",
   "executive_summary": "Costunolide demonstrates in-silico binding potential to Klebsiella pneumoniae Wzc. The interaction yields a validation priority score of 57.7/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

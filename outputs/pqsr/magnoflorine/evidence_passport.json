@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-PQSR-MAGNO-001",
-  "generated_at": "2026-08-01T19:43:06.897632+00:00",
+  "generated_at": "2026-08-03T13:56:39.255758+00:00",
   "executive_summary": "Magnoflorine demonstrates in-silico binding potential to Pseudomonas aeruginosa PqsR / MvfR. The interaction yields a validation priority score of 49.1/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

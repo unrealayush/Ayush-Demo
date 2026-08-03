@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-OMPK36-CURCU-001",
-  "generated_at": "2026-08-01T19:43:01.747491+00:00",
+  "generated_at": "2026-08-03T13:56:20.898586+00:00",
   "executive_summary": "Curcumin demonstrates in-silico binding potential to Klebsiella pneumoniae OmpK36. The interaction yields a validation priority score of 52.7/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

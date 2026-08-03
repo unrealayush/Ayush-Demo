@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-WZC-EUGEN-001",
-  "generated_at": "2026-08-01T19:43:05.211009+00:00",
+  "generated_at": "2026-08-03T13:56:34.103515+00:00",
   "executive_summary": "Eugenol demonstrates in-silico binding potential to Klebsiella pneumoniae Wzc. The interaction yields a validation priority score of 53.7/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MRKH-CURCU-001",
-  "generated_at": "2026-08-01T19:43:00.797922+00:00",
+  "generated_at": "2026-08-03T13:56:11.571482+00:00",
   "executive_summary": "Curcumin demonstrates in-silico binding potential to Klebsiella pneumoniae MrkH. The interaction yields a validation priority score of 64.9/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

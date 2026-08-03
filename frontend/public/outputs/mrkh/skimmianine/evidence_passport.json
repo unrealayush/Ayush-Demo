@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MRKH-SKIMM-001",
-  "generated_at": "2026-08-01T19:43:00.926657+00:00",
+  "generated_at": "2026-08-03T13:56:13.391096+00:00",
   "executive_summary": "Skimmianine demonstrates in-silico binding potential to Klebsiella pneumoniae MrkH. The interaction yields a validation priority score of 54.0/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

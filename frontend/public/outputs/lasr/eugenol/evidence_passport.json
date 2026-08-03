@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-LASR-EUGEN-001",
-  "generated_at": "2026-08-01T19:43:00.177247+00:00",
+  "generated_at": "2026-08-03T13:56:02.183858+00:00",
   "executive_summary": "Eugenol demonstrates in-silico binding potential to Pseudomonas aeruginosa LasR. The interaction yields a validation priority score of 54.9/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

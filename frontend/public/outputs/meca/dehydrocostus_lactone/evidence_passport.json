@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MECA-DEHYD-001",
-  "generated_at": "2026-08-01T19:43:00.375180+00:00",
+  "generated_at": "2026-08-03T13:56:05.214346+00:00",
   "executive_summary": "Dehydrocostus lactone demonstrates in-silico binding potential to Staphylococcus aureus PBP2a / MecA. The interaction yields a validation priority score of 61.1/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

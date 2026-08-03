@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MURJ-COSTU-001",
-  "generated_at": "2026-08-01T19:43:01.240120+00:00",
+  "generated_at": "2026-08-03T13:56:17.046886+00:00",
   "executive_summary": "Costunolide demonstrates in-silico binding potential to Staphylococcus aureus MurJ. The interaction yields a validation priority score of 65.1/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

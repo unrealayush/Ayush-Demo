@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-WZC-OROXY-001",
-  "generated_at": "2026-08-01T19:43:05.426408+00:00",
+  "generated_at": "2026-08-03T13:56:35.024929+00:00",
   "executive_summary": "Oroxylin A demonstrates in-silico binding potential to Klebsiella pneumoniae Wzc. The interaction yields a validation priority score of 60.5/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

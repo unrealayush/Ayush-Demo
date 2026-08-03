@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-WZC-BAICA-001",
-  "generated_at": "2026-08-01T19:43:04.798780+00:00",
+  "generated_at": "2026-08-03T13:56:32.374765+00:00",
   "executive_summary": "Baicalein demonstrates in-silico binding potential to Klebsiella pneumoniae Wzc. The interaction yields a validation priority score of 62.4/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

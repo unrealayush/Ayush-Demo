@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MRKH-CONES-001",
-  "generated_at": "2026-08-01T19:43:00.780497+00:00",
+  "generated_at": "2026-08-03T13:56:11.280905+00:00",
   "executive_summary": "Conessine demonstrates in-silico binding potential to Klebsiella pneumoniae MrkH. The interaction yields a validation priority score of 60.3/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

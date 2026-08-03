@@ -11,7 +11,51 @@ interface LigandDetailProps {
   onBack: () => void;
 }
 
+const PUBCHEM_CIDS: Record<string, string> = {
+  costunolide: "5281437",
+  dehydrocostus_lactone: "73174",
+  cynaropicrin: "5281773",
+  santamarine: "91457",
+  conessine: "441072",
+  baicalein: "5281605",
+  oroxylin_a: "5320315",
+  chrysin: "5281607",
+  baicalin: "64982",
+  magnoflorine: "73337",
+  aegeline: "15558450",
+  imperatorin: "10212",
+  skimmianine: "23475",
+  boeravinone_b: "5318767",
+  liriodendrin: "3084137",
+  nimbolide: "100017",
+  nimbin: "102095200",
+  azadirachtin: "5281303",
+  eugenol: "3314",
+  ursolic_acid: "64945",
+  rosmarinic_acid: "5281792",
+  curcumin: "969516",
+  demethoxycurcumin: "5469424",
+  bisdemethoxycurcumin: "5315472"
+};
+
+const TARGET_NCBI_ACCESSIONS: Record<string, { ncbi: string; uniprot: string }> = {
+  LasR: { ncbi: "AAA25874.1", uniprot: "P25084" },
+  PqsR: { ncbi: "AAG04392.1", uniprot: "Q9I147" },
+  PelD: { ncbi: "NP_250831.1", uniprot: "Q9I4I8" },
+  MexB: { ncbi: "NP_252945.1", uniprot: "Q51547" },
+  AgrA: { ncbi: "AAA26597.1", uniprot: "P0A0I7" },
+  SrtA: { ncbi: "ABD31836.1", uniprot: "Q2FV99" },
+  MecA: { ncbi: "NP_374034.1", uniprot: "Q9KX75" },
+  MurJ: { ncbi: "NP_371661.1", uniprot: "Q2FZF4" },
+  MrkH: { ncbi: "YP_001335038.1", uniprot: "A0A0H3JXK0" },
+  Wzc: { ncbi: "YP_001338520.1", uniprot: "Q8ZIN0" },
+  AcrB: { ncbi: "YP_001335021.1", uniprot: "Q8ZKQ2" },
+  OmpK36: { ncbi: "YP_001334052.1", uniprot: "A6T5Y8" }
+};
+
 export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, onBack }) => {
+  const cid = PUBCHEM_CIDS[ligandId.toLowerCase()] || ligandId;
+  const ncbiAcc = TARGET_NCBI_ACCESSIONS[targetId]?.ncbi || targetId;
   const fetchJson = async (filename: string) => {
     try {
       const res = await axios.get(`/outputs/${targetId.toLowerCase()}/${ligandId.toLowerCase()}/${filename}`);
@@ -61,21 +105,21 @@ export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, 
               <span>Exhaustive 11-file analytical trace & coordinate visualization</span>
               <span className="text-slate-600">|</span>
               <a
-                href={`https://pubchem.ncbi.nlm.nih.gov/compound/${ligandId}`}
+                href={`https://pubchem.ncbi.nlm.nih.gov/compound/${cid}`}
                 target="_blank"
                 rel="noreferrer"
                 className="text-cyan-400 hover:underline inline-flex items-center gap-1 font-bold"
               >
-                <span>PubChem Search</span>
+                <span>PubChem CID: {cid}</span>
               </a>
               <span className="text-slate-600">|</span>
               <a
-                href={`https://www.ncbi.nlm.nih.gov/protein/?term=${targetId}`}
+                href={`https://www.ncbi.nlm.nih.gov/protein/${ncbiAcc}`}
                 target="_blank"
                 rel="noreferrer"
                 className="text-purple-400 hover:underline inline-flex items-center gap-1 font-bold"
               >
-                <span>NCBI Sequence Database</span>
+                <span>NCBI Protein: {ncbiAcc}</span>
               </a>
             </div>
           </div>

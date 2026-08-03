@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MECA-BAICA-001",
-  "generated_at": "2026-08-01T19:43:00.300227+00:00",
+  "generated_at": "2026-08-03T13:56:03.978772+00:00",
   "executive_summary": "Baicalein demonstrates in-silico binding potential to Staphylococcus aureus PBP2a / MecA. The interaction yields a validation priority score of 58.0/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

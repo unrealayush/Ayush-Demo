@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MECA-EUGEN-001",
-  "generated_at": "2026-08-01T19:43:00.389876+00:00",
+  "generated_at": "2026-08-03T13:56:05.489301+00:00",
   "executive_summary": "Eugenol demonstrates in-silico binding potential to Staphylococcus aureus PBP2a / MecA. The interaction yields a validation priority score of 51.0/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {

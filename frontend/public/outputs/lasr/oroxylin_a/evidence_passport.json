@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-LASR-OROXY-001",
-  "generated_at": "2026-08-01T19:43:00.227059+00:00",
+  "generated_at": "2026-08-03T13:56:03.017109+00:00",
   "executive_summary": "Oroxylin A demonstrates in-silico binding potential to Pseudomonas aeruginosa LasR. The interaction yields a validation priority score of 63.4/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Consider for wet-lab validation. Wet-lab validation is consider for wet-lab validation.",
   "traceability_matrix": [
     {

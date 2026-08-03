@@ -1,6 +1,6 @@
 {
   "passport_id": "EP-MEXB-BOERA-001",
-  "generated_at": "2026-08-01T19:43:00.556701+00:00",
+  "generated_at": "2026-08-03T13:56:07.680996+00:00",
   "executive_summary": "Boeravinone B demonstrates in-silico binding potential to Pseudomonas aeruginosa MexB. The interaction yields a validation priority score of 5.1/100. The mechanism graph indicates disruption of pathways leading to phenotypes. Based on the score, the decision is: Review manually. Wet-lab validation is review manually.",
   "traceability_matrix": [
     {
