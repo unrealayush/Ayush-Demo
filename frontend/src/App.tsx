@@ -2,20 +2,23 @@ import { useState, useEffect } from 'react';
 import Dashboard from './Dashboard';
 import { LandingPage } from './components/LandingPage';
 import { LigandDetail } from './components/LigandDetail';
+import { ComparisonView } from './components/ComparisonView';
 import { CustomCompoundTester } from './components/CustomCompoundTester';
 import { Moon, Sun, Zap } from 'lucide-react';
 
 export type ThemeMode = 'dark' | 'light' | 'cyber';
 
 const App = () => {
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail' | 'comparison'>('landing');
   const [selectedOrganism, setSelectedOrganism] = useState<string>('pseudomonas');
   const [selectedTarget, setSelectedTarget] = useState<string>('PqsR');
   const [detailTarget, setDetailTarget] = useState('');
   const [detailLigand, setDetailLigand] = useState('');
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
+  const [comparisonLeaderboard, setComparisonLeaderboard] = useState<any[]>([]);
 
+  // ── Theme Switcher ──
   useEffect(() => {
     const root = document.documentElement;
     root.classList.remove('dark', 'light', 'cyber');
@@ -28,6 +31,59 @@ const App = () => {
       root.classList.add('light');
     }
   }, [theme]);
+
+  // ── Shareable Deep Link Parsing (URL Hash) ──
+  useEffect(() => {
+    const parseHash = () => {
+      const hash = window.location.hash.replace('#/', '');
+      if (hash) {
+        const parts = hash.split('/');
+        if (parts[0] && ['pseudomonas', 'staphylococcus', 'klebsiella'].includes(parts[0])) {
+          setSelectedOrganism(parts[0]);
+          if (parts[1]) setSelectedTarget(parts[1]);
+          if (parts[2]) {
+            setDetailTarget(parts[1] || 'PqsR');
+            setDetailLigand(parts[2]);
+            setCurrentView('detail');
+            return;
+          }
+          setCurrentView('dashboard');
+        }
+      }
+    };
+
+    parseHash();
+    window.addEventListener('hashchange', parseHash);
+    return () => window.removeEventListener('hashchange', parseHash);
+  }, []);
+
+  // ── Synchronize URL Hash on View Change ──
+  useEffect(() => {
+    if (currentView === 'landing') {
+      window.location.hash = '';
+    } else if (currentView === 'dashboard') {
+      window.location.hash = `#/${selectedOrganism}/${selectedTarget}`;
+    } else if (currentView === 'detail' && detailTarget && detailLigand) {
+      window.location.hash = `#/${selectedOrganism}/${detailTarget}/${detailLigand}`;
+    } else if (currentView === 'comparison') {
+      window.location.hash = `#/${selectedOrganism}/${selectedTarget}/compare`;
+    }
+  }, [currentView, selectedOrganism, selectedTarget, detailTarget, detailLigand]);
+
+  // ── Global Keyboard Shortcuts (Escape key for back navigation) ──
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (currentView === 'detail' || currentView === 'comparison') {
+          setCurrentView('dashboard');
+        } else if (currentView === 'dashboard') {
+          setCurrentView('landing');
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentView]);
 
   const handleSelectOrganism = (organismId: string, targetId?: string) => {
     setSelectedOrganism(organismId);
@@ -47,6 +103,11 @@ const App = () => {
     setCurrentView('detail');
   };
 
+  const handleOpenComparison = (leaderboardData: any[]) => {
+    setComparisonLeaderboard(leaderboardData);
+    setCurrentView('comparison');
+  };
+
   const handleBackToDashboard = () => {
     setCurrentView('dashboard');
   };
@@ -57,27 +118,36 @@ const App = () => {
 
   return (
     <div className="w-full min-h-screen relative transition-colors duration-300">
-      {currentView === 'landing' ? (
-        <LandingPage
-          onSelectOrganism={handleSelectOrganism}
-          onOpenCustomTester={() => setIsCustomTesterOpen(true)}
-        />
-      ) : currentView === 'dashboard' ? (
-        <Dashboard
-          initialOrganism={selectedOrganism}
-          initialTarget={selectedTarget}
-          onOpenDetail={handleOpenDetail}
-          onBackToLanding={handleBackToLanding}
-        />
-      ) : (
-        <LigandDetail
-          targetId={detailTarget}
-          ligandId={detailLigand}
-          onBack={handleBackToDashboard}
-        />
-      )}
+      <div key={currentView} className="view-transition w-full min-h-screen">
+        {currentView === 'landing' ? (
+          <LandingPage
+            onSelectOrganism={handleSelectOrganism}
+            onOpenCustomTester={() => setIsCustomTesterOpen(true)}
+          />
+        ) : currentView === 'dashboard' ? (
+          <Dashboard
+            initialOrganism={selectedOrganism}
+            initialTarget={selectedTarget}
+            onOpenDetail={handleOpenDetail}
+            onOpenComparison={handleOpenComparison}
+            onBackToLanding={handleBackToLanding}
+          />
+        ) : currentView === 'comparison' ? (
+          <ComparisonView
+            targetId={selectedTarget}
+            leaderboard={comparisonLeaderboard}
+            onBack={handleBackToDashboard}
+          />
+        ) : (
+          <LigandDetail
+            targetId={detailTarget}
+            ligandId={detailLigand}
+            onBack={handleBackToDashboard}
+          />
+        )}
+      </div>
 
-      {/* Global Custom Compound Tester Modal (Accessible from Landing Page or Floating bar) */}
+      {/* Global Custom Compound Tester Modal */}
       <CustomCompoundTester
         isOpen={isCustomTesterOpen}
         onClose={() => setIsCustomTesterOpen(false)}
@@ -103,9 +173,8 @@ const App = () => {
         ]}
       />
 
-      {/* Floating 3-Way Theme Switcher (Dark / Light / Cyber) */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1.5 p-1.5 rounded-full shadow-2xl bg-slate-900/90 dark:bg-slate-900/90 border border-slate-700 dark:border-cyan-500/50 backdrop-blur-md">
-        
+      {/* Floating 3-Way Theme Switcher */}
+      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1.5 p-1.5 rounded-full shadow-2xl bg-slate-900/90 dark:bg-slate-900/90 border border-slate-700 dark:border-cyan-500/50 backdrop-blur-md no-print">
         <button
           onClick={() => setTheme('dark')}
           title="Classic Dark Theme"
@@ -141,7 +210,6 @@ const App = () => {
         >
           <Zap className="w-4 h-4" />
         </button>
-
       </div>
     </div>
   );

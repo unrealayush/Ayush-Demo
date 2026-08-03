@@ -102,7 +102,13 @@ export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, 
               Forensic Dossier: <span className="text-cyan-600 dark:text-cyan-400 capitalize">{ligandId.replace('_', ' ')}</span> <span className="text-slate-500">→</span> <span className="text-purple-600 dark:text-purple-400">{targetId.toUpperCase()}</span>
             </h1>
             <div className="flex items-center gap-4 text-xs font-mono text-slate-400 mt-1">
-              <span>Exhaustive 11-file analytical trace & coordinate visualization</span>
+              <button
+                onClick={() => window.print()}
+                className="text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1 no-print font-bold"
+                title="Download / Print PDF Report"
+              >
+                <Download className="w-3.5 h-3.5" /> Export PDF Report
+              </button>
               <span className="text-slate-600">|</span>
               <a
                 href={`https://pubchem.ncbi.nlm.nih.gov/compound/${cid}`}

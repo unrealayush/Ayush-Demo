@@ -21,11 +21,18 @@ import {
   ExternalLink,
   HelpCircle,
   Download,
-  ArrowLeft
+  ArrowLeft,
+  GitCompare,
+  Printer
 } from 'lucide-react';
 import { MoleculeViewer } from './components/MoleculeViewer';
 import { MechanismGraph } from './components/MechanismGraph';
 import { CustomCompoundTester } from './components/CustomCompoundTester';
+import { RadarChart } from './components/RadarChart';
+import { ScoreBarChart } from './components/ScoreBarChart';
+import { CommandPalette } from './components/CommandPalette';
+import { SummaryCards } from './components/SummaryCards';
+import { ResidueHeatmap } from './components/ResidueHeatmap';
 
 // ── PubChem CIDs Map ──
 const PUBCHEM_CIDS: Record<string, string> = {
@@ -157,6 +164,7 @@ const PLANT_SOURCES: Record<string, { plant: string; category: string }> = {
 
 interface DashboardProps {
   onOpenDetail?: (targetId: string, ligandId: string) => void;
+  onOpenComparison?: (leaderboard: any[]) => void;
   initialOrganism?: string;
   initialTarget?: string;
   onBackToLanding?: () => void;
@@ -164,6 +172,7 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = ({
   onOpenDetail,
+  onOpenComparison,
   initialOrganism = 'pseudomonas',
   initialTarget = 'PqsR',
   onBackToLanding
@@ -174,6 +183,8 @@ const Dashboard: React.FC<DashboardProps> = ({
   const [selectedLigand, setSelectedLigand] = useState<string>('Chrysin');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState<boolean>(false);
+  const [leaderboardViewMode, setLeaderboardViewMode] = useState<'table' | 'chart'>('table');
   const [customCompoundsMap, setCustomCompoundsMap] = useState<Record<string, any[]>>({});
   const [showCovalentInteractions, setShowCovalentInteractions] = useState<boolean>(false);
   const [showTop5Only, setShowTop5Only] = useState<boolean>(false);
@@ -211,6 +222,35 @@ const Dashboard: React.FC<DashboardProps> = ({
       }
     }
   }, [leaderboard, selectedTarget]);
+
+  // ── Keyboard Shortcuts (Ctrl+K for palette, Arrow keys for cycling) ──
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen(prev => !prev);
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        if (!leaderboard || leaderboard.length === 0) return;
+        const activeTag = document.activeElement?.tagName;
+        if (activeTag === 'INPUT' || activeTag === 'TEXTAREA' || activeTag === 'SELECT') return;
+
+        const ids = leaderboard.map(r => (r["Compound ID"] || r["compound_id"] || "").toLowerCase());
+        const currentIdx = ids.indexOf(selectedLigand.toLowerCase());
+        if (currentIdx === -1) return;
+
+        if (e.key === 'ArrowRight') {
+          const nextIdx = (currentIdx + 1) % ids.length;
+          setSelectedLigand(ids[nextIdx]);
+        } else if (e.key === 'ArrowLeft') {
+          const prevIdx = (currentIdx - 1 + ids.length) % ids.length;
+          setSelectedLigand(ids[prevIdx]);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [leaderboard, selectedLigand]);
 
   // ── 3. Fetch Selected Compound Cascade Graph JSON ──
   const { data: graphData } = useQuery({
@@ -350,6 +390,37 @@ const Dashboard: React.FC<DashboardProps> = ({
               <span>Landing Page</span>
             </button>
           )}
+
+          {/* Search Ctrl+K Button */}
+          <button
+            onClick={() => setIsCommandPaletteOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/80 hover:border-cyan-500/50 text-xs font-mono text-slate-300 hover:text-cyan-300 transition"
+          >
+            <Search className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Search</span>
+            <kbd className="hidden sm:inline-flex px-1 py-0.2 rounded border border-slate-700 bg-slate-800 text-[9px]">Ctrl+K</kbd>
+          </button>
+
+          {/* Side-by-Side Compare Button */}
+          {onOpenComparison && (
+            <button
+              onClick={() => onOpenComparison(leaderboard)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-purple-500/40 hover:border-purple-400 text-xs font-mono font-semibold text-purple-300 transition hover:scale-105"
+            >
+              <GitCompare className="w-3.5 h-3.5 text-purple-400" />
+              <span>Compare Dual</span>
+            </button>
+          )}
+
+          {/* Export PDF Report Button */}
+          <button
+            onClick={() => window.print()}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700/80 hover:border-emerald-500/50 text-xs font-mono text-slate-300 hover:text-emerald-300 transition no-print"
+            title="Download / Print PDF Report"
+          >
+            <Printer className="w-3.5 h-3.5 text-emerald-400" />
+            <span>PDF</span>
+          </button>
 
           {/* Custom Testing Action Button */}
           <button
@@ -719,16 +790,33 @@ const Dashboard: React.FC<DashboardProps> = ({
                 <div>
                   <div className="flex justify-between items-center mb-1.5">
                     <div className="flex items-center gap-1.5">
-                      <Activity className="w-3.5 h-3.5 text-teal-400" />
-                      <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">Generative Confidence</span>
+                      <Activity className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                      <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">Anti-Biofilm Support</span>
                     </div>
-                    <span className="text-[10px] font-mono text-teal-400">{antiBiofilmSupport}/100</span>
+                    <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400">{antiBiofilmSupport}/100</span>
                   </div>
                   <div className="w-full h-1 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner">
-                    <div className="h-full bg-gradient-to-r from-teal-600 to-teal-400 rounded-full shadow-[0_0_10px_rgba(20,184,166,0.8)]" style={{ width: `${antiBiofilmSupport}%` }} />
+                    <div className="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.8)]" style={{ width: `${antiBiofilmSupport}%` }} />
                   </div>
                 </div>
 
+              </div>
+
+              {/* Multi-Axis Radar Chart */}
+              <div className="mb-6 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                <RadarChart
+                  vinaAffinity={vinaEnergy}
+                  diffdockConfidence={diffdockConfidence}
+                  hBonds={hBonds}
+                  hydrophobicContacts={hydrophobic}
+                  priorityScore={priorityScore}
+                  compoundName={compoundName}
+                />
+              </div>
+
+              {/* Residue Hotspots Heatmap */}
+              <div className="mb-6 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80">
+                <ResidueHeatmap targetId={selectedTarget} leaderboard={leaderboard} />
               </div>
 
               {/* Real Thermodynamic Details */}
@@ -776,7 +864,13 @@ const Dashboard: React.FC<DashboardProps> = ({
 
       </div>
 
-      {/* ── Interactive 24-Compound Preclinical Leaderboard Table (Spans Full Width) ── */}
+      {/* Target-Wide Insight Summary Cards */}
+      <SummaryCards
+        leaderboard={leaderboard}
+        onSelectLigand={setSelectedLigand}
+      />
+
+      {/* ── Interactive 24-Compound Preclinical Leaderboard Table / Chart (Spans Full Width) ── */}
       <div className="glass-panel rounded-xl p-5 mb-4 shadow-[0_0_20px_rgba(14,165,233,0.1)] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent"></div>
         
@@ -790,6 +884,26 @@ const Dashboard: React.FC<DashboardProps> = ({
           </div>
           
           <div className="flex flex-wrap items-center gap-2">
+            {/* Table / Bar Chart Toggle */}
+            <div className="flex items-center p-0.5 rounded-lg bg-slate-900 border border-slate-800 font-mono text-[10px]">
+              <button
+                onClick={() => setLeaderboardViewMode('table')}
+                className={`px-2.5 py-1 rounded font-bold transition ${
+                  leaderboardViewMode === 'table' ? 'bg-cyan-500 text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Table View
+              </button>
+              <button
+                onClick={() => setLeaderboardViewMode('chart')}
+                className={`px-2.5 py-1 rounded font-bold transition ${
+                  leaderboardViewMode === 'chart' ? 'bg-cyan-500 text-white' : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                Bar Chart View
+              </button>
+            </div>
+
             {/* Top 5 Filter Toggle */}
             <button
               onClick={() => setShowTop5Only(!showTop5Only)}
@@ -828,9 +942,18 @@ const Dashboard: React.FC<DashboardProps> = ({
           </div>
         </div>
 
-        {/* Dynamic Data Table */}
-        <div className="overflow-x-auto select-none rounded-lg border border-slate-300 dark:border-slate-800/80">
-          <table className="min-w-full divide-y divide-slate-800 bg-slate-50 dark:bg-slate-950/50">
+        {/* Dynamic Data Table or Bar Chart View */}
+        {leaderboardViewMode === 'chart' ? (
+          <div className="p-4 bg-slate-950/50 rounded-lg border border-slate-800">
+            <ScoreBarChart
+              leaderboard={filteredLeaderboard}
+              selectedLigand={selectedLigand}
+              onSelectLigand={setSelectedLigand}
+            />
+          </div>
+        ) : (
+          <div className="overflow-x-auto select-none rounded-lg border border-slate-300 dark:border-slate-800/80">
+            <table className="min-w-full divide-y divide-slate-800 bg-slate-50 dark:bg-slate-950/50">
             <thead className="bg-slate-50 dark:bg-slate-950/90 font-mono text-[9px] uppercase tracking-wider text-slate-600 dark:text-slate-400 font-black">
               <tr>
                 <th className="px-4 py-3 text-left">Rank</th>
@@ -970,6 +1093,7 @@ const Dashboard: React.FC<DashboardProps> = ({
             </tbody>
           </table>
         </div>
+        )}
       </div>
 
       {/* ── Footer ── */}
@@ -991,6 +1115,31 @@ const Dashboard: React.FC<DashboardProps> = ({
         onClose={() => setIsCustomTesterOpen(false)}
         onRunSuccess={handleCustomCompoundSuccess}
         availableTargets={ORGANISMS.flatMap(o => o.targets)}
+      />
+
+      {/* ── Global Command Palette Search Modal ── */}
+      <CommandPalette
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        onSelectOrganism={(id) => {
+          setSelectedOrganism(id);
+          setIsCommandPaletteOpen(false);
+        }}
+        onSelectTarget={(id) => {
+          setSelectedTarget(id);
+          setIsCommandPaletteOpen(false);
+        }}
+        onSelectLigand={(id) => {
+          setSelectedLigand(id);
+          setIsCommandPaletteOpen(false);
+        }}
+        organisms={ORGANISMS}
+        targets={ORGANISMS.flatMap(o => o.targets.map(t => ({ ...t, organism: o.name })))}
+        ligands={leaderboard.map(r => ({
+          id: (r["Compound ID"] || r["compound_id"] || "").toLowerCase(),
+          name: r["Compound Name"] || r["compound_name"] || 'Compound',
+          plant: PLANT_SOURCES[(r["Compound ID"] || r["compound_id"] || "").toLowerCase()]?.plant || 'Botanical Source'
+        }))}
       />
 
     </div>
