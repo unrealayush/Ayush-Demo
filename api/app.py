@@ -610,25 +610,23 @@ def _run_real_custom_pipeline(
                 
                 # Dynamic progress estimation from stage markers
                 if "STAGE 1" in cleaned:
-                    state["progress"] = 15
+                    state["progress"] = 20
+                elif "SDF Conformer" in cleaned or "PDBQT" in cleaned:
+                    state["progress"] = 35
                 elif "STAGE 3" in cleaned or "Vina" in cleaned:
-                    state["progress"] = 30
-                elif "Vina SUCCESS" in cleaned:
                     state["progress"] = 45
+                elif "Vina SUCCESS" in cleaned:
+                    state["progress"] = 55
                 elif "STAGE 4" in cleaned or "DiffDock" in cleaned:
-                    state["progress"] = 50
-                elif "DiffDock SUCCESS" in cleaned:
                     state["progress"] = 65
-                elif "STAGE 8" in cleaned:
-                    state["progress"] = 70
-                elif "STAGE 9" in cleaned:
+                elif "DiffDock SUCCESS" in cleaned:
                     state["progress"] = 75
-                elif "STAGE 10" in cleaned:
-                    state["progress"] = 80
-                elif "STAGE 11" in cleaned:
+                elif "STAGE 8" in cleaned or "STAGE 9" in cleaned:
                     state["progress"] = 85
-                elif "PIPELINE EXECUTION COMPLETE" in cleaned:
+                elif "STAGE 10" in cleaned or "STAGE 11" in cleaned:
                     state["progress"] = 95
+                elif "PIPELINE EXECUTION COMPLETE" in cleaned:
+                    state["progress"] = 100
         
         rc = process.poll()
         _, stderr = process.communicate()
