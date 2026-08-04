@@ -130,7 +130,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               AYUSH <span className="text-teal-400">Bio-AI</span>
             </span>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <button
               onClick={onOpenCustomTester}
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700/60 text-slate-300 text-xs font-medium hover:border-teal-500/40 hover:text-teal-300 transition-all duration-300"
@@ -145,6 +145,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               Launch Workspace
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
+            <img
+              src="/images/MevreonLogo.webp"
+              alt="Mevreon Logo"
+              className="h-9 w-auto object-contain drop-shadow-[0_0_12px_rgba(20,184,166,0.4)] transition-transform hover:scale-105"
+            />
           </div>
         </header>
 

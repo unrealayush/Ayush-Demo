@@ -427,10 +427,12 @@ const Dashboard: React.FC<DashboardProps> = ({
             Mode: Research-Use-Only
           </div>
 
-          <div className="pl-3 border-l border-slate-200 dark:border-slate-700/50 hidden md:block">
-            <div className="text-xl font-black tracking-tight text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
-              mevreon<span className="text-cyan-500 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">·</span>
-            </div>
+          <div className="pl-3 border-l border-slate-200 dark:border-slate-700/50 flex items-center gap-2">
+            <img
+              src="/images/MevreonLogo.webp"
+              alt="Mevreon Logo"
+              className="h-9 w-auto object-contain drop-shadow-[0_0_10px_rgba(6,182,212,0.4)] transition-transform hover:scale-105"
+            />
           </div>
         </div>
       </header>

@@ -130,7 +130,7 @@ export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, 
             </div>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center gap-3">
           <button
             onClick={() => {
               if (passport) {
@@ -149,6 +149,13 @@ export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, 
           >
             <Download className="w-4 h-4" /> Export Passport JSON
           </button>
+          <div className="pl-2 border-l border-slate-200 dark:border-slate-700/50">
+            <img
+              src="/images/MevreonLogo.webp"
+              alt="Mevreon Logo"
+              className="h-9 w-auto object-contain drop-shadow-[0_0_10px_rgba(6,182,212,0.4)] transition-transform hover:scale-105"
+            />
+          </div>
         </div>
       </header>
 
