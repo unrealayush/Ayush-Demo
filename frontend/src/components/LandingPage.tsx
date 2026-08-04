@@ -122,9 +122,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* Top Nav */}
         <header className="relative z-30 w-full max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center">
-              <span className="text-lg">🧬</span>
-            </div>
+            <img
+              src="/images/MevreonLogo.webp"
+              alt="Mevreon Logo"
+              className="w-9 h-9 object-contain rounded-lg drop-shadow-[0_0_12px_rgba(20,184,166,0.5)] transition-transform hover:scale-105"
+            />
             <span className="text-sm font-semibold text-slate-300 tracking-wide">
               AYUSH <span className="text-teal-400">Bio-AI</span>
             </span>

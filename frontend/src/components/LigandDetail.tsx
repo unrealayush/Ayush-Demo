@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { MoleculeViewer } from './MoleculeViewer';
 import { MechanismGraph } from './MechanismGraph';
-import { ChevronLeft, FileJson, Activity, Download, Database, Fingerprint } from 'lucide-react';
+import { ChevronLeft, FileJson, Activity, Download, Database } from 'lucide-react';
 
 interface LigandDetailProps {
   targetId: string;
@@ -98,7 +98,11 @@ export const LigandDetail: React.FC<LigandDetailProps> = ({ targetId, ligandId, 
           </button>
           <div>
             <h1 className="text-xl font-black text-white flex items-center gap-2">
-              <Fingerprint className="text-cyan-600 dark:text-cyan-400" />
+              <img
+                src="/images/MevreonLogo.webp"
+                alt="Mevreon Logo"
+                className="w-7 h-7 object-contain rounded drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]"
+              />
               Forensic Dossier: <span className="text-cyan-600 dark:text-cyan-400 capitalize">{ligandId.replace('_', ' ')}</span> <span className="text-slate-500">→</span> <span className="text-purple-600 dark:text-purple-400">{targetId.toUpperCase()}</span>
             </h1>
             <div className="flex items-center gap-4 text-xs font-mono text-slate-400 mt-1">

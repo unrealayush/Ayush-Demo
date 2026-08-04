@@ -342,9 +342,11 @@ const Dashboard: React.FC<DashboardProps> = ({
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
 
         <div className="flex items-center gap-4 relative z-10">
-          <div className="w-10 h-10 rounded-lg bg-cyan-50 dark:bg-cyan-950 border border-cyan-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.3)]">
-            <div className="text-cyan-600 dark:text-cyan-400 font-bold text-xl">🧬</div>
-          </div>
+          <img
+            src="/images/MevreonLogo.webp"
+            alt="Mevreon Logo"
+            className="w-10 h-10 object-contain rounded-lg drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-transform hover:scale-105"
+          />
           <div>
             <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 tracking-tight">AYUSH Bio-AI Evidence Demo</h1>
             <p className="text-xs text-slate-600 dark:text-slate-400 font-medium tracking-wide uppercase mt-0.5">Mechanism-linked validation for AYUSH medicines</p>
