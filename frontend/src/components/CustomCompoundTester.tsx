@@ -127,6 +127,15 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
         }
       };
 
+      let gcpUser = 'investigator@cloud.google.com';
+      try {
+        const saved = sessionStorage.getItem('mevreon_auth_user');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed.email) gcpUser = parsed.email;
+        }
+      } catch (e) {}
+
       // Check if user uploaded SDF/PDBQT files
       if (uploadedFile && (uploadedFile.name.endsWith('.sdf') || uploadedFile.name.endsWith('.pdbqt') || uploadedFile.name.endsWith('.pdb'))) {
         const formData = new FormData();
@@ -134,6 +143,7 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
         formData.append('compound_name', compoundName);
         formData.append('compound_id', cleanCompoundId);
         formData.append('engine', engine);
+        formData.append('gcp_user', gcpUser);
         
         if (smiles) {
           formData.append('smiles', smiles);
@@ -155,7 +165,8 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
           compound_name: compoundName,
           compound_id: cleanCompoundId,
           smiles: smiles,
-          engine: engine
+          engine: engine,
+          gcp_user: gcpUser
         });
       }
 

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   ArrowRight,
-  FlaskConical,
   ExternalLink,
   ChevronDown,
   Target,
@@ -13,7 +12,7 @@ import {
 
 interface LandingPageProps {
   onSelectOrganism: (organismId: string, targetId?: string) => void;
-  onOpenCustomTester: () => void;
+  onOpenCustomTester?: () => void;
 }
 
 /* ── Intersection Observer Hook for Scroll Reveals ── */
@@ -84,8 +83,7 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
 
 /* ── Main Landing Page Component ── */
 export const LandingPage: React.FC<LandingPageProps> = ({
-  onSelectOrganism,
-  onOpenCustomTester
+  onSelectOrganism
 }) => {
   const scrollContainerRef = useScrollReveal();
   const [heroLoaded, setHeroLoaded] = useState(false);
@@ -134,13 +132,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={onOpenCustomTester}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700/60 text-slate-300 text-xs font-medium hover:border-teal-500/40 hover:text-teal-300 transition-all duration-300"
-            >
-              <FlaskConical className="w-3.5 h-3.5" />
-              Test Compound
-            </button>
             <button
               onClick={() => onSelectOrganism('pseudomonas')}
               className="flex items-center gap-2 px-5 py-2 rounded-lg bg-teal-500/90 hover:bg-teal-400 text-[#04070d] text-xs font-bold transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"
@@ -527,13 +518,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               >
                 Launch Screening Workspace
                 <ArrowRight className="w-4 h-4" />
-              </button>
-              <button
-                onClick={onOpenCustomTester}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-700/60 text-slate-300 text-sm font-medium hover:border-teal-500/40 hover:text-teal-300 transition-all duration-300"
-              >
-                <FlaskConical className="w-4 h-4" />
-                Test Custom Compound
               </button>
             </div>
           </div>

@@ -14,8 +14,6 @@ import {
   Activity,
   Search,
   RefreshCw,
-  FlaskConical,
-  Sparkles,
   ExternalLink,
   HelpCircle,
   Download,
@@ -385,15 +383,6 @@ const Dashboard: React.FC<DashboardProps> = ({
             <span>PDF</span>
           </button>
 
-          {/* Custom Testing Action Button */}
-          <button
-            onClick={() => setIsCustomTesterOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-xs font-bold text-white shadow-[0_0_15px_rgba(6,182,212,0.4)] transition hover:scale-105"
-          >
-            <FlaskConical className="w-4 h-4 text-cyan-200" />
-            <span>Test Custom Compound</span>
-          </button>
-
           <div className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400">
             <Calendar className="w-4 h-4 text-cyan-500" />
             <span className="font-mono">{currentDateStr}</span>
@@ -429,13 +418,6 @@ const Dashboard: React.FC<DashboardProps> = ({
             <Database className="w-3.5 h-3.5 text-purple-400" />
             GCS Synced: gs://mevreon-bioai-screening-outputs
           </span>
-          <button
-            onClick={() => setIsCustomTesterOpen(true)}
-            className="text-cyan-400 hover:text-cyan-300 font-bold underline underline-offset-2 flex items-center gap-1"
-          >
-            <Sparkles className="w-3 h-3 text-cyan-400" />
-            Cross-Verify Custom Compound
-          </button>
         </div>
       </div>
 

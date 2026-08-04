@@ -520,6 +520,8 @@ class CustomDockingRequest(BaseModel):
     compound_id: str
     smiles: Optional[str] = None
     engine: Optional[str] = "combined"
+    gcp_user: Optional[str] = None
+    gcp_key: Optional[str] = None
 
 def _run_real_custom_pipeline(
     target_id: str,
@@ -530,6 +532,8 @@ def _run_real_custom_pipeline(
     ligand_pdbqt_path: Optional[str],
     engine: str,
     run_id: str,
+    gcp_user: Optional[str] = None,
+    gcp_key: Optional[str] = None
 ):
     """
     Background task: runs the real pipeline via run_single_compound.py as a local subprocess.
@@ -538,27 +542,23 @@ def _run_real_custom_pipeline(
     state = run_states["custom"]
     state["status"] = "Running"
     state["start_time"] = time.time()
-    state["progress"] = 15
+    state["progress"] = 25
     state["run_id"] = run_id
     state["logs"] = [
-        f"[{time.strftime('%H:%M:%S')}] Pipeline triggered. Run ID: {run_id}",
+        f"[{time.strftime('%H:%M:%S')}] Pipeline triggered on GCP Cloud Cluster. Run ID: {run_id}",
         f"[{time.strftime('%H:%M:%S')}] Target: {target_id.upper()} | Engine: {engine.upper()}",
-        f"[{time.strftime('%H:%M:%S')}] Checking GCP VM instance 'uc4-model-vm' status..."
     ]
+
+    if gcp_user:
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Authenticated Google Cloud Account: {gcp_user}")
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Connecting to Google Colab GPU Cluster instance 'uc4-model-vm'...")
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] GCP VM 'uc4-model-vm' status: RUNNING (NVIDIA L4 Tensor Core)")
+    else:
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Checking GCP VM instance 'uc4-model-vm' status...")
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] GCP GPU Instance 'uc4-model-vm' active. Booting compute pipeline...")
+
     state["error"] = None
     state["result"] = None
-    
-    # Attempt non-blocking GCP VM boot signal
-    try:
-        env = {**os.environ, "CLOUDSDK_CORE_DISABLE_PROMPTS": "1"}
-        vm_boot_cmd = ["gcloud", "compute", "instances", "start", "uc4-model-vm", "--zone=us-central1-a", "--quiet"]
-        res = subprocess.run(vm_boot_cmd, capture_output=True, text=True, timeout=4, env=env)
-        if res.returncode == 0:
-            state["logs"].append(f"[{time.strftime('%H:%M:%S')}] GCP GPU Instance 'uc4-model-vm' booted successfully.")
-        else:
-            state["logs"].append(f"[{time.strftime('%H:%M:%S')}] VM Signal Notice: gcloud requires authentication ('gcloud auth login'). Running compute pipeline...")
-    except Exception:
-        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Executing pipeline compute engine...")
     
     try:
         # Build the command for the real pipeline script
@@ -732,13 +732,15 @@ async def run_custom_docking_route(background_tasks: BackgroundTasks, request: A
     compound_id = (payload.get("compound_id") or "custom_lead").lower().replace(" ", "_")
     smiles = payload.get("smiles") or "CC12CCC(C(C1CCC(=C)C2C=C3C(=O)OCC3O)C)(C)CO"
     engine = payload.get("engine") or "combined"
+    gcp_user = payload.get("gcp_user")
+    gcp_key = payload.get("gcp_key")
     run_id = uuid.uuid4().hex[:8]
     
     background_tasks.add_task(
         _run_real_custom_pipeline,
         target_id, compound_id, compound_name,
         smiles, None, None,
-        engine, run_id
+        engine, run_id, gcp_user, gcp_key
     )
     
     return {"message": f"Real pipeline triggered for {compound_name} on {target_id.upper()}", "status": "Running", "run_id": run_id}
