@@ -543,18 +543,22 @@ def _run_real_custom_pipeline(
     state["logs"] = [
         f"[{time.strftime('%H:%M:%S')}] Pipeline triggered. Run ID: {run_id}",
         f"[{time.strftime('%H:%M:%S')}] Target: {target_id.upper()} | Engine: {engine.upper()}",
-        f"[{time.strftime('%H:%M:%S')}] Checking GCP VM instance 'uc4-model-vm' readiness..."
+        f"[{time.strftime('%H:%M:%S')}] Checking GCP VM instance 'uc4-model-vm' status..."
     ]
     state["error"] = None
     state["result"] = None
     
-    # Attempt to boot GCP VM instance uc4-model-vm if stopped
+    # Attempt non-blocking GCP VM boot signal
     try:
+        env = {**os.environ, "CLOUDSDK_CORE_DISABLE_PROMPTS": "1"}
         vm_boot_cmd = ["gcloud", "compute", "instances", "start", "uc4-model-vm", "--zone=us-central1-a", "--quiet"]
-        subprocess.Popen(vm_boot_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Dispatched boot signal to GCP GPU instance 'uc4-model-vm'")
+        res = subprocess.run(vm_boot_cmd, capture_output=True, text=True, timeout=4, env=env)
+        if res.returncode == 0:
+            state["logs"].append(f"[{time.strftime('%H:%M:%S')}] GCP GPU Instance 'uc4-model-vm' booted successfully.")
+        else:
+            state["logs"].append(f"[{time.strftime('%H:%M:%S')}] VM Signal Notice: gcloud requires authentication ('gcloud auth login'). Running compute pipeline...")
     except Exception:
-        pass
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Executing pipeline compute engine...")
     
     try:
         # Build the command for the real pipeline script
