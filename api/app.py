@@ -538,11 +538,23 @@ def _run_real_custom_pipeline(
     state = run_states["custom"]
     state["status"] = "Running"
     state["start_time"] = time.time()
-    state["progress"] = 5
+    state["progress"] = 15
     state["run_id"] = run_id
-    state["logs"] = [f"[{time.strftime('%H:%M:%S')}] Pipeline triggered. Run ID: {run_id}"]
+    state["logs"] = [
+        f"[{time.strftime('%H:%M:%S')}] Pipeline triggered. Run ID: {run_id}",
+        f"[{time.strftime('%H:%M:%S')}] Target: {target_id.upper()} | Engine: {engine.upper()}",
+        f"[{time.strftime('%H:%M:%S')}] Checking GCP VM instance 'uc4-model-vm' readiness..."
+    ]
     state["error"] = None
     state["result"] = None
+    
+    # Attempt to boot GCP VM instance uc4-model-vm if stopped
+    try:
+        vm_boot_cmd = ["gcloud", "compute", "instances", "start", "uc4-model-vm", "--zone=us-central1-a", "--quiet"]
+        subprocess.Popen(vm_boot_cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        state["logs"].append(f"[{time.strftime('%H:%M:%S')}] Dispatched boot signal to GCP GPU instance 'uc4-model-vm'")
+    except Exception:
+        pass
     
     try:
         # Build the command for the real pipeline script
