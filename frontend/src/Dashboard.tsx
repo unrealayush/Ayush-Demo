@@ -10,9 +10,7 @@ import {
   Globe2,
   CheckCircle2,
   Trophy,
-  Share2,
   Database,
-  FileText,
   Activity,
   Search,
   RefreshCw,
@@ -342,11 +340,13 @@ const Dashboard: React.FC<DashboardProps> = ({
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
 
         <div className="flex items-center gap-4 relative z-10">
-          <img
-            src="/images/MevreonLogo.webp"
-            alt="Mevreon Logo"
-            className="w-10 h-10 object-contain rounded-lg drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-transform hover:scale-105"
-          />
+          <div className="p-1.5 rounded-xl bg-slate-900/90 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.35)] flex items-center justify-center shrink-0">
+            <img
+              src="/images/MevreonLogo.webp"
+              alt="Mevreon Logo"
+              className="h-11 w-auto object-contain transition-transform hover:scale-105"
+            />
+          </div>
           <div>
             <h1 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-500 tracking-tight">AYUSH Bio-AI Evidence Demo</h1>
             <p className="text-xs text-slate-600 dark:text-slate-400 font-medium tracking-wide uppercase mt-0.5">Mechanism-linked validation for AYUSH medicines</p>
@@ -1053,18 +1053,7 @@ const Dashboard: React.FC<DashboardProps> = ({
         )}
       </div>
 
-      {/* ── Footer ── */}
-      <footer className="mt-4 flex flex-col md:flex-row gap-4 items-center justify-between border-t border-slate-300 dark:border-slate-800 pt-4 px-4 text-xs font-semibold text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-950/80 relative overflow-hidden rounded-b-xl">
-        <div className="flex flex-wrap items-center gap-6 md:gap-8">
-          <div className="flex items-center gap-2 cursor-pointer hover:text-cyan-600 dark:text-cyan-400 transition-colors"><Share2 className="w-4 h-4"/> Knowledge Graph</div>
-          <div className="flex items-center gap-2 cursor-pointer hover:text-cyan-600 dark:text-cyan-400 transition-colors"><FileText className="w-4 h-4"/> Global Literature</div>
-          <div className="flex items-center gap-2 cursor-pointer hover:text-cyan-600 dark:text-cyan-400 transition-colors"><Database className="w-4 h-4"/> In-silico Models</div>
-          <div className="flex items-center gap-2 cursor-pointer hover:text-emerald-600 dark:text-emerald-400 transition-colors"><ShieldCheck className="w-4 h-4"/> Traceability Verified</div>
-        </div>
-        <div className="text-slate-500 italic text-[10px] font-mono tracking-wider">
-          v1.4.0_alpha // MEVREON-CORE-HTS
-        </div>
-      </footer>
+
 
       {/* ── Custom Compound Tester Modal ── */}
       <CustomCompoundTester

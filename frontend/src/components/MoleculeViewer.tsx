@@ -18,7 +18,7 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
   const modelsRef = useRef<Record<string, any>>({});
 
   const [viewMode, setViewMode] = useState<'3d' | '2d'>('3d');
-  const [isSpinning, setIsSpinning] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(true);
   const [representation, setRepresentation] = useState<'cartoon' | 'stick' | 'sphere' | 'surface'>('cartoon');
   const [isLoading, setIsLoading] = useState(true);
 
@@ -30,13 +30,19 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
 
     setIsLoading(true);
 
-    // Initialize or clear 3Dmol viewer
-    if (!viewerInstance.current) {
-      viewerInstance.current = window.$3Dmol.createViewer(viewerRef.current, {
-        backgroundColor: '#020617',
-        id: `viewer_${targetId}_${ligandId}`
-      });
+    // Clean up previous instance when re-mounting 3D container
+    if (viewerInstance.current) {
+      try {
+        viewerInstance.current.clear();
+      } catch (e) {}
+      viewerInstance.current = null;
     }
+
+    // Always create fresh 3Dmol viewer instance on container ref
+    viewerInstance.current = window.$3Dmol.createViewer(viewerRef.current, {
+      backgroundColor: '#020617',
+      id: `viewer_${targetId}_${ligandId}_${Date.now()}`
+    });
 
     const viewer = viewerInstance.current;
     viewer.clear();
@@ -94,6 +100,7 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
       viewer.render();
       setIsLoading(false);
 
+      // Auto spin by default
       if (isSpinning) {
         viewer.spin('y', 0.5);
       }
@@ -107,6 +114,12 @@ export const MoleculeViewer: React.FC<MoleculeViewerProps> = ({ targetId, ligand
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      if (viewerInstance.current) {
+        try {
+          viewerInstance.current.clear();
+        } catch (e) {}
+        viewerInstance.current = null;
+      }
     };
   }, [targetId, ligandId, viewMode]);
 

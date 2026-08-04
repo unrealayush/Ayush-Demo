@@ -55,8 +55,9 @@ const App = () => {
     return () => window.removeEventListener('hashchange', parseHash);
   }, []);
 
-  // ── Synchronize URL Hash on View Change ──
+  // ── Synchronize URL Hash & Scroll to Top on View Change ──
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (currentView === 'landing') {
       window.location.hash = '';
     } else if (currentView === 'dashboard') {

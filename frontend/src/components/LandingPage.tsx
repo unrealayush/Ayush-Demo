@@ -122,12 +122,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         {/* Top Nav */}
         <header className="relative z-30 w-full max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img
-              src="/images/MevreonLogo.webp"
-              alt="Mevreon Logo"
-              className="w-9 h-9 object-contain rounded-lg drop-shadow-[0_0_12px_rgba(20,184,166,0.5)] transition-transform hover:scale-105"
-            />
-            <span className="text-sm font-semibold text-slate-300 tracking-wide">
+            <div className="p-1.5 rounded-xl bg-slate-900/90 border border-teal-500/50 shadow-[0_0_20px_rgba(20,184,166,0.35)] flex items-center justify-center backdrop-blur-md shrink-0">
+              <img
+                src="/images/MevreonLogo.webp"
+                alt="Mevreon Logo"
+                className="h-10 sm:h-11 w-auto object-contain transition-transform hover:scale-105"
+              />
+            </div>
+            <span className="text-base font-bold text-slate-200 tracking-wide font-sans">
               AYUSH <span className="text-teal-400">Bio-AI</span>
             </span>
           </div>
@@ -541,26 +543,18 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       {/* ══════════════════════════════════════════════════════ */}
       {/* FOOTER                                                */}
       {/* ══════════════════════════════════════════════════════ */}
-      <footer className="relative z-10 border-t border-slate-800/30 py-8 px-6 sm:px-10">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-600 font-mono">
-          <div className="flex items-center gap-2">
-            <span className="text-slate-400 font-semibold">mevreon Bio-AI</span>
-            <span className="text-slate-800">|</span>
-            <span>AYUSH AMR Screening Pipeline v1.4</span>
-          </div>
-          <div className="flex items-center gap-5">
-            <a
-              href="https://github.com/unrealayush/Ayush-Demo"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-teal-400 transition-colors flex items-center gap-1"
-            >
-              GitHub
-              <ExternalLink className="w-2.5 h-2.5" />
-            </a>
-            <span className="text-slate-800">|</span>
-            <span className="text-slate-500">GCS Bucket Traceable</span>
-          </div>
+      <footer className="relative z-10 border-t border-slate-800/30 py-6 px-6 sm:px-10">
+        <div className="max-w-6xl mx-auto flex items-center justify-between text-[11px] text-slate-600 font-mono">
+          <span className="text-slate-400 font-semibold">mevreon Bio-AI</span>
+          <a
+            href="https://github.com/unrealayush/Ayush-Demo"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-teal-400 transition-colors flex items-center gap-1"
+          >
+            GitHub
+            <ExternalLink className="w-2.5 h-2.5" />
+          </a>
         </div>
       </footer>
 
