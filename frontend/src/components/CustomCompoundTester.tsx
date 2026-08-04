@@ -29,19 +29,19 @@ interface CustomCompoundTesterProps {
 
 const PRESET_COMPOUNDS = [
   {
-    name: 'Withaferin A (Ashwagandha Active)',
-    smiles: 'CC1=C(C(=O)C2C(C1=O)C3CCC4C(C3(CC2O)C)CCC4C(C)C5C(=O)OC(C5)C)CO',
-    tag: 'Ashwagandha'
+    name: 'Andrographolide (Kalmegh Lead)',
+    smiles: 'CC12CCC(C(C1CCC(=C)C2C=C3C(=O)OCC3O)C)(C)CO',
+    tag: 'Andrographolide (Kalmegh)'
   },
   {
-    name: 'Curcumin (Turmeric Active)',
-    smiles: 'COC1=C(C=CC(=C1)C=CC(=O)CC(=O)C=CC2=CC(=C(C=C2)O)OC)O',
-    tag: 'Turmeric'
+    name: 'Piperine (Pippali Lead)',
+    smiles: 'C1CCN(CC1)C(=O)C=CC=CC2=CC3=C(C=C2)OCO3',
+    tag: 'Piperine (Pippali)'
   },
   {
-    name: 'Nimbolide (Neem Active)',
-    smiles: 'CC1=CC(=O)OC1C2=CC(=C3C45C(C=C(C(C4(O3)C=CC(=O)O5)(C)C)C(=O)OC)C6(C2(C(=O)C=C6C)C)O)C',
-    tag: 'Neem'
+    name: 'Plumbagin (Chitraka Lead)',
+    smiles: 'CC1=CC(=O)C2=C(C1=O)C=CC=C2O',
+    tag: 'Plumbagin (Chitraka)'
   }
 ];
 

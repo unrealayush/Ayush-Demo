@@ -1,0 +1,26 @@
+[
+  {
+    "id": "andrographolide",
+    "name": "Andrographolide",
+    "botanical_source": "Andrographis paniculata (Kalmegh)",
+    "smiles": "CC12CCC(C(C1CCC(=C)C2C=C3C(=O)OCC3O)C)(C)CO",
+    "pubchem_cid": "5318517",
+    "description": "Diterpenoid lactone from Kalmegh with potent anti-microbial and immunomodulatory activity."
+  },
+  {
+    "id": "piperine",
+    "name": "Piperine",
+    "botanical_source": "Piper nigrum (Black Pepper / Pippali)",
+    "smiles": "C1CCN(CC1)C(=O)C=CC=CC2=CC3=C(C=C2)OCO3",
+    "pubchem_cid": "638024",
+    "description": "Alkaloid from Pippali exhibiting bio-enhancement and direct membrane disruption against MDR strains."
+  },
+  {
+    "id": "plumbagin",
+    "name": "Plumbagin",
+    "botanical_source": "Plumbago zeylanica (Chitraka)",
+    "smiles": "CC1=CC(=O)C2=C(C1=O)C=CC=C2O",
+    "pubchem_cid": "10205",
+    "description": "Naphthoquinone derivative from Chitraka targeting bacterial respiratory chain and efflux machinery."
+  }
+]

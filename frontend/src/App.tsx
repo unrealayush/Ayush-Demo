@@ -3,16 +3,20 @@ import Dashboard from './Dashboard';
 import { LandingPage } from './components/LandingPage';
 import { LigandDetail } from './components/LigandDetail';
 import { CustomCompoundTester } from './components/CustomCompoundTester';
+import { CustomComputingWorkspace } from './components/CustomComputingWorkspace';
 import { Moon, Sun, Zap } from 'lucide-react';
 
 export type ThemeMode = 'dark' | 'light' | 'cyber';
 
 const App = () => {
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail' | 'custom-workspace'>('landing');
   const [selectedOrganism, setSelectedOrganism] = useState<string>('pseudomonas');
   const [selectedTarget, setSelectedTarget] = useState<string>('PqsR');
   const [detailTarget, setDetailTarget] = useState('');
   const [detailLigand, setDetailLigand] = useState('');
+  const [customRunTarget, setCustomRunTarget] = useState('PqsR');
+  const [customRunCompound, setCustomRunCompound] = useState('andrographolide');
+  const [customRunName, setCustomRunName] = useState('Andrographolide (Kalmegh Lead)');
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
 
@@ -123,6 +127,14 @@ const App = () => {
             onOpenDetail={handleOpenDetail}
             onBackToLanding={handleBackToLanding}
           />
+        ) : currentView === 'custom-workspace' ? (
+          <CustomComputingWorkspace
+            targetId={customRunTarget}
+            compoundId={customRunCompound}
+            compoundName={customRunName}
+            onBack={handleBackToDashboard}
+            onViewPassport={handleOpenDetail}
+          />
         ) : (
           <LigandDetail
             targetId={detailTarget}
@@ -137,9 +149,10 @@ const App = () => {
         isOpen={isCustomTesterOpen}
         onClose={() => setIsCustomTesterOpen(false)}
         onRunSuccess={(customData) => {
-          setSelectedOrganism('pseudomonas');
-          setSelectedTarget(customData.targetId);
-          setCurrentView('dashboard');
+          setCustomRunTarget(customData.targetId);
+          setCustomRunCompound(customData.compoundId);
+          setCustomRunName(customData.compoundName);
+          setCurrentView('custom-workspace');
           setIsCustomTesterOpen(false);
         }}
         availableTargets={[
