@@ -145,11 +145,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               Launch Workspace
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
-            <img
-              src="/images/MevreonLogo.webp"
-              alt="Mevreon Logo"
-              className="h-9 w-auto object-contain drop-shadow-[0_0_12px_rgba(20,184,166,0.4)] transition-transform hover:scale-105"
-            />
+            <div className="pl-4 border-l border-slate-800 flex items-center">
+              <img
+                src="/MevreonLogo.webp"
+                alt="Mevreon Logo"
+                className="h-10 sm:h-12 w-auto object-contain filter drop-shadow-[0_0_15px_rgba(20,184,166,0.5)] transition-transform duration-300 hover:scale-105"
+              />
+            </div>
           </div>
         </header>
 
