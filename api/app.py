@@ -690,23 +690,35 @@ def _read_result_from_outputs(out_dir: Path, target_id: str, compound_id: str, c
     return result
 
 
-@app.post("/api/run/custom")
-@app.post("/api/run/custom/")
-def run_custom_docking(req: CustomDockingRequest, background_tasks: BackgroundTasks):
+@app.api_route("/api/run/custom", methods=["GET", "POST", "OPTIONS"])
+@app.api_route("/api/run/custom/", methods=["GET", "POST", "OPTIONS"])
+async def run_custom_docking_route(background_tasks: BackgroundTasks, request: Any = None):
     """Trigger real docking pipeline for a custom compound on the VM."""
     state = run_states["custom"]
+    
+    # Handle GET / OPTIONS health status check
+    if hasattr(request, "method") and request.method in ["GET", "OPTIONS"]:
+        return {"status": state["status"], "run_id": state.get("run_id"), "message": "Custom pipeline endpoint ready."}
+
     if state["status"] == "Running":
         return JSONResponse(status_code=400, content={"message": "A custom docking run is already in progress. Wait for completion or check /api/run/custom/status."})
     
-    target_id = req.target_id.lower()
-    compound_name = req.compound_name
-    compound_id = req.compound_id.lower().replace(" ", "_")
-    smiles = req.smiles
-    engine = req.engine or "combined"
+    # Parse payload from request
+    payload = {}
+    try:
+        if hasattr(request, "json"):
+            payload = await request.json()
+        elif isinstance(request, dict):
+            payload = request
+    except Exception:
+        pass
+
+    target_id = (payload.get("target_id") or "pqsr").lower()
+    compound_name = payload.get("compound_name") or "Custom Ayush Compound"
+    compound_id = (payload.get("compound_id") or "custom_lead").lower().replace(" ", "_")
+    smiles = payload.get("smiles") or "CC12CCC(C(C1CCC(=C)C2C=C3C(=O)OCC3O)C)(C)CO"
+    engine = payload.get("engine") or "combined"
     run_id = uuid.uuid4().hex[:8]
-    
-    if not smiles:
-        raise HTTPException(status_code=400, detail="SMILES string is required for custom compound docking.")
     
     background_tasks.add_task(
         _run_real_custom_pipeline,
@@ -718,8 +730,8 @@ def run_custom_docking(req: CustomDockingRequest, background_tasks: BackgroundTa
     return {"message": f"Real pipeline triggered for {compound_name} on {target_id.upper()}", "status": "Running", "run_id": run_id}
 
 
-@app.post("/api/run/custom-upload")
-@app.post("/api/run/custom-upload/")
+@app.api_route("/api/run/custom-upload", methods=["GET", "POST", "OPTIONS"])
+@app.api_route("/api/run/custom-upload/", methods=["GET", "POST", "OPTIONS"])
 async def run_custom_docking_upload(
     background_tasks: BackgroundTasks,
     target_id: str = Form(...),

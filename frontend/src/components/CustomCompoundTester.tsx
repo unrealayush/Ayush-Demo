@@ -197,6 +197,18 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
     try {
       const cleanCompoundId = compoundName.toLowerCase().replace(/[^a-z0-9]/g, '_');
 
+      const safePost = async (urlPath: string, payload: any, conf?: any) => {
+        try {
+          return await axios.post(urlPath, payload, conf);
+        } catch (err: any) {
+          if (err?.response?.status === 405 || err?.response?.status === 404 || !err?.response) {
+            const host = window.location.hostname || 'localhost';
+            return await axios.post(`http://${host}:8080${urlPath}`, payload, conf);
+          }
+          throw err;
+        }
+      };
+
       // Check if user uploaded SDF/PDBQT files
       if (uploadedFile && (uploadedFile.name.endsWith('.sdf') || uploadedFile.name.endsWith('.pdbqt') || uploadedFile.name.endsWith('.pdb'))) {
         // Use multipart upload endpoint
@@ -216,7 +228,7 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
           formData.append('ligand_pdbqt', uploadedFile);
         }
 
-        const res = await axios.post('/api/run/custom-upload', formData, {
+        const res = await safePost('/api/run/custom-upload', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         setRunId(res.data.run_id);
@@ -228,7 +240,7 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
         ]);
       } else {
         // Use JSON endpoint with SMILES
-        const res = await axios.post('/api/run/custom', {
+        const res = await safePost('/api/run/custom', {
           target_id: targetId.toLowerCase(),
           compound_name: compoundName,
           compound_id: cleanCompoundId,

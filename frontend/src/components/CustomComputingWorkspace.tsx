@@ -47,9 +47,21 @@ export const CustomComputingWorkspace: React.FC<CustomComputingWorkspaceProps> =
 
   // Poll status from API
   useEffect(() => {
+    const safeGet = async (urlPath: string) => {
+      try {
+        return await axios.get(urlPath);
+      } catch (err: any) {
+        if (err?.response?.status === 405 || err?.response?.status === 404 || !err?.response) {
+          const host = window.location.hostname || 'localhost';
+          return await axios.get(`http://${host}:8080${urlPath}`);
+        }
+        throw err;
+      }
+    };
+
     const fetchStatus = async () => {
       try {
-        const res = await axios.get('/api/run/custom/status');
+        const res = await safeGet('/api/run/custom/status');
         const data = res.data;
 
         if (data.progress !== undefined) setProgress(data.progress);
@@ -79,7 +91,13 @@ export const CustomComputingWorkspace: React.FC<CustomComputingWorkspaceProps> =
 
   const fetchResults = async () => {
     try {
-      const res = await axios.get('/api/run/custom/results');
+      const host = window.location.hostname || 'localhost';
+      let res;
+      try {
+        res = await axios.get('/api/run/custom/results');
+      } catch (e) {
+        res = await axios.get(`http://${host}:8080/api/run/custom/results`);
+      }
       if (res.data.status === 'success' || res.data.status === 'completed') {
         setResults(res.data);
         setProgress(100);
