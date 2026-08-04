@@ -401,7 +401,7 @@ const Dashboard: React.FC<DashboardProps> = ({
         </div>
       </header>
 
-      {/* ── Pre-computed Cache & GCP Cloud Storage Audit Banner ── */}
+      {/* ── Pre-computed Cache & Pipeline Status Banner ── */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-2.5 bg-gradient-to-r from-cyan-950/40 via-slate-900/60 to-purple-950/40 border border-cyan-500/30 rounded-xl mb-4 text-xs">
         <div className="flex items-center gap-2.5 text-cyan-300">
           <span className="relative flex h-2.5 w-2.5">
@@ -411,13 +411,6 @@ const Dashboard: React.FC<DashboardProps> = ({
           <span className="font-bold">288 Pre-computed Docking Pairs Pre-Loaded</span>
           <span className="text-slate-500">|</span>
           <span className="text-slate-300">12 Targets × 24 Ayush Compounds (0ms Instant Load)</span>
-        </div>
-
-        <div className="flex items-center gap-4 text-[11px] font-mono text-slate-400">
-          <span className="flex items-center gap-1.5 text-purple-300">
-            <Database className="w-3.5 h-3.5 text-purple-400" />
-            GCS Synced: gs://mevreon-bioai-screening-outputs
-          </span>
         </div>
       </div>
 

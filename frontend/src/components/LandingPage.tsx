@@ -225,7 +225,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               <span className="text-amber-500">●</span>
               <span>AutoDock Vina + DiffDock-L Ensemble</span>
               <span className="text-teal-500">●</span>
-              <span>GCS Bucket Traceable</span>
+              <span>Forensic Passport Verified</span>
               <span className="text-rose-500">●</span>
             </div>
           ))}
