@@ -154,7 +154,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className={`transition-all duration-1000 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-700/50 bg-slate-900/40 text-[11px] font-medium text-slate-400 mb-8 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-              Preclinical Evidence Pipeline — 288 Protein Target and Ligand Docking Pairs
+              Preclinical Evidence Pipeline — 288 Protein Target and Ligands Docking Pairs
             </span>
           </div>
 
@@ -220,7 +220,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
              style={{ width: 'max-content' }}>
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-12">
-              <span>288 Protein Target & Ligand Docking Pairs</span>
+              <span>288 Protein Target & Ligands Docking Pairs</span>
               <span className="text-teal-500">●</span>
               <span>12 Virulence & AMR Targets</span>
               <span className="text-rose-500">●</span>
@@ -243,7 +243,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
           {[
-            { value: 288, label: 'Protein Target &\nDocking Pairs', accent: 'teal' },
+            { value: 288, label: 'Protein Target and\nLigands Docking Pairs', accent: 'teal' },
             { value: 12, label: 'Validated Protein\nTargets', accent: 'indigo' },
             { value: 24, label: 'Pure AYUSH\nPhytochemicals', accent: 'amber' },
             { value: 3, label: 'WHO Priority\nPathogens', accent: 'rose' }
