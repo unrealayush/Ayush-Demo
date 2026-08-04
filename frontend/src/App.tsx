@@ -157,17 +157,6 @@ const App = () => {
         ]}
       />
 
-      {/* Fixed Extreme Right Corner Mevreon Logo */}
-      <div className="fixed top-4 right-4 z-50 pointer-events-auto no-print">
-        <div className="flex items-center gap-2 p-1.5 px-3 rounded-2xl bg-slate-950/85 border border-cyan-500/40 shadow-[0_0_20px_rgba(6,182,212,0.3)] backdrop-blur-md transition-transform duration-300 hover:scale-105">
-          <img
-            src="/MevreonLogo.webp"
-            alt="Mevreon Logo"
-            className="h-8 sm:h-9 w-auto object-contain filter drop-shadow-[0_0_8px_rgba(6,182,212,0.6)]"
-          />
-        </div>
-      </div>
-
       {/* Floating 3-Way Theme Switcher */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-1.5 p-1.5 rounded-full shadow-2xl bg-slate-900/90 dark:bg-slate-900/90 border border-slate-700 dark:border-cyan-500/50 backdrop-blur-md no-print">
         <button
