@@ -164,9 +164,9 @@ export const CustomCompoundTester: React.FC<CustomCompoundTesterProps> = ({
         targetId: targetId,
         compoundId: cleanCompoundId,
         compoundName: compoundName,
-        vinaAffinity: -8.7,
-        diffdockConfidence: 0.78,
-        priorityScore: 88
+        vinaAffinity: 0,
+        diffdockConfidence: 0,
+        priorityScore: 0
       });
       onClose();
 
