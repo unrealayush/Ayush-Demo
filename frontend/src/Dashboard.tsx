@@ -134,32 +134,7 @@ const ORGANISMS = [
   }
 ];
 
-const PLANT_SOURCES: Record<string, { plant: string; category: string }> = {
-  costunolide: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
-  dehydrocostus_lactone: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
-  cynaropicrin: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
-  santamarine: { plant: 'Saussurea costus (Kuth)', category: 'Kuth Active' },
-  conessine: { plant: 'Holarrhena antidysenterica (Kutaja)', category: 'Kutaja Active' },
-  baicalein: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
-  oroxylin_a: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
-  chrysin: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
-  baicalin: { plant: 'Oroxylum indicum (Shyonaka)', category: 'Ayush Active' },
-  magnoflorine: { plant: 'Tinospora cordifolia (Guduchi)', category: 'Guduchi Active' },
-  aegeline: { plant: 'Aegle marmelos (Bael)', category: 'Bael Active' },
-  imperatorin: { plant: 'Aegle marmelos (Bael)', category: 'Bael Active' },
-  skimmianine: { plant: 'Aegle marmelos (Bael)', category: 'Bael Active' },
-  boeravinone_b: { plant: 'Boerhavia diffusa (Punarnava)', category: 'Punarnava Active' },
-  liriodendrin: { plant: 'Boerhavia diffusa (Punarnava)', category: 'Punarnava Active' },
-  nimbolide: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
-  nimbin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
-  azadirachtin: { plant: 'Azadirachta indica (Neem)', category: 'Nimba Active' },
-  eugenol: { plant: 'Ocimum tenuiflorum (Tulsi)', category: 'Tulsi Active' },
-  ursolic_acid: { plant: 'Ocimum tenuiflorum (Tulsi)', category: 'Tulsi Active' },
-  rosmarinic_acid: { plant: 'Ocimum tenuiflorum (Tulsi)', category: 'Tulsi Active' },
-  curcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
-  demethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' },
-  bisdemethoxycurcumin: { plant: 'Curcuma longa (Turmeric)', category: 'Haridra Active' }
-};
+
 
 interface DashboardProps {
   onOpenDetail?: (targetId: string, ligandId: string) => void;
@@ -427,12 +402,10 @@ const Dashboard: React.FC<DashboardProps> = ({
             Mode: Research-Use-Only
           </div>
 
-          <div className="pl-3 border-l border-slate-200 dark:border-slate-700/50 flex items-center gap-2">
-            <img
-              src="/images/MevreonLogo.webp"
-              alt="Mevreon Logo"
-              className="h-9 w-auto object-contain drop-shadow-[0_0_10px_rgba(6,182,212,0.4)] transition-transform hover:scale-105"
-            />
+          <div className="pl-3 border-l border-slate-200 dark:border-slate-700/50 hidden md:block">
+            <div className="text-xl font-black tracking-tight text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+              mevreon<span className="text-cyan-500 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">·</span>
+            </div>
           </div>
         </div>
       </header>
@@ -574,17 +547,11 @@ const Dashboard: React.FC<DashboardProps> = ({
                 </div>
                 <div className="pl-7">
                   <p className="text-[10px] text-slate-600 dark:text-slate-400 mb-1 font-semibold uppercase tracking-wider">
-                    {PLANT_SOURCES[selectedLigand.toLowerCase()]?.category || 'Ayush Active'} (Selected)
+                    AYUSH Active Phytochemical (Selected)
                   </p>
                   <h4 className="text-sm font-bold text-cyan-900 dark:text-cyan-100 leading-snug drop-shadow-[0_0_2px_rgba(255,255,255,0.2)]">{compoundName}</h4>
-                  <div className="flex items-center justify-between mt-2.5 gap-2">
-                    <div>
-                      <span className="inline-block px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold mb-1 shadow-[0_0_5px_rgba(16,185,129,0.2)]">Mono-Component</span>
-                      <p className="text-[10px] text-slate-600 dark:text-slate-400 font-medium">Source: <span className="font-semibold text-slate-700 dark:text-slate-300">{PLANT_SOURCES[selectedLigand.toLowerCase()]?.plant || 'Botanical Source'}</span></p>
-                    </div>
-                    <div className="w-14 h-14 bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 shrink-0">
-                      <img src="/images/saussurea_lappa.png" alt="Botanical Active" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity" />
-                    </div>
+                  <div className="mt-2">
+                    <span className="inline-block px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold shadow-[0_0_5px_rgba(16,185,129,0.2)]">Pure Phytochemical Lead</span>
                   </div>
                 </div>
               </div>
@@ -988,7 +955,7 @@ const Dashboard: React.FC<DashboardProps> = ({
                     <HelpCircle className="w-3 h-3 text-slate-500" />
                   </div>
                   <div className="absolute left-1/2 -translate-x-1/2 top-full mt-1 hidden group-hover:block z-50 w-64 p-2 bg-slate-900 border border-emerald-500/50 rounded shadow-xl text-[10px] normal-case font-normal text-slate-200 text-left">
-                    <strong>Validation Priority Score (0-100):</strong> Weighted consensus metric: 40% Vina Affinity + 35% DiffDock Confidence + 25% Interaction Fingerprints.
+                    <strong>Validation Priority Score (0-100):</strong> Multi-parametric consensus ranking protocol integrating physical binding energy, generative pose confidence, and structural interaction fingerprinting.
                   </div>
                 </th>
                 <th className="px-4 py-3 text-left">Preclinical Decision</th>
@@ -1126,7 +1093,7 @@ const Dashboard: React.FC<DashboardProps> = ({
         ligands={leaderboard.map(r => ({
           id: (r["Compound ID"] || r["compound_id"] || "").toLowerCase(),
           name: r["Compound Name"] || r["compound_name"] || 'Compound',
-          plant: PLANT_SOURCES[(r["Compound ID"] || r["compound_id"] || "").toLowerCase()]?.plant || 'Botanical Source'
+          plant: 'AYUSH Phytochemical'
         }))}
       />
 

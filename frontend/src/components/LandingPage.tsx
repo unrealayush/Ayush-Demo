@@ -5,7 +5,6 @@ import {
   ExternalLink,
   ChevronDown,
   Target,
-  Leaf,
   Cpu,
   FileSearch,
   Layers,
@@ -130,7 +129,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               AYUSH <span className="text-teal-400">Bio-AI</span>
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <button
               onClick={onOpenCustomTester}
               className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700/60 text-slate-300 text-xs font-medium hover:border-teal-500/40 hover:text-teal-300 transition-all duration-300"
@@ -145,11 +144,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
               Launch Workspace
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
-            <img
-              src="/images/MevreonLogo.webp"
-              alt="Mevreon Logo"
-              className="h-9 w-auto object-contain drop-shadow-[0_0_12px_rgba(20,184,166,0.4)] transition-transform hover:scale-105"
-            />
           </div>
         </header>
 
@@ -160,7 +154,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
           <div className={`transition-all duration-1000 ${heroLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-slate-700/50 bg-slate-900/40 text-[11px] font-medium text-slate-400 mb-8 backdrop-blur-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-              Preclinical Evidence Pipeline — 288 Docked Pairs Pre-computed
+              Preclinical Evidence Pipeline — 288 Protein Target and Ligand Docking Pairs
             </span>
           </div>
 
@@ -226,11 +220,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
              style={{ width: 'max-content' }}>
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-12">
-              <span>288 Pre-computed Docked Pairs</span>
+              <span>288 Protein Target & Ligand Docking Pairs</span>
               <span className="text-teal-500">●</span>
               <span>12 Virulence & AMR Targets</span>
               <span className="text-rose-500">●</span>
-              <span>24 AYUSH Phytochemicals</span>
+              <span>24 Pure AYUSH Phytochemicals</span>
               <span className="text-indigo-500">●</span>
               <span>3 WHO Priority Pathogens</span>
               <span className="text-amber-500">●</span>
@@ -249,9 +243,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-20">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
           {[
-            { value: 288, label: 'Docked Molecular\nPairs', accent: 'teal' },
+            { value: 288, label: 'Protein Target &\nDocking Pairs', accent: 'teal' },
             { value: 12, label: 'Validated Protein\nTargets', accent: 'indigo' },
-            { value: 24, label: 'Pure\nPhytochemicals', accent: 'amber' },
+            { value: 24, label: 'Pure AYUSH\nPhytochemicals', accent: 'amber' },
             { value: 3, label: 'WHO Priority\nPathogens', accent: 'rose' }
           ].map((item, idx) => (
             <div key={idx} className={`reveal stagger-${idx + 1} text-center`}>
@@ -417,7 +411,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             { num: '01', title: 'Target Prep', desc: 'PDB & AlphaFold curation, protonation, grid alignment', icon: Target, color: 'teal' },
             { num: '02', title: 'Ensemble Dock', desc: 'AutoDock Vina ΔG + DiffDock-L generative confidence', icon: Cpu, color: 'cyan' },
             { num: '03', title: 'Fingerprinting', desc: '3.5Å H-bond counts, hydrophobic contacts, residue maps', icon: FileSearch, color: 'indigo' },
-            { num: '04', title: 'Priority Score', desc: '40% Vina + 35% DiffDock + 25% Fingerprints composite', icon: Layers, color: 'amber' },
+            { num: '04', title: 'Priority Score', desc: 'Consensus physics & generative confidence composite scoring', icon: Layers, color: 'amber' },
             { num: '05', title: 'Evidence Passport', desc: 'JSON + MD forensic trace with PubChem & NCBI links', icon: Beaker, color: 'rose' }
           ].map((step, idx) => (
             <div key={idx} className={`reveal stagger-${idx + 1} relative p-5 rounded-xl border border-slate-800/40 bg-[#060b14] group hover:border-${step.color}-500/30 transition-all duration-300`}>
@@ -449,42 +443,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
       <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-10 py-20 border-t border-slate-800/30">
         <div className="reveal mb-12">
           <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-400 mb-3 block">
-            Curated AYUSH Medicinal Flora
+            Curated AYUSH Phytochemical Library
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight mb-3">
-            24 pure phytochemical compounds
+            24 pure AYUSH phytochemicals
           </h2>
           <p className="text-sm text-slate-500 max-w-xl leading-relaxed">
-            Derived from 9 classical Indian botanical sources with verified PubChem Registry entries — every compound is structurally validated.
+            Curated AYUSH phytochemical library with verified PubChem Registry entries — every compound is structurally validated.
           </p>
-        </div>
-
-        {/* Plant Sources — Horizontal Scroll */}
-        <div className="reveal mb-10">
-          <div className="flex items-center gap-2 mb-4">
-            <Leaf className="w-3.5 h-3.5 text-teal-500" />
-            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Botanical Sources</span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {[
-              'Curcuma longa (Turmeric)',
-              'Azadirachta indica (Neem)',
-              'Ocimum tenuiflorum (Tulsi)',
-              'Saussurea costus (Kuth)',
-              'Boerhavia diffusa (Punarnava)',
-              'Aegle marmelos (Bael)',
-              'Oroxylum indicum (Shyonaka)',
-              'Holarrhena antidysenterica (Kutaja)',
-              'Tinospora cordifolia (Guduchi)'
-            ].map((plant, idx) => (
-              <span
-                key={idx}
-                className={`reveal stagger-${Math.min(idx + 1, 6)} px-3 py-1.5 rounded-lg border border-slate-800/50 bg-slate-900/30 text-[10px] text-slate-400 font-medium italic`}
-              >
-                {plant}
-              </span>
-            ))}
-          </div>
         </div>
 
         {/* Compound Grid */}
