@@ -39,6 +39,12 @@ import argparse
 import time
 from pathlib import Path
 
+# Force UTF-8 stdout encoding on Windows
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 PREPARED_DIR = BASE_DIR / "data" / "prepared"
 OUTPUTS_DIR = BASE_DIR / "outputs"
@@ -46,7 +52,9 @@ CONFIGS_DIR = BASE_DIR / "configs"
 
 def log(msg):
     """Print a timestamped log message (captured by the API for live streaming)."""
-    print(f"[{time.strftime('%H:%M:%S')}] {msg}", flush=True)
+    # Replace unicode arrow for safe Windows console printing
+    safe_msg = str(msg).replace("→", "->")
+    print(f"[{time.strftime('%H:%M:%S')}] {safe_msg}", flush=True)
 
 
 def prepare_ligand_from_smiles(smiles, compound_id, compound_name, lig_dir):
