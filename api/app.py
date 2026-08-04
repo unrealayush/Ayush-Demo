@@ -691,6 +691,7 @@ def _read_result_from_outputs(out_dir: Path, target_id: str, compound_id: str, c
 
 
 @app.post("/api/run/custom")
+@app.post("/api/run/custom/")
 def run_custom_docking(req: CustomDockingRequest, background_tasks: BackgroundTasks):
     """Trigger real docking pipeline for a custom compound on the VM."""
     state = run_states["custom"]
@@ -718,6 +719,7 @@ def run_custom_docking(req: CustomDockingRequest, background_tasks: BackgroundTa
 
 
 @app.post("/api/run/custom-upload")
+@app.post("/api/run/custom-upload/")
 async def run_custom_docking_upload(
     background_tasks: BackgroundTasks,
     target_id: str = Form(...),
