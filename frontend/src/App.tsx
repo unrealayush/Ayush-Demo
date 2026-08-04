@@ -4,6 +4,7 @@ import { LandingPage } from './components/LandingPage';
 import { LigandDetail } from './components/LigandDetail';
 import { CustomCompoundTester } from './components/CustomCompoundTester';
 import { CustomComputingWorkspace } from './components/CustomComputingWorkspace';
+import { AuthModal } from './components/AuthModal';
 import { Moon, Sun, Zap } from 'lucide-react';
 
 export type ThemeMode = 'dark' | 'light' | 'cyber';
@@ -19,6 +20,23 @@ const App = () => {
   const [customRunName, setCustomRunName] = useState('Andrographolide (Kalmegh Lead)');
   const [theme, setTheme] = useState<ThemeMode>('dark');
   const [isCustomTesterOpen, setIsCustomTesterOpen] = useState<boolean>(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
+  const [authUser, setAuthUser] = useState<{ email: string; role: string } | null>(() => {
+    try {
+      const saved = sessionStorage.getItem('mevreon_auth_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+
+  const handleOpenCustomTester = () => {
+    if (!authUser) {
+      setIsAuthModalOpen(true);
+    } else {
+      setIsCustomTesterOpen(true);
+    }
+  };
 
   // ── Theme Switcher ──
   useEffect(() => {
@@ -118,7 +136,7 @@ const App = () => {
         {currentView === 'landing' ? (
           <LandingPage
             onSelectOrganism={handleSelectOrganism}
-            onOpenCustomTester={() => setIsCustomTesterOpen(true)}
+            onOpenCustomTester={handleOpenCustomTester}
           />
         ) : currentView === 'dashboard' ? (
           <Dashboard
@@ -143,6 +161,17 @@ const App = () => {
           />
         )}
       </div>
+
+      {/* Auth Gate Modal */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onAuthenticated={(user) => {
+          setAuthUser(user);
+          setIsAuthModalOpen(false);
+          setIsCustomTesterOpen(true);
+        }}
+      />
 
       {/* Global Custom Compound Tester Modal */}
       <CustomCompoundTester
