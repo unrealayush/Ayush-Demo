@@ -575,15 +575,29 @@ LIGAND_DOSSIER = [
 ]
 
 def build_dossier():
-    print("[INFO] Generating Exhaustive BioMCP In-Depth Preclinical & Literature Evidence Dossier...")
-
+    print("=========================================================================", flush=True)
+    print(" [GCP GPU VM: uc4-model-vm] INITIATING BIOMCP IN-DEPTH EVIDENCE DOSSIER ", flush=True)
+    print("=========================================================================", flush=True)
+    
+    print("\n[STEP 1/3] Processing 12 Pathogen Target Proteins...", flush=True)
+    for idx, t in enumerate(TARGET_DOSSIER, 1):
+        print(f"  -> [{idx:02d}/12] Target: {t['Target Symbol']:<20} | UniProt: {t['UniProt Accession']} | {t['Pathogen Species']}", flush=True)
     df_targets = pd.DataFrame(TARGET_DOSSIER)
+
+    print("\n[STEP 2/3] Processing 24 AYUSH Phytochemical Ligands...", flush=True)
+    for idx, l in enumerate(LIGAND_DOSSIER, 1):
+        print(f"  -> [{idx:02d}/24] Ligand: {l['Compound Name']:<20} | CID: {l['PubChem CID']} | Source: {l['AYUSH Botanical Source']}", flush=True)
     df_ligands = pd.DataFrame(LIGAND_DOSSIER)
 
     # ── Pairwise Preclinical Matrix (288 Pairs Detailed) ──
+    print("\n[STEP 3/3] Generating 288 Pairwise Protein-Ligand Interaction Matrix...", flush=True)
     matrix_rows = []
+    count = 0
     for t in TARGET_DOSSIER:
         for l in LIGAND_DOSSIER:
+            count += 1
+            if count % 48 == 0 or count == 288:
+                print(f"  -> Processed {count}/288 Docked Pairs ({t['Target Symbol']} + {l['Compound Name']})", flush=True)
             matrix_rows.append({
                 "Target ID": t["Target ID"],
                 "Target Symbol": t["Target Symbol"],
@@ -607,13 +621,15 @@ def build_dossier():
         BASE_DIR / "data" / "inputs" / "BioMCP_InDepth_Preclinical_Evidence_Dossier.xlsx"
     ]
 
+    print("\n[COMPILING EXCEL WORKBOOK ON GCP VM uc4-model-vm]...", flush=True)
     for path in out_paths:
         path.parent.mkdir(parents=True, exist_ok=True)
         with pd.ExcelWriter(str(path), engine="openpyxl") as writer:
             df_targets.to_excel(writer, sheet_name="Target Proteins Dossier", index=False)
             df_ligands.to_excel(writer, sheet_name="AYUSH Phytochemicals Dossier", index=False)
             df_matrix.to_excel(writer, sheet_name="288 Pairwise Evidence Matrix", index=False)
-        print(f"  [SUCCESS] Saved In-Depth BioMCP Dossier to: {path}")
+        print(f"  [SUCCESS] Saved In-Depth BioMCP Dossier to: {path}", flush=True)
+    print("=========================================================================\n", flush=True)
 
 if __name__ == "__main__":
     build_dossier()
