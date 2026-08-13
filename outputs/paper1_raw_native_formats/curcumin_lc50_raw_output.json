@@ -1,0 +1,19 @@
+{
+  "model_name": "Paper1_DeepLearning_Cytotoxicity_LC50_QSPR",
+  "compound_name": "Curcumin",
+  "input_smiles": "O=C(\\C=C\\c1ccc(O)c(OC)c1)CC(=O)\\C=C\\c2ccc(O)c(OC)c2",
+  "pubchem_cid": 5281767,
+  "descriptors": {
+    "molecular_weight_g_mol": 368.3850000000001,
+    "logP": 3.369900000000002,
+    "TPSA_A2": 93.06,
+    "HBD": 2,
+    "HBA": 6
+  },
+  "predictions": {
+    "LC50_uM": 43.9868,
+    "LC50_ug_mL": 16.2041,
+    "HEK293_viability_pct_at_10uM": 90.93,
+    "cytotoxicity_class": "LOW_CYTOTOXIC"
+  }
+}
