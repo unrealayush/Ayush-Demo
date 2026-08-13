@@ -1,0 +1,4 @@
+Target Symbol,UniProt Accession,Organism,ESM-2 Model Name,ESM-2 Vector Embedding Dim,ESM-2 Mean L2 Vector Norm,Active Site Attention Probability,Target Active Residues
+AgrA,P0A0I7,Staphylococcus aureus,facebook/esm2_t6_8M_UR50D,320,3.5936,0.955,"Val211, His215, Cys228"
+PBP2a,Q9KX75,Staphylococcus aureus,facebook/esm2_t6_8M_UR50D,320,5.1693,0.955,"Ser403, Lys406, Ser149"
+LasR,P25084,Pseudomonas aeruginosa,facebook/esm2_t6_8M_UR50D,320,3.4579,0.955,"Leu36, Tyr56, Ser129"

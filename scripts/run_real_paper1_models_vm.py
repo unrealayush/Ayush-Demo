@@ -138,15 +138,15 @@ def run_real_rdkit_qsar_toxicity():
 
     try:
         from rdkit import Chem
-        from rdkit.Chem import Descriptors
+        from rdkit.Chem import Descriptors, Lipinski
 
         for l in LIGANDS:
             mol = Chem.MolFromSmiles(l["smiles"])
             mw = Descriptors.MolWt(mol)
             logp = Descriptors.MolLogP(mol)
             tpsa = Descriptors.TPSA(mol)
-            hbd = Descriptors.NumHBD(mol)
-            hba = Descriptors.NumHBA(mol)
+            hbd = Lipinski.NumHDonors(mol)
+            hba = Lipinski.NumHAcceptors(mol)
 
             # Paper 1 Cytotoxicity (LC50) QSPR Formula
             lc50_um = round(10 ** (2.85 - 0.22 * logp - 0.005 * tpsa), 2)
@@ -230,15 +230,28 @@ def main():
     df_hemo = run_real_hemolysis_model(df_cyto)
     df_resist = run_real_resistance_proof_model()
 
-    print("\n[SAVING REAL INPUTS & OUTPUTS TO VM & LOCAL FOLDERS]...", flush=True)
+    print("\n[SAVING REAL RAW NATIVE INPUTS & OUTPUTS TO VM & LOCAL FOLDERS]...", flush=True)
     for folder in [OUT_DIR, DOCS_DIR, DATA_DIR]:
         folder.mkdir(parents=True, exist_ok=True)
         
-        # Raw Input JSON
-        with open(folder / "paper1_real_inputs.json", "w") as f:
+        # Raw Input JSON in native payload format
+        with open(folder / "raw_paper1_inputs.json", "w") as f:
             json.dump({"ligands": LIGANDS, "targets": TARGETS}, f, indent=2)
 
-        # Output CSVs
+        # Raw Output JSON payloads in native model dictionary formats
+        with open(folder / "raw_model1_esm2_embeddings.json", "w") as f:
+            json.dump(df_esm.to_dict(orient="records"), f, indent=2)
+
+        with open(folder / "raw_model2_cytotoxicity_lc50.json", "w") as f:
+            json.dump(df_cyto.to_dict(orient="records"), f, indent=2)
+
+        with open(folder / "raw_model3_hemolysis_hc50_selectivity.json", "w") as f:
+            json.dump(df_hemo.to_dict(orient="records"), f, indent=2)
+
+        with open(folder / "raw_model4_resistance_proof_conservation.json", "w") as f:
+            json.dump(df_resist.to_dict(orient="records"), f, indent=2)
+
+        # Formatted CSVs
         df_esm.to_csv(folder / "model1_esm2_embeddings.csv", index=False)
         df_cyto.to_csv(folder / "model2_cytotoxicity_lc50.csv", index=False)
         df_hemo.to_csv(folder / "model3_hemolysis_hc50_selectivity.csv", index=False)
@@ -252,7 +265,7 @@ def main():
             df_hemo.to_excel(writer, sheet_name="Hemolysis HC50 & SI", index=False)
             df_resist.to_excel(writer, sheet_name="Resistance-Proof Score", index=False)
 
-        print(f"  [SUCCESS] Saved Real Model Outputs to: {folder}", flush=True)
+        print(f"  [SUCCESS] Saved Raw Native Model Outputs to: {folder}", flush=True)
 
     print("=========================================================================\n", flush=True)
 
