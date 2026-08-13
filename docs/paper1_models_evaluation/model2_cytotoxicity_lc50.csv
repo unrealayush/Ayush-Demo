@@ -1,0 +1,4 @@
+Compound Name,PubChem CID,Calculated MolWt (g/mol),Calculated LogP,Calculated TPSA (A^2),H-Bond Donors,H-Bond Acceptors,Predicted LC50 (uM),Predicted LC50 (ug/mL),HEK293 Cell Viability at 10uM (%),Cytotoxicity Risk Verdict
+Curcumin,5281767,368.39,3.37,93.06,2,6,43.99,16.21,90.9,MODERATE
+Costunolide,5281437,218.3,3.16,26.3,0,2,105.47,23.02,95.0,SAFE (Non-Cytotoxic)
+Nimbolide,100017,424.45,2.3,103.04,1,7,67.42,28.62,92.5,MODERATE

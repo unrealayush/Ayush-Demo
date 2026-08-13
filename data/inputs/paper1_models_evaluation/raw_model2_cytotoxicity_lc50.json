@@ -1,0 +1,41 @@
+[
+  {
+    "Compound Name": "Curcumin",
+    "PubChem CID": 5281767,
+    "Calculated MolWt (g/mol)": 368.39,
+    "Calculated LogP": 3.37,
+    "Calculated TPSA (A^2)": 93.06,
+    "H-Bond Donors": 2,
+    "H-Bond Acceptors": 6,
+    "Predicted LC50 (uM)": 43.99,
+    "Predicted LC50 (ug/mL)": 16.21,
+    "HEK293 Cell Viability at 10uM (%)": 90.9,
+    "Cytotoxicity Risk Verdict": "MODERATE"
+  },
+  {
+    "Compound Name": "Costunolide",
+    "PubChem CID": 5281437,
+    "Calculated MolWt (g/mol)": 218.3,
+    "Calculated LogP": 3.16,
+    "Calculated TPSA (A^2)": 26.3,
+    "H-Bond Donors": 0,
+    "H-Bond Acceptors": 2,
+    "Predicted LC50 (uM)": 105.47,
+    "Predicted LC50 (ug/mL)": 23.02,
+    "HEK293 Cell Viability at 10uM (%)": 95.0,
+    "Cytotoxicity Risk Verdict": "SAFE (Non-Cytotoxic)"
+  },
+  {
+    "Compound Name": "Nimbolide",
+    "PubChem CID": 100017,
+    "Calculated MolWt (g/mol)": 424.45,
+    "Calculated LogP": 2.3,
+    "Calculated TPSA (A^2)": 103.04,
+    "H-Bond Donors": 1,
+    "H-Bond Acceptors": 7,
+    "Predicted LC50 (uM)": 67.42,
+    "Predicted LC50 (ug/mL)": 28.62,
+    "HEK293 Cell Viability at 10uM (%)": 92.5,
+    "Cytotoxicity Risk Verdict": "MODERATE"
+  }
+]

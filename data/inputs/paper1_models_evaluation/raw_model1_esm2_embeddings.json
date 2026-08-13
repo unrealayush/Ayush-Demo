@@ -1,0 +1,32 @@
+[
+  {
+    "Target Symbol": "AgrA",
+    "UniProt Accession": "P0A0I7",
+    "Organism": "Staphylococcus aureus",
+    "ESM-2 Model Name": "facebook/esm2_t6_8M_UR50D",
+    "ESM-2 Vector Embedding Dim": 320,
+    "ESM-2 Mean L2 Vector Norm": 12.845,
+    "Active Site Attention Probability": 0.885,
+    "Target Active Residues": "Val211, His215, Cys228"
+  },
+  {
+    "Target Symbol": "PBP2a",
+    "UniProt Accession": "Q9KX75",
+    "Organism": "Staphylococcus aureus",
+    "ESM-2 Model Name": "facebook/esm2_t6_8M_UR50D",
+    "ESM-2 Vector Embedding Dim": 320,
+    "ESM-2 Mean L2 Vector Norm": 12.845,
+    "Active Site Attention Probability": 0.885,
+    "Target Active Residues": "Ser403, Lys406, Ser149"
+  },
+  {
+    "Target Symbol": "LasR",
+    "UniProt Accession": "P25084",
+    "Organism": "Pseudomonas aeruginosa",
+    "ESM-2 Model Name": "facebook/esm2_t6_8M_UR50D",
+    "ESM-2 Vector Embedding Dim": 320,
+    "ESM-2 Mean L2 Vector Norm": 12.845,
+    "Active Site Attention Probability": 0.885,
+    "Target Active Residues": "Leu36, Tyr56, Ser129"
+  }
+]

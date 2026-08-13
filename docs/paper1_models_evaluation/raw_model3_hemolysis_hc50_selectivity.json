@@ -1,0 +1,26 @@
+[
+  {
+    "Compound Name": "Curcumin",
+    "Experimental Antibacterial MIC (ug/mL)": 16.0,
+    "Predicted HC50 (uM)": 393.1,
+    "Predicted HC50 (ug/mL)": 144.81,
+    "Selectivity Index (SI = HC50 / MIC)": 9.05,
+    "Hemolytic Safety Verdict": "UNSAFE"
+  },
+  {
+    "Compound Name": "Costunolide",
+    "Experimental Antibacterial MIC (ug/mL)": 24.0,
+    "Predicted HC50 (uM)": 422.67,
+    "Predicted HC50 (ug/mL)": 92.27,
+    "Selectivity Index (SI = HC50 / MIC)": 3.84,
+    "Hemolytic Safety Verdict": "UNSAFE"
+  },
+  {
+    "Compound Name": "Nimbolide",
+    "Experimental Antibacterial MIC (ug/mL)": 16.0,
+    "Predicted HC50 (uM)": 568.85,
+    "Predicted HC50 (ug/mL)": 241.45,
+    "Selectivity Index (SI = HC50 / MIC)": 15.09,
+    "Hemolytic Safety Verdict": "SAFE / HIGH SELECTIVITY (SI >= 10.0)"
+  }
+]

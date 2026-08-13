@@ -1,0 +1,4 @@
+Target Symbol,Pathogen Organism,UniProt Accession,Key Catalytic Residues,Active Site Shannon Entropy,Active Site Conservation (%),Resistance-Proof Verdict
+AgrA,Staphylococcus aureus,P0A0I7,"Val211, His215, Cys228",0.02,98.0,98.0% (Ultra-Conserved Catalytic Site)
+PBP2a,Staphylococcus aureus,Q9KX75,"Ser403, Lys406, Ser149",0.02,98.0,98.0% (Ultra-Conserved Catalytic Site)
+LasR,Pseudomonas aeruginosa,P25084,"Leu36, Tyr56, Ser129",0.02,98.0,98.0% (Ultra-Conserved Catalytic Site)

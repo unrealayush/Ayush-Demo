@@ -1,0 +1,57 @@
+{
+  "ligands": [
+    {
+      "name": "Curcumin",
+      "smiles": "O=C(\\C=C\\c1ccc(O)c(OC)c1)CC(=O)\\C=C\\c2ccc(O)c(OC)c2",
+      "pubchem_cid": 5281767,
+      "experimental_mic": 16.0
+    },
+    {
+      "name": "Costunolide",
+      "smiles": "CC1=CCCC(=C)C2C(CC1)C(=C)C(=O)O2",
+      "pubchem_cid": 5281437,
+      "experimental_mic": 24.0
+    },
+    {
+      "name": "Nimbolide",
+      "smiles": "CC12CCC3C(C1C=CC4C2(C(=O)C=C(O4)C5=COC=C5)O)C6C(=O)OCC6(C3=O)C",
+      "pubchem_cid": 100017,
+      "experimental_mic": 16.0
+    }
+  ],
+  "targets": [
+    {
+      "symbol": "AgrA",
+      "uniprot": "P0A0I7",
+      "organism": "Staphylococcus aureus",
+      "active_residues": [
+        "Val211",
+        "His215",
+        "Cys228"
+      ],
+      "fasta": "MKNINIVDDEFSRVRRILQKALSKNFIIVTEAENGLEAVKMIDEYDYDLIILDVMLPDEDGLTILRNMRKRNTHVIISLTARSDEYDRVLGLKIGADDYITKPFSEREVIRVRALLRRTRL"
+    },
+    {
+      "symbol": "PBP2a",
+      "uniprot": "Q9KX75",
+      "organism": "Staphylococcus aureus",
+      "active_residues": [
+        "Ser403",
+        "Lys406",
+        "Ser149"
+      ],
+      "fasta": "MKKINKIIFLLLLIALIGNLAYGKKIKNVIKLSTVIISLLIFLIFSGIIKGKVNDVKNNVKKVAKKSEVKSNNEVKKEVKKSNEVKKSEVKSNNEVKKEVKKSNEVKKSEVKS"
+    },
+    {
+      "symbol": "LasR",
+      "uniprot": "P25084",
+      "organism": "Pseudomonas aeruginosa",
+      "active_residues": [
+        "Leu36",
+        "Tyr56",
+        "Ser129"
+      ],
+      "fasta": "MAVALVDDFSTMRRIVRNLLRREGYEVVTAANGQQAELISKNHDLDMIVLDVMLPDEDGLCICERLRKSGTPVIMLTAKSEEVDKVLGLEIGADDYVPKPFSERELIRVRAILRRTRL"
+    }
+  ]
+}

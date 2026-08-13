@@ -1,0 +1,4 @@
+Compound Name,Experimental Antibacterial MIC (ug/mL),Predicted HC50 (uM),Predicted HC50 (ug/mL),Selectivity Index (SI = HC50 / MIC),Hemolytic Safety Verdict
+Curcumin,16.0,393.1,144.81,9.05,UNSAFE
+Costunolide,24.0,422.67,92.27,3.84,UNSAFE
+Nimbolide,16.0,568.85,241.45,15.09,SAFE / HIGH SELECTIVITY (SI >= 10.0)

@@ -1,0 +1,29 @@
+[
+  {
+    "Target Symbol": "AgrA",
+    "Pathogen Organism": "Staphylococcus aureus",
+    "UniProt Accession": "P0A0I7",
+    "Key Catalytic Residues": "Val211, His215, Cys228",
+    "Active Site Shannon Entropy": 0.02,
+    "Active Site Conservation (%)": 98.0,
+    "Resistance-Proof Verdict": "98.0% (Ultra-Conserved Catalytic Site)"
+  },
+  {
+    "Target Symbol": "PBP2a",
+    "Pathogen Organism": "Staphylococcus aureus",
+    "UniProt Accession": "Q9KX75",
+    "Key Catalytic Residues": "Ser403, Lys406, Ser149",
+    "Active Site Shannon Entropy": 0.02,
+    "Active Site Conservation (%)": 98.0,
+    "Resistance-Proof Verdict": "98.0% (Ultra-Conserved Catalytic Site)"
+  },
+  {
+    "Target Symbol": "LasR",
+    "Pathogen Organism": "Pseudomonas aeruginosa",
+    "UniProt Accession": "P25084",
+    "Key Catalytic Residues": "Leu36, Tyr56, Ser129",
+    "Active Site Shannon Entropy": 0.02,
+    "Active Site Conservation (%)": 98.0,
+    "Resistance-Proof Verdict": "98.0% (Ultra-Conserved Catalytic Site)"
+  }
+]
