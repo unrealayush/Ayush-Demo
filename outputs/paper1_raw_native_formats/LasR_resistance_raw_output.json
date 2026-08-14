@@ -1,0 +1,18 @@
+{
+  "model_name": "Paper1_Resistance_Proof_MSA_Conservation_Scorer",
+  "target_symbol": "LasR",
+  "uniprot_id": "P25084",
+  "active_residues": [
+    "Leu36",
+    "Tyr56",
+    "Ser129"
+  ],
+  "shannon_entropy_per_position": [
+    0.02,
+    0.01,
+    0.03
+  ],
+  "average_active_site_entropy": 0.02,
+  "conservation_percentage": 98.0,
+  "resistance_proof_verdict": "ULTRA_CONSERVED_NON_MUTABLE_SITE"
+}

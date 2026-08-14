@@ -1,0 +1,12 @@
+{
+  "model_identifier": "facebook/esm2_t6_8M_UR50D",
+  "target_symbol": "AgrA",
+  "uniprot_id": "P0A0I7",
+  "sequence_length": 121,
+  "embedding_dimension": 320,
+  "raw_tensor_shape": [
+    123,
+    320
+  ],
+  "contacts_matrix_norm": 15.288509368896484
+}

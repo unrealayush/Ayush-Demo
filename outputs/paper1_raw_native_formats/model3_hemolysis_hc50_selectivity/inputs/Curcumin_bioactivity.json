@@ -1,0 +1,5 @@
+{
+  "compound_name": "Curcumin",
+  "smiles": "O=C(\\C=C\\c1ccc(O)c(OC)c1)CC(=O)\\C=C\\c2ccc(O)c(OC)c2",
+  "experimental_mic_ug_ml": 16.0
+}

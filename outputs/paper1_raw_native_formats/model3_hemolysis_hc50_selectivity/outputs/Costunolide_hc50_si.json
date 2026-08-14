@@ -1,0 +1,12 @@
+{
+  "model_name": "Paper1_Hemolysis_HC50_Selectivity_Classifier",
+  "compound_name": "Costunolide",
+  "experimental_MIC_ug_mL": 24.0,
+  "predictions": {
+    "HC50_uM": 422.5664,
+    "HC50_ug_mL": 92.2446,
+    "Selectivity_Index_SI": 3.8435,
+    "is_selective_therapeutic": false,
+    "hemolytic_risk_class": "SAFE_LOW_RISK"
+  }
+}

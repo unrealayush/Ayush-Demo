@@ -1,0 +1,19 @@
+{
+  "model_name": "Paper1_DeepLearning_Cytotoxicity_LC50_QSPR",
+  "compound_name": "Costunolide",
+  "input_smiles": "CC1=CCCC(=C)C2C(CC1)C(=C)C(=O)O2",
+  "pubchem_cid": 5281437,
+  "descriptors": {
+    "mw": 218.29599999999994,
+    "logP": 3.160700000000002,
+    "TPSA": 26.3,
+    "HBD": 0,
+    "HBA": 2
+  },
+  "predictions": {
+    "LC50_uM": 105.4741,
+    "LC50_ug_mL": 23.0246,
+    "cell_viability_pct_at_10uM": 95.03,
+    "cytotoxicity_class": "NON_CYTOTOXIC"
+  }
+}

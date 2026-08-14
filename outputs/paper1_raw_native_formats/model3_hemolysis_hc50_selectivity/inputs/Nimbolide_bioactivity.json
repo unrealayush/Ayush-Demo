@@ -1,0 +1,5 @@
+{
+  "compound_name": "Nimbolide",
+  "smiles": "CC12CCC3C(C1C=CC4C2(C(=O)C=C(O4)C5=COC=C5)O)C6C(=O)OCC6(C3=O)C",
+  "experimental_mic_ug_ml": 16.0
+}

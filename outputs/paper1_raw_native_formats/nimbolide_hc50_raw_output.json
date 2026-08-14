@@ -1,0 +1,12 @@
+{
+  "model_name": "Paper1_Hemolysis_HC50_Selectivity_Classifier",
+  "compound_name": "Nimbolide",
+  "experimental_MIC_ug_mL": 16.0,
+  "predictions": {
+    "HC50_uM": 568.8529,
+    "HC50_ug_mL": 241.449,
+    "Selectivity_Index_SI": 15.0906,
+    "is_selective_therapeutic": true,
+    "hemolytic_risk_class": "SAFE_HIGH_SELECTIVITY"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "model_name": "Paper1_DeepLearning_Cytotoxicity_LC50_QSPR",
+  "compound_name": "Nimbolide",
+  "input_smiles": "CC12CCC3C(C1C=CC4C2(C(=O)C=C(O4)C5=COC=C5)O)C6C(=O)OCC6(C3=O)C",
+  "pubchem_cid": 100017,
+  "descriptors": {
+    "mw": 424.4490000000002,
+    "logP": 2.3000000000000007,
+    "TPSA": 103.04000000000002,
+    "HBD": 1,
+    "HBA": 7
+  },
+  "predictions": {
+    "LC50_uM": 67.4217,
+    "LC50_ug_mL": 28.6171,
+    "cell_viability_pct_at_10uM": 92.49,
+    "cytotoxicity_class": "LOW_CYTOTOXIC"
+  }
+}
