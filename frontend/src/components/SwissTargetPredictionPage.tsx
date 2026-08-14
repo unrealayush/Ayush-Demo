@@ -23,6 +23,70 @@ const TARGET_24_IDS = [
   "rosmarinic_acid", "curcumin", "demethoxycurcumin", "bisdemethoxycurcumin"
 ];
 
+/* Real SVG Donut / Pie Chart Component */
+const SvgPieChart: React.FC<{ data: { label: string; percentage: number; color: string; count: number }[] }> = ({ data }) => {
+  let cumulativeAngle = 0;
+  const radius = 100;
+  const innerRadius = 52;
+  const center = 120;
+
+  const slices = data.map((d) => {
+    const angle = (d.percentage / 100) * 360;
+    const startAngle = cumulativeAngle;
+    const endAngle = cumulativeAngle + angle;
+    cumulativeAngle += angle;
+
+    const startRad = (startAngle - 90) * (Math.PI / 180);
+    const endRad = (endAngle - 90) * (Math.PI / 180);
+
+    const x1 = center + radius * Math.cos(startRad);
+    const y1 = center + radius * Math.sin(startRad);
+    const x2 = center + radius * Math.cos(endRad);
+    const y2 = center + radius * Math.sin(endRad);
+
+    const ix1 = center + innerRadius * Math.cos(endRad);
+    const iy1 = center + innerRadius * Math.sin(endRad);
+    const ix2 = center + innerRadius * Math.cos(startRad);
+    const iy2 = center + innerRadius * Math.sin(startRad);
+
+    const largeArc = angle > 180 ? 1 : 0;
+
+    const pathData = [
+      `M ${x1} ${y1}`,
+      `A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2}`,
+      `L ${ix1} ${iy1}`,
+      `A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${ix2} ${iy2}`,
+      'Z'
+    ].join(' ');
+
+    return { ...d, pathData };
+  });
+
+  return (
+    <div className="relative flex flex-col items-center justify-center">
+      <svg viewBox="0 0 240 240" className="w-64 h-64 drop-shadow-2xl transition-all duration-300">
+        {slices.map((slice, i) => (
+          <path
+            key={i}
+            d={slice.pathData}
+            fill={slice.color}
+            className="hover:opacity-85 hover:scale-[1.03] transition-all cursor-pointer stroke-slate-950 stroke-2"
+          >
+            <title>{`${slice.label}: ${slice.percentage}% (${slice.count} targets)`}</title>
+          </path>
+        ))}
+        <circle cx={center} cy={center} r={innerRadius - 1} fill="#020617" />
+        <text x={center} y={center - 4} textAnchor="middle" fill="#ffffff" className="text-2xl font-extrabold font-sans">
+          {data.length}
+        </text>
+        <text x={center} y={center + 14} textAnchor="middle" fill="#38bdf8" className="text-[10px] uppercase tracking-wider font-bold">
+          Target Classes
+        </text>
+      </svg>
+    </div>
+  );
+};
+
 export const SwissTargetPredictionPage: React.FC<{ onBackToLanding: () => void }> = ({ onBackToLanding }) => {
   // Filter dataset to strictly the 24 compounds
   const compounds24 = useMemo(() => {
@@ -239,7 +303,7 @@ export const SwissTargetPredictionPage: React.FC<{ onBackToLanding: () => void }
                 <span className="text-xs text-slate-400 font-mono">100 Target Proteins Analyzed</span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center pt-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pt-2">
                 {/* Visual Legend */}
                 <div className="space-y-2 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
                   {activeCompound.targetClasses.map((item, idx) => (
@@ -261,16 +325,11 @@ export const SwissTargetPredictionPage: React.FC<{ onBackToLanding: () => void }
                   ))}
                 </div>
 
-                {/* Donut Card */}
-                <div className="p-6 rounded-2xl bg-slate-950 border border-slate-800/80 flex flex-col items-center justify-center text-center space-y-3">
-                  <div className="relative w-32 h-32 rounded-full border-8 border-cyan-500/20 flex items-center justify-center bg-slate-900/60 shadow-inner">
-                    <div className="text-center">
-                      <span className="text-2xl font-extrabold text-white">{activeCompound.targetClasses.length}</span>
-                      <p className="text-[9px] text-slate-400 uppercase tracking-wider font-semibold">Target Classes</p>
-                    </div>
-                  </div>
-                  <p className="text-xs text-slate-400 max-w-xs">
-                    Dominant class: <strong className="text-cyan-400">{activeCompound.targetClasses[0]?.label}</strong> ({activeCompound.targetClasses[0]?.percentage}%)
+                {/* Real SVG Donut / Pie Chart Display */}
+                <div className="p-6 rounded-2xl bg-slate-950 border border-slate-800/80 flex flex-col items-center justify-center text-center space-y-4 shadow-xl">
+                  <SvgPieChart data={activeCompound.targetClasses} />
+                  <p className="text-xs text-slate-300 max-w-xs">
+                    Top Predicted Class: <strong className="text-cyan-400">{activeCompound.targetClasses[0]?.label}</strong> ({activeCompound.targetClasses[0]?.percentage}%)
                   </p>
                 </div>
               </div>
