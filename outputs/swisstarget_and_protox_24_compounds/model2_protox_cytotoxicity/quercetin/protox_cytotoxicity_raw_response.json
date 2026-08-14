@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Quercetin",
+  "input_smiles": "O=C1C(O)=C(c2ccc(O)c(O)c2)Oc3cc(O)cc(O)c13",
+  "pubchem_cid": 5280343,
+  "descriptors": {
+    "mw": 302.24,
+    "logP": 1.99,
+    "TPSA": 131.36,
+    "HBD": 5,
+    "HBA": 7
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 57.0,
+    "LC50_ug_mL": 17.23,
+    "HEK293_cell_viability_pct_at_10uM": 91.8,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 16.0,
+    "HC50_ug_mL": 191.49,
+    "Selectivity_Index_SI": 11.97,
+    "is_high_selectivity": true
+  },
+  "organ_toxicity_radar": {
+    "compound": "Quercetin",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.72,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Quercetin)",
+      "max_score": 100
+    }
+  }
+}

@@ -7,10 +7,12 @@ import { CustomComputingWorkspace } from './components/CustomComputingWorkspace'
 import { AuthModal } from './components/AuthModal';
 import { Moon, Sun, Zap } from 'lucide-react';
 
+import { SwissTargetPredictionPage } from './components/SwissTargetPredictionPage';
+
 export type ThemeMode = 'dark' | 'light' | 'cyber';
 
 const App = () => {
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail' | 'custom-workspace'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'detail' | 'custom-workspace' | 'swisstarget'>('landing');
   const [selectedOrganism, setSelectedOrganism] = useState<string>('pseudomonas');
   const [selectedTarget, setSelectedTarget] = useState<string>('PqsR');
   const [detailTarget, setDetailTarget] = useState('');
@@ -137,6 +139,7 @@ const App = () => {
           <LandingPage
             onSelectOrganism={handleSelectOrganism}
             onOpenCustomTester={handleOpenCustomTester}
+            onOpenSwissTarget={() => setCurrentView('swisstarget')}
           />
         ) : currentView === 'dashboard' ? (
           <Dashboard
@@ -153,6 +156,8 @@ const App = () => {
             onBack={handleBackToDashboard}
             onViewPassport={handleOpenDetail}
           />
+        ) : currentView === 'swisstarget' ? (
+          <SwissTargetPredictionPage onBackToLanding={handleBackToLanding} />
         ) : (
           <LigandDetail
             targetId={detailTarget}

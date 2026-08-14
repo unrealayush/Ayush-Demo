@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Ursolic acid",
+  "input_smiles": "CC1CCC2(CCC3(C(=CCC4C3(CCC5C4(CCC(C5(C)C)O)C)C)C2C1C)C)C(=O)O",
+  "pubchem_cid": 64945,
+  "descriptors": {
+    "mw": 456.71,
+    "logP": 7.09,
+    "TPSA": 57.53,
+    "HBD": 2,
+    "HBA": 2
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 10.06,
+    "LC50_ug_mL": 4.59,
+    "HEK293_cell_viability_pct_at_10uM": 88.7,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 16.0,
+    "HC50_ug_mL": 49.69,
+    "Selectivity_Index_SI": 3.11,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Ursolic acid",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.95,
+        "active": false,
+        "score": 11
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Ursolic acid)",
+      "max_score": 100
+    }
+  }
+}

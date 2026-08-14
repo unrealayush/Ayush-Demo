@@ -1,0 +1,33 @@
+{
+  "organism": "Homo sapiens (Human)",
+  "total_targets_analyzed": 4,
+  "labels": [
+    "Oxidoreductase",
+    "Cytokine",
+    "Nuclear Receptor",
+    "Voltage-gated Ion Channel"
+  ],
+  "values": [
+    1,
+    1,
+    1,
+    1
+  ],
+  "percentages": [
+    25.0,
+    25.0,
+    25.0,
+    25.0
+  ],
+  "colors": [
+    "#3B82F6",
+    "#10B981",
+    "#F59E0B",
+    "#EF4444"
+  ],
+  "chart_config": {
+    "type": "pie",
+    "title": "SwissTargetPrediction Human Target Class Distribution (Homo sapiens)",
+    "legend_position": "right"
+  }
+}

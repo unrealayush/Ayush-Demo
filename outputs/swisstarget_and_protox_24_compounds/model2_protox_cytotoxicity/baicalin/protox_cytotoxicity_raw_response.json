@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Baicalin",
+  "input_smiles": "O=C1C=C(c2ccccc2)Oc3c1c(O)c(O)c(O)c3OC4OC(C(=O)O)C(O)C(O)C4O",
+  "pubchem_cid": 64982,
+  "descriptors": {
+    "mw": 462.36,
+    "logP": -0.15,
+    "TPSA": 207.35,
+    "HBD": 7,
+    "HBA": 11
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 70.26,
+    "LC50_ug_mL": 32.49,
+    "HEK293_cell_viability_pct_at_10uM": 92.7,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 24.0,
+    "HC50_ug_mL": 613.5,
+    "Selectivity_Index_SI": 25.56,
+    "is_high_selectivity": true
+  },
+  "organ_toxicity_radar": {
+    "compound": "Baicalin",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.65,
+        "active": false,
+        "score": 7
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Baicalin)",
+      "max_score": 100
+    }
+  }
+}

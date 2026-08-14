@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Dehydrocostus lactone",
+  "input_smiles": "C=C1CCC2C(=C)C3C(CC2C1=C)C(=C)C(=O)O3",
+  "pubchem_cid": 109551,
+  "descriptors": {
+    "mw": 242.32,
+    "logP": 3.18,
+    "TPSA": 26.3,
+    "HBD": 0,
+    "HBA": 2
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 104.31,
+    "LC50_ug_mL": 25.28,
+    "HEK293_cell_viability_pct_at_10uM": 95.0,
+    "toxicity_class": 5,
+    "toxicity_label": "NON_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 24.0,
+    "HC50_ug_mL": 101.62,
+    "Selectivity_Index_SI": 4.23,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Dehydrocostus lactone",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.48,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Dehydrocostus lactone)",
+      "max_score": 100
+    }
+  }
+}

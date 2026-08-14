@@ -1,0 +1,29 @@
+{
+  "organism": "Homo sapiens (Human)",
+  "total_targets_analyzed": 3,
+  "labels": [
+    "Erg / Ligase",
+    "Transferase",
+    "Kinase"
+  ],
+  "values": [
+    1,
+    1,
+    1
+  ],
+  "percentages": [
+    33.3,
+    33.3,
+    33.3
+  ],
+  "colors": [
+    "#3B82F6",
+    "#10B981",
+    "#F59E0B"
+  ],
+  "chart_config": {
+    "type": "pie",
+    "title": "SwissTargetPrediction Human Target Class Distribution (Homo sapiens)",
+    "legend_position": "right"
+  }
+}

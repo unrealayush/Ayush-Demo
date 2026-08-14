@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Piperine",
+  "input_smiles": "O=C(/C=C/C=C/c1ccc2c(c1)OCO2)N3CCCCC3",
+  "pubchem_cid": 638024,
+  "descriptors": {
+    "mw": 285.34,
+    "logP": 3.0,
+    "TPSA": 38.77,
+    "HBD": 0,
+    "HBA": 3
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 99.26,
+    "LC50_ug_mL": 28.32,
+    "HEK293_cell_viability_pct_at_10uM": 94.6,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 32.0,
+    "HC50_ug_mL": 127.58,
+    "Selectivity_Index_SI": 3.99,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Piperine",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.5,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Piperine)",
+      "max_score": 100
+    }
+  }
+}

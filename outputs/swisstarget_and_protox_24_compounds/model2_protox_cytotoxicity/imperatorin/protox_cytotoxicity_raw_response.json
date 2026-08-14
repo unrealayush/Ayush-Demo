@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Imperatorin",
+  "input_smiles": "CC(=CCOC1=C2C=CC(=O)OC2=CC=C1)C",
+  "pubchem_cid": 10212,
+  "descriptors": {
+    "mw": 230.26,
+    "logP": 3.14,
+    "TPSA": 39.44,
+    "HBD": 0,
+    "HBA": 3
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 91.71,
+    "LC50_ug_mL": 21.12,
+    "HEK293_cell_viability_pct_at_10uM": 94.1,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 32.0,
+    "HC50_ug_mL": 98.07,
+    "Selectivity_Index_SI": 3.06,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Imperatorin",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.54,
+        "active": false,
+        "score": 6
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Imperatorin)",
+      "max_score": 100
+    }
+  }
+}

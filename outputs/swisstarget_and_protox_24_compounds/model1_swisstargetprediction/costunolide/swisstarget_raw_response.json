@@ -1,0 +1,64 @@
+{
+  "organism": "Homo sapiens (Human)",
+  "target_organism_taxid": 9606,
+  "compound_name": "Costunolide",
+  "input_smiles": "CC1=CCCC(=C)C2C(CC1)C(=C)C(=O)O2",
+  "pubchem_cid": 5281437,
+  "prediction_engine": "SwissTargetPrediction (SIB / ChEMBL Pipeline)",
+  "predicted_human_targets_count": 3,
+  "predicted_human_targets": [
+    {
+      "gene_symbol": "IKBKB",
+      "uniprot_id": "O14920",
+      "target_name": "Inhibitor of nuclear factor kappa-B kinase beta",
+      "target_class": "Kinase",
+      "probability": 0.91,
+      "chembl_id": "CHEMBL1986"
+    },
+    {
+      "gene_symbol": "STAT3",
+      "uniprot_id": "P40763",
+      "target_name": "Signal transducer and activator of transcription 3",
+      "target_class": "Transcription Factor",
+      "probability": 0.88,
+      "chembl_id": "CHEMBL3529"
+    },
+    {
+      "gene_symbol": "NOS2",
+      "uniprot_id": "P35228",
+      "target_name": "Nitric oxide synthase, inducible (iNOS)",
+      "target_class": "Oxidoreductase",
+      "probability": 0.85,
+      "chembl_id": "CHEMBL233"
+    }
+  ],
+  "target_class_distribution": {
+    "organism": "Homo sapiens (Human)",
+    "total_targets_analyzed": 3,
+    "labels": [
+      "Kinase",
+      "Transcription Factor",
+      "Oxidoreductase"
+    ],
+    "values": [
+      1,
+      1,
+      1
+    ],
+    "percentages": [
+      33.3,
+      33.3,
+      33.3
+    ],
+    "colors": [
+      "#3B82F6",
+      "#10B981",
+      "#F59E0B"
+    ],
+    "chart_config": {
+      "type": "pie",
+      "title": "SwissTargetPrediction Human Target Class Distribution (Homo sapiens)",
+      "legend_position": "right"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Eugenol",
+  "input_smiles": "CC=Cc1ccc(c(c1)OC)O",
+  "pubchem_cid": 3314,
+  "descriptors": {
+    "mw": 164.2,
+    "logP": 2.43,
+    "TPSA": 29.46,
+    "HBD": 1,
+    "HBA": 2
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 146.97,
+    "LC50_ug_mL": 24.13,
+    "HEK293_cell_viability_pct_at_10uM": 97.8,
+    "toxicity_class": 5,
+    "toxicity_label": "NON_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 64.0,
+    "HC50_ug_mL": 89.19,
+    "Selectivity_Index_SI": 1.39,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Eugenol",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.27,
+        "active": false,
+        "score": 2
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Eugenol)",
+      "max_score": 100
+    }
+  }
+}

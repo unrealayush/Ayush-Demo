@@ -1,0 +1,76 @@
+{
+  "organism": "Homo sapiens (Human)",
+  "target_organism_taxid": 9606,
+  "compound_name": "Carvacrol",
+  "input_smiles": "Cc1ccc(c(c1)C(C)C)O",
+  "pubchem_cid": 10864,
+  "prediction_engine": "SwissTargetPrediction (SIB / ChEMBL Pipeline)",
+  "predicted_human_targets_count": 4,
+  "predicted_human_targets": [
+    {
+      "gene_symbol": "PTGS1",
+      "uniprot_id": "P23219",
+      "target_name": "Prostaglandin G/H synthase 1 (COX-1)",
+      "target_class": "Oxidoreductase",
+      "probability": 0.84,
+      "chembl_id": "CHEMBL221"
+    },
+    {
+      "gene_symbol": "IL6",
+      "uniprot_id": "P05231",
+      "target_name": "Interleukin-6",
+      "target_class": "Cytokine",
+      "probability": 0.81,
+      "chembl_id": "CHEMBL2104"
+    },
+    {
+      "gene_symbol": "ESR1",
+      "uniprot_id": "P03372",
+      "target_name": "Estrogen receptor alpha",
+      "target_class": "Nuclear Receptor",
+      "probability": 0.76,
+      "chembl_id": "CHEMBL206"
+    },
+    {
+      "gene_symbol": "KCNH2",
+      "uniprot_id": "Q12809",
+      "target_name": "Potassium channel hERG (Off-target Safety)",
+      "target_class": "Voltage-gated Ion Channel",
+      "probability": 0.08,
+      "chembl_id": "CHEMBL240"
+    }
+  ],
+  "target_class_distribution": {
+    "organism": "Homo sapiens (Human)",
+    "total_targets_analyzed": 4,
+    "labels": [
+      "Oxidoreductase",
+      "Cytokine",
+      "Nuclear Receptor",
+      "Voltage-gated Ion Channel"
+    ],
+    "values": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "percentages": [
+      25.0,
+      25.0,
+      25.0,
+      25.0
+    ],
+    "colors": [
+      "#3B82F6",
+      "#10B981",
+      "#F59E0B",
+      "#EF4444"
+    ],
+    "chart_config": {
+      "type": "pie",
+      "title": "SwissTargetPrediction Human Target Class Distribution (Homo sapiens)",
+      "legend_position": "right"
+    }
+  }
+}

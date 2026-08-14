@@ -1,0 +1,46 @@
+{
+  "compound": "Bisdemethoxycurcumin",
+  "organ_toxicity_endpoints": [
+    {
+      "axis": "Hepatotoxicity",
+      "probability": 0.14,
+      "active": false,
+      "score": 14
+    },
+    {
+      "axis": "Carcinogenicity",
+      "probability": 0.08,
+      "active": false,
+      "score": 8
+    },
+    {
+      "axis": "Immunotoxicity",
+      "probability": 0.12,
+      "active": false,
+      "score": 12
+    },
+    {
+      "axis": "Mutagenicity",
+      "probability": 0.05,
+      "active": false,
+      "score": 5
+    },
+    {
+      "axis": "Cytotoxicity",
+      "probability": 0.73,
+      "active": false,
+      "score": 8
+    },
+    {
+      "axis": "Cardiotoxicity (hERG)",
+      "probability": 0.06,
+      "active": false,
+      "score": 6
+    }
+  ],
+  "chart_config": {
+    "type": "radar",
+    "title": "ProTox-II Organ Toxicity Profile (Bisdemethoxycurcumin)",
+    "max_score": 100
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Berberine",
+  "input_smiles": "COc1ccc2c(c1OC)C[N+]3=C(C2)c4cc5c(cc4C3)OCO5",
+  "pubchem_cid": 2353,
+  "descriptors": {
+    "mw": 324.36,
+    "logP": 2.5,
+    "TPSA": 39.93,
+    "HBD": 0,
+    "HBA": 4
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 125.74,
+    "LC50_ug_mL": 40.78,
+    "HEK293_cell_viability_pct_at_10uM": 96.4,
+    "toxicity_class": 5,
+    "toxicity_label": "NON_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 12.5,
+    "HC50_ug_mL": 171.96,
+    "Selectivity_Index_SI": 13.76,
+    "is_high_selectivity": true
+  },
+  "organ_toxicity_radar": {
+    "compound": "Berberine",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.37,
+        "active": false,
+        "score": 4
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Berberine)",
+      "max_score": 100
+    }
+  }
+}

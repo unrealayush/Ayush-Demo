@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Resveratrol",
+  "input_smiles": "c1cc(ccc1/C=C/c2cc(cc(c2)O)O)O",
+  "pubchem_cid": 445154,
+  "descriptors": {
+    "mw": 228.25,
+    "logP": 2.97,
+    "TPSA": 60.69,
+    "HBD": 3,
+    "HBA": 3
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 78.04,
+    "LC50_ug_mL": 17.81,
+    "HEK293_cell_viability_pct_at_10uM": 93.2,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 16.0,
+    "HC50_ug_mL": 102.88,
+    "Selectivity_Index_SI": 6.43,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Resveratrol",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.61,
+        "active": false,
+        "score": 7
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Resveratrol)",
+      "max_score": 100
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Costunolide",
+  "input_smiles": "CC1=CCCC(=C)C2C(CC1)C(=C)C(=O)O2",
+  "pubchem_cid": 5281437,
+  "descriptors": {
+    "mw": 218.3,
+    "logP": 3.16,
+    "TPSA": 26.3,
+    "HBD": 0,
+    "HBA": 2
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 105.47,
+    "LC50_ug_mL": 23.02,
+    "HEK293_cell_viability_pct_at_10uM": 95.0,
+    "toxicity_class": 5,
+    "toxicity_label": "NON_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 24.0,
+    "HC50_ug_mL": 92.25,
+    "Selectivity_Index_SI": 3.84,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Costunolide",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.47,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Costunolide)",
+      "max_score": 100
+    }
+  }
+}

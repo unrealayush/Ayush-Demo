@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Demethoxycurcumin",
+  "input_smiles": "COc1cc(/C=C/C(=O)CC(=O)/C=C/c2ccc(O)cc2)ccc1O",
+  "pubchem_cid": 5469424,
+  "descriptors": {
+    "mw": 338.36,
+    "logP": 3.36,
+    "TPSA": 83.83,
+    "HBD": 2,
+    "HBA": 5
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 49.13,
+    "LC50_ug_mL": 16.62,
+    "HEK293_cell_viability_pct_at_10uM": 91.3,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 16.0,
+    "HC50_ug_mL": 133.41,
+    "Selectivity_Index_SI": 8.34,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Demethoxycurcumin",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.75,
+        "active": false,
+        "score": 9
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Demethoxycurcumin)",
+      "max_score": 100
+    }
+  }
+}

@@ -7,12 +7,14 @@ import {
   Cpu,
   FileSearch,
   Layers,
-  Beaker
+  Beaker,
+  Dna
 } from 'lucide-react';
 
 interface LandingPageProps {
   onSelectOrganism: (organismId: string, targetId?: string) => void;
   onOpenCustomTester?: () => void;
+  onOpenSwissTarget?: () => void;
 }
 
 /* ── Intersection Observer Hook for Scroll Reveals ── */
@@ -83,7 +85,8 @@ function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: str
 
 /* ── Main Landing Page Component ── */
 export const LandingPage: React.FC<LandingPageProps> = ({
-  onSelectOrganism
+  onSelectOrganism,
+  onOpenSwissTarget
 }) => {
   const scrollContainerRef = useScrollReveal();
   const [heroLoaded, setHeroLoaded] = useState(false);
@@ -132,6 +135,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({
             </span>
           </div>
           <div className="flex items-center gap-3">
+            {onOpenSwissTarget && (
+              <button
+                onClick={onOpenSwissTarget}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-700/60 text-xs font-bold transition-all duration-300"
+              >
+                <Dna className="w-3.5 h-3.5 text-cyan-400" />
+                SwissTarget Predictions (Human)
+              </button>
+            )}
             <button
               onClick={() => onSelectOrganism('pseudomonas')}
               className="flex items-center gap-2 px-5 py-2 rounded-lg bg-teal-500/90 hover:bg-teal-400 text-[#04070d] text-xs font-bold transition-all duration-300 hover:shadow-[0_0_30px_rgba(20,184,166,0.3)]"

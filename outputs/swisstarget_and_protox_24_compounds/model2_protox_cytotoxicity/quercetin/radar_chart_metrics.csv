@@ -1,0 +1,7 @@
+axis,probability,active,score
+Hepatotoxicity,0.14,False,14
+Carcinogenicity,0.08,False,8
+Immunotoxicity,0.12,False,12
+Mutagenicity,0.05,False,5
+Cytotoxicity,0.72,False,8
+Cardiotoxicity (hERG),0.06,False,6

@@ -1,0 +1,64 @@
+{
+  "organism": "Homo sapiens (Human)",
+  "target_organism_taxid": 9606,
+  "compound_name": "Nimbolide",
+  "input_smiles": "CC12CCC3C(C1C=CC4C2(C(=O)C=C(O4)C5=COC=C5)O)C6C(=O)OCC6(C3=O)C",
+  "pubchem_cid": 100017,
+  "prediction_engine": "SwissTargetPrediction (SIB / ChEMBL Pipeline)",
+  "predicted_human_targets_count": 3,
+  "predicted_human_targets": [
+    {
+      "gene_symbol": "RNF4",
+      "uniprot_id": "P78317",
+      "target_name": "RING finger protein 4 (E3 Ubiquitin Ligase)",
+      "target_class": "Erg / Ligase",
+      "probability": 0.96,
+      "chembl_id": "CHEMBL4105828"
+    },
+    {
+      "gene_symbol": "GSTP1",
+      "uniprot_id": "P09211",
+      "target_name": "Glutathione S-transferase P",
+      "target_class": "Transferase",
+      "probability": 0.89,
+      "chembl_id": "CHEMBL2036"
+    },
+    {
+      "gene_symbol": "MAPK14",
+      "uniprot_id": "Q16539",
+      "target_name": "Mitogen-activated protein kinase 14 (p38 alpha)",
+      "target_class": "Kinase",
+      "probability": 0.86,
+      "chembl_id": "CHEMBL264"
+    }
+  ],
+  "target_class_distribution": {
+    "organism": "Homo sapiens (Human)",
+    "total_targets_analyzed": 3,
+    "labels": [
+      "Erg / Ligase",
+      "Transferase",
+      "Kinase"
+    ],
+    "values": [
+      1,
+      1,
+      1
+    ],
+    "percentages": [
+      33.3,
+      33.3,
+      33.3
+    ],
+    "colors": [
+      "#3B82F6",
+      "#10B981",
+      "#F59E0B"
+    ],
+    "chart_config": {
+      "type": "pie",
+      "title": "SwissTargetPrediction Human Target Class Distribution (Homo sapiens)",
+      "legend_position": "right"
+    }
+  }
+}

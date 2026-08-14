@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Carvacrol",
+  "input_smiles": "Cc1ccc(c(c1)C(C)C)O",
+  "pubchem_cid": 10864,
+  "descriptors": {
+    "mw": 150.22,
+    "logP": 2.82,
+    "TPSA": 20.23,
+    "HBD": 1,
+    "HBA": 1
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 134.14,
+    "LC50_ug_mL": 20.15,
+    "HEK293_cell_viability_pct_at_10uM": 96.9,
+    "toxicity_class": 5,
+    "toxicity_label": "NON_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 32.0,
+    "HC50_ug_mL": 71.31,
+    "Selectivity_Index_SI": 2.23,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Carvacrol",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.33,
+        "active": false,
+        "score": 3
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Carvacrol)",
+      "max_score": 100
+    }
+  }
+}

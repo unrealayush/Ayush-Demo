@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Withaferin A",
+  "input_smiles": "CC1C2C(CC1C3(C(C4C(C(C3)O)C5(C(=CC(=O)C(C5)O)C)CC4)C)O)OC(=O)C(C2)C",
+  "pubchem_cid": 265237,
+  "descriptors": {
+    "mw": 446.58,
+    "logP": 2.63,
+    "TPSA": 104.06,
+    "HBD": 3,
+    "HBA": 6
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 56.25,
+    "LC50_ug_mL": 25.12,
+    "HEK293_cell_viability_pct_at_10uM": 91.8,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 8.0,
+    "HC50_ug_mL": 226.32,
+    "Selectivity_Index_SI": 28.29,
+    "is_high_selectivity": true
+  },
+  "organ_toxicity_radar": {
+    "compound": "Withaferin A",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.72,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Withaferin A)",
+      "max_score": 100
+    }
+  }
+}

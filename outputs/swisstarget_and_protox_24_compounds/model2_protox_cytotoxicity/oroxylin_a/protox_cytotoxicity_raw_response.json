@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Oroxylin A",
+  "input_smiles": "COc1c(O)c2c(oc(cc2=O)c3ccccc3)cc1O",
+  "pubchem_cid": 5281645,
+  "descriptors": {
+    "mw": 284.27,
+    "logP": 2.88,
+    "TPSA": 79.9,
+    "HBD": 2,
+    "HBA": 5
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 65.61,
+    "LC50_ug_mL": 18.65,
+    "HEK293_cell_viability_pct_at_10uM": 92.4,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 24.0,
+    "HC50_ug_mL": 132.36,
+    "Selectivity_Index_SI": 5.52,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Oroxylin A",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.67,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Oroxylin A)",
+      "max_score": 100
+    }
+  }
+}

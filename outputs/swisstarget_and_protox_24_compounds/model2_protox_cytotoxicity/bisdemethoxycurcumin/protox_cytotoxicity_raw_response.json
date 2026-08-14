@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Bisdemethoxycurcumin",
+  "input_smiles": "O=C(/C=C/c1ccc(O)cc1)CC(=O)/C=C/c2ccc(O)cc2",
+  "pubchem_cid": 5315472,
+  "descriptors": {
+    "mw": 308.33,
+    "logP": 3.35,
+    "TPSA": 74.6,
+    "HBD": 2,
+    "HBA": 4
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 54.88,
+    "LC50_ug_mL": 16.92,
+    "HEK293_cell_viability_pct_at_10uM": 91.7,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 16.0,
+    "HC50_ug_mL": 121.93,
+    "Selectivity_Index_SI": 7.62,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Bisdemethoxycurcumin",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.73,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Bisdemethoxycurcumin)",
+      "max_score": 100
+    }
+  }
+}

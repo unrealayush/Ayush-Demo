@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Azadirachtin",
+  "input_smiles": "CC(=O)OC1C(C2(CC(=O)C3C(C2=C)C4(C(O3)C5=COC=C5)C(C=CC4(C)C(=O)OC)C)C)OC(=O)C1O",
+  "pubchem_cid": 5281303,
+  "descriptors": {
+    "mw": 528.55,
+    "logP": 2.46,
+    "TPSA": 138.57,
+    "HBD": 1,
+    "HBA": 10
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 41.29,
+    "LC50_ug_mL": 21.82,
+    "HEK293_cell_viability_pct_at_10uM": 90.8,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 64.0,
+    "HC50_ug_mL": 284.45,
+    "Selectivity_Index_SI": 4.44,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Azadirachtin",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.79,
+        "active": false,
+        "score": 9
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Azadirachtin)",
+      "max_score": 100
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "model_name": "ProTox-3.0 / ProTox-II Deep Cytotoxicity Predictor",
+  "compound_name": "Nimbin",
+  "input_smiles": "CC(=O)OC1C(C2(CC(=O)C3C(C2=C)C4(C(O3)C5=COC=C5)C(C=CC4(C)C(=O)OC)C)C)OC(=O)C1",
+  "pubchem_cid": 108058,
+  "descriptors": {
+    "mw": 512.56,
+    "logP": 3.49,
+    "TPSA": 118.34,
+    "HBD": 0,
+    "HBA": 9
+  },
+  "cytotoxicity_endpoint": {
+    "LC50_uM": 30.94,
+    "LC50_ug_mL": 15.86,
+    "HEK293_cell_viability_pct_at_10uM": 90.1,
+    "toxicity_class": 4,
+    "toxicity_label": "LOW_CYTOTOXIC"
+  },
+  "hemolysis_selectivity_endpoint": {
+    "experimental_MIC_ug_mL": 32.0,
+    "HC50_ug_mL": 193.32,
+    "Selectivity_Index_SI": 6.04,
+    "is_high_selectivity": false
+  },
+  "organ_toxicity_radar": {
+    "compound": "Nimbin",
+    "organ_toxicity_endpoints": [
+      {
+        "axis": "Hepatotoxicity",
+        "probability": 0.14,
+        "active": false,
+        "score": 14
+      },
+      {
+        "axis": "Carcinogenicity",
+        "probability": 0.08,
+        "active": false,
+        "score": 8
+      },
+      {
+        "axis": "Immunotoxicity",
+        "probability": 0.12,
+        "active": false,
+        "score": 12
+      },
+      {
+        "axis": "Mutagenicity",
+        "probability": 0.05,
+        "active": false,
+        "score": 5
+      },
+      {
+        "axis": "Cytotoxicity",
+        "probability": 0.85,
+        "active": false,
+        "score": 10
+      },
+      {
+        "axis": "Cardiotoxicity (hERG)",
+        "probability": 0.06,
+        "active": false,
+        "score": 6
+      }
+    ],
+    "chart_config": {
+      "type": "radar",
+      "title": "ProTox-II Organ Toxicity Profile (Nimbin)",
+      "max_score": 100
+    }
+  }
+}
