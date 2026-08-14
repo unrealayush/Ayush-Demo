@@ -34,14 +34,14 @@ PHYTOCHEMICALS_24 = [
     {"compound_id": "thymol", "name": "Thymol", "cid": 6989, "smiles": "Cc1ccc(c(c1)O)C(C)C", "mic_ug_ml": 32.0},
     {"compound_id": "carvacrol", "name": "Carvacrol", "cid": 10864, "smiles": "Cc1ccc(c(c1)C(C)C)O", "mic_ug_ml": 32.0},
     {"compound_id": "ursolic_acid", "name": "Ursolic acid", "cid": 64945, "smiles": "CC1CCC2(CCC3(C(=CCC4C3(CCC5C4(CCC(C5(C)C)O)C)C)C2C1C)C)C(=O)O", "mic_ug_ml": 16.0},
-    {"compound_id": "baicalein", "name": "Baicalein", "cid": 5281605, "smiles": "c1ccc(cc1)c2cc(=O)c3c(o2)c(c(c3O)O)O", "mic_ug_ml": 16.0},
-    {"compound_id": "baicalin", "name": "Baicalin", "cid": 64982, "smiles": "c1ccc(cc1)c2cc(=O)c3c(o2)c(c(c3O)O)OC4C(C(C(C(O4)C(=O)O)O)O)O", "mic_ug_ml": 24.0},
-    {"compound_id": "quercetin", "name": "Quercetin", "cid": 5280343, "smiles": "c1cc(c(cc1c2c(c(=O)c3c(cc(cc3o2)O)O)O)O)O", "mic_ug_ml": 16.0},
-    {"compound_id": "chrysin", "name": "Chrysin", "cid": 5281607, "smiles": "c1ccc(cc1)c2cc(=O)c3c(o2)cc(cc3O)O", "mic_ug_ml": 32.0},
-    {"compound_id": "rosmarinic_acid", "name": "Rosmarinic acid", "cid": 5281792, "smiles": "c1cc(c(cc1/C=C/C(=O)OC(Cc2ccc(c(c2)O)O)C(=O)O)O)O", "mic_ug_ml": 16.0},
+    {"compound_id": "baicalein", "name": "Baicalein", "cid": 5281605, "smiles": "O=C1C=C(c2ccccc2)Oc3c1c(O)c(O)c(O)c3", "mic_ug_ml": 16.0},
+    {"compound_id": "baicalin", "name": "Baicalin", "cid": 64982, "smiles": "O=C1C=C(c2ccccc2)Oc3c1c(O)c(O)c(O)c3OC4OC(C(=O)O)C(O)C(O)C4O", "mic_ug_ml": 24.0},
+    {"compound_id": "quercetin", "name": "Quercetin", "cid": 5280343, "smiles": "O=C1C(O)=C(c2ccc(O)c(O)c2)Oc3cc(O)cc(O)c13", "mic_ug_ml": 16.0},
+    {"compound_id": "chrysin", "name": "Chrysin", "cid": 5281607, "smiles": "O=C1C=C(c2ccccc2)Oc3cc(O)cc(O)c13", "mic_ug_ml": 32.0},
+    {"compound_id": "rosmarinic_acid", "name": "Rosmarinic acid", "cid": 5281792, "smiles": "O=C(O)C(OC(=O)/C=C/c1ccc(O)c(O)c1)Cc2ccc(O)c(O)c2", "mic_ug_ml": 16.0},
     {"compound_id": "oroxylin_a", "name": "Oroxylin A", "cid": 5281645, "smiles": "COc1c(O)c2c(oc(cc2=O)c3ccccc3)cc1O", "mic_ug_ml": 24.0},
-    {"compound_id": "demethoxycurcumin", "name": "Demethoxycurcumin", "cid": 5469424, "smiles": "COc1cc(\\C=C\\C(=O)CC(=O)\\C=C\\c2ccc(O)cc2)ccc1O", "mic_ug_ml": 16.0},
-    {"compound_id": "bisdemethoxycurcumin", "name": "Bisdemethoxycurcumin", "cid": 5315472, "smiles": "O=C(\\C=C\\c1ccc(O)cc1)CC(=O)\\C=C\\c2ccc(O)cc2", "mic_ug_ml": 16.0},
+    {"compound_id": "demethoxycurcumin", "name": "Demethoxycurcumin", "cid": 5469424, "smiles": "COc1cc(/C=C/C(=O)CC(=O)/C=C/c2ccc(O)cc2)ccc1O", "mic_ug_ml": 16.0},
+    {"compound_id": "bisdemethoxycurcumin", "name": "Bisdemethoxycurcumin", "cid": 5315472, "smiles": "O=C(/C=C/c1ccc(O)cc1)CC(=O)/C=C/c2ccc(O)cc2", "mic_ug_ml": 16.0},
     {"compound_id": "nimbin", "name": "Nimbin", "cid": 108058, "smiles": "CC(=O)OC1C(C2(CC(=O)C3C(C2=C)C4(C(O3)C5=COC=C5)C(C=CC4(C)C(=O)OC)C)C)OC(=O)C1", "mic_ug_ml": 32.0},
     {"compound_id": "azadirachtin", "name": "Azadirachtin", "cid": 5281303, "smiles": "CC(=O)OC1C(C2(CC(=O)C3C(C2=C)C4(C(O3)C5=COC=C5)C(C=CC4(C)C(=O)OC)C)C)OC(=O)C1O", "mic_ug_ml": 64.0},
     {"compound_id": "conessine", "name": "Conessine", "cid": 441072, "smiles": "CN(C)C1CCC2(C3CCC4C(C3CCC2C1)CC5(C4)CN(C)C5)C", "mic_ug_ml": 16.0},
@@ -105,6 +105,9 @@ def main():
 
         # 1. RDKit QSAR Descriptors
         mol = Chem.MolFromSmiles(smiles)
+        if mol is None:
+            mol = Chem.MolFromSmiles(smiles, sanitize=False)
+            Chem.SanitizeMol(mol, sanitizeOps=Chem.SanitizeFlags.SANITIZE_ALL ^ Chem.SanitizeFlags.SANITIZE_KEKULIZE)
         mw = float(Descriptors.MolWt(mol))
         logp = float(Descriptors.MolLogP(mol))
         tpsa = float(Descriptors.TPSA(mol))
